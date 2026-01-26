@@ -1,3 +1,5 @@
+"use client";
+
 import { Navbar, Footer } from "@/components/landing";
 
 const Mission = () => {

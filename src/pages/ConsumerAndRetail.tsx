@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Navbar,
   Hero,
@@ -9,14 +11,8 @@ import {
   FintechValueProps,
   FINTECH_PRODUCTS,
 } from "@/components/landing";
-import { useEffect } from "react";
 
 const ConsumerAndRetail = () => {
-  useEffect(() => {
-    document.title = "Consumer & Retail | Airdev";
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <>
       <style dangerouslySetInnerHTML={{

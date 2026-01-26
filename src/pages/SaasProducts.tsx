@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Navbar,
   Hero,
@@ -9,14 +11,8 @@ import {
   ValueProps,
   SampleProducts,
 } from "@/components/landing";
-import { useEffect } from "react";
 
 const SaasProducts = () => {
-  useEffect(() => {
-    document.title = "A better way to launch your SaaS startup | Airdev";
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <>
       <style dangerouslySetInnerHTML={{

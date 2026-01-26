@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Navbar,
   Hero,
@@ -10,15 +12,9 @@ import {
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Check, ChevronRight } from "lucide-react";
-import { useEffect } from "react";
 import { ROUTES } from "@/config/routes";
 
 const BubbleDevelopment = () => {
-  useEffect(() => {
-    document.title = "Hire Top 1% Bubble Developers | Agency & Freelancer Options";
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <>
       <style dangerouslySetInnerHTML={{

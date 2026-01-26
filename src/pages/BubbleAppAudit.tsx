@@ -1,5 +1,6 @@
+"use client";
+
 import { Navbar, Footer, SaasCTA } from "@/components/landing";
-import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Accordion,
@@ -20,11 +21,6 @@ import {
 } from "@heroicons/react/24/solid";
 
 const BubbleAppAudit = () => {
-  useEffect(() => {
-    document.title = "Bubble App Audit | Airdev";
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <div className="bg-white min-h-screen selection:bg-blue-100 selection:text-blue-900 font-['Colfax']">
       <Navbar />

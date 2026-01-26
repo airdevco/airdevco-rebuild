@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Navbar,
   Hero,
@@ -126,14 +128,8 @@ const TECH_SOFTWARE_PRODUCTS: Product[] = [
     ],
   },
 ];
-import { useEffect } from "react";
 
 const TechnologyAndSoftware = () => {
-  useEffect(() => {
-    document.title = "Technology & Software | Airdev";
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <>
       <style dangerouslySetInnerHTML={{

@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Navbar,
   Hero,
@@ -9,7 +11,6 @@ import {
   ValueProps,
   SampleProducts,
 } from "@/components/landing";
-import { useEffect } from "react";
 import type { Product } from "@/components/landing/sample-products";
 import {
   ShoppingBagIcon,
@@ -174,11 +175,6 @@ const MARKETPLACE_PRODUCTS: Product[] = [
 ];
 
 const Marketplaces = () => {
-  useEffect(() => {
-    document.title = "Marketplaces | Airdev";
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <>
       <style dangerouslySetInnerHTML={{

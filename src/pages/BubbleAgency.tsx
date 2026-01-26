@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Navbar,
   Hero,
@@ -21,14 +23,8 @@ import {
   ArrowPathIcon,
   LockClosedIcon,
 } from "@heroicons/react/24/solid";
-import { useEffect } from "react";
 
 const BubbleAgency = () => {
-  useEffect(() => {
-    document.title = "Airdev | A White-Glove Experience From the Premier Bubble Agency";
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <>
       <style

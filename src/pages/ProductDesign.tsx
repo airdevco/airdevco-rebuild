@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Navbar,
   Hero,
@@ -10,14 +12,8 @@ import {
   DiscoveryOutputs,
 } from "@/components/landing";
 import { DocumentTextIcon, PresentationChartLineIcon, CheckCircleIcon } from "@heroicons/react/24/solid";
-import { useEffect } from "react";
 
 const ProductDesign = () => {
-  useEffect(() => {
-    document.title = "Product design | Airdev";
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <>
       <style dangerouslySetInnerHTML={{

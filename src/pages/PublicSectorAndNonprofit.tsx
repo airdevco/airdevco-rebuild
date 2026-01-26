@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Navbar,
   Hero,
@@ -8,7 +10,6 @@ import {
   SampleProducts,
   FintechValueProps,
 } from "@/components/landing";
-import { useEffect } from "react";
 import {
   UserGroupIcon,
   DocumentTextIcon,
@@ -123,11 +124,6 @@ const PUBLIC_SECTOR_PRODUCTS: Product[] = [
 ];
 
 const PublicSectorAndNonprofit = () => {
-  useEffect(() => {
-    document.title = "Public Sector & Nonprofit | Airdev";
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <>
       <style dangerouslySetInnerHTML={{

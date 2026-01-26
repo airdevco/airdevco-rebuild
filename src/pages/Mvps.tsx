@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Navbar,
   Hero,
@@ -8,7 +10,6 @@ import {
   BusinessTypes,
   ProcessSection,
 } from "@/components/landing";
-import { useEffect } from "react";
 
 const MVP_SLIDES = [
   {
@@ -62,11 +63,6 @@ const MVP_SLIDES = [
 ];
 
 const Mvps = () => {
-  useEffect(() => {
-    document.title = "Launch fast, scale smart | Airdev";
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <>
       <style dangerouslySetInnerHTML={{

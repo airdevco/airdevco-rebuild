@@ -1,3 +1,5 @@
+"use client";
+
 import { Navbar, Footer, ClientLogoTicker, SaasCTA } from "@/components/landing";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -157,11 +159,6 @@ const ClientStories = () => {
   
   // Filter slides based on selected tab
   const SLIDES = ALL_SLIDES.filter(slide => slide.category === selectedTab);
-
-  useEffect(() => {
-    document.title = "Client Stories | Airdev";
-    window.scrollTo(0, 0);
-  }, []);
 
   const handleManualSwitch = (index: number) => {
     setPrevIndex(activeIndex);

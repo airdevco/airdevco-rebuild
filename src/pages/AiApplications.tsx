@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Navbar,
   CaseStudies,
@@ -9,7 +11,6 @@ import {
   SampleProducts,
 } from "@/components/landing";
 import { Button } from "@/components/ui/button";
-import { useEffect } from "react";
 import type { Product } from "@/components/landing/sample-products";
 import {
   ShoppingBagIcon,
@@ -212,11 +213,6 @@ const AI_APPLICATIONS_PRODUCTS: Product[] = [
 ];
 
 const AiApplications = () => {
-  useEffect(() => {
-    document.title = "AI Applications | Airdev";
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <>
       <style dangerouslySetInnerHTML={{

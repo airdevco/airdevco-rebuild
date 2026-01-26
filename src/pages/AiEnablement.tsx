@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Navbar,
   Hero,
@@ -7,7 +9,6 @@ import {
   SampleProducts,
   ProcessSection,
 } from "@/components/landing";
-import { useEffect } from "react";
 import {
   SparklesIcon,
   ChatBubbleLeftRightIcon,
@@ -132,11 +133,6 @@ const AI_PRODUCTS: Product[] = [
 ];
 
 const AiEnablement = () => {
-  useEffect(() => {
-    document.title = "AI enablement | Airdev";
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <>
       <style dangerouslySetInnerHTML={{

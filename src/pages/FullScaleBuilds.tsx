@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Navbar,
   Hero,
@@ -9,7 +11,6 @@ import {
   ProcessSection,
   AudienceSection,
 } from "@/components/landing";
-import { useEffect } from "react";
 
 const FULL_SCALE_SLIDES = [
   {
@@ -79,11 +80,6 @@ const FULL_SCALE_SLIDES = [
 ];
 
 const FullScaleBuilds = () => {
-  useEffect(() => {
-    document.title = "Full-scale builds | Airdev";
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <>
       <style dangerouslySetInnerHTML={{

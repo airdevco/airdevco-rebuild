@@ -135,7 +135,7 @@ export function CategoriesForm() {
       >
         {category.isEditing ? (
           <Input
-            ref={(el) => (editInputRefs.current[category.id] = el)}
+            ref={(el) => { editInputRefs.current[category.id] = el; }}
             defaultValue={category.name}
             className="h-8 flex-1"
             onKeyDown={(e) => handleKeyDown(e, category.id)}

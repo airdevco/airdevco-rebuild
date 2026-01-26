@@ -1,6 +1,8 @@
+"use client";
+
 import { Navbar, Footer, ClientLogoTicker } from "@/components/landing";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { CodeBracketIcon, BriefcaseIcon, PaintBrushIcon } from "@heroicons/react/24/solid";
 import { ROUTES } from "@/config/routes";
 
@@ -121,7 +123,7 @@ const Partners = () => {
                         </div>
                       </div>
 
-                      <Link to={ROUTES.PARTNERS_DEVELOPERS}>
+                      <Link href={ROUTES.PARTNERS_DEVELOPERS}>
                         <Button className="h-12 px-8 text-lg font-medium rounded-[6px] bg-[#1265EF] hover:bg-[#0E4FCC] w-fit">
                           Learn more
                         </Button>
@@ -190,7 +192,7 @@ const Partners = () => {
                         </div>
                       </div>
 
-                      <Link to={ROUTES.PARTNERS_PRODUCT_MANAGERS}>
+                      <Link href={ROUTES.PARTNERS_PRODUCT_MANAGERS}>
                         <Button className="h-12 px-8 text-lg font-medium rounded-[6px] bg-[#1265EF] hover:bg-[#0E4FCC] w-fit">
                           Learn more
                         </Button>
@@ -229,7 +231,7 @@ const Partners = () => {
                         </div>
                       </div>
 
-                      <Link to={ROUTES.PARTNERS_UX_DESIGNERS}>
+                      <Link href={ROUTES.PARTNERS_UX_DESIGNERS}>
                         <Button className="h-12 px-8 text-lg font-medium rounded-[6px] bg-[#1265EF] hover:bg-[#0E4FCC] w-fit">
                           Learn more
                         </Button>

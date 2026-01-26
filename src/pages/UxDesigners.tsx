@@ -1,6 +1,7 @@
+"use client";
+
 import { Navbar, Footer, ClientLogoTicker } from "@/components/landing";
 import { Button } from "@/components/ui/button";
-import { useEffect } from "react";
 import { ROUTES } from "@/config/routes";
 import { 
   CurrencyDollarIcon, 
@@ -17,11 +18,6 @@ import {
 } from "@heroicons/react/24/solid";
 
 const UXDesigners = () => {
-  useEffect(() => {
-    document.title = "Become a Partner UX Designer";
-    window.scrollTo(0, 0);
-  }, []);
-
   const scrollToApplicationProcess = () => {
     const element = document.getElementById('application-process');
     if (element) {

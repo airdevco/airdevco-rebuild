@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Navbar,
   Hero,
@@ -9,7 +11,6 @@ import {
   ValueProps,
   SampleProducts,
 } from "@/components/landing";
-import { useEffect } from "react";
 import type { Product } from "@/components/landing/sample-products";
 import {
   ShoppingBagIcon,
@@ -178,11 +179,6 @@ const INTERNAL_TOOLS_PRODUCTS: Product[] = [
 ];
 
 const InternalTools = () => {
-  useEffect(() => {
-    document.title = "Internal Tools | Airdev";
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <>
       <style dangerouslySetInnerHTML={{
