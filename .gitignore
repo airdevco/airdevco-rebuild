@@ -33,3 +33,7 @@ supabase/.temp/
 
 # Local instructions
 instructions/
+
+# Next.js
+.next
+next-env.d.ts

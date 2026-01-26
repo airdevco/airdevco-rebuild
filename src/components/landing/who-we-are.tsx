@@ -33,22 +33,22 @@ const DEFAULT_STATS: Stat[] = [
 ];
 
 const DEFAULT_ITEMS: GalleryItem[] = [
-  { title: "Workflow Automation", image: "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/65bd08c2b1acbe835709462b_5-Workflow%20page.jpg" },
+  { title: "Workflow Automation", image: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1769429191897x436633841629032500/image1.webp" },
   { title: "Marketplace Platform", image: "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/6543cc2869811415b8e810a2_homeswap.webp" },
-  { title: "Analytics Dashboard", image: "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/65bd08c26a7fb9ac7dd0218f_3-Dashboard%20Page%20with%20aggregate%20metrics.jpg" },
-  { title: "Search Engine", image: "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/65bd08c43df44feea829410b_1-Startup%20Search%20Page.jpg" },
+  { title: "Analytics Dashboard", image: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1769429549134x328873006570567400/image3.webp" },
+  { title: "Search Engine", image: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1769430219522x941368570781668100/docseek1%20%281%29.webp" },
   { title: "Social Network", image: "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/6543cc27ee364f01aadbb1be_lens.webp" },
-  { title: "Travel Platform", image: "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/6543cc273a280b98e26fd0b2_tourvista.webp" },
-  { title: "Company Profile", image: "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/65bd08c2480b92d9276b8e97_2-Company%20Profile.jpg" },
-  { title: "Community Hub", image: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1765574373663x352499346676563300/tt1.png" },
+  { title: "Travel Platform", image: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1769432626672x566179361881819840/aircal2.webp" },
+  { title: "Company Profile", image: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1769429678886x412652779463499500/imager2-2.webp" },
+  { title: "Community Hub", image: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1769431075653x923487208758857500/plyground.webp" },
   // Duplicating items to reach 15
-  { title: "Workflow Automation", image: "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/65bd08c2b1acbe835709462b_5-Workflow%20page.jpg" },
+  { title: "Workflow Automation", image: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1769429191897x436633841629032500/image1.webp" },
   { title: "Marketplace Platform", image: "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/6543cc2869811415b8e810a2_homeswap.webp" },
-  { title: "Analytics Dashboard", image: "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/65bd08c26a7fb9ac7dd0218f_3-Dashboard%20Page%20with%20aggregate%20metrics.jpg" },
-  { title: "Search Engine", image: "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/65bd08c43df44feea829410b_1-Startup%20Search%20Page.jpg" },
+  { title: "Analytics Dashboard", image: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1769431327914x326072329645070460/craftly2.webp" },
+  { title: "Search Engine", image: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1769430219522x941368570781668100/docseek1%20%281%29.webp" },
   { title: "Social Network", image: "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/6543cc27ee364f01aadbb1be_lens.webp" },
   { title: "Travel Platform", image: "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/6543cc273a280b98e26fd0b2_tourvista.webp" },
-  { title: "Company Profile", image: "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/65bd08c2480b92d9276b8e97_2-Company%20Profile.jpg" },
+  { title: "Company Profile", image: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1769430219522x941368570781668100/docseek1%20%281%29.webp" },
 ];
 
 export const WhoWeAre = ({
@@ -146,14 +146,14 @@ export const WhoWeAre = ({
       {/* 5x3 Full Width Grid Gallery */}
       {items && items.length > 0 && (
         <div className="w-full px-4 overflow-hidden">
-          <div className="relative grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 auto-rows-fr min-h-[600px] md:min-h-[700px] lg:h-[600px]">
+          <div className="relative grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 auto-rows-fr min-h-[480px] md:min-h-[540px] lg:h-[480px]">
             {items.map((item, idx) => {
               const expandedPos = getExpandedPosition(idx);
               
               return (
                 <div 
                   key={idx} 
-                  className="relative rounded-2xl bg-[#112F4E] border border-[#1E3A5F] overflow-hidden lg:overflow-visible min-h-[120px]"
+                  className="relative rounded-2xl bg-[#112F4E] border border-[#1E3A5F] overflow-hidden lg:overflow-visible min-h-[100px]"
                   onMouseEnter={() => {
                     if (isDesktop) {
                       handleMouseEnter(idx);
