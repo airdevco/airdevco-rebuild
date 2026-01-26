@@ -17,7 +17,7 @@ const GALLERY_ITEMS = [
     { title: "Company Profile", image: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1769429678886x412652779463499500/imager2-2.webp" },
     { title: "Community Hub", image: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1769431075653x923487208758857500/plyground.webp" },
     // Duplicating items to reach 15
-    { title: "Workflow Automation", image: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1769429191897x436633841629032500/image1.webp" },
+    { title: "Workflow Automation", image: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1769444557266x857893168824462500/cerebro.png" },
     { title: "Marketplace Platform", image: "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/6543cc2869811415b8e810a2_homeswap.webp" },
     { title: "Analytics Dashboard", image: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1769431327914x326072329645070460/craftly2.webp" },
     { title: "Search Engine", image: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1769430219522x941368570781668100/docseek1%20%281%29.webp" },
