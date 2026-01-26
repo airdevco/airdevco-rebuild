@@ -43,12 +43,12 @@ const DEFAULT_ITEMS: GalleryItem[] = [
   { title: "Community Hub", image: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1769431075653x923487208758857500/plyground.webp" },
   // Duplicating items to reach 15
   { title: "Workflow Automation", image: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1769444557266x857893168824462500/cerebro.png" },
-  { title: "Marketplace Platform", image: "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/6543cc2869811415b8e810a2_homeswap.webp" },
+  { title: "Marketplace Platform", image: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1769446640637x420605172794157100/ch.webp" },
   { title: "Analytics Dashboard", image: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1769431327914x326072329645070460/craftly2.webp" },
-  { title: "Search Engine", image: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1769444741803x949880169250310300/ghost.webp" },
+  { title: "Search Engine", image: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1769446581327x991888232717732400/kidsbook2.webp" },
   { title: "Social Network", image: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1769444704254x747992525882827000/learnmate.webp" },
   { title: "Travel Platform", image: "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/6543cc273a280b98e26fd0b2_tourvista.webp" },
-  { title: "Company Profile", image: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1769430219522x941368570781668100/docseek1%20%281%29.webp" },
+  { title: "Company Profile", image: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1769446525143x563993953087865000/tax.webp" },
 ];
 
 export const WhoWeAre = ({
@@ -171,7 +171,7 @@ export const WhoWeAre = ({
                     <img 
                       src={item.image} 
                       alt={item.title}
-                      className="w-full h-full object-cover object-top"
+                      className={`w-full h-full ${idx === 11 ? "object-cover object-center" : "object-cover object-top"}`}
                       style={{ 
                         opacity: hoveredIndex === idx && isDesktop ? 0 : 1 
                       }}
@@ -218,7 +218,7 @@ export const WhoWeAre = ({
                         <img 
                           src={item.image} 
                           alt={item.title}
-                          className="w-full h-full object-cover object-top"
+                          className={`w-full h-full ${idx === 11 ? "object-cover object-center" : "object-cover object-top"}`}
                         />
                       </motion.div>
                     )}

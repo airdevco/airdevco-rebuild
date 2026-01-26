@@ -9,15 +9,8 @@ import {
   Footer,
   BusinessTypes,
 } from "@/components/landing";
-import { useSEO } from "@/hooks/use-seo";
 
 const Index = () => {
-  useSEO({
-    title: "Airdev | The leading no-code and Bubble app development agency",
-    description: "Airdev is the leader in no-code & Bubble app development. We help businesses launch software products in a fraction of the time & cost of traditional developers.",
-    ogImage: "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/67d0d0f96ca8cee3b7cede0d_airdev%20ogimage.jpg",
-  });
-
   return (
     <>
       <style dangerouslySetInnerHTML={{
