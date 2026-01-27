@@ -1,15 +1,12 @@
+"use client";
+
 import { Navbar, Footer } from "@/components/landing";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { ChevronRight } from "lucide-react";
-import { useEffect } from "react";
 import { GlobeAmericasIcon, UserGroupIcon } from "@heroicons/react/24/solid";
 import { ROUTES } from "@/config/routes";
 
 const Careers = () => {
-  useEffect(() => {
-    document.title = "No-Code Careers for Developers, Designers & PMs | Airdev";
-    window.scrollTo(0, 0);
-  }, []);
 
   return (
     <>
@@ -94,7 +91,7 @@ const Careers = () => {
                     Build and launch no-code products for clients as a developer, designer, or product manager.
                   </p>
                   <Link 
-                    to="/partners" 
+                    href="/partners" 
                     className="text-[18px] font-medium text-[#1265EF] hover:text-[#1a1a1a] transition-colors flex items-center gap-1.5 group/link"
                   >
                     Learn more
@@ -164,7 +161,7 @@ const Careers = () => {
                   Airdev's mission is to set the standard for no-code development
                 </h2>
                 <p className="text-xl text-white leading-relaxed">
-                  Learn more about our <Link to={ROUTES.MISSION} className="text-[#00F5FF] hover:underline">mission</Link> and our <Link to={ROUTES.CORE_VALUES} className="text-[#00F5FF] hover:underline">values</Link>
+                  Learn more about our <Link href={ROUTES.MISSION} className="text-[#00F5FF] hover:underline">mission</Link> and our <Link href={ROUTES.CORE_VALUES} className="text-[#00F5FF] hover:underline">values</Link>
                 </p>
               </div>
             </div>

@@ -1,13 +1,10 @@
+"use client";
+
 import { Navbar, Footer } from "@/components/landing";
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
 const WillAIMakeDevelopersObsolete = () => {
-  useEffect(() => {
-    document.title = "Will AI make software developers obsolete? | Airdev";
-    window.scrollTo(0, 0);
-  }, []);
 
   return (
     <>
@@ -52,7 +49,7 @@ const WillAIMakeDevelopersObsolete = () => {
             <div className="relative z-10 max-w-[800px] mx-auto px-6">
               <div className="relative mb-4">
                 <Link 
-                  to="/blog" 
+                  href="/blog" 
                   className="absolute left-[-56px] text-[#1E3B8A] hover:text-[#0A0A0A] transition-colors -top-3 hidden md:block"
                 >
                   <ArrowLeft className="w-10 h-10" />
@@ -131,7 +128,7 @@ const WillAIMakeDevelopersObsolete = () => {
                 YOU MAY ALSO LIKE
               </div>
               <div className="grid md:grid-cols-2 gap-8">
-                <Link to="#" className="group flex flex-col h-full">
+                <Link href="#" className="group flex flex-col h-full">
                   <div className="relative mb-6 overflow-hidden rounded-2xl aspect-[16/10] bg-gray-100">
                     <img 
                       src="https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/65498e40843a555ecef7f88b_OnlyBots%20and%20Why%20No-Code%20%2B%20AI%20is%20Perfect%20Pairing.png"
@@ -156,7 +153,7 @@ const WillAIMakeDevelopersObsolete = () => {
                   </div>
                 </Link>
 
-                <Link to="#" className="group flex flex-col h-full">
+                <Link href="#" className="group flex flex-col h-full">
                   <div className="relative mb-6 overflow-hidden rounded-2xl aspect-[16/10] bg-gray-100">
                     <img 
                       src="https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/63c9890b5600e737c73e3ea9_Untitled%20design%20(30).png"

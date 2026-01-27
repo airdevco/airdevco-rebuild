@@ -1,6 +1,7 @@
+"use client";
+
 import { Navbar, Footer } from "@/components/landing";
-import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import Link from "next/link";
 
 const blogPosts = [
   {
@@ -87,11 +88,6 @@ const blogPosts = [
 ];
 
 const Blog = () => {
-  useEffect(() => {
-    document.title = "Blog | Airdev";
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <>
       <style dangerouslySetInnerHTML={{
@@ -149,7 +145,7 @@ const Blog = () => {
             <div className="max-w-[1200px] mx-auto px-6">
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
                 {blogPosts.map((post, index) => (
-                  <Link to={post.link} key={index} className="group flex flex-col h-full">
+                  <Link href={post.link} key={index} className="group flex flex-col h-full">
                     <div className="relative mb-6 overflow-hidden rounded-2xl aspect-[16/10] bg-gray-100">
                       <img 
                         src={post.image} 
