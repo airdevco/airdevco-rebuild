@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Approach from "@/pages/Approach";
+import Approach from "@/views/Approach";
 
 export const metadata: Metadata = {
   title: "Software Development Using the Power of No Code | Airdev",

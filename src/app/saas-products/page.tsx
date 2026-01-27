@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import SaasProducts from "@/pages/SaasProducts";
+import SaasProducts from "@/views/SaasProducts";
 
 export const metadata: Metadata = {
   title: "A better way to launch your SaaS startup | Airdev",

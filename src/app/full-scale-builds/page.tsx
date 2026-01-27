@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import FullScaleBuilds from "@/pages/FullScaleBuilds";
+import FullScaleBuilds from "@/views/FullScaleBuilds";
 
 export const metadata: Metadata = {
   title: "Full-scale builds | Airdev",

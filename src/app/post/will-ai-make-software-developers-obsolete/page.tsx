@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import WillAIMakeDevelopersObsolete from "@/pages/WillAIMakeDevelopersObsolete";
+import WillAIMakeDevelopersObsolete from "@/views/WillAIMakeDevelopersObsolete";
 
 export const metadata: Metadata = {
   title: "Will AI make software developers obsolete? | Airdev",

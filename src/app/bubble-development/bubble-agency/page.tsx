@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import BubbleAgency from "@/pages/BubbleAgency";
+import BubbleAgency from "@/views/BubbleAgency";
 
 export const metadata: Metadata = {
   title: "Airdev | A White-Glove Experience From the Premier Bubble Agency",

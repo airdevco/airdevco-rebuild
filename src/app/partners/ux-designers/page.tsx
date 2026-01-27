@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import UxDesigners from "@/pages/UxDesigners";
+import UxDesigners from "@/views/UxDesigners";
 
 export const metadata: Metadata = {
   title: "Become a Partner UX Designer | Airdev",

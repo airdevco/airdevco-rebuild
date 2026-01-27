@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import TechnologyAndSoftware from "@/pages/TechnologyAndSoftware";
+import TechnologyAndSoftware from "@/views/TechnologyAndSoftware";
 
 export const metadata: Metadata = {
   title: "Technology & Software | Airdev",

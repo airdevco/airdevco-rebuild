@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Careers from "@/pages/Careers";
+import Careers from "@/views/Careers";
 
 export const metadata: Metadata = {
   title: "No-Code Careers for Developers, Designers & PMs | Airdev",

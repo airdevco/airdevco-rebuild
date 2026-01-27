@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import BubbleAppAudit from "@/pages/BubbleAppAudit";
+import BubbleAppAudit from "@/views/BubbleAppAudit";
 
 export const metadata: Metadata = {
   title: "Bubble App Audit | Airdev",

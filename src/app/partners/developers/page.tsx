@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Developers from "@/pages/Developers";
+import Developers from "@/views/Developers";
 
 export const metadata: Metadata = {
   title: "Become a Partner Developer | Airdev",

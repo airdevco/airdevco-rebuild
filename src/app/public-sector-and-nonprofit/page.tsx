@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import PublicSectorAndNonprofit from "@/pages/PublicSectorAndNonprofit";
+import PublicSectorAndNonprofit from "@/views/PublicSectorAndNonprofit";
 
 export const metadata: Metadata = {
   title: "Public Sector & Nonprofit | Airdev",

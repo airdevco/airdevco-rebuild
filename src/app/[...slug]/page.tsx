@@ -34,14 +34,40 @@ const EXPLICIT_NEXT_PATHS = new Set([
   "/post/will-ai-make-software-developers-obsolete",
 ]);
 
+/** Auth and protected routes – exclude from static generation (not needed for SEO, cause build errors) */
+const EXCLUDED_ROUTES = new Set([
+  "/signup",
+  "/login",
+  "/forgot-password",
+  "/reset-password",
+  "/onboarding",
+  "/account",
+  "/admin",
+  "/admin/dashboard",
+  "/admin/projects",
+  "/admin/team",
+  "/admin/settings",
+  "/portal",
+  "/portal/projects",
+  "/portal/customers",
+]);
+
 export function generateStaticParams() {
   const routes = Object.values(ROUTES).filter(
-    (path) => path !== "*" && !EXPLICIT_NEXT_PATHS.has(path)
+    (path) =>
+      path !== "*" &&
+      !EXPLICIT_NEXT_PATHS.has(path) &&
+      !EXCLUDED_ROUTES.has(path)
   );
-  return routes.map((path) => {
+  const params = routes.map((path) => {
     const slug = path.slice(1).split("/").filter(Boolean);
     return { slug };
   });
+  // output: 'export' requires at least one static path for dynamic routes
+  if (params.length === 0) {
+    return [{ slug: ["_"] }];
+  }
+  return params;
 }
 
 export default function Page() {

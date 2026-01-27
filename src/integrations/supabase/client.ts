@@ -5,13 +5,23 @@ import type { Database } from './types';
 const SUPABASE_URL = "https://tsrtiatteejgwuafavci.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Impqb2V2eXhheWppZmd5Y3BoeGR2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY4MDcyNDcsImV4cCI6MjA3MjM4MzI0N30.KS2FypK3kuF3PEqMnx0tOu-oYHMGKFml_hNhHCX3m8g";
 
+// Use localStorage only in the browser (avoids "localStorage is not defined" during Next.js build / Vercel deploy)
+const isBrowser = typeof window !== "undefined";
+const storage = isBrowser
+  ? localStorage
+  : (({
+      getItem: () => null,
+      setItem: () => {},
+      removeItem: () => {},
+    } as unknown) as Storage);
+
 // Import the supabase client like this:
 // import { supabase } from "@/integrations/supabase/client";
 
 export const supabase = createClient<Database>(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
   auth: {
-    storage: localStorage,
+    storage,
     persistSession: true,
     autoRefreshToken: true,
-  }
+  },
 });

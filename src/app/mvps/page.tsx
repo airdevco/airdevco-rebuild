@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Mvps from "@/pages/Mvps";
+import Mvps from "@/views/Mvps";
 
 export const metadata: Metadata = {
   title: "Launch fast, scale smart | Airdev",

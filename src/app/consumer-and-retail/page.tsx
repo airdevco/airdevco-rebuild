@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import ConsumerAndRetail from "@/pages/ConsumerAndRetail";
+import ConsumerAndRetail from "@/views/ConsumerAndRetail";
 
 export const metadata: Metadata = {
   title: "Consumer & Retail | Airdev",

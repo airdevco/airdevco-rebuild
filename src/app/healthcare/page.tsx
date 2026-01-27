@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Healthcare from "@/pages/Healthcare";
+import Healthcare from "@/views/Healthcare";
 
 export const metadata: Metadata = {
   title: "Healthcare | Airdev",

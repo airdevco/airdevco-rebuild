@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import AiApplications from "@/pages/AiApplications";
+import AiApplications from "@/views/AiApplications";
 
 export const metadata: Metadata = {
   title: "AI Applications | Airdev",

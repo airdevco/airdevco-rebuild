@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import InternalTools from "@/pages/InternalTools";
+import InternalTools from "@/views/InternalTools";
 
 export const metadata: Metadata = {
   title: "Internal Tools | Airdev",
