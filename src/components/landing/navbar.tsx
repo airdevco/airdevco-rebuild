@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import {
   Menu,
@@ -54,7 +56,7 @@ export const Navbar = () => {
                   animate={{ opacity: 1, y: 0, rotateX: 0 }}
                   exit={{ opacity: 0, y: 4, rotateX: -10 }}
                   transition={{ duration: 0.15, ease: "easeOut" }}
-                  className="absolute top-full left-0 pt-2 w-max z-50 perspective-[2000px]"
+                  className="absolute top-full left-0 -mt-2 pt-2 w-max z-50 perspective-[2000px]"
                 >
                   <div className="bg-white rounded-xl shadow-[0_50px_100px_-20px_rgba(50,50,93,0.25),0_30px_60px_-30px_rgba(0,0,0,0.3)] border-none overflow-hidden ring-1 ring-black/5 min-w-[280px]">
                     <div className="p-6">
@@ -134,7 +136,7 @@ export const Navbar = () => {
                   animate={{ opacity: 1, y: 0, rotateX: 0 }}
                   exit={{ opacity: 0, y: 4, rotateX: -10 }}
                   transition={{ duration: 0.15, ease: "easeOut" }}
-                  className="absolute top-full left-0 pt-2 w-max z-50 perspective-[2000px]"
+                  className="absolute top-full left-0 -mt-2 pt-2 w-max z-50 perspective-[2000px]"
                 >
                   <div className="bg-white rounded-xl shadow-[0_50px_100px_-20px_rgba(50,50,93,0.25),0_30px_60px_-30px_rgba(0,0,0,0.3)] border-none overflow-hidden ring-1 ring-black/5 min-w-[280px]">
                     <div className="p-6">
@@ -216,7 +218,7 @@ export const Navbar = () => {
                   animate={{ opacity: 1, y: 0, rotateX: 0 }}
                   exit={{ opacity: 0, y: 4, rotateX: -10 }}
                   transition={{ duration: 0.15, ease: "easeOut" }}
-                  className="absolute top-full left-0 pt-2 w-max z-50 perspective-[2000px]"
+                  className="absolute top-full left-0 -mt-2 pt-2 w-max z-50 perspective-[2000px]"
                 >
                   <div className="bg-white rounded-xl shadow-[0_50px_100px_-20px_rgba(50,50,93,0.25),0_30px_60px_-30px_rgba(0,0,0,0.3)] border-none overflow-hidden ring-1 ring-black/5 min-w-[280px]">
                     <div className="p-6">
@@ -323,7 +325,7 @@ export const Navbar = () => {
                   animate={{ opacity: 1, y: 0, rotateX: 0 }}
                   exit={{ opacity: 0, y: 4, rotateX: -10 }}
                   transition={{ duration: 0.15, ease: "easeOut" }}
-                  className="absolute top-full left-0 pt-2 w-max z-50 perspective-[2000px]"
+                  className="absolute top-full left-0 -mt-2 pt-2 w-max z-50 perspective-[2000px]"
                 >
                   <div className="bg-white rounded-xl shadow-[0_50px_100px_-20px_rgba(50,50,93,0.25),0_30px_60px_-30px_rgba(0,0,0,0.3)] border-none overflow-hidden ring-1 ring-black/5 min-w-[280px]">
                     <div className="p-6">
@@ -399,7 +401,7 @@ export const Navbar = () => {
                   animate={{ opacity: 1, y: 0, rotateX: 0 }}
                   exit={{ opacity: 0, y: 4, rotateX: -10 }}
                   transition={{ duration: 0.15, ease: "easeOut" }}
-                  className="absolute top-full right-0 pt-2 w-max z-50 perspective-[2000px]"
+                  className="absolute top-full right-0 -mt-2 pt-2 w-max z-50 perspective-[2000px]"
                 >
                   <div className="bg-white rounded-xl shadow-[0_50px_100px_-20px_rgba(50,50,93,0.25),0_30px_60px_-30px_rgba(0,0,0,0.3)] border-none overflow-hidden ring-1 ring-black/5 min-w-[280px]">
                     <div className="p-6">

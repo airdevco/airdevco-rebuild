@@ -91,12 +91,14 @@ export const Testimonials = ({
           <div className="text-[16px] font-semibold text-[#1e3a8a] uppercase tracking-wider mb-3">
             {label}
           </div>
-          <h2 className="text-4xl lg:text-5xl font-semibold tracking-tight text-gray-900 mb-6 max-w-2xl mx-auto">
+          <h2 className={`text-4xl lg:text-5xl font-semibold tracking-tight text-gray-900 max-w-2xl mx-auto ${description ? "mb-6" : "mb-0"}`}>
             {title}
           </h2>
-          <p className="text-xl text-gray-600 leading-relaxed">
-            {description}
-          </p>
+          {description ? (
+            <p className="text-xl text-gray-600 leading-relaxed">
+              {description}
+            </p>
+          ) : null}
         </div>
 
         {/* Testimonials Masonry Grid */}

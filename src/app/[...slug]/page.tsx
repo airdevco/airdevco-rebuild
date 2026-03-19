@@ -4,6 +4,7 @@ import { ROUTES } from "@/config/routes";
 /** Paths with explicit Next.js routes; exclude from catch-all static params */
 const EXPLICIT_NEXT_PATHS = new Set([
   "/",
+  "/marketplace",
   "/mission",
   "/approach",
   "/core-values",

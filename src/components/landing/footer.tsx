@@ -1,7 +1,50 @@
 import { Facebook, Twitter, Linkedin } from "lucide-react";
 import { ROUTES } from "@/config/routes";
 
-export const Footer = () => {
+export type FooterVariant = "default" | "minimal";
+
+type FooterProps = {
+  /** `minimal`: copyright + social only (marketplace landing). Default: full footer. */
+  variant?: FooterVariant;
+};
+
+const FooterBottomBar = ({
+  withTopBorder,
+  compact,
+}: {
+  withTopBorder: boolean;
+  compact?: boolean;
+}) => (
+  <div
+    className={`flex flex-col md:flex-row justify-between items-center ${compact ? "gap-3 md:gap-4" : "gap-6"} ${withTopBorder ? "pt-8 border-t" : ""}`}
+    style={withTopBorder ? { borderColor: "#E2E8F0" } : undefined}
+  >
+    <p className="text-gray-500 text-sm">© 2025 Airdev, Inc. All rights reserved.</p>
+    <div className="flex items-center gap-6 text-gray-500">
+      <a href="#" className="hover:text-gray-900" aria-label="Facebook">
+        <Facebook className="w-5 h-5" />
+      </a>
+      <a href="#" className="hover:text-gray-900" aria-label="Twitter">
+        <Twitter className="w-5 h-5" />
+      </a>
+      <a href="#" className="hover:text-gray-900" aria-label="LinkedIn">
+        <Linkedin className="w-5 h-5" />
+      </a>
+    </div>
+  </div>
+);
+
+export const Footer = ({ variant = "default" }: FooterProps = {}) => {
+  if (variant === "minimal") {
+    return (
+      <footer className="py-5 sm:py-6 bg-white">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <FooterBottomBar withTopBorder={false} compact />
+        </div>
+      </footer>
+    );
+  }
+
   return (
     <footer className="pt-24 pb-12">
       <div className="max-w-[1200px] mx-auto px-6">
@@ -76,15 +119,8 @@ export const Footer = () => {
             </div>
           </div>
         </div>
-        
-        <div className="pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-6" style={{ borderColor: '#E2E8F0' }}>
-          <p className="text-gray-500 text-sm">© 2025 Airdev, Inc. All rights reserved.</p>
-          <div className="flex items-center gap-6 text-gray-500">
-            <a href="#" className="hover:text-gray-900"><Facebook className="w-5 h-5" /></a>
-            <a href="#" className="hover:text-gray-900"><Twitter className="w-5 h-5" /></a>
-            <a href="#" className="hover:text-gray-900"><Linkedin className="w-5 h-5" /></a>
-          </div>
-        </div>
+
+        <FooterBottomBar withTopBorder={true} />
       </div>
     </footer>
   );

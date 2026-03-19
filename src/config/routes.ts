@@ -9,6 +9,9 @@ export const ROUTES = {
   // Home
   // ============================================
   HOME: "/",
+
+  /** Marketplace landing (mirrors airdev-marketplace marketing page) */
+  MARKETPLACE: "/marketplace",
   
   // ============================================
   // Services

@@ -55,6 +55,7 @@ import ProductDesign from "./views/ProductDesign";
 import BubbleDevelopment from "./views/BubbleDevelopment";
 import BubbleAgency from "./views/BubbleAgency";
 import AiEnablement from "./views/AiEnablement";
+import Marketplace from "./views/Saas";
 
 const AppContent = () => {
   const location = useLocation();
@@ -87,6 +88,7 @@ const AppContent = () => {
     <>
       <Routes>
         <Route path={ROUTES.HOME} element={<Index />} />
+        <Route path={ROUTES.MARKETPLACE} element={<Marketplace />} />
         <Route path={ROUTES.BUBBLE_APP_AUDIT} element={<BubbleAppAudit />} />
         <Route path={ROUTES.CLIENT_STORIES} element={<ClientStories />} />
         <Route path={ROUTES.SAAS_PRODUCTS} element={<SaasProducts />} />
