@@ -18,6 +18,8 @@ export const ROUTES = {
   CRM: "/crm",
   /** Dedicated ERP landing clone for enterprise resource planning */
   ERP: "/erp",
+  /** Dedicated LMS landing for learning management systems */
+  LMS: "/lms",
   /** Dedicated inventory management product landing */
   INVENTORY_MANAGEMENT: "/inventory-management",
   

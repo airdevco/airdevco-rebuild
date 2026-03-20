@@ -8,6 +8,7 @@ const EXPLICIT_NEXT_PATHS = new Set([
   "/saas",
   "/crm",
   "/erp",
+  "/lms",
   "/inventory-management",
   "/mission",
   "/approach",
