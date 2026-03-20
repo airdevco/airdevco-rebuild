@@ -1,4 +1,16 @@
-export const ClientLogoTicker = () => {
+export type ClientLogoTickerVariant = "default" | "featured";
+
+type ClientLogoTickerProps = {
+  /**
+   * `featured` — full color, larger logos (same relative scale: Next smaller, Cadence bigger, etc.).
+   * Use on home + marketplace only; other pages stay `default`.
+   */
+  variant?: ClientLogoTickerVariant;
+};
+
+export const ClientLogoTicker = ({ variant = "default" }: ClientLogoTickerProps = {}) => {
+  const isFeatured = variant === "featured";
+
   const logos = [
     { src: "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/669a9e8bf871c558358f1a5b_dividend.webp", alt: "Dividend", text: "$300m+ raised" },
     { src: "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/669a9ee1ae74665b5db8e326_team.webp", alt: "Team", text: "YC funded" },
@@ -25,27 +37,30 @@ export const ClientLogoTicker = () => {
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
           {displayLogos.map((logo, index) => {
-            let logoClass = "h-8";
+            // Default sizes; featured scales the same ratios up ~1.35×
+            let logoClass = isFeatured ? "h-11" : "h-8";
             if (logo.alt === "Next") {
-              logoClass = "h-6"; // Smaller
+              logoClass = isFeatured ? "h-8" : "h-6";
             } else if (logo.alt === "Cadence") {
-              logoClass = "h-10"; // Bigger
+              logoClass = isFeatured ? "h-[3.35rem]" : "h-10";
             } else if (logo.alt === "Microsoft") {
-              logoClass = "h-7"; // Slightly smaller
+              logoClass = isFeatured ? "h-9" : "h-7";
             }
+
+            const imgTone = isFeatured
+              ? "w-auto object-contain opacity-100"
+              : "w-auto object-contain opacity-70 mix-blend-multiply grayscale";
 
             return (
               <div
                 key={`${logo.alt}-${index}`}
-                className="flex flex-col items-center justify-start p-4 rounded-xl"
+                className={`flex flex-col items-center justify-start rounded-xl ${isFeatured ? "p-5" : "p-4"}`}
               >
                 {/* Fixed height container to ensure text alignment */}
-                <div className="h-12 w-full flex items-center justify-center mb-1">
-                  <img
-                    src={logo.src}
-                    alt={logo.alt}
-                    className={`${logoClass} w-auto object-contain opacity-70 mix-blend-multiply grayscale`}
-                  />
+                <div
+                  className={`w-full flex items-center justify-center mb-1 ${isFeatured ? "h-16" : "h-12"}`}
+                >
+                  <img src={logo.src} alt={logo.alt} className={`${logoClass} ${imgTone}`} />
                 </div>
                 {logo.text && (
                   <p className="text-[10px] text-gray-400 text-center font-medium whitespace-nowrap">

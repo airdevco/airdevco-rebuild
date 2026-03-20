@@ -44,6 +44,10 @@ const scrollToContact = () => {
   document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
 };
 
+/** Hero + screenshot strip background (Webflow asset) */
+const MARKETPLACE_HERO_BLUR_BG =
+  "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/67d482ff67a3aac218170979_blurbg3.svg";
+
 /** Top row, left-to-right: 3rd tile is Kidsbook — row height matches its intrinsic height at column width. */
 const KIDSBOOK_HERO_SCREEN_INDEX = 2;
 
@@ -103,23 +107,46 @@ export function MarketplaceLandingHero() {
 
   return (
     <section className="relative pt-32 pb-12 lg:pt-48 lg:pb-16 overflow-hidden bg-white scroll-mt-[88px]">
-      <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
-        <div
-          className="w-full max-w-[1500px] h-full absolute left-1/2 -translate-x-1/2 -translate-y-1/2"
-          style={{
-            top: "calc(28% + 8px)",
-            backgroundImage:
-              "url(https://framerusercontent.com/images/qDrnphZImHJ0Ev3PBEtSsuAKiw.png?width=2160&height=736)",
-            backgroundSize: "contain",
-            backgroundPosition: "center 36%",
-            backgroundRepeat: "no-repeat",
-            maskImage: "radial-gradient(circle at center, black 50%, transparent 80%)",
-            WebkitMaskImage:
-              "radial-gradient(circle at center, black 50%, transparent 80%)",
-            opacity: 0.8,
-          }}
-        />
-      </div>
+      {/* Full-bleed blur mesh behind headline and screenshot grid */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none bg-white"
+        aria-hidden
+        style={{
+          backgroundImage: `url(${MARKETPLACE_HERO_BLUR_BG})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center center",
+          backgroundRepeat: "no-repeat",
+        }}
+      />
+      {/* Top + bottom fades to white: soft under header; blend into logo ticker below */}
+      <div
+        className="absolute inset-0 z-[1] pointer-events-none"
+        aria-hidden
+        style={{
+          background: `
+            linear-gradient(
+              to top,
+              #ffffff 0%,
+              rgba(255, 255, 255, 0.97) 5%,
+              rgba(255, 255, 255, 0.88) 12%,
+              rgba(255, 255, 255, 0.58) 24%,
+              rgba(255, 255, 255, 0.28) 38%,
+              rgba(255, 255, 255, 0.08) 50%,
+              transparent 64%
+            ),
+            linear-gradient(
+              to bottom,
+              #ffffff 0%,
+              rgba(255, 255, 255, 0.98) 4%,
+              rgba(255, 255, 255, 0.9) 10%,
+              rgba(255, 255, 255, 0.72) 18%,
+              rgba(255, 255, 255, 0.42) 30%,
+              rgba(255, 255, 255, 0.15) 44%,
+              transparent 62%
+            )
+          `,
+        }}
+      />
 
       <div className="relative z-10 max-w-[1200px] mx-auto px-6">
         <div className="max-w-5xl mx-auto text-center">

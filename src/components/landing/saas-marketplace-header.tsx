@@ -5,9 +5,9 @@ import { Menu, X } from "lucide-react";
 import { ROUTES } from "@/config/routes";
 import { Button } from "@/components/ui/button";
 
-/** Matches index `Navbar` CTA + SaaS `Hero` primary button sizing */
-const MARKETPLACE_PRIMARY_BTN =
-  "bg-[#1265EF] text-white hover:bg-[#0d4fc7] active:bg-[#0a3fa3] rounded-[6px] px-5 pb-2 pt-2.5 text-[16px] font-medium transition-all leading-none";
+/** Slightly smaller CTA for marketplace header only (size="sm" sets h-9 / padding) */
+const MARKETPLACE_HEADER_CTA =
+  "bg-[#1265EF] text-white hover:bg-[#0d4fc7] active:bg-[#0a3fa3] rounded-[6px] text-[14px] font-medium transition-all leading-none px-4";
 
 const NAV_ITEMS = [
   { label: "Why Airdev", sectionId: "why-airdev" },
@@ -50,7 +50,7 @@ export function MarketplaceHeader() {
           />
         </a>
 
-        <nav className="hidden lg:flex items-center gap-8 flex-1 justify-center">
+        <nav className="hidden lg:flex items-center gap-8 flex-1 justify-center pt-1.5">
           {NAV_ITEMS.map((item) => (
             <button
               key={item.sectionId}
@@ -63,8 +63,13 @@ export function MarketplaceHeader() {
           ))}
         </nav>
 
-        <div className="hidden lg:block shrink-0">
-          <Button type="button" className={MARKETPLACE_PRIMARY_BTN} onClick={() => scrollToSection("contact")}>
+        <div className="hidden lg:flex shrink-0 items-center pt-1.5">
+          <Button
+            type="button"
+            size="sm"
+            className={MARKETPLACE_HEADER_CTA}
+            onClick={() => scrollToSection("contact")}
+          >
             Talk to Us
           </Button>
         </div>
@@ -96,7 +101,8 @@ export function MarketplaceHeader() {
           ))}
           <Button
             type="button"
-            className={`mt-2 w-full ${MARKETPLACE_PRIMARY_BTN}`}
+            size="sm"
+            className={`mt-2 w-full ${MARKETPLACE_HEADER_CTA}`}
             onClick={() => {
               scrollToSection("contact");
               setMobileOpen(false);

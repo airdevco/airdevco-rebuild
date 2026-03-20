@@ -52,7 +52,7 @@ const Index = () => {
         <main>
           <Hero centerText={true} />
           <div className="pt-16">
-            <ClientLogoTicker />
+            <ClientLogoTicker variant="featured" />
           </div>
           <CaseStudies />
           <BusinessTypes />

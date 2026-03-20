@@ -59,7 +59,7 @@ export default function Marketplace() {
         <main>
           <MarketplaceLandingHero />
           <div className="pt-8 pb-4">
-            <ClientLogoTicker />
+            <ClientLogoTicker variant="featured" />
           </div>
           <MarketplaceWhyAirdev />
           <MarketplaceTypesSection />
