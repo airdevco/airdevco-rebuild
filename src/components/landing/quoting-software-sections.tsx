@@ -2,19 +2,21 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
-  ArrowPathIcon,
   ArrowsRightLeftIcon,
-  BuildingStorefrontIcon,
+  ArrowPathIcon,
+  BuildingLibraryIcon,
   ChartBarIcon,
   ClipboardDocumentListIcon,
   CpuChipIcon,
-  CubeIcon,
+  CreditCardIcon,
+  DocumentCurrencyDollarIcon,
   DocumentTextIcon,
   LockClosedIcon,
+  QueueListIcon,
   ShieldCheckIcon,
-  ShoppingCartIcon,
+  SparklesIcon,
   Squares2X2Icon,
-  TruckIcon,
+  TagIcon,
   UserCircleIcon,
   UserGroupIcon,
   CheckIcon,
@@ -23,7 +25,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { SampleProducts, type Product } from "@/components/landing/sample-products";
 
-const ORDER_MANAGEMENT_PRIMARY_BTN =
+const QUOTING_SOFTWARE_PRIMARY_BTN =
   "bg-[#1265EF] text-white hover:bg-[#0d4fc7] active:bg-[#0a3fa3] rounded-[6px] px-5 pb-2 pt-2.5 text-[16px] font-medium transition-all leading-none";
 
 const scrollToContact = () => {
@@ -40,19 +42,18 @@ function viewportScreenshotMaxHeightPx(): number {
   return Math.min(560, window.innerHeight * 0.52);
 }
 
-/** Hero shots — swap URLs in this file only; defaults match CRM-style product UI */
 const SCREENSHOT_IMAGES = [
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774048171205x288590737543661400/oms8.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774048204877x616522221670567900/oms1.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774048216981x376013536733139200/oms2.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774048250107x959370001371412900/oms7.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774048232211x356709076682324860/oms4.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774048271705x602637840023207600/oms5.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774048296032x639809873097158900/omg6.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774048319484x989408076084845800/oms3.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774050422476x557133732974576700/q8.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774050433511x814832470807188700/q5.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774050445483x259722489043093600/q7.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774050483517x719614821827469400/q4.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774050459781x422097661627461200/q1.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774050494776x473908601739836860/q3.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774050470690x359861208296819600/q6.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774050508453x845116759419775100/q2.webp",
 ];
 
-export function OrderManagementLandingHero() {
+export function QuotingSoftwareLandingHero() {
   const [unifiedShotHeight, setUnifiedShotHeight] = useState<number | null>(null);
   const referenceImgRef = useRef<HTMLImageElement>(null);
 
@@ -132,16 +133,16 @@ export function OrderManagementLandingHero() {
       <div className="relative z-10 max-w-[1200px] mx-auto px-6">
         <div className="max-w-5xl mx-auto text-center">
           <h1 className="text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[3.5rem] xl:text-[4.5rem] 2xl:text-[5rem] leading-[1.05] font-semibold tracking-[-0.03em] text-gray-900 mb-6 sm:mb-8">
-            The smarter way to launch your order management software
+            The smarter way to launch your quoting software
           </h1>
 
-          <p className="text-base sm:text-lg lg:text-xl text-gray-600 mb-8 leading-relaxed max-w-xl mx-auto">
-            We use a new approach to help entrepreneurs launch order management products you fully own, for a fraction
-            of the cost and time of traditional development.
+          <p className="text-base sm:text-lg lg:text-xl text-gray-600 mb-8 leading-relaxed max-w-2xl mx-auto">
+            We use a new approach to help entrepreneurs launch quoting software, for a fraction of cost and time of
+            traditional development.
           </p>
 
           <div className="mt-8">
-            <Button type="button" className={ORDER_MANAGEMENT_PRIMARY_BTN} onClick={scrollToContact}>
+            <Button type="button" className={QUOTING_SOFTWARE_PRIMARY_BTN} onClick={scrollToContact}>
               Talk to Us
             </Button>
           </div>
@@ -159,7 +160,7 @@ export function OrderManagementLandingHero() {
               <img
                 ref={i === REF_SCREEN_INDEX ? referenceImgRef : undefined}
                 src={src}
-                alt={`Order management screenshot ${i + 1}`}
+                alt={`Quoting software screenshot ${i + 1}`}
                 onLoad={i === REF_SCREEN_INDEX ? recalcShotHeight : undefined}
                 className={
                   unifiedShotHeight
@@ -228,7 +229,7 @@ function CellContent({
   );
 }
 
-export function OrderManagementWhyAirdev() {
+export function QuotingSoftwareWhyAirdev() {
   const lastIdx = COMPARISON_ROWS.length - 1;
   return (
     <section id="why-airdev" className="scroll-mt-[88px] py-20 md:py-28" style={{ backgroundColor: SECTION_BG }}>
@@ -238,8 +239,8 @@ export function OrderManagementWhyAirdev() {
           Fast and flexible
         </h2>
         <p className="text-lg text-[#425466] text-center max-w-2xl mx-auto mb-12 md:mb-14 leading-relaxed">
-          Packaged OMS tools are fast but inflexible. Custom builds from scratch take forever. We help you ship order
-          management software you control, without the usual timeline.
+          Generic quoting tools are fast but rigid. Custom builds take forever. We help you ship quoting software you
+          own, with the flexibility your sales motion needs.
         </p>
 
         <div className="overflow-x-auto w-full max-w-[1180px] mx-auto">
@@ -309,124 +310,126 @@ export function OrderManagementWhyAirdev() {
   );
 }
 
-const ORDER_MANAGEMENT_COMMON_FEATURES: Product[] = [
+const QUOTING_SOFTWARE_FEATURES: Product[] = [
   {
-    id: "order-capture",
-    name: "Orders",
-    cardHeading: "Order capture & processing",
+    id: "quote-builder",
+    name: "Quotes",
+    cardHeading: "Quote builder & document flow",
     description:
-      "Take orders from every channel with consistent validation, pricing, and status from draft to confirmed.",
-    icon: ShoppingCartIcon,
+      "Create structured quotes with line items, optional sections, and revision history so reps and buyers stay aligned.",
+    icon: DocumentTextIcon,
     color: "#1265EF",
     features: [
-      { name: "Cart, checkout, and quote-to-order flows", icon: ShoppingCartIcon },
-      { name: "Line items, bundles, and custom fields", icon: ClipboardDocumentListIcon },
-      { name: "Order states, holds, and approvals", icon: Squares2X2Icon },
-      { name: "Customer & account linkage", icon: UserCircleIcon },
+      { name: "Line items, bundles, and optional add-ons", icon: ClipboardDocumentListIcon },
+      { name: "Templates, merge fields, and branded proposals", icon: DocumentTextIcon },
+      { name: "Versioning, comments, and internal notes", icon: ArrowPathIcon },
+      { name: "Multi-currency and tax display hooks", icon: DocumentCurrencyDollarIcon },
     ],
   },
   {
-    id: "inventory",
-    name: "Inventory",
-    cardHeading: "Inventory & availability",
+    id: "catalog-pricing",
+    name: "Catalog",
+    cardHeading: "Products, SKUs & price books",
     description:
-      "Know what you can promise with stock levels, reservations, and locations across warehouses or stores.",
-    icon: CubeIcon,
+      "Maintain catalogs and commercial terms so quotes pull accurate SKUs, units, and list prices every time.",
+    icon: TagIcon,
     color: "#06b6d4",
     features: [
-      { name: "SKU, lot, and bin-level tracking", icon: CubeIcon },
-      { name: "ATP/allocations and safety stock rules", icon: ShieldCheckIcon },
-      { name: "Transfers and cycle counts", icon: ArrowsRightLeftIcon },
-      { name: "Low-stock alerts and reorder signals", icon: ChartBarIcon },
+      { name: "Product families, SKUs, and attributes", icon: TagIcon },
+      { name: "Price books by segment, region, or channel", icon: Squares2X2Icon },
+      { name: "Tiered and volume-based pricing", icon: DocumentCurrencyDollarIcon },
+      { name: "Effective-dated price changes", icon: ArrowPathIcon },
     ],
   },
   {
-    id: "fulfillment",
-    name: "Fulfillment",
-    cardHeading: "Fulfillment & shipping",
+    id: "discounts-rules",
+    name: "Rules",
+    cardHeading: "Discounts, margin & guardrails",
     description:
-      "Move orders from pick to pack to carrier handoff with tracking, exceptions, and SLA visibility.",
-    icon: TruckIcon,
+      "Apply discounts and commercial rules with visibility into margin so deals stay profitable and compliant.",
+    icon: ShieldCheckIcon,
     color: "#a855f7",
     features: [
-      { name: "Pick lists, waves, and pack verification", icon: ClipboardDocumentListIcon },
-      { name: "Carrier rates, labels, and manifests", icon: TruckIcon },
-      { name: "Shipment tracking and delivery events", icon: ArrowPathIcon },
-      { name: "Partial shipments and backorders", icon: Squares2X2Icon },
+      { name: "Discount caps and approval thresholds", icon: ShieldCheckIcon },
+      { name: "Coupon codes and promotional windows", icon: TagIcon },
+      { name: "Floor price and margin alerts", icon: DocumentCurrencyDollarIcon },
+      { name: "Role-based edit permissions", icon: UserGroupIcon },
     ],
   },
   {
-    id: "returns",
-    name: "Returns",
-    cardHeading: "Returns & exchanges",
+    id: "cpq",
+    name: "CPQ",
+    cardHeading: "Configure, price, quote (CPQ)",
     description:
-      "Handle RMAs, refunds, and replacements with clear rules and tie-back to inventory and finance.",
-    icon: ArrowPathIcon,
+      "Guide reps through valid configurations with rules that enforce compatibility, dependencies, and upsell logic.",
+    icon: CpuChipIcon,
     color: "#10b981",
     features: [
-      { name: "Return authorizations and reason codes", icon: DocumentTextIcon },
-      { name: "Restocking, fees, and credit workflows", icon: ArrowsRightLeftIcon },
-      { name: "Exchange and store-credit options", icon: ShoppingCartIcon },
-      { name: "Return-to-vendor coordination", icon: TruckIcon },
+      { name: "Product configuration and constraints", icon: CpuChipIcon },
+      { name: "BOM or bill-of-materials rollups", icon: ClipboardDocumentListIcon },
+      { name: "Guided selling and recommendations", icon: SparklesIcon },
+      { name: "What-if scenarios before sending", icon: Squares2X2Icon },
     ],
   },
   {
-    id: "purchasing",
-    name: "Purchasing",
-    cardHeading: "Purchasing & suppliers",
+    id: "approvals",
+    name: "Approvals",
+    cardHeading: "Workflows & approvals",
     description:
-      "Replenish stock and manage vendor relationships with POs, receipts, and three-way matching.",
-    icon: BuildingStorefrontIcon,
+      "Route quotes for legal, finance, or leadership review with clear SLAs and audit trails.",
+    icon: QueueListIcon,
     color: "#f59e0b",
     features: [
-      { name: "Purchase orders and requisitions", icon: ClipboardDocumentListIcon },
-      { name: "Supplier catalogs and lead times", icon: BuildingStorefrontIcon },
-      { name: "Goods receipt and invoice matching", icon: DocumentTextIcon },
-      { name: "Vendor performance and scorecards", icon: ChartBarIcon },
+      { name: "Multi-step approval chains", icon: QueueListIcon },
+      { name: "Conditional routing by amount or territory", icon: ArrowsRightLeftIcon },
+      { name: "Delegation and out-of-office coverage", icon: UserGroupIcon },
+      { name: "Activity timeline on each quote", icon: ClipboardDocumentListIcon },
     ],
   },
   {
-    id: "reporting",
-    name: "Reporting",
-    cardHeading: "Reporting & operations",
+    id: "delivery-signing",
+    name: "Delivery",
+    cardHeading: "Delivery, PDF & e-sign",
     description:
-      "Dashboards and exports for ops, finance, and leadership—orders, fill rates, and exceptions in one place.",
-    icon: ChartBarIcon,
+      "Send polished PDFs and collect signatures or acceptance so closed-won is clear and searchable.",
+    icon: LockClosedIcon,
     color: "#ec4899",
     features: [
-      { name: "Order, backlog, and fill-rate views", icon: ChartBarIcon },
-      { name: "Inventory valuation and aging", icon: CubeIcon },
-      { name: "Exception queues and SLA dashboards", icon: Squares2X2Icon },
-      { name: "Scheduled reports and CSV/API export", icon: DocumentTextIcon },
+      { name: "Branded PDF and web-based quote views", icon: DocumentTextIcon },
+      { name: "E-signature and counter-sign flows", icon: LockClosedIcon },
+      { name: "Customer portal for review and acceptance", icon: UserCircleIcon },
+      { name: "Email delivery and open tracking hooks", icon: ArrowPathIcon },
     ],
   },
   {
-    id: "integrations",
-    name: "Integrations",
-    cardHeading: "Integrations & automation",
+    id: "integrations-analytics",
+    name: "Stack",
+    cardHeading: "Integrations & analytics",
     description:
-      "Connect OMS to ERP, payments, shipping, and marketplaces so data stays consistent without manual re-entry.",
+      "Sync quotes with CRM, ERP, and billing so pipeline, revenue, and fulfillment stay aligned.",
     icon: ArrowsRightLeftIcon,
     color: "#0ea5e9",
     features: [
-      { name: "REST APIs, webhooks, and event streams", icon: ArrowsRightLeftIcon },
-      { name: "Payment and tax provider hooks", icon: CpuChipIcon },
-      { name: "EDI or marketplace order sync", icon: ArrowsRightLeftIcon },
-      { name: "Role-based access and audit logs", icon: LockClosedIcon },
-      { name: "Workflow rules and notifications", icon: UserGroupIcon },
+      { name: "CRM opportunity and account sync", icon: ArrowsRightLeftIcon },
+      { name: "ERP or billing handoff for won deals", icon: CreditCardIcon },
+      { name: "REST APIs, webhooks, and events", icon: CpuChipIcon },
+      { name: "Quote conversion, win rate, and cycle-time reports", icon: ChartBarIcon },
+      { name: "Exports and BI connectors", icon: BuildingLibraryIcon },
     ],
   },
 ];
 
-export function OrderManagementTypesSection() {
+export function QuotingSoftwareTypesSection() {
   return (
     <div id="marketplace-types" className="scroll-mt-[88px]">
       <SampleProducts
         bgColor="bg-white"
-        products={ORDER_MANAGEMENT_COMMON_FEATURES}
+        products={QUOTING_SOFTWARE_FEATURES}
         label="COMMON FEATURES"
-        title="Order management features we specialize in"
-        description="From order capture to inventory, fulfillment, and integrations—we build the core capabilities modern OMS products need. Pick your scope and we implement it end to end."
+        title="Quoting software features we specialize in"
+        titleMaxWidth="34rem"
+        description="From catalogs and CPQ to approvals, PDFs, and CRM integrations—we build the capabilities modern quoting products need. Choose what you need and we'll implement it."
+        descriptionMaxWidth="40rem"
         leftColumnClassName="lg:col-span-3"
         rightColumnClassName="lg:col-span-9"
       />
@@ -437,17 +440,17 @@ export function OrderManagementTypesSection() {
 const LAUNCHPAD_BULLETS = [
   "You own it, no license fees",
   "A lean team to get you started",
-  "AI-powered scoping to define your order flows and get a quote",
-  "Base features include orders, workflows, and integrations",
+  "AI-powered scoping to define your quoting flows and get a quote",
+  "Base features include quotes, catalogs, approvals, and PDFs",
   "Standard UX/UI with your colors, logo, and branding applied",
-  "Customizations and add-ons based on what your operations need",
+  "Customizations and add-ons based on what your sales motion needs",
 ];
 
 const AGENCY_BULLETS = [
   "You own it, no license fees",
   "A full team of product, design, and development experts",
   "Custom discovery and scoping process",
-  "Strategic input on fulfillment, inventory, and integrations",
+  "Strategic input on CPQ rules, pricing, and integrations",
   "Custom UX/UI design",
   "Complex or unique workflows",
 ];
@@ -467,7 +470,7 @@ const PRICING_PLANS = [
   },
 ];
 
-export function OrderManagementPricingSection() {
+export function QuotingSoftwarePricingSection() {
   return (
     <section id="pricing" className="scroll-mt-[88px] py-20 md:py-28 bg-[#F6F9FC]">
       <div className="max-w-[1200px] mx-auto px-6">
@@ -522,7 +525,7 @@ export function OrderManagementPricingSection() {
   );
 }
 
-export const ORDER_MANAGEMENT_CASE_SLIDES = [
+export const QUOTING_SOFTWARE_CASE_SLIDES = [
   {
     id: "playground",
     company: "Playground IEP",

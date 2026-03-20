@@ -20,6 +20,10 @@ export const ROUTES = {
   AI_CHATBOT: "/ai-chatbot",
   /** Dedicated order management software landing (edit order-management-* components only) */
   ORDER_MANAGEMENT: "/order-management",
+  /** Dedicated quoting software landing (edit quoting-software-* components only) */
+  QUOTING_SOFTWARE: "/quoting",
+  /** Dedicated HR management software landing (edit hr-management-* components only) */
+  HR_MANAGEMENT: "/hr-management",
   /** Dedicated ERP landing clone for enterprise resource planning */
   ERP: "/erp",
   /** Dedicated LMS landing for learning management systems */

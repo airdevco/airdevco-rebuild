@@ -2,19 +2,23 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
+  AcademicCapIcon,
   ArrowPathIcon,
   ArrowsRightLeftIcon,
-  BuildingStorefrontIcon,
+  BuildingLibraryIcon,
+  BuildingOffice2Icon,
+  CalendarIcon,
   ChartBarIcon,
   ClipboardDocumentListIcon,
+  ClockIcon,
   CpuChipIcon,
-  CubeIcon,
+  CreditCardIcon,
   DocumentTextIcon,
   LockClosedIcon,
+  MagnifyingGlassIcon,
+  QueueListIcon,
   ShieldCheckIcon,
-  ShoppingCartIcon,
   Squares2X2Icon,
-  TruckIcon,
   UserCircleIcon,
   UserGroupIcon,
   CheckIcon,
@@ -23,7 +27,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { SampleProducts, type Product } from "@/components/landing/sample-products";
 
-const ORDER_MANAGEMENT_PRIMARY_BTN =
+const HR_MANAGEMENT_PRIMARY_BTN =
   "bg-[#1265EF] text-white hover:bg-[#0d4fc7] active:bg-[#0a3fa3] rounded-[6px] px-5 pb-2 pt-2.5 text-[16px] font-medium transition-all leading-none";
 
 const scrollToContact = () => {
@@ -40,19 +44,18 @@ function viewportScreenshotMaxHeightPx(): number {
   return Math.min(560, window.innerHeight * 0.52);
 }
 
-/** Hero shots — swap URLs in this file only; defaults match CRM-style product UI */
 const SCREENSHOT_IMAGES = [
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774048171205x288590737543661400/oms8.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774048204877x616522221670567900/oms1.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774048216981x376013536733139200/oms2.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774048250107x959370001371412900/oms7.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774048232211x356709076682324860/oms4.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774048271705x602637840023207600/oms5.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774048296032x639809873097158900/omg6.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774048319484x989408076084845800/oms3.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774003634701x879766162137330700/crm1.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774003908084x260139809298654660/crm2.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774004197559x467922203402921340/crm3.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774005933680x578642353117870200/crm4.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774006421831x791000213883669600/crm5.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774007591255x876566308167353000/crm8.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774006826054x168358695871838370/crm7.webp",
+  "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1772587812851x876454729909677400/flowline.webp",
 ];
 
-export function OrderManagementLandingHero() {
+export function HrManagementLandingHero() {
   const [unifiedShotHeight, setUnifiedShotHeight] = useState<number | null>(null);
   const referenceImgRef = useRef<HTMLImageElement>(null);
 
@@ -132,16 +135,16 @@ export function OrderManagementLandingHero() {
       <div className="relative z-10 max-w-[1200px] mx-auto px-6">
         <div className="max-w-5xl mx-auto text-center">
           <h1 className="text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[3.5rem] xl:text-[4.5rem] 2xl:text-[5rem] leading-[1.05] font-semibold tracking-[-0.03em] text-gray-900 mb-6 sm:mb-8">
-            The smarter way to launch your order management software
+            The smarter way to launch your HR management software
           </h1>
 
-          <p className="text-base sm:text-lg lg:text-xl text-gray-600 mb-8 leading-relaxed max-w-xl mx-auto">
-            We use a new approach to help entrepreneurs launch order management products you fully own, for a fraction
-            of the cost and time of traditional development.
+          <p className="text-base sm:text-lg lg:text-xl text-gray-600 mb-8 leading-relaxed max-w-2xl mx-auto">
+            We use a new approach to help entrepreneurs launch HR management software, for a fraction of cost and time of
+            traditional development.
           </p>
 
           <div className="mt-8">
-            <Button type="button" className={ORDER_MANAGEMENT_PRIMARY_BTN} onClick={scrollToContact}>
+            <Button type="button" className={HR_MANAGEMENT_PRIMARY_BTN} onClick={scrollToContact}>
               Talk to Us
             </Button>
           </div>
@@ -159,7 +162,7 @@ export function OrderManagementLandingHero() {
               <img
                 ref={i === REF_SCREEN_INDEX ? referenceImgRef : undefined}
                 src={src}
-                alt={`Order management screenshot ${i + 1}`}
+                alt={`HR management screenshot ${i + 1}`}
                 onLoad={i === REF_SCREEN_INDEX ? recalcShotHeight : undefined}
                 className={
                   unifiedShotHeight
@@ -228,7 +231,7 @@ function CellContent({
   );
 }
 
-export function OrderManagementWhyAirdev() {
+export function HrManagementWhyAirdev() {
   const lastIdx = COMPARISON_ROWS.length - 1;
   return (
     <section id="why-airdev" className="scroll-mt-[88px] py-20 md:py-28" style={{ backgroundColor: SECTION_BG }}>
@@ -238,8 +241,8 @@ export function OrderManagementWhyAirdev() {
           Fast and flexible
         </h2>
         <p className="text-lg text-[#425466] text-center max-w-2xl mx-auto mb-12 md:mb-14 leading-relaxed">
-          Packaged OMS tools are fast but inflexible. Custom builds from scratch take forever. We help you ship order
-          management software you control, without the usual timeline.
+          Generic HR suites are fast but rigid. Custom builds take forever. We help you ship HR software you own,
+          tailored to your policies, regions, and teams.
         </p>
 
         <div className="overflow-x-auto w-full max-w-[1180px] mx-auto">
@@ -309,124 +312,124 @@ export function OrderManagementWhyAirdev() {
   );
 }
 
-const ORDER_MANAGEMENT_COMMON_FEATURES: Product[] = [
+const HR_MANAGEMENT_FEATURES: Product[] = [
   {
-    id: "order-capture",
-    name: "Orders",
-    cardHeading: "Order capture & processing",
+    id: "employee-core-hr",
+    name: "Employee HR",
+    cardHeading: "Employee records & organization",
     description:
-      "Take orders from every channel with consistent validation, pricing, and status from draft to confirmed.",
-    icon: ShoppingCartIcon,
+      "Maintain a single source of truth for people, roles, and reporting lines with secure profiles and documents.",
+    icon: BuildingOffice2Icon,
     color: "#1265EF",
     features: [
-      { name: "Cart, checkout, and quote-to-order flows", icon: ShoppingCartIcon },
-      { name: "Line items, bundles, and custom fields", icon: ClipboardDocumentListIcon },
-      { name: "Order states, holds, and approvals", icon: Squares2X2Icon },
-      { name: "Customer & account linkage", icon: UserCircleIcon },
+      { name: "Employee profiles, job history, and contacts", icon: UserCircleIcon },
+      { name: "Org chart and manager hierarchies", icon: Squares2X2Icon },
+      { name: "Document storage and e-sign for HR packets", icon: DocumentTextIcon },
+      { name: "Custom fields and data visibility by role", icon: ShieldCheckIcon },
     ],
   },
   {
-    id: "inventory",
-    name: "Inventory",
-    cardHeading: "Inventory & availability",
+    id: "onboarding-offboarding",
+    name: "Lifecycle",
+    cardHeading: "Onboarding & offboarding",
     description:
-      "Know what you can promise with stock levels, reservations, and locations across warehouses or stores.",
-    icon: CubeIcon,
+      "Structured workflows so new hires get productive fast and departures stay compliant and consistent.",
+    icon: ClipboardDocumentListIcon,
     color: "#06b6d4",
     features: [
-      { name: "SKU, lot, and bin-level tracking", icon: CubeIcon },
-      { name: "ATP/allocations and safety stock rules", icon: ShieldCheckIcon },
-      { name: "Transfers and cycle counts", icon: ArrowsRightLeftIcon },
-      { name: "Low-stock alerts and reorder signals", icon: ChartBarIcon },
+      { name: "Task checklists by role, location, or department", icon: ClipboardDocumentListIcon },
+      { name: "Equipment, access, and IT handoffs", icon: ArrowsRightLeftIcon },
+      { name: "Exit interviews and knowledge transfer hooks", icon: UserGroupIcon },
+      { name: "Automated reminders and SLA tracking", icon: ClockIcon },
     ],
   },
   {
-    id: "fulfillment",
-    name: "Fulfillment",
-    cardHeading: "Fulfillment & shipping",
+    id: "time-attendance",
+    name: "Time",
+    cardHeading: "Time, attendance & leave",
     description:
-      "Move orders from pick to pack to carrier handoff with tracking, exceptions, and SLA visibility.",
-    icon: TruckIcon,
+      "Capture hours, schedules, and time-off with policies that match your regions and labor rules.",
+    icon: ClockIcon,
     color: "#a855f7",
     features: [
-      { name: "Pick lists, waves, and pack verification", icon: ClipboardDocumentListIcon },
-      { name: "Carrier rates, labels, and manifests", icon: TruckIcon },
-      { name: "Shipment tracking and delivery events", icon: ArrowPathIcon },
-      { name: "Partial shipments and backorders", icon: Squares2X2Icon },
+      { name: "Timesheets, shifts, and approvals", icon: ClockIcon },
+      { name: "PTO balances, accruals, and calendars", icon: CalendarIcon },
+      { name: "Holiday calendars and blackout rules", icon: CalendarIcon },
+      { name: "Overtime and exception reporting", icon: ChartBarIcon },
     ],
   },
   {
-    id: "returns",
-    name: "Returns",
-    cardHeading: "Returns & exchanges",
+    id: "benefits-comp",
+    name: "Benefits",
+    cardHeading: "Benefits & compensation",
     description:
-      "Handle RMAs, refunds, and replacements with clear rules and tie-back to inventory and finance.",
-    icon: ArrowPathIcon,
+      "Run open enrollment, life-event changes, and compensation planning with clear visibility for HR and employees.",
+    icon: CreditCardIcon,
     color: "#10b981",
     features: [
-      { name: "Return authorizations and reason codes", icon: DocumentTextIcon },
-      { name: "Restocking, fees, and credit workflows", icon: ArrowsRightLeftIcon },
-      { name: "Exchange and store-credit options", icon: ShoppingCartIcon },
-      { name: "Return-to-vendor coordination", icon: TruckIcon },
+      { name: "Benefit plans, tiers, and eligibility rules", icon: CreditCardIcon },
+      { name: "Enrollment windows and dependent management", icon: UserGroupIcon },
+      { name: "Comp bands, ranges, and adjustment workflows", icon: ChartBarIcon },
+      { name: "Integrations with payroll and carriers", icon: ArrowsRightLeftIcon },
     ],
   },
   {
-    id: "purchasing",
-    name: "Purchasing",
-    cardHeading: "Purchasing & suppliers",
+    id: "performance",
+    name: "Performance",
+    cardHeading: "Performance & development",
     description:
-      "Replenish stock and manage vendor relationships with POs, receipts, and three-way matching.",
-    icon: BuildingStorefrontIcon,
+      "Support goals, reviews, and feedback cycles so managers and ICs stay aligned on growth and expectations.",
+    icon: ChartBarIcon,
     color: "#f59e0b",
     features: [
-      { name: "Purchase orders and requisitions", icon: ClipboardDocumentListIcon },
-      { name: "Supplier catalogs and lead times", icon: BuildingStorefrontIcon },
-      { name: "Goods receipt and invoice matching", icon: DocumentTextIcon },
-      { name: "Vendor performance and scorecards", icon: ChartBarIcon },
+      { name: "Goals, OKRs, and check-in cadences", icon: Squares2X2Icon },
+      { name: "Review cycles, 360, and calibration", icon: UserGroupIcon },
+      { name: "One-on-one notes and action items", icon: ClipboardDocumentListIcon },
+      { name: "Skills and learning paths", icon: AcademicCapIcon },
     ],
   },
   {
-    id: "reporting",
-    name: "Reporting",
-    cardHeading: "Reporting & operations",
+    id: "recruiting",
+    name: "Recruiting",
+    cardHeading: "Recruiting & hiring",
     description:
-      "Dashboards and exports for ops, finance, and leadership—orders, fill rates, and exceptions in one place.",
-    icon: ChartBarIcon,
+      "Track reqs, candidates, and offers in one place so recruiting and hiring managers stay in sync.",
+    icon: MagnifyingGlassIcon,
     color: "#ec4899",
     features: [
-      { name: "Order, backlog, and fill-rate views", icon: ChartBarIcon },
-      { name: "Inventory valuation and aging", icon: CubeIcon },
-      { name: "Exception queues and SLA dashboards", icon: Squares2X2Icon },
-      { name: "Scheduled reports and CSV/API export", icon: DocumentTextIcon },
+      { name: "Job requisitions and approval to hire", icon: ClipboardDocumentListIcon },
+      { name: "Candidate pipeline and stages", icon: QueueListIcon },
+      { name: "Interview scheduling and scorecards", icon: CalendarIcon },
+      { name: "Offer letters and e-sign", icon: DocumentTextIcon },
     ],
   },
   {
-    id: "integrations",
-    name: "Integrations",
-    cardHeading: "Integrations & automation",
+    id: "compliance-analytics",
+    name: "Compliance",
+    cardHeading: "Compliance, analytics & integrations",
     description:
-      "Connect OMS to ERP, payments, shipping, and marketplaces so data stays consistent without manual re-entry.",
-    icon: ArrowsRightLeftIcon,
+      "Meet audit needs and connect HR data to payroll, IT, and finance systems without manual spreadsheets.",
+    icon: ShieldCheckIcon,
     color: "#0ea5e9",
     features: [
-      { name: "REST APIs, webhooks, and event streams", icon: ArrowsRightLeftIcon },
-      { name: "Payment and tax provider hooks", icon: CpuChipIcon },
-      { name: "EDI or marketplace order sync", icon: ArrowsRightLeftIcon },
-      { name: "Role-based access and audit logs", icon: LockClosedIcon },
-      { name: "Workflow rules and notifications", icon: UserGroupIcon },
+      { name: "Role-based access and audit trails", icon: LockClosedIcon },
+      { name: "EEO, headcount, and turnover reporting", icon: ChartBarIcon },
+      { name: "REST APIs, webhooks, and HRIS sync", icon: CpuChipIcon },
+      { name: "Exports and BI connectors", icon: BuildingLibraryIcon },
+      { name: "Data retention and privacy controls", icon: ShieldCheckIcon },
     ],
   },
 ];
 
-export function OrderManagementTypesSection() {
+export function HrManagementTypesSection() {
   return (
     <div id="marketplace-types" className="scroll-mt-[88px]">
       <SampleProducts
         bgColor="bg-white"
-        products={ORDER_MANAGEMENT_COMMON_FEATURES}
+        products={HR_MANAGEMENT_FEATURES}
         label="COMMON FEATURES"
-        title="Order management features we specialize in"
-        description="From order capture to inventory, fulfillment, and integrations—we build the core capabilities modern OMS products need. Pick your scope and we implement it end to end."
+        title="HR management features we specialize in"
+        description="From employee records and time off to performance, recruiting, and compliance—we build the capabilities modern HR products need. Choose what you need and we'll implement it."
         leftColumnClassName="lg:col-span-3"
         rightColumnClassName="lg:col-span-9"
       />
@@ -437,17 +440,17 @@ export function OrderManagementTypesSection() {
 const LAUNCHPAD_BULLETS = [
   "You own it, no license fees",
   "A lean team to get you started",
-  "AI-powered scoping to define your order flows and get a quote",
-  "Base features include orders, workflows, and integrations",
+  "AI-powered scoping to define your HR workflows and get a quote",
+  "Base features include employee profiles, time off, and approvals",
   "Standard UX/UI with your colors, logo, and branding applied",
-  "Customizations and add-ons based on what your operations need",
+  "Customizations and add-ons based on what your people ops need",
 ];
 
 const AGENCY_BULLETS = [
   "You own it, no license fees",
   "A full team of product, design, and development experts",
   "Custom discovery and scoping process",
-  "Strategic input on fulfillment, inventory, and integrations",
+  "Strategic input on policies, regions, and integrations",
   "Custom UX/UI design",
   "Complex or unique workflows",
 ];
@@ -467,7 +470,7 @@ const PRICING_PLANS = [
   },
 ];
 
-export function OrderManagementPricingSection() {
+export function HrManagementPricingSection() {
   return (
     <section id="pricing" className="scroll-mt-[88px] py-20 md:py-28 bg-[#F6F9FC]">
       <div className="max-w-[1200px] mx-auto px-6">
@@ -522,7 +525,7 @@ export function OrderManagementPricingSection() {
   );
 }
 
-export const ORDER_MANAGEMENT_CASE_SLIDES = [
+export const HR_MANAGEMENT_CASE_SLIDES = [
   {
     id: "playground",
     company: "Playground IEP",
