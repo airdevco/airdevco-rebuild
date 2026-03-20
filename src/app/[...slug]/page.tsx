@@ -5,6 +5,8 @@ import { ROUTES } from "@/config/routes";
 const EXPLICIT_NEXT_PATHS = new Set([
   "/",
   "/marketplace",
+  "/saas",
+  "/crm",
   "/mission",
   "/approach",
   "/core-values",

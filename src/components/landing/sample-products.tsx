@@ -139,6 +139,8 @@ interface SampleProductsProps {
   description?: string;
   descriptionMaxWidth?: string;
   titleMaxWidth?: string;
+  leftColumnClassName?: string;
+  rightColumnClassName?: string;
 }
 
 export const SampleProducts = ({ 
@@ -148,7 +150,9 @@ export const SampleProducts = ({
   title = "SaaS products we specialize in",
   description = "From simple tools to complex platforms, we've built SaaS products across dozens of industries. Here are some of the most common types.",
   descriptionMaxWidth,
-  titleMaxWidth
+  titleMaxWidth,
+  leftColumnClassName,
+  rightColumnClassName,
 }: SampleProductsProps) => {
   const [selectedProduct, setSelectedProduct] = useState<string>(products[0].id);
   const tabRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
@@ -237,7 +241,7 @@ export const SampleProducts = ({
 
         <div className="grid lg:grid-cols-12 gap-0 lg:gap-24">
           {/* Mobile: Horizontal Tabs, Desktop: Vertical Selector */}
-          <div className="lg:col-span-3">
+          <div className={leftColumnClassName ?? "lg:col-span-3"}>
             {/* Mobile: Horizontal Tabs */}
             <div className="lg:hidden mb-4 w-full max-w-[calc(100vw-3rem)]">
               <div 
@@ -295,7 +299,7 @@ export const SampleProducts = ({
           </div>
 
           {/* Right Content - Selected Product */}
-          <div className="lg:col-span-9">
+          <div className={rightColumnClassName ?? "lg:col-span-9"}>
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentProduct.id}

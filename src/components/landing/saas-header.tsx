@@ -11,7 +11,7 @@ const MARKETPLACE_HEADER_CTA =
 
 const NAV_ITEMS = [
   { label: "Why Airdev", sectionId: "why-airdev" },
-  { label: "Marketplace Types", sectionId: "marketplace-types" },
+  { label: "Common Features", sectionId: "marketplace-types" },
   { label: "Case Studies", sectionId: "case-studies" },
   { label: "Pricing", sectionId: "pricing" },
 ] as const;

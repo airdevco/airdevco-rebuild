@@ -58,14 +58,14 @@ function viewportScreenshotMaxHeightPx(): number {
 
 const SCREENSHOT_IMAGES = [
   // Top-left to top-right, then bottom-left to bottom-right
-  "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1768942292841x753883318458439700/docseek.webp",
-  "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1769431327914x326072329645070460/craftly2.webp",
-  "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1769446581327x991888232717732400/kidsbook2.webp",
-  "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1769444704254x747992525882827000/learnmate.webp",
-  "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1769446640637x420605172794157100/ch.webp",
-  "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1769645813496x468485436757218600/hire2.webp",
-  "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1769645304714x406176510810474200/listing1.webp",
-  "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1769647224654x585966976925444100/events2.webp",
+  "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1772585113659x667314515892083800/checkout.webp",
+  "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1772586305349x201337330678877920/iep.webp",
+  "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1772586741300x556158904197277900/postly.webp",
+  "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1772587304672x296188048024184100/onboarding.webp",
+  "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1772587812851x876454729909677400/flowline.webp",
+  "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1772588669920x914551009077430300/taxes.webp",
+  "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1772588533645x277504609261276960/clearpay.webp",
+  "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1772588816102x953832905394021100/forma.webp",
 ];
 
 /** Hero — marketplace landing (airdev-marketplace.vercel.app) */
@@ -151,12 +151,12 @@ export function MarketplaceLandingHero() {
       <div className="relative z-10 max-w-[1200px] mx-auto px-6">
         <div className="max-w-5xl mx-auto text-center">
           <h1 className="text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[3.5rem] xl:text-[4.5rem] 2xl:text-[5rem] leading-[1.05] font-semibold tracking-[-0.03em] text-gray-900 mb-6 sm:mb-8">
-            The smarter way to launch your marketplace
+            The smarter way to launch your SaaS startup
           </h1>
 
           <p className="text-base sm:text-lg lg:text-xl text-gray-600 mb-8 leading-relaxed max-w-2xl mx-auto">
-            We use a new approach to help startups and enterprises launch two-sided marketplaces that are 100%
-            flexible, for a small fraction of the cost of building from scratch.
+            We use a new approach to help entrepreneurs launch SaaS products, for a fraction of cost and time of
+            traditional development.
           </p>
 
           <div className="mt-8">
@@ -373,103 +373,130 @@ export function MarketplaceWhyAirdev() {
  */
 const MARKETPLACE_TYPES_PRODUCTS: Product[] = [
   {
-    id: "rental",
-    name: "Rental",
-    cardHeading: "Rental Marketplaces",
-    description:
-      "Connect owners of assets (properties, vehicles, equipment, spaces) with people who want to rent them. Think Airbnb, Turo, Fat Llama, Peerspace.",
-    icon: BuildingStorefrontIcon,
+    id: "user-role-management",
+    name: "User & Role Management",
+    cardHeading: "User & Role Management",
+    description: "Allow users to create accounts, manage profiles, and assign roles with various permission levels.",
+    icon: UserCircleIcon,
     color: "#1265EF",
     features: [
-      { name: "Listing creation with photos, pricing, and availability calendars", icon: PhotoIcon },
-      { name: "Search and filtering by location, dates, price, amenities", icon: MagnifyingGlassIcon },
-      { name: "Booking flows with deposits, payments, and cancellation policies", icon: CreditCardIcon },
-      { name: "Host and guest profiles with verification", icon: UserCircleIcon },
-      { name: "Reviews and ratings (two-sided)", icon: StarIcon },
-      { name: "Host payouts and platform fee management", icon: BanknotesIcon },
+      { name: "User registration and profile management", icon: UserCircleIcon },
+      { name: "Role-based access control (RBAC)", icon: LockClosedIcon },
+      { name: "Custom permission levels per role", icon: ShieldCheckIcon },
+      { name: "Invite and onboard team members", icon: UserGroupIcon },
+      { name: "Audit logs for user actions", icon: DocumentTextIcon },
     ],
   },
   {
-    id: "gig",
-    name: "Gig & Service",
-    cardHeading: "Gig & Service Marketplaces",
+    id: "subscriptions-billing",
+    name: "Subscriptions & Billing",
+    cardHeading: "Subscriptions & Billing",
     description:
-      "Match service providers with customers who need help. Think Fiverr, Thumbtack, Upwork, TaskRabbit.",
-    icon: UserGroupIcon,
+      "Enable recurring or one-time payments for subscription plans, with automated billing and invoicing.",
+    icon: CreditCardIcon,
     color: "#06b6d4",
     features: [
-      { name: "Provider profiles with skills, portfolios, and availability", icon: UserCircleIcon },
-      { name: "Service listings or job posting and bidding flows", icon: ClipboardDocumentListIcon },
-      { name: "Search and matching by skill, location, price, rating", icon: MagnifyingGlassIcon },
-      { name: "Booking, scheduling, and messaging", icon: ChatBubbleLeftRightIcon },
-      { name: "Escrow payments and milestone tracking", icon: LockClosedIcon },
-      { name: "Reviews, ratings, and provider verification", icon: StarIcon },
+      { name: "Recurring and one-time payment flows", icon: CreditCardIcon },
+      { name: "Subscription plan management", icon: ClipboardDocumentListIcon },
+      { name: "Automated invoicing and receipts", icon: DocumentCurrencyDollarIcon },
+      { name: "Upgrade, downgrade, and cancel flows", icon: ArrowsRightLeftIcon },
+      { name: "Trial periods and proration", icon: CalendarIcon },
     ],
   },
   {
-    id: "product",
-    name: "Product",
-    cardHeading: "Product Marketplaces",
+    id: "ai-automation",
+    name: "AI & Automation",
+    cardHeading: "AI & Automation",
     description:
-      "Enable sellers to list and sell physical or digital goods to buyers. Think Etsy, StockX, Reverb, Depop.",
-    icon: ShoppingBagIcon,
+      "Automate tasks and provide intelligent features, such as predictive analytics or AI-driven suggestions.",
+    icon: CpuChipIcon,
     color: "#a855f7",
     features: [
-      { name: "Multi-vendor storefronts with product listings", icon: BuildingStorefrontIcon },
-      { name: "Inventory management and variants (size, color, condition)", icon: Squares2X2Icon },
-      { name: "Shopping cart, checkout, and order tracking", icon: ShoppingCartIcon },
-      { name: "Shipping integrations and fulfillment", icon: TruckIcon },
-      { name: "Seller payouts and commission management", icon: BanknotesIcon },
-      { name: "Reviews and seller ratings", icon: StarIcon },
+      { name: "Predictive analytics and insights", icon: QueueListIcon },
+      { name: "AI-driven suggestions and recommendations", icon: SparklesIcon },
+      { name: "Workflow and task automation", icon: ArrowPathIcon },
+      { name: "Smart defaults and personalization", icon: UserCircleIcon },
+      { name: "Integration with LLMs and AI APIs", icon: CpuChipIcon },
     ],
   },
   {
-    id: "booking",
-    name: "Booking & Appointment",
-    cardHeading: "Booking Marketplaces",
+    id: "notifications-alerts",
+    name: "Notifications & Alerts",
+    cardHeading: "Notifications & Alerts",
     description:
-      "Let users discover and book time with providers—classes, appointments, sessions, experiences. Think ClassPass, Zocdoc, Mindbody, Airbnb Experiences.",
-    icon: CalendarIcon,
+      "Send in-app, email, or SMS notifications and alerts for key events, updates, or deadlines.",
+    icon: ChatBubbleLeftRightIcon,
     color: "#10b981",
     features: [
-      { name: "Provider profiles with services and availability", icon: UserCircleIcon },
-      { name: "Real-time calendar and scheduling", icon: CalendarIcon },
-      { name: "Class or session capacity and waitlists", icon: QueueListIcon },
-      { name: "Recurring bookings, memberships, and packages", icon: ArrowPathIcon },
-      { name: "Payments, credits, and cancellation policies", icon: CreditCardIcon },
-      { name: "Reviews and ratings", icon: StarIcon },
+      { name: "In-app notification center", icon: ChatBubbleLeftRightIcon },
+      { name: "Email and SMS delivery", icon: DocumentTextIcon },
+      { name: "User preferences and digest settings", icon: QueueListIcon },
+      { name: "Event-triggered and scheduled alerts", icon: CalendarIcon },
+      { name: "Read/unread and action tracking", icon: ClipboardDocumentListIcon },
     ],
   },
   {
-    id: "b2b",
-    name: "Business-to-Business",
-    cardHeading: "B2B Marketplaces",
+    id: "sso",
+    name: "Single Sign-On (SSO)",
+    cardHeading: "Single Sign-On (SSO)",
     description:
-      "Connect businesses with suppliers, vendors, or service providers. Think Faire, Alibaba, Thomasnet.",
-    icon: BriefcaseIcon,
+      "Streamline authentication by allowing users to log in with existing credentials from Google, Okta, or other identity providers.",
+    icon: LockClosedIcon,
     color: "#f59e0b",
     features: [
-      { name: "Company profiles and verification", icon: BuildingOffice2Icon },
-      { name: "Product/service catalogs with bulk and tiered pricing", icon: TagIcon },
-      { name: "RFQ (Request for Quote) and negotiation workflows", icon: DocumentTextIcon },
-      { name: "Invoicing and payment terms (net 30, etc.)", icon: DocumentCurrencyDollarIcon },
-      { name: "Order management and reordering", icon: ArrowPathIcon },
-      { name: "Integration with procurement/ERP systems", icon: CpuChipIcon },
+      { name: "Google, Microsoft, and social login", icon: UserCircleIcon },
+      { name: "Okta, Auth0, and enterprise IdPs", icon: BuildingOffice2Icon },
+      { name: "Centralized identity and session management", icon: LockClosedIcon },
+      { name: "Just-in-time (JIT) user provisioning", icon: SparklesIcon },
+      { name: "Secure token handling and refresh", icon: ShieldCheckIcon },
     ],
   },
   {
-    id: "hybrid",
-    name: "Other / Hybrid",
-    cardHeading: "Other Marketplaces",
+    id: "collaboration-sharing",
+    name: "Collaboration & Sharing",
+    cardHeading: "Collaboration & Sharing",
     description:
-      "Not every marketplace fits a standard mold. We've built platforms that combine multiple models, serve niche industries, or invent entirely new ways of connecting buyers and sellers.",
-    icon: SquaresPlusIcon,
+      "Facilitate real-time collaboration, file sharing, and team-based workflows within the app.",
+    icon: UserGroupIcon,
     color: "#ec4899",
     features: [
-      { name: "Reverse marketplaces (buyers post, sellers respond)", icon: ArrowsRightLeftIcon },
-      { name: "Multi-sided platforms with 3+ user types", icon: UserGroupIcon },
-      { name: "Regulated industries with compliance workflows", icon: ShieldCheckIcon },
-      { name: "Niche verticals with unique matching logic", icon: SparklesIcon },
+      { name: "Real-time co-editing and presence", icon: UserGroupIcon },
+      { name: "File and document sharing", icon: DocumentTextIcon },
+      { name: "Team workspaces and permissions", icon: BuildingOffice2Icon },
+      { name: "Comments, mentions, and activity feed", icon: ChatBubbleLeftRightIcon },
+      { name: "Shared links and access control", icon: LockClosedIcon },
+    ],
+  },
+  {
+    id: "dashboards-analytics",
+    name: "Dashboards & Analytics",
+    cardHeading: "Dashboards & Analytics",
+    description:
+      "Present real-time metrics and insights in customizable dashboards for data-driven decisions.",
+    icon: Squares2X2Icon,
+    color: "#0ea5e9",
+    features: [
+      { name: "Customizable dashboards and widgets", icon: Squares2X2Icon },
+      { name: "Real-time metrics and KPIs", icon: QueueListIcon },
+      { name: "Charts, tables, and visualizations", icon: ClipboardDocumentListIcon },
+      { name: "Filters, date ranges, and drill-downs", icon: MagnifyingGlassIcon },
+      { name: "Export and scheduled reports", icon: DocumentTextIcon },
+    ],
+  },
+  {
+    id: "integrations-apis",
+    name: "Integrations & APIs",
+    cardHeading: "Integrations & APIs",
+    description:
+      "Connect with third-party services (e.g., CRM, payment processors) via seamless API integrations.",
+    icon: ArrowsRightLeftIcon,
+    color: "#8b5cf6",
+    features: [
+      { name: "REST and webhook integrations", icon: ArrowsRightLeftIcon },
+      { name: "CRM, payments, and email providers", icon: CreditCardIcon },
+      { name: "Custom API keys and OAuth flows", icon: LockClosedIcon },
+      { name: "Sync and mapping configuration", icon: ArrowPathIcon },
+      { name: "Error handling and retry logic", icon: ShieldCheckIcon },
     ],
   },
 ];
@@ -480,9 +507,11 @@ export function MarketplaceTypesSection() {
       <SampleProducts
         bgColor="bg-white"
         products={MARKETPLACE_TYPES_PRODUCTS}
-        label="MARKETPLACE TYPES"
-        title="Marketplaces we specialize in"
-        description="We've built hundreds of marketplaces across dozens of industries and know the patterns that work, the edge cases to plan for, and the features your users will expect."
+        label="COMMON FEATURES"
+        title="SaaS features we specialize in"
+        description="From user management to billing, AI, and integrations-we build the core capabilities that make modern SaaS products work. Choose what you need and we'll implement it."
+        leftColumnClassName="lg:col-span-4"
+        rightColumnClassName="lg:col-span-8"
       />
     </div>
   );
@@ -582,19 +611,19 @@ export function MarketplacePricingSection() {
 
 export const SAAS_MARKETPLACE_CASE_SLIDES = [
   {
-    id: "ticketrev",
-    company: "TicketRev",
-    logo: "https://cdn.prod.website-files.com/64e8a789efa42eaf8fe4d068/64e8b49e181622332d021cee_Logo.svg",
+    id: "playground",
+    company: "Playground IEP",
+    logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447131162x922542988700125000/playground.png",
     logoText: "",
-    heading: "How a buyer-first ticket marketplace startup quickly secured $1.1M in funding with Bubble.io",
+    heading: "How Airdev helped Playground IEP create a special education caseload management tool for schools",
     description: "",
-    image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/64cc2c786d693702395f21b1_TicketRev-built-with-no-code-Airdev.jpg",
-    imageTitle: "How a buyer-first ticket marketplace startup quickly secured $1.1M in funding with Bubble.io",
+    image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/63b8851d340bdc19030b55b3_adam-winger-7fF0iei80AQ-unsplash%205-p-3200.jpg",
+    imageTitle: "How Airdev helped Playground IEP create a special education caseload management tool for schools",
     customFields: [
       { label: "Business type", value: "Startup", color: "#635bff" },
-      { label: "Product type", value: "Marketplace app", color: "#00d4ff" },
-      { label: "Timeline", value: "2 months", color: "#a960ee" },
-      { label: "Key results", value: "$1.1M in pre-seed funding raised in 2 years", color: "#ff6b6b" },
+      { label: "Product type", value: "Internal management portal", color: "#00d4ff" },
+      { label: "Timeline", value: "3 months", color: "#a960ee" },
+      { label: "Key results", value: "5 pilot schools signed up in <1 year", color: "#ff6b6b" },
     ],
   },
   {

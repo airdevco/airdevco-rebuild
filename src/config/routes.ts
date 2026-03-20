@@ -12,6 +12,10 @@ export const ROUTES = {
 
   /** Marketplace landing (mirrors airdev-marketplace marketing page) */
   MARKETPLACE: "/marketplace",
+  /** Dedicated SaaS landing clone of marketplace page */
+  SAAS: "/saas",
+  /** Dedicated CRM landing clone of SaaS page */
+  CRM: "/crm",
   
   // ============================================
   // Services

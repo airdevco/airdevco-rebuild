@@ -5,13 +5,13 @@ import { Menu, X } from "lucide-react";
 import { ROUTES } from "@/config/routes";
 import { Button } from "@/components/ui/button";
 
-/** Slightly smaller CTA for marketplace header only (size="sm" sets h-9 / padding) */
+/** Slightly smaller CTA for landing header (size="sm" sets h-9 / padding) */
 const MARKETPLACE_HEADER_CTA =
   "bg-[#1265EF] text-white hover:bg-[#0d4fc7] active:bg-[#0a3fa3] rounded-[6px] text-[14px] leading-[20px] font-medium transition-all px-4";
 
 const NAV_ITEMS = [
   { label: "Why Airdev", sectionId: "why-airdev" },
-  { label: "Marketplace Types", sectionId: "marketplace-types" },
+  { label: "Common Features", sectionId: "marketplace-types" },
   { label: "Case Studies", sectionId: "case-studies" },
   { label: "Pricing", sectionId: "pricing" },
 ] as const;
@@ -23,7 +23,7 @@ function scrollToSection(sectionId: string) {
   }
 }
 
-export function MarketplaceHeader() {
+export function CrmHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -114,6 +114,3 @@ export function MarketplaceHeader() {
     </header>
   );
 }
-
-// Backwards compatibility export (older imports)
-export { MarketplaceHeader as SaasMarketplaceHeader };
