@@ -2,25 +2,19 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
+  ArrowPathIcon,
   ArrowsRightLeftIcon,
-  BriefcaseIcon,
-  BuildingOffice2Icon,
   BuildingStorefrontIcon,
-  CalendarIcon,
-  ChartPieIcon,
-  ChatBubbleLeftRightIcon,
+  ChartBarIcon,
   ClipboardDocumentListIcon,
-  CreditCardIcon,
   CpuChipIcon,
+  CubeIcon,
   DocumentTextIcon,
-  GlobeAltIcon,
-  MagnifyingGlassIcon,
-  PresentationChartLineIcon,
-  QueueListIcon,
-  SparklesIcon,
+  LockClosedIcon,
+  ShieldCheckIcon,
+  ShoppingCartIcon,
   Squares2X2Icon,
-  StarIcon,
-  TagIcon,
+  TruckIcon,
   UserCircleIcon,
   UserGroupIcon,
   CheckIcon,
@@ -29,14 +23,16 @@ import {
 import { Button } from "@/components/ui/button";
 import { SampleProducts, type Product } from "@/components/landing/sample-products";
 
-const MVP_PRIMARY_BTN =
+const ORDER_MANAGEMENT_PRIMARY_BTN =
   "bg-[#1265EF] text-white hover:bg-[#0d4fc7] active:bg-[#0a3fa3] rounded-[6px] px-5 pb-2 pt-2.5 text-[16px] font-medium transition-all leading-none";
 
 const scrollToContact = () => {
   document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
 };
 
-const HERO_BG = "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/67d482ff67a3aac218170979_blurbg3.svg";
+const MARKETPLACE_HERO_BLUR_BG =
+  "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/67d482ff67a3aac218170979_blurbg3.svg";
+
 const REF_SCREEN_INDEX = 2;
 
 function viewportScreenshotMaxHeightPx(): number {
@@ -44,19 +40,19 @@ function viewportScreenshotMaxHeightPx(): number {
   return Math.min(560, window.innerHeight * 0.52);
 }
 
-/** MVP hero shots — edit only in this file */
+/** Hero shots — swap URLs in this file only; defaults match CRM-style product UI */
 const SCREENSHOT_IMAGES = [
-  "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1769647224654x585966976925444100/events2.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774006421831x791000213883669600/crm5.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774031232294x920880876042708100/sn.webp",
-  "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1772588533645x277504609261276960/clearpay.webp",
   "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774003634701x879766162137330700/crm1.webp",
-  "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1769431327914x326072329645070460/craftly2.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774037162750x163292356974240160/ai6.webp",
-  "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1769645304714x406176510810474200/listing1.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774003908084x260139809298654660/crm2.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774004197559x467922203402921340/crm3.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774005933680x578642353117870200/crm4.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774006421831x791000213883669600/crm5.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774007591255x876566308167353000/crm8.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774006826054x168358695871838370/crm7.webp",
+  "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1772587812851x876454729909677400/flowline.webp",
 ];
 
-export function MvpLandingHero() {
+export function OrderManagementLandingHero() {
   const [unifiedShotHeight, setUnifiedShotHeight] = useState<number | null>(null);
   const referenceImgRef = useRef<HTMLImageElement>(null);
 
@@ -98,7 +94,7 @@ export function MvpLandingHero() {
         className="absolute inset-0 z-0 pointer-events-none bg-white"
         aria-hidden
         style={{
-          backgroundImage: `url(${HERO_BG})`,
+          backgroundImage: `url(${MARKETPLACE_HERO_BLUR_BG})`,
           backgroundSize: "cover",
           backgroundPosition: "center center",
           backgroundRepeat: "no-repeat",
@@ -109,8 +105,26 @@ export function MvpLandingHero() {
         aria-hidden
         style={{
           background: `
-            linear-gradient(to top,#ffffff 0%,rgba(255,255,255,0.97) 5%,rgba(255,255,255,0.88) 12%,rgba(255,255,255,0.58) 24%,rgba(255,255,255,0.28) 38%,rgba(255,255,255,0.08) 50%,transparent 64%),
-            linear-gradient(to bottom,#ffffff 0%,rgba(255,255,255,0.98) 4%,rgba(255,255,255,0.9) 10%,rgba(255,255,255,0.72) 18%,rgba(255,255,255,0.42) 30%,rgba(255,255,255,0.15) 44%,transparent 62%)
+            linear-gradient(
+              to top,
+              #ffffff 0%,
+              rgba(255, 255, 255, 0.97) 5%,
+              rgba(255, 255, 255, 0.88) 12%,
+              rgba(255, 255, 255, 0.58) 24%,
+              rgba(255, 255, 255, 0.28) 38%,
+              rgba(255, 255, 255, 0.08) 50%,
+              transparent 64%
+            ),
+            linear-gradient(
+              to bottom,
+              #ffffff 0%,
+              rgba(255, 255, 255, 0.98) 4%,
+              rgba(255, 255, 255, 0.9) 10%,
+              rgba(255, 255, 255, 0.72) 18%,
+              rgba(255, 255, 255, 0.42) 30%,
+              rgba(255, 255, 255, 0.15) 44%,
+              transparent 62%
+            )
           `,
         }}
       />
@@ -118,14 +132,16 @@ export function MvpLandingHero() {
       <div className="relative z-10 max-w-[1200px] mx-auto px-6">
         <div className="max-w-5xl mx-auto text-center">
           <h1 className="text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[3.5rem] xl:text-[4.5rem] 2xl:text-[5rem] leading-[1.05] font-semibold tracking-[-0.03em] text-gray-900 mb-6 sm:mb-8">
-            The smarter way to launch your MVP
+            The smarter way to launch your order management software
           </h1>
-          <p className="text-base sm:text-lg lg:text-xl text-gray-600 mb-8 leading-relaxed max-w-lg mx-auto">
-            Ship a production-ready minimum viable product in weeks. Focused scope, real users, and a codebase you can
-            extend when you&apos;re ready to scale.
+
+          <p className="text-base sm:text-lg lg:text-xl text-gray-600 mb-8 leading-relaxed max-w-xl mx-auto">
+            We use a new approach to help entrepreneurs launch order management products you fully own, for a fraction
+            of the cost and time of traditional development.
           </p>
+
           <div className="mt-8">
-            <Button type="button" className={MVP_PRIMARY_BTN} onClick={scrollToContact}>
+            <Button type="button" className={ORDER_MANAGEMENT_PRIMARY_BTN} onClick={scrollToContact}>
               Talk to Us
             </Button>
           </div>
@@ -143,7 +159,7 @@ export function MvpLandingHero() {
               <img
                 ref={i === REF_SCREEN_INDEX ? referenceImgRef : undefined}
                 src={src}
-                alt={`MVP product screenshot ${i + 1}`}
+                alt={`Order management screenshot ${i + 1}`}
                 onLoad={i === REF_SCREEN_INDEX ? recalcShotHeight : undefined}
                 className={
                   unifiedShotHeight
@@ -198,6 +214,7 @@ function CellContent({
     : "font-normal text-[#425466] text-[16px] leading-[24px]";
 
   if (!statusIcons) return <span className={textCls}>{value}</span>;
+
   const positive = value === "Yes";
   return (
     <span className={`inline-flex items-center gap-2 justify-center ${textCls}`}>
@@ -211,7 +228,7 @@ function CellContent({
   );
 }
 
-export function MvpWhyAirdev() {
+export function OrderManagementWhyAirdev() {
   const lastIdx = COMPARISON_ROWS.length - 1;
   return (
     <section id="why-airdev" className="scroll-mt-[88px] py-20 md:py-28" style={{ backgroundColor: SECTION_BG }}>
@@ -221,15 +238,19 @@ export function MvpWhyAirdev() {
           Fast and flexible
         </h2>
         <p className="text-lg text-[#425466] text-center max-w-2xl mx-auto mb-12 md:mb-14 leading-relaxed">
-          Templated tools get you live quickly but cap your differentiation. Custom agencies take forever. We help you
-          ship an MVP you own—with room to grow.
+          Packaged OMS tools are fast but inflexible. Custom builds from scratch take forever. We help you ship order
+          management software you control, without the usual timeline.
         </p>
 
         <div className="overflow-x-auto w-full max-w-[1180px] mx-auto">
           <table className="w-full min-w-[720px] border-separate border-spacing-0">
             <thead>
               <tr>
-                <th className={`${ROW_DIVIDER} ${thHeaderBase} text-left w-[26%]`} style={{ backgroundColor: SECTION_BG }} scope="col" />
+                <th
+                  className={`${ROW_DIVIDER} ${thHeaderBase} text-left w-[26%]`}
+                  style={{ backgroundColor: SECTION_BG }}
+                  scope="col"
+                />
                 <th
                   className={`${thHeaderBase} text-center text-[#1265EF] border-b border-[#E2E8F0] rounded-t-2xl`}
                   style={{ backgroundColor: AIRDEV_COL_BG }}
@@ -237,10 +258,18 @@ export function MvpWhyAirdev() {
                 >
                   Airdev
                 </th>
-                <th className={`${ROW_DIVIDER} ${thHeaderBase} text-center text-[#0A2540]`} style={{ backgroundColor: SECTION_BG }} scope="col">
-                  DIY / template MVPs
+                <th
+                  className={`${ROW_DIVIDER} ${thHeaderBase} text-center text-[#0A2540]`}
+                  style={{ backgroundColor: SECTION_BG }}
+                  scope="col"
+                >
+                  SaaS Platforms
                 </th>
-                <th className={`${ROW_DIVIDER} ${thHeaderBase} text-center text-[#0A2540]`} style={{ backgroundColor: SECTION_BG }} scope="col">
+                <th
+                  className={`${ROW_DIVIDER} ${thHeaderBase} text-center text-[#0A2540]`}
+                  style={{ backgroundColor: SECTION_BG }}
+                  scope="col"
+                >
                   Traditional Dev
                 </th>
               </tr>
@@ -251,7 +280,10 @@ export function MvpWhyAirdev() {
                 const divCls = isLast ? "" : ROW_DIVIDER;
                 return (
                   <tr key={row.label}>
-                    <td className={`${divCls} ${tdBodyCls} text-left font-medium text-[#0A2540]`} style={{ backgroundColor: SECTION_BG }}>
+                    <td
+                      className={`${divCls} ${tdBodyCls} text-left font-medium text-[#0A2540]`}
+                      style={{ backgroundColor: SECTION_BG }}
+                    >
                       {row.label}
                     </td>
                     <td
@@ -277,116 +309,124 @@ export function MvpWhyAirdev() {
   );
 }
 
-const MVP_PRODUCT_TYPES: Product[] = [
+const ORDER_MANAGEMENT_COMMON_FEATURES: Product[] = [
   {
-    id: "marketplaces",
-    name: "Marketplaces",
-    cardHeading: "Marketplaces",
+    id: "order-capture",
+    name: "Orders",
+    cardHeading: "Order capture & processing",
     description:
-      "Help connect vendors and customers together in one place to buy and sell anything.",
-    icon: BuildingStorefrontIcon,
+      "Take orders from every channel with consistent validation, pricing, and status from draft to confirmed.",
+    icon: ShoppingCartIcon,
     color: "#1265EF",
     features: [
-      { name: "Inventory & order management", icon: QueueListIcon },
-      { name: "Peer-to-peer payments", icon: CreditCardIcon },
-      { name: "Listings & profiles", icon: UserCircleIcon },
-      { name: "Buyer-seller messaging", icon: ChatBubbleLeftRightIcon },
-      { name: "Ratings & reviews", icon: StarIcon },
+      { name: "Cart, checkout, and quote-to-order flows", icon: ShoppingCartIcon },
+      { name: "Line items, bundles, and custom fields", icon: ClipboardDocumentListIcon },
+      { name: "Order states, holds, and approvals", icon: Squares2X2Icon },
+      { name: "Customer & account linkage", icon: UserCircleIcon },
     ],
   },
   {
-    id: "productivity",
-    name: "Productivity Tools",
-    cardHeading: "Productivity Tools",
+    id: "inventory",
+    name: "Inventory",
+    cardHeading: "Inventory & availability",
     description:
-      "Enable teams to collaborate and work more efficiently, manage or automate processes, and share resources.",
-    icon: BriefcaseIcon,
+      "Know what you can promise with stock levels, reservations, and locations across warehouses or stores.",
+    icon: CubeIcon,
     color: "#06b6d4",
     features: [
-      { name: "Task management & assignment", icon: ClipboardDocumentListIcon },
-      { name: "Team communication", icon: ChatBubbleLeftRightIcon },
-      { name: "Document management", icon: DocumentTextIcon },
-      { name: "Calendar & scheduling", icon: CalendarIcon },
-      { name: "Workflow automations", icon: SparklesIcon },
+      { name: "SKU, lot, and bin-level tracking", icon: CubeIcon },
+      { name: "ATP/allocations and safety stock rules", icon: ShieldCheckIcon },
+      { name: "Transfers and cycle counts", icon: ArrowsRightLeftIcon },
+      { name: "Low-stock alerts and reorder signals", icon: ChartBarIcon },
     ],
   },
   {
-    id: "social",
-    name: "Social Networks",
-    cardHeading: "Social Networks",
+    id: "fulfillment",
+    name: "Fulfillment",
+    cardHeading: "Fulfillment & shipping",
     description:
-      "Enable individuals and groups to connect and communicate by posting information, comments, messages, images, etc.",
-    icon: UserGroupIcon,
-    color: "#10b981",
-    features: [
-      { name: "Users & roles", icon: UserCircleIcon },
-      { name: "Profile management", icon: TagIcon },
-      { name: "User connections & messaging", icon: ChatBubbleLeftRightIcon },
-      { name: "Liking, upvoting, & commenting", icon: StarIcon },
-      { name: "Content sharing", icon: Squares2X2Icon },
-    ],
-  },
-  {
-    id: "analytics",
-    name: "Analytics Tools",
-    cardHeading: "Analytics & Data Visualization",
-    description:
-      "Retrieve and store data from one or more systems and establish processes for review and analysis.",
-    icon: ChartPieIcon,
+      "Move orders from pick to pack to carrier handoff with tracking, exceptions, and SLA visibility.",
+    icon: TruckIcon,
     color: "#a855f7",
     features: [
-      { name: "API integrations", icon: GlobeAltIcon },
-      { name: "Complex calculations", icon: CpuChipIcon },
-      { name: "Charts & tables", icon: PresentationChartLineIcon },
-      { name: "Data warehousing", icon: Squares2X2Icon },
-      { name: "Insights & reporting dashboard", icon: MagnifyingGlassIcon },
+      { name: "Pick lists, waves, and pack verification", icon: ClipboardDocumentListIcon },
+      { name: "Carrier rates, labels, and manifests", icon: TruckIcon },
+      { name: "Shipment tracking and delivery events", icon: ArrowPathIcon },
+      { name: "Partial shipments and backorders", icon: Squares2X2Icon },
     ],
   },
   {
-    id: "crms",
-    name: "CRMs",
-    cardHeading: "Customer Relation Management",
+    id: "returns",
+    name: "Returns",
+    cardHeading: "Returns & exchanges",
     description:
-      "Help organizations manage customer relationships throughout the entire customer lifecycle.",
-    icon: BuildingOffice2Icon,
+      "Handle RMAs, refunds, and replacements with clear rules and tie-back to inventory and finance.",
+    icon: ArrowPathIcon,
+    color: "#10b981",
+    features: [
+      { name: "Return authorizations and reason codes", icon: DocumentTextIcon },
+      { name: "Restocking, fees, and credit workflows", icon: ArrowsRightLeftIcon },
+      { name: "Exchange and store-credit options", icon: ShoppingCartIcon },
+      { name: "Return-to-vendor coordination", icon: TruckIcon },
+    ],
+  },
+  {
+    id: "purchasing",
+    name: "Purchasing",
+    cardHeading: "Purchasing & suppliers",
+    description:
+      "Replenish stock and manage vendor relationships with POs, receipts, and three-way matching.",
+    icon: BuildingStorefrontIcon,
     color: "#f59e0b",
     features: [
-      { name: "Workflow automations", icon: SparklesIcon },
-      { name: "Contact management", icon: UserCircleIcon },
-      { name: "Sales analytics", icon: ChartPieIcon },
-      { name: "Team & work management", icon: ClipboardDocumentListIcon },
-      { name: "Reports and dashboards", icon: PresentationChartLineIcon },
+      { name: "Purchase orders and requisitions", icon: ClipboardDocumentListIcon },
+      { name: "Supplier catalogs and lead times", icon: BuildingStorefrontIcon },
+      { name: "Goods receipt and invoice matching", icon: DocumentTextIcon },
+      { name: "Vendor performance and scorecards", icon: ChartBarIcon },
     ],
   },
   {
-    id: "other",
-    name: "Other",
-    cardHeading: "Any custom software",
+    id: "reporting",
+    name: "Reporting",
+    cardHeading: "Reporting & operations",
     description:
-      "There is no limit to what you can build. You just need a user and a use case and we can help bring it to life.",
-    icon: SparklesIcon,
+      "Dashboards and exports for ops, finance, and leadership—orders, fill rates, and exceptions in one place.",
+    icon: ChartBarIcon,
+    color: "#ec4899",
+    features: [
+      { name: "Order, backlog, and fill-rate views", icon: ChartBarIcon },
+      { name: "Inventory valuation and aging", icon: CubeIcon },
+      { name: "Exception queues and SLA dashboards", icon: Squares2X2Icon },
+      { name: "Scheduled reports and CSV/API export", icon: DocumentTextIcon },
+    ],
+  },
+  {
+    id: "integrations",
+    name: "Integrations",
+    cardHeading: "Integrations & automation",
+    description:
+      "Connect OMS to ERP, payments, shipping, and marketplaces so data stays consistent without manual re-entry.",
+    icon: ArrowsRightLeftIcon,
     color: "#0ea5e9",
     features: [
-      { name: "Users & roles", icon: UserGroupIcon },
-      { name: "Algorithms and logic", icon: CpuChipIcon },
-      { name: "API integrations", icon: ArrowsRightLeftIcon },
-      { name: "Payments & banking", icon: CreditCardIcon },
-      { name: "Other features", icon: Squares2X2Icon },
+      { name: "REST APIs, webhooks, and event streams", icon: ArrowsRightLeftIcon },
+      { name: "Payment and tax provider hooks", icon: CpuChipIcon },
+      { name: "EDI or marketplace order sync", icon: ArrowsRightLeftIcon },
+      { name: "Role-based access and audit logs", icon: LockClosedIcon },
+      { name: "Workflow rules and notifications", icon: UserGroupIcon },
     ],
   },
 ];
 
-export function MvpTypesSection() {
+export function OrderManagementTypesSection() {
   return (
     <div id="marketplace-types" className="scroll-mt-[88px]">
       <SampleProducts
         bgColor="bg-white"
-        products={MVP_PRODUCT_TYPES}
-        label="PRODUCT TYPES"
-        title="What we typically ship in an MVP"
-        description="Every build is different, but these are the building blocks we use to get you to real users, revenue, and learning fast."
-        descriptionMaxWidth="32rem"
-        featuresHeading="Common features"
+        products={ORDER_MANAGEMENT_COMMON_FEATURES}
+        label="COMMON FEATURES"
+        title="Order management features we specialize in"
+        description="From order capture to inventory, fulfillment, and integrations—we build the core capabilities modern OMS products need. Pick your scope and we implement it end to end."
         leftColumnClassName="lg:col-span-3"
         rightColumnClassName="lg:col-span-9"
       />
@@ -395,29 +435,39 @@ export function MvpTypesSection() {
 }
 
 const LAUNCHPAD_BULLETS = [
-  "You own it, no recurring platform license",
+  "You own it, no license fees",
   "A lean team to get you started",
-  "AI-powered scoping to define your MVP and get a quote",
-  "Focused feature set: auth, core flows, admin basics, and analytics hooks",
+  "AI-powered scoping to define your order flows and get a quote",
+  "Base features include orders, workflows, and integrations",
   "Standard UX/UI with your colors, logo, and branding applied",
-  "Clear path to v2 when you’re ready to expand",
+  "Customizations and add-ons based on what your operations need",
 ];
 
 const AGENCY_BULLETS = [
-  "You own it, no recurring platform license",
+  "You own it, no license fees",
   "A full team of product, design, and development experts",
-  "Custom discovery and ruthless prioritization",
-  "Strategic input on what belongs in MVP vs later",
+  "Custom discovery and scoping process",
+  "Strategic input on fulfillment, inventory, and integrations",
   "Custom UX/UI design",
-  "Complex workflows, integrations, or regulated domains",
+  "Complex or unique workflows",
 ];
 
 const PRICING_PLANS = [
-  { name: "Launchpad", price: "$5k+", subtitle: "Start from a template and make it your own", bullets: LAUNCHPAD_BULLETS },
-  { name: "Agency", price: "$20k+", subtitle: "Build anything that fits your needs", bullets: AGENCY_BULLETS },
+  {
+    name: "Launchpad",
+    price: "$5k+",
+    subtitle: "Start from a template and make it your own",
+    bullets: LAUNCHPAD_BULLETS,
+  },
+  {
+    name: "Agency",
+    price: "$20k+",
+    subtitle: "Build anything that fits your needs",
+    bullets: AGENCY_BULLETS,
+  },
 ];
 
-export function MvpPricingSection() {
+export function OrderManagementPricingSection() {
   return (
     <section id="pricing" className="scroll-mt-[88px] py-20 md:py-28 bg-[#F6F9FC]">
       <div className="max-w-[1200px] mx-auto px-6">
@@ -472,7 +522,7 @@ export function MvpPricingSection() {
   );
 }
 
-export const MVP_CASE_SLIDES = [
+export const ORDER_MANAGEMENT_CASE_SLIDES = [
   {
     id: "playground",
     company: "Playground IEP",
@@ -497,8 +547,7 @@ export const MVP_CASE_SLIDES = [
     heading: "How Airdev helped the consultancy Consenna build a custom no-code marketplace for HP for Education to serve 30k schools across the UK",
     description: "",
     image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/635076a5905dd76065955f2c_hp-s%20(1).png",
-    imageTitle:
-      "How Airdev helped the consultancy Consenna build a custom no-code marketplace for HP for Education to serve 30k schools across the UK",
+    imageTitle: "How Airdev helped the consultancy Consenna build a custom no-code marketplace for HP for Education to serve 30k schools across the UK",
     customFields: [
       { label: "Business type", value: "Enterprise", color: "#635bff" },
       { label: "Product type", value: "Custom marketplace", color: "#00d4ff" },
@@ -514,8 +563,7 @@ export const MVP_CASE_SLIDES = [
     heading: "How Airdev helped Kidsbook build a custom no-code marketplace in just 6 weeks to connect parents with kids activity providers",
     description: "",
     image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/635075037ab429484ab21afb_kidsbook%20(2).png",
-    imageTitle:
-      "How Airdev helped Kidsbook build a custom no-code marketplace in just 6 weeks to connect parents with kids activity providers",
+    imageTitle: "How Airdev helped Kidsbook build a custom no-code marketplace in just 6 weeks to connect parents with kids activity providers",
     customFields: [
       { label: "Business type", value: "Startup", color: "#635bff" },
       { label: "Product type", value: "2-sided marketplace", color: "#00d4ff" },

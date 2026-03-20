@@ -2,25 +2,22 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
+  AdjustmentsVerticalIcon,
+  ArrowPathIcon,
   ArrowsRightLeftIcon,
-  BriefcaseIcon,
-  BuildingOffice2Icon,
-  BuildingStorefrontIcon,
-  CalendarIcon,
-  ChartPieIcon,
+  BoltIcon,
+  BuildingLibraryIcon,
+  ChartBarIcon,
   ChatBubbleLeftRightIcon,
   ClipboardDocumentListIcon,
-  CreditCardIcon,
   CpuChipIcon,
   DocumentTextIcon,
   GlobeAltIcon,
+  LockClosedIcon,
   MagnifyingGlassIcon,
-  PresentationChartLineIcon,
-  QueueListIcon,
+  ShieldCheckIcon,
   SparklesIcon,
   Squares2X2Icon,
-  StarIcon,
-  TagIcon,
   UserCircleIcon,
   UserGroupIcon,
   CheckIcon,
@@ -29,14 +26,16 @@ import {
 import { Button } from "@/components/ui/button";
 import { SampleProducts, type Product } from "@/components/landing/sample-products";
 
-const MVP_PRIMARY_BTN =
+const AI_CHATBOT_PRIMARY_BTN =
   "bg-[#1265EF] text-white hover:bg-[#0d4fc7] active:bg-[#0a3fa3] rounded-[6px] px-5 pb-2 pt-2.5 text-[16px] font-medium transition-all leading-none";
 
 const scrollToContact = () => {
   document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
 };
 
-const HERO_BG = "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/67d482ff67a3aac218170979_blurbg3.svg";
+const MARKETPLACE_HERO_BLUR_BG =
+  "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/67d482ff67a3aac218170979_blurbg3.svg";
+
 const REF_SCREEN_INDEX = 2;
 
 function viewportScreenshotMaxHeightPx(): number {
@@ -44,19 +43,18 @@ function viewportScreenshotMaxHeightPx(): number {
   return Math.min(560, window.innerHeight * 0.52);
 }
 
-/** MVP hero shots — edit only in this file */
 const SCREENSHOT_IMAGES = [
-  "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1769647224654x585966976925444100/events2.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774006421831x791000213883669600/crm5.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774031232294x920880876042708100/sn.webp",
-  "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1772588533645x277504609261276960/clearpay.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774003634701x879766162137330700/crm1.webp",
-  "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1769431327914x326072329645070460/craftly2.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774037116958x904768129962142800/ai44.webp",
   "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774037162750x163292356974240160/ai6.webp",
-  "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1769645304714x406176510810474200/listing1.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774037144772x592934117755434800/ai3.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774037180520x267178129678550700/ai8.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774037197270x306278458765900200/ai1.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774037218039x205216978970479420/ai7.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774037232706x301427239531723900/ai5.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774037246798x563581381292359600/ai2.webp",
 ];
 
-export function MvpLandingHero() {
+export function AiChatbotLandingHero() {
   const [unifiedShotHeight, setUnifiedShotHeight] = useState<number | null>(null);
   const referenceImgRef = useRef<HTMLImageElement>(null);
 
@@ -98,7 +96,7 @@ export function MvpLandingHero() {
         className="absolute inset-0 z-0 pointer-events-none bg-white"
         aria-hidden
         style={{
-          backgroundImage: `url(${HERO_BG})`,
+          backgroundImage: `url(${MARKETPLACE_HERO_BLUR_BG})`,
           backgroundSize: "cover",
           backgroundPosition: "center center",
           backgroundRepeat: "no-repeat",
@@ -109,8 +107,26 @@ export function MvpLandingHero() {
         aria-hidden
         style={{
           background: `
-            linear-gradient(to top,#ffffff 0%,rgba(255,255,255,0.97) 5%,rgba(255,255,255,0.88) 12%,rgba(255,255,255,0.58) 24%,rgba(255,255,255,0.28) 38%,rgba(255,255,255,0.08) 50%,transparent 64%),
-            linear-gradient(to bottom,#ffffff 0%,rgba(255,255,255,0.98) 4%,rgba(255,255,255,0.9) 10%,rgba(255,255,255,0.72) 18%,rgba(255,255,255,0.42) 30%,rgba(255,255,255,0.15) 44%,transparent 62%)
+            linear-gradient(
+              to top,
+              #ffffff 0%,
+              rgba(255, 255, 255, 0.97) 5%,
+              rgba(255, 255, 255, 0.88) 12%,
+              rgba(255, 255, 255, 0.58) 24%,
+              rgba(255, 255, 255, 0.28) 38%,
+              rgba(255, 255, 255, 0.08) 50%,
+              transparent 64%
+            ),
+            linear-gradient(
+              to bottom,
+              #ffffff 0%,
+              rgba(255, 255, 255, 0.98) 4%,
+              rgba(255, 255, 255, 0.9) 10%,
+              rgba(255, 255, 255, 0.72) 18%,
+              rgba(255, 255, 255, 0.42) 30%,
+              rgba(255, 255, 255, 0.15) 44%,
+              transparent 62%
+            )
           `,
         }}
       />
@@ -118,14 +134,16 @@ export function MvpLandingHero() {
       <div className="relative z-10 max-w-[1200px] mx-auto px-6">
         <div className="max-w-5xl mx-auto text-center">
           <h1 className="text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[3.5rem] xl:text-[4.5rem] 2xl:text-[5rem] leading-[1.05] font-semibold tracking-[-0.03em] text-gray-900 mb-6 sm:mb-8">
-            The smarter way to launch your MVP
+            The smarter way to launch your AI chatbot product
           </h1>
-          <p className="text-base sm:text-lg lg:text-xl text-gray-600 mb-8 leading-relaxed max-w-lg mx-auto">
-            Ship a production-ready minimum viable product in weeks. Focused scope, real users, and a codebase you can
-            extend when you&apos;re ready to scale.
+
+          <p className="text-base sm:text-lg lg:text-xl text-gray-600 mb-8 leading-relaxed max-w-xl mx-auto">
+            We use a new approach to help entrepreneurs launch AI chatbot products you fully own, for a fraction of
+            the cost and time of traditional development.
           </p>
+
           <div className="mt-8">
-            <Button type="button" className={MVP_PRIMARY_BTN} onClick={scrollToContact}>
+            <Button type="button" className={AI_CHATBOT_PRIMARY_BTN} onClick={scrollToContact}>
               Talk to Us
             </Button>
           </div>
@@ -143,7 +161,7 @@ export function MvpLandingHero() {
               <img
                 ref={i === REF_SCREEN_INDEX ? referenceImgRef : undefined}
                 src={src}
-                alt={`MVP product screenshot ${i + 1}`}
+                alt={`AI chatbot screenshot ${i + 1}`}
                 onLoad={i === REF_SCREEN_INDEX ? recalcShotHeight : undefined}
                 className={
                   unifiedShotHeight
@@ -198,6 +216,7 @@ function CellContent({
     : "font-normal text-[#425466] text-[16px] leading-[24px]";
 
   if (!statusIcons) return <span className={textCls}>{value}</span>;
+
   const positive = value === "Yes";
   return (
     <span className={`inline-flex items-center gap-2 justify-center ${textCls}`}>
@@ -211,7 +230,7 @@ function CellContent({
   );
 }
 
-export function MvpWhyAirdev() {
+export function AiChatbotWhyAirdev() {
   const lastIdx = COMPARISON_ROWS.length - 1;
   return (
     <section id="why-airdev" className="scroll-mt-[88px] py-20 md:py-28" style={{ backgroundColor: SECTION_BG }}>
@@ -221,15 +240,19 @@ export function MvpWhyAirdev() {
           Fast and flexible
         </h2>
         <p className="text-lg text-[#425466] text-center max-w-2xl mx-auto mb-12 md:mb-14 leading-relaxed">
-          Templated tools get you live quickly but cap your differentiation. Custom agencies take forever. We help you
-          ship an MVP you own—with room to grow.
+          Off-the-shelf chat widgets are fast but rigid. Traditional AI builds drag on. We help you ship a custom
+          assistant you control, without the usual timeline.
         </p>
 
         <div className="overflow-x-auto w-full max-w-[1180px] mx-auto">
           <table className="w-full min-w-[720px] border-separate border-spacing-0">
             <thead>
               <tr>
-                <th className={`${ROW_DIVIDER} ${thHeaderBase} text-left w-[26%]`} style={{ backgroundColor: SECTION_BG }} scope="col" />
+                <th
+                  className={`${ROW_DIVIDER} ${thHeaderBase} text-left w-[26%]`}
+                  style={{ backgroundColor: SECTION_BG }}
+                  scope="col"
+                />
                 <th
                   className={`${thHeaderBase} text-center text-[#1265EF] border-b border-[#E2E8F0] rounded-t-2xl`}
                   style={{ backgroundColor: AIRDEV_COL_BG }}
@@ -237,10 +260,18 @@ export function MvpWhyAirdev() {
                 >
                   Airdev
                 </th>
-                <th className={`${ROW_DIVIDER} ${thHeaderBase} text-center text-[#0A2540]`} style={{ backgroundColor: SECTION_BG }} scope="col">
-                  DIY / template MVPs
+                <th
+                  className={`${ROW_DIVIDER} ${thHeaderBase} text-center text-[#0A2540]`}
+                  style={{ backgroundColor: SECTION_BG }}
+                  scope="col"
+                >
+                  SaaS Platforms
                 </th>
-                <th className={`${ROW_DIVIDER} ${thHeaderBase} text-center text-[#0A2540]`} style={{ backgroundColor: SECTION_BG }} scope="col">
+                <th
+                  className={`${ROW_DIVIDER} ${thHeaderBase} text-center text-[#0A2540]`}
+                  style={{ backgroundColor: SECTION_BG }}
+                  scope="col"
+                >
                   Traditional Dev
                 </th>
               </tr>
@@ -251,7 +282,10 @@ export function MvpWhyAirdev() {
                 const divCls = isLast ? "" : ROW_DIVIDER;
                 return (
                   <tr key={row.label}>
-                    <td className={`${divCls} ${tdBodyCls} text-left font-medium text-[#0A2540]`} style={{ backgroundColor: SECTION_BG }}>
+                    <td
+                      className={`${divCls} ${tdBodyCls} text-left font-medium text-[#0A2540]`}
+                      style={{ backgroundColor: SECTION_BG }}
+                    >
                       {row.label}
                     </td>
                     <td
@@ -277,116 +311,123 @@ export function MvpWhyAirdev() {
   );
 }
 
-const MVP_PRODUCT_TYPES: Product[] = [
+const AI_CHATBOT_FEATURES: Product[] = [
   {
-    id: "marketplaces",
-    name: "Marketplaces",
-    cardHeading: "Marketplaces",
+    id: "conversational-ui",
+    name: "Chat UI",
+    cardHeading: "Conversational interface",
     description:
-      "Help connect vendors and customers together in one place to buy and sell anything.",
-    icon: BuildingStorefrontIcon,
+      "Threaded chats, streaming replies, and thoughtful UX so users get fast, clear answers from your assistant.",
+    icon: ChatBubbleLeftRightIcon,
     color: "#1265EF",
     features: [
-      { name: "Inventory & order management", icon: QueueListIcon },
-      { name: "Peer-to-peer payments", icon: CreditCardIcon },
-      { name: "Listings & profiles", icon: UserCircleIcon },
-      { name: "Buyer-seller messaging", icon: ChatBubbleLeftRightIcon },
-      { name: "Ratings & reviews", icon: StarIcon },
+      { name: "Multi-turn conversation history", icon: ChatBubbleLeftRightIcon },
+      { name: "Markdown, links, and rich message layouts", icon: DocumentTextIcon },
+      { name: "Streaming responses and typing indicators", icon: BoltIcon },
+      { name: "Suggested prompts and quick replies", icon: SparklesIcon },
     ],
   },
   {
-    id: "productivity",
-    name: "Productivity Tools",
-    cardHeading: "Productivity Tools",
+    id: "models-prompts",
+    name: "Models",
+    cardHeading: "Models & system behavior",
     description:
-      "Enable teams to collaborate and work more efficiently, manage or automate processes, and share resources.",
-    icon: BriefcaseIcon,
+      "Control prompts, model routing, and parameters so tone, safety, and quality match your product.",
+    icon: CpuChipIcon,
     color: "#06b6d4",
     features: [
-      { name: "Task management & assignment", icon: ClipboardDocumentListIcon },
-      { name: "Team communication", icon: ChatBubbleLeftRightIcon },
-      { name: "Document management", icon: DocumentTextIcon },
-      { name: "Calendar & scheduling", icon: CalendarIcon },
-      { name: "Workflow automations", icon: SparklesIcon },
+      { name: "System prompts & instruction templates", icon: ClipboardDocumentListIcon },
+      { name: "Model selection, routing, and fallbacks", icon: CpuChipIcon },
+      { name: "Temperature, tokens, and output shaping", icon: AdjustmentsVerticalIcon },
+      { name: "Eval suites and regression checks", icon: ShieldCheckIcon },
     ],
   },
   {
-    id: "social",
-    name: "Social Networks",
-    cardHeading: "Social Networks",
+    id: "knowledge-grounding",
+    name: "Knowledge",
+    cardHeading: "Knowledge & grounding",
     description:
-      "Enable individuals and groups to connect and communicate by posting information, comments, messages, images, etc.",
-    icon: UserGroupIcon,
-    color: "#10b981",
-    features: [
-      { name: "Users & roles", icon: UserCircleIcon },
-      { name: "Profile management", icon: TagIcon },
-      { name: "User connections & messaging", icon: ChatBubbleLeftRightIcon },
-      { name: "Liking, upvoting, & commenting", icon: StarIcon },
-      { name: "Content sharing", icon: Squares2X2Icon },
-    ],
-  },
-  {
-    id: "analytics",
-    name: "Analytics Tools",
-    cardHeading: "Analytics & Data Visualization",
-    description:
-      "Retrieve and store data from one or more systems and establish processes for review and analysis.",
-    icon: ChartPieIcon,
+      "Connect docs, help centers, and internal wikis so answers stay accurate with citations users can verify.",
+    icon: BuildingLibraryIcon,
     color: "#a855f7",
     features: [
-      { name: "API integrations", icon: GlobeAltIcon },
-      { name: "Complex calculations", icon: CpuChipIcon },
-      { name: "Charts & tables", icon: PresentationChartLineIcon },
-      { name: "Data warehousing", icon: Squares2X2Icon },
-      { name: "Insights & reporting dashboard", icon: MagnifyingGlassIcon },
+      { name: "RAG over uploaded docs & knowledge bases", icon: BuildingLibraryIcon },
+      { name: "Chunking, embedding, and re-indexing", icon: Squares2X2Icon },
+      { name: "Inline citations and source previews", icon: MagnifyingGlassIcon },
+      { name: "Sync from URLs, CMS, or file stores", icon: ArrowPathIcon },
     ],
   },
   {
-    id: "crms",
-    name: "CRMs",
-    cardHeading: "Customer Relation Management",
+    id: "tools-integrations",
+    name: "Tools",
+    cardHeading: "Tools, APIs & handoff",
     description:
-      "Help organizations manage customer relationships throughout the entire customer lifecycle.",
-    icon: BuildingOffice2Icon,
+      "Let the bot look up live data, trigger workflows, or escalate seamlessly to humans when needed.",
+    icon: ArrowsRightLeftIcon,
+    color: "#10b981",
+    features: [
+      { name: "Function calling & structured tool use", icon: CpuChipIcon },
+      { name: "REST APIs, webhooks, and OAuth connections", icon: ArrowsRightLeftIcon },
+      { name: "Human-in-the-loop and ticket handoff", icon: UserGroupIcon },
+      { name: "Multi-channel deployment (web, Slack, embed)", icon: GlobeAltIcon },
+    ],
+  },
+  {
+    id: "users-security",
+    name: "Access",
+    cardHeading: "Users, roles & privacy",
+    description:
+      "Authentication, roles, and careful handling of conversation data for teams and enterprise buyers.",
+    icon: LockClosedIcon,
     color: "#f59e0b",
     features: [
-      { name: "Workflow automations", icon: SparklesIcon },
-      { name: "Contact management", icon: UserCircleIcon },
-      { name: "Sales analytics", icon: ChartPieIcon },
-      { name: "Team & work management", icon: ClipboardDocumentListIcon },
-      { name: "Reports and dashboards", icon: PresentationChartLineIcon },
+      { name: "Auth, SSO, and workspace tenancy", icon: UserCircleIcon },
+      { name: "Role-based permissions for admins vs. end users", icon: ShieldCheckIcon },
+      { name: "Retention, export, and deletion policies", icon: LockClosedIcon },
+      { name: "Audit logs for admin and compliance review", icon: ClipboardDocumentListIcon },
     ],
   },
   {
-    id: "other",
-    name: "Other",
-    cardHeading: "Any custom software",
+    id: "analytics-quality",
+    name: "Analytics",
+    cardHeading: "Analytics & continuous improvement",
     description:
-      "There is no limit to what you can build. You just need a user and a use case and we can help bring it to life.",
-    icon: SparklesIcon,
+      "Track usage, review transcripts, and close the loop with feedback so the assistant gets better over time.",
+    icon: ChartBarIcon,
+    color: "#ec4899",
+    features: [
+      { name: "Usage, latency, and cost dashboards", icon: ChartBarIcon },
+      { name: "Conversation search, labels, and review queues", icon: MagnifyingGlassIcon },
+      { name: "Thumbs up/down and custom feedback capture", icon: ChatBubbleLeftRightIcon },
+      { name: "A/B prompts and staged rollouts", icon: ArrowPathIcon },
+    ],
+  },
+  {
+    id: "safety-compliance",
+    name: "Safety",
+    cardHeading: "Safety, moderation & compliance",
+    description:
+      "Guardrails, filters, and policies aligned with your brand and regulatory expectations.",
+    icon: ShieldCheckIcon,
     color: "#0ea5e9",
     features: [
-      { name: "Users & roles", icon: UserGroupIcon },
-      { name: "Algorithms and logic", icon: CpuChipIcon },
-      { name: "API integrations", icon: ArrowsRightLeftIcon },
-      { name: "Payments & banking", icon: CreditCardIcon },
-      { name: "Other features", icon: Squares2X2Icon },
+      { name: "Content moderation & blocklists", icon: ShieldCheckIcon },
+      { name: "PII detection and redaction workflows", icon: LockClosedIcon },
+      { name: "Disclaimers, compliance copy, and jurisdiction rules", icon: DocumentTextIcon },
+      { name: "Rate limits, abuse detection, and circuit breakers", icon: CpuChipIcon },
     ],
   },
 ];
 
-export function MvpTypesSection() {
+export function AiChatbotTypesSection() {
   return (
     <div id="marketplace-types" className="scroll-mt-[88px]">
       <SampleProducts
         bgColor="bg-white"
-        products={MVP_PRODUCT_TYPES}
-        label="PRODUCT TYPES"
-        title="What we typically ship in an MVP"
-        description="Every build is different, but these are the building blocks we use to get you to real users, revenue, and learning fast."
-        descriptionMaxWidth="32rem"
-        featuresHeading="Common features"
+        products={AI_CHATBOT_FEATURES}
+        label="COMMON FEATURES"
+        title="AI chatbot features we specialize in"
+        description="From chat UX to RAG, tools, and safety—we build the capabilities modern assistant products need. Pick your scope and we implement it end to end."
         leftColumnClassName="lg:col-span-3"
         rightColumnClassName="lg:col-span-9"
       />
@@ -395,29 +436,39 @@ export function MvpTypesSection() {
 }
 
 const LAUNCHPAD_BULLETS = [
-  "You own it, no recurring platform license",
+  "You own it, no license fees",
   "A lean team to get you started",
-  "AI-powered scoping to define your MVP and get a quote",
-  "Focused feature set: auth, core flows, admin basics, and analytics hooks",
+  "AI-powered scoping to define your chatbot and get a quote",
+  "Base features include chat UI, knowledge grounding, and integrations",
   "Standard UX/UI with your colors, logo, and branding applied",
-  "Clear path to v2 when you’re ready to expand",
+  "Customizations and add-ons based on what your assistant needs",
 ];
 
 const AGENCY_BULLETS = [
-  "You own it, no recurring platform license",
+  "You own it, no license fees",
   "A full team of product, design, and development experts",
-  "Custom discovery and ruthless prioritization",
-  "Strategic input on what belongs in MVP vs later",
+  "Custom discovery and scoping process",
+  "Strategic input on conversation flows, tools, and integrations",
   "Custom UX/UI design",
-  "Complex workflows, integrations, or regulated domains",
+  "Complex or unique workflows",
 ];
 
 const PRICING_PLANS = [
-  { name: "Launchpad", price: "$5k+", subtitle: "Start from a template and make it your own", bullets: LAUNCHPAD_BULLETS },
-  { name: "Agency", price: "$20k+", subtitle: "Build anything that fits your needs", bullets: AGENCY_BULLETS },
+  {
+    name: "Launchpad",
+    price: "$5k+",
+    subtitle: "Start from a template and make it your own",
+    bullets: LAUNCHPAD_BULLETS,
+  },
+  {
+    name: "Agency",
+    price: "$20k+",
+    subtitle: "Build anything that fits your needs",
+    bullets: AGENCY_BULLETS,
+  },
 ];
 
-export function MvpPricingSection() {
+export function AiChatbotPricingSection() {
   return (
     <section id="pricing" className="scroll-mt-[88px] py-20 md:py-28 bg-[#F6F9FC]">
       <div className="max-w-[1200px] mx-auto px-6">
@@ -472,7 +523,7 @@ export function MvpPricingSection() {
   );
 }
 
-export const MVP_CASE_SLIDES = [
+export const AI_CHATBOT_CASE_SLIDES = [
   {
     id: "playground",
     company: "Playground IEP",
@@ -497,8 +548,7 @@ export const MVP_CASE_SLIDES = [
     heading: "How Airdev helped the consultancy Consenna build a custom no-code marketplace for HP for Education to serve 30k schools across the UK",
     description: "",
     image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/635076a5905dd76065955f2c_hp-s%20(1).png",
-    imageTitle:
-      "How Airdev helped the consultancy Consenna build a custom no-code marketplace for HP for Education to serve 30k schools across the UK",
+    imageTitle: "How Airdev helped the consultancy Consenna build a custom no-code marketplace for HP for Education to serve 30k schools across the UK",
     customFields: [
       { label: "Business type", value: "Enterprise", color: "#635bff" },
       { label: "Product type", value: "Custom marketplace", color: "#00d4ff" },
@@ -514,8 +564,7 @@ export const MVP_CASE_SLIDES = [
     heading: "How Airdev helped Kidsbook build a custom no-code marketplace in just 6 weeks to connect parents with kids activity providers",
     description: "",
     image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/635075037ab429484ab21afb_kidsbook%20(2).png",
-    imageTitle:
-      "How Airdev helped Kidsbook build a custom no-code marketplace in just 6 weeks to connect parents with kids activity providers",
+    imageTitle: "How Airdev helped Kidsbook build a custom no-code marketplace in just 6 weeks to connect parents with kids activity providers",
     customFields: [
       { label: "Business type", value: "Startup", color: "#635bff" },
       { label: "Product type", value: "2-sided marketplace", color: "#00d4ff" },

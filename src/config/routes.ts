@@ -16,6 +16,10 @@ export const ROUTES = {
   SAAS: "/saas",
   /** Dedicated CRM landing clone of SaaS page */
   CRM: "/crm",
+  /** Dedicated AI chatbot product landing (edit ai-chatbot-* components only) */
+  AI_CHATBOT: "/ai-chatbot",
+  /** Dedicated order management software landing (edit order-management-* components only) */
+  ORDER_MANAGEMENT: "/order-management",
   /** Dedicated ERP landing clone for enterprise resource planning */
   ERP: "/erp",
   /** Dedicated LMS landing for learning management systems */
