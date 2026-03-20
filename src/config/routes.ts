@@ -20,6 +20,8 @@ export const ROUTES = {
   ERP: "/erp",
   /** Dedicated LMS landing for learning management systems */
   LMS: "/lms",
+  /** Dedicated MVP product landing (ERP-style layout; edit mvp-* components only) */
+  MVP: "/mvp",
   /** Dedicated inventory management product landing */
   INVENTORY_MANAGEMENT: "/inventory-management",
   

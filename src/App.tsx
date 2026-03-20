@@ -60,6 +60,7 @@ import SaasLanding from "./views/SaasLanding";
 import CrmLanding from "./views/CrmLanding";
 import ErpLanding from "./views/ErpLanding";
 import LmsLanding from "./views/LmsLanding";
+import MvpLanding from "./views/MvpLanding";
 import InventoryManagementLanding from "./views/InventoryManagementLanding";
 
 const AppContent = () => {
@@ -98,6 +99,7 @@ const AppContent = () => {
         <Route path={ROUTES.CRM} element={<CrmLanding />} />
         <Route path={ROUTES.ERP} element={<ErpLanding />} />
         <Route path={ROUTES.LMS} element={<LmsLanding />} />
+        <Route path={ROUTES.MVP} element={<MvpLanding />} />
         <Route path={ROUTES.INVENTORY_MANAGEMENT} element={<InventoryManagementLanding />} />
         <Route path={ROUTES.BUBBLE_APP_AUDIT} element={<BubbleAppAudit />} />
         <Route path={ROUTES.CLIENT_STORIES} element={<ClientStories />} />

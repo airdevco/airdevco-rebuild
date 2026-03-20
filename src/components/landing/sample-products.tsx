@@ -139,6 +139,8 @@ interface SampleProductsProps {
   description?: string;
   descriptionMaxWidth?: string;
   titleMaxWidth?: string;
+  /** Heading above the feature list (default: "Included features:") */
+  featuresHeading?: string;
   leftColumnClassName?: string;
   rightColumnClassName?: string;
 }
@@ -151,6 +153,7 @@ export const SampleProducts = ({
   description = "From simple tools to complex platforms, we've built SaaS products across dozens of industries. Here are some of the most common types.",
   descriptionMaxWidth,
   titleMaxWidth,
+  featuresHeading = "Included features:",
   leftColumnClassName,
   rightColumnClassName,
 }: SampleProductsProps) => {
@@ -330,7 +333,7 @@ export const SampleProducts = ({
 
                     {/* Feature List */}
                     <div className="pt-6 -mx-8 px-8 border-t border-slate-200">
-                      <h4 className="text-[16px] font-medium text-gray-600 mb-4">Included features:</h4>
+                      <h4 className="text-[16px] font-medium text-gray-600 mb-4">{featuresHeading}</h4>
                       <div className="grid grid-cols-1 gap-4">
                         {currentProduct.features.map((feature, index) => (
                           <div
