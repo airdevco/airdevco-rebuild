@@ -16,6 +16,10 @@ export const ROUTES = {
   SAAS: "/saas",
   /** Dedicated CRM landing clone of SaaS page */
   CRM: "/crm",
+  /** Dedicated ERP landing clone for enterprise resource planning */
+  ERP: "/erp",
+  /** Dedicated inventory management product landing */
+  INVENTORY_MANAGEMENT: "/inventory-management",
   
   // ============================================
   // Services

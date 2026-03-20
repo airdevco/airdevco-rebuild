@@ -58,6 +58,8 @@ import AiEnablement from "./views/AiEnablement";
 import Marketplace from "./views/Saas";
 import SaasLanding from "./views/SaasLanding";
 import CrmLanding from "./views/CrmLanding";
+import ErpLanding from "./views/ErpLanding";
+import InventoryManagementLanding from "./views/InventoryManagementLanding";
 
 const AppContent = () => {
   const location = useLocation();
@@ -93,6 +95,8 @@ const AppContent = () => {
         <Route path={ROUTES.MARKETPLACE} element={<Marketplace />} />
         <Route path={ROUTES.SAAS} element={<SaasLanding />} />
         <Route path={ROUTES.CRM} element={<CrmLanding />} />
+        <Route path={ROUTES.ERP} element={<ErpLanding />} />
+        <Route path={ROUTES.INVENTORY_MANAGEMENT} element={<InventoryManagementLanding />} />
         <Route path={ROUTES.BUBBLE_APP_AUDIT} element={<BubbleAppAudit />} />
         <Route path={ROUTES.CLIENT_STORIES} element={<ClientStories />} />
         <Route path={ROUTES.SAAS_PRODUCTS} element={<SaasProducts />} />

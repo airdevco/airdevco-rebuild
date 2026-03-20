@@ -15,12 +15,12 @@ import {
   DocumentTextIcon,
   LockClosedIcon,
   MagnifyingGlassIcon,
-  PhoneIcon,
   QueueListIcon,
   ShieldCheckIcon,
   SparklesIcon,
   Squares2X2Icon,
   TagIcon,
+  TruckIcon,
   UserCircleIcon,
   UserGroupIcon,
   CheckIcon,
@@ -29,17 +29,15 @@ import {
 import { Button } from "@/components/ui/button";
 import { SampleProducts, type Product } from "@/components/landing/sample-products";
 
-const MARKETPLACE_PRIMARY_BTN =
+const ERP_PRIMARY_BTN =
   "bg-[#1265EF] text-white hover:bg-[#0d4fc7] active:bg-[#0a3fa3] rounded-[6px] px-5 pb-2 pt-2.5 text-[16px] font-medium transition-all leading-none";
 
 const scrollToContact = () => {
   document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
 };
 
-const MARKETPLACE_HERO_BLUR_BG =
-  "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/67d482ff67a3aac218170979_blurbg3.svg";
-
-const KIDSBOOK_HERO_SCREEN_INDEX = 2;
+const HERO_BG = "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/67d482ff67a3aac218170979_blurbg3.svg";
+const REF_SCREEN_INDEX = 2;
 
 function viewportScreenshotMaxHeightPx(): number {
   if (typeof window === "undefined") return 560;
@@ -47,22 +45,22 @@ function viewportScreenshotMaxHeightPx(): number {
 }
 
 const SCREENSHOT_IMAGES = [
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774003634701x879766162137330700/crm1.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774003908084x260139809298654660/crm2.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774004197559x467922203402921340/crm3.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774005933680x578642353117870200/crm4.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774006421831x791000213883669600/crm5.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774007591255x876566308167353000/crm8.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774006826054x168358695871838370/crm7.webp",
-  "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1772587812851x876454729909677400/flowline.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774007822593x662188443753093400/erp1.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774008608194x406872501874940160/erp3.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774008740758x320185903005129500/erp4.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774010146129x485433001708269300/erp5.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774010268043x869277943531791200/erp6.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774011965913x616276552473271700/erp8.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774011935874x940494958157154200/erp7.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774008207593x571288043712070200/erp2.webp",
 ];
 
-export function CrmLandingHero() {
+export function ErpLandingHero() {
   const [unifiedShotHeight, setUnifiedShotHeight] = useState<number | null>(null);
-  const kidsbookImgRef = useRef<HTMLImageElement>(null);
+  const referenceImgRef = useRef<HTMLImageElement>(null);
 
-  const recalcShotHeightFromKidsbook = useCallback(() => {
-    const img = kidsbookImgRef.current;
+  const recalcShotHeight = useCallback(() => {
+    const img = referenceImgRef.current;
     if (!img?.naturalWidth) return;
     const figure = img.parentElement;
     if (!figure) return;
@@ -77,21 +75,21 @@ export function CrmLandingHero() {
   }, []);
 
   useEffect(() => {
-    const img = kidsbookImgRef.current;
+    const img = referenceImgRef.current;
     if (!img) return;
     const figure = img.parentElement;
     if (!figure) return;
 
-    const ro = new ResizeObserver(() => recalcShotHeightFromKidsbook());
+    const ro = new ResizeObserver(() => recalcShotHeight());
     ro.observe(figure);
-    window.addEventListener("resize", recalcShotHeightFromKidsbook);
-    if (img.complete) recalcShotHeightFromKidsbook();
+    window.addEventListener("resize", recalcShotHeight);
+    if (img.complete) recalcShotHeight();
 
     return () => {
       ro.disconnect();
-      window.removeEventListener("resize", recalcShotHeightFromKidsbook);
+      window.removeEventListener("resize", recalcShotHeight);
     };
-  }, [recalcShotHeightFromKidsbook]);
+  }, [recalcShotHeight]);
 
   return (
     <section className="relative pt-32 pb-12 lg:pt-48 lg:pb-16 overflow-hidden bg-white scroll-mt-[88px]">
@@ -99,7 +97,7 @@ export function CrmLandingHero() {
         className="absolute inset-0 z-0 pointer-events-none bg-white"
         aria-hidden
         style={{
-          backgroundImage: `url(${MARKETPLACE_HERO_BLUR_BG})`,
+          backgroundImage: `url(${HERO_BG})`,
           backgroundSize: "cover",
           backgroundPosition: "center center",
           backgroundRepeat: "no-repeat",
@@ -110,26 +108,8 @@ export function CrmLandingHero() {
         aria-hidden
         style={{
           background: `
-            linear-gradient(
-              to top,
-              #ffffff 0%,
-              rgba(255, 255, 255, 0.97) 5%,
-              rgba(255, 255, 255, 0.88) 12%,
-              rgba(255, 255, 255, 0.58) 24%,
-              rgba(255, 255, 255, 0.28) 38%,
-              rgba(255, 255, 255, 0.08) 50%,
-              transparent 64%
-            ),
-            linear-gradient(
-              to bottom,
-              #ffffff 0%,
-              rgba(255, 255, 255, 0.98) 4%,
-              rgba(255, 255, 255, 0.9) 10%,
-              rgba(255, 255, 255, 0.72) 18%,
-              rgba(255, 255, 255, 0.42) 30%,
-              rgba(255, 255, 255, 0.15) 44%,
-              transparent 62%
-            )
+            linear-gradient(to top,#ffffff 0%,rgba(255,255,255,0.97) 5%,rgba(255,255,255,0.88) 12%,rgba(255,255,255,0.58) 24%,rgba(255,255,255,0.28) 38%,rgba(255,255,255,0.08) 50%,transparent 64%),
+            linear-gradient(to bottom,#ffffff 0%,rgba(255,255,255,0.98) 4%,rgba(255,255,255,0.9) 10%,rgba(255,255,255,0.72) 18%,rgba(255,255,255,0.42) 30%,rgba(255,255,255,0.15) 44%,transparent 62%)
           `,
         }}
       />
@@ -137,16 +117,14 @@ export function CrmLandingHero() {
       <div className="relative z-10 max-w-[1200px] mx-auto px-6">
         <div className="max-w-5xl mx-auto text-center">
           <h1 className="text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[3.5rem] xl:text-[4.5rem] 2xl:text-[5rem] leading-[1.05] font-semibold tracking-[-0.03em] text-gray-900 mb-6 sm:mb-8">
-            The smarter way to launch your CRM product
+            The smarter way to launch your ERP product
           </h1>
-
           <p className="text-base sm:text-lg lg:text-xl text-gray-600 mb-8 leading-relaxed max-w-2xl mx-auto">
-            We use a new approach to help entrepreneurs launch CRM products, for a fraction of cost and time of
-            traditional development.
+            We use a modern approach to help teams launch ERP products faster, with the flexibility to match their
+            operations and workflows.
           </p>
-
           <div className="mt-8">
-            <Button type="button" className={MARKETPLACE_PRIMARY_BTN} onClick={scrollToContact}>
+            <Button type="button" className={ERP_PRIMARY_BTN} onClick={scrollToContact}>
               Talk to Us
             </Button>
           </div>
@@ -162,10 +140,10 @@ export function CrmLandingHero() {
               style={unifiedShotHeight ? { height: unifiedShotHeight } : undefined}
             >
               <img
-                ref={i === KIDSBOOK_HERO_SCREEN_INDEX ? kidsbookImgRef : undefined}
+                ref={i === REF_SCREEN_INDEX ? referenceImgRef : undefined}
                 src={src}
-                alt={`CRM screenshot ${i + 1}`}
-                onLoad={i === KIDSBOOK_HERO_SCREEN_INDEX ? recalcShotHeightFromKidsbook : undefined}
+                alt={`ERP screenshot ${i + 1}`}
+                onLoad={i === REF_SCREEN_INDEX ? recalcShotHeight : undefined}
                 className={
                   unifiedShotHeight
                     ? "w-full h-full min-h-0 object-cover object-top"
@@ -219,7 +197,6 @@ function CellContent({
     : "font-normal text-[#425466] text-[16px] leading-[24px]";
 
   if (!statusIcons) return <span className={textCls}>{value}</span>;
-
   const positive = value === "Yes";
   return (
     <span className={`inline-flex items-center gap-2 justify-center ${textCls}`}>
@@ -233,7 +210,7 @@ function CellContent({
   );
 }
 
-export function CrmWhyAirdev() {
+export function ErpWhyAirdev() {
   const lastIdx = COMPARISON_ROWS.length - 1;
   return (
     <section id="why-airdev" className="scroll-mt-[88px] py-20 md:py-28" style={{ backgroundColor: SECTION_BG }}>
@@ -243,7 +220,7 @@ export function CrmWhyAirdev() {
           Fast and flexible
         </h2>
         <p className="text-lg text-[#425466] text-center max-w-2xl mx-auto mb-12 md:mb-14 leading-relaxed">
-          SaaS platforms are fast but inflexible. Traditional dev gives you control but takes forever. We give you
+          Off-the-shelf software is fast but rigid. Traditional dev gives control but takes too long. We give you
           both.
         </p>
 
@@ -251,11 +228,7 @@ export function CrmWhyAirdev() {
           <table className="w-full min-w-[720px] border-separate border-spacing-0">
             <thead>
               <tr>
-                <th
-                  className={`${ROW_DIVIDER} ${thHeaderBase} text-left w-[26%]`}
-                  style={{ backgroundColor: SECTION_BG }}
-                  scope="col"
-                />
+                <th className={`${ROW_DIVIDER} ${thHeaderBase} text-left w-[26%]`} style={{ backgroundColor: SECTION_BG }} scope="col" />
                 <th
                   className={`${thHeaderBase} text-center text-[#1265EF] border-b border-[#E2E8F0] rounded-t-2xl`}
                   style={{ backgroundColor: AIRDEV_COL_BG }}
@@ -263,18 +236,10 @@ export function CrmWhyAirdev() {
                 >
                   Airdev
                 </th>
-                <th
-                  className={`${ROW_DIVIDER} ${thHeaderBase} text-center text-[#0A2540]`}
-                  style={{ backgroundColor: SECTION_BG }}
-                  scope="col"
-                >
-                  SaaS Platforms
+                <th className={`${ROW_DIVIDER} ${thHeaderBase} text-center text-[#0A2540]`} style={{ backgroundColor: SECTION_BG }} scope="col">
+                  Off-the-Shelf ERP
                 </th>
-                <th
-                  className={`${ROW_DIVIDER} ${thHeaderBase} text-center text-[#0A2540]`}
-                  style={{ backgroundColor: SECTION_BG }}
-                  scope="col"
-                >
+                <th className={`${ROW_DIVIDER} ${thHeaderBase} text-center text-[#0A2540]`} style={{ backgroundColor: SECTION_BG }} scope="col">
                   Traditional Dev
                 </th>
               </tr>
@@ -285,10 +250,7 @@ export function CrmWhyAirdev() {
                 const divCls = isLast ? "" : ROW_DIVIDER;
                 return (
                   <tr key={row.label}>
-                    <td
-                      className={`${divCls} ${tdBodyCls} text-left font-medium text-[#0A2540]`}
-                      style={{ backgroundColor: SECTION_BG }}
-                    >
+                    <td className={`${divCls} ${tdBodyCls} text-left font-medium text-[#0A2540]`} style={{ backgroundColor: SECTION_BG }}>
                       {row.label}
                     </td>
                     <td
@@ -314,124 +276,116 @@ export function CrmWhyAirdev() {
   );
 }
 
-const CRM_TYPES_PRODUCTS: Product[] = [
+const ERP_FEATURES: Product[] = [
   {
-    id: "contact-account-management",
-    name: "Contacts",
-    cardHeading: "Contact & Account Management",
-    description:
-      "Organize leads, contacts, and companies in one place so teams always have complete relationship context.",
-    icon: BuildingOffice2Icon,
+    id: "finance",
+    name: "Finance",
+    cardHeading: "Core Finance",
+    description: "Manage accounting, cash flow, and financial controls with a real-time system of record.",
+    icon: DocumentCurrencyDollarIcon,
     color: "#1265EF",
     features: [
-      { name: "Lead, contact, and account records", icon: UserCircleIcon },
-      { name: "Custom fields and data model extensions", icon: ClipboardDocumentListIcon },
-      { name: "Notes, files, and activity timelines", icon: DocumentTextIcon },
-      { name: "Duplicate detection and merge flows", icon: ArrowsRightLeftIcon },
+      { name: "General ledger and journal entries", icon: DocumentTextIcon },
+      { name: "Accounts payable and receivable", icon: CreditCardIcon },
+      { name: "Multi-entity and multi-currency support", icon: BuildingLibraryIcon },
+      { name: "Month-end close workflows", icon: CalendarIcon },
     ],
   },
   {
-    id: "pipeline-opportunity-management",
-    name: "Pipeline",
-    cardHeading: "Pipeline & Opportunity Management",
-    description:
-      "Track deals through every stage with clear ownership, next steps, and forecast visibility.",
-    icon: Squares2X2Icon,
+    id: "procurement",
+    name: "Procurement",
+    cardHeading: "Procurement and Purchasing",
+    description: "Control spend from requisition through vendor management and purchase order approvals.",
+    icon: ClipboardDocumentListIcon,
     color: "#06b6d4",
     features: [
-      { name: "Custom sales stages and probability weights", icon: QueueListIcon },
-      { name: "Deal records with amount and expected close date", icon: DocumentCurrencyDollarIcon },
-      { name: "Tasking, reminders, and follow-up tracking", icon: CalendarIcon },
-      { name: "Forecast views by rep, team, and period", icon: Squares2X2Icon },
+      { name: "Purchase requisitions and approvals", icon: ClipboardDocumentListIcon },
+      { name: "Supplier onboarding and management", icon: BuildingOffice2Icon },
+      { name: "PO generation and change tracking", icon: DocumentTextIcon },
+      { name: "Spend analysis by category and vendor", icon: TagIcon },
     ],
   },
   {
-    id: "sales-automation-workflows",
-    name: "Automation",
-    cardHeading: "Sales Automation & Workflows",
-    description:
-      "Automate repetitive CRM operations so teams can focus on high-value conversations and closing deals.",
-    icon: CpuChipIcon,
-    color: "#a855f7",
-    features: [
-      { name: "Rule-based assignment and routing", icon: ArrowsRightLeftIcon },
-      { name: "Trigger-based workflow automation", icon: ArrowPathIcon },
-      { name: "Email templates and sequence enrollment", icon: ChatBubbleLeftRightIcon },
-      { name: "AI-assisted lead scoring and next-best action", icon: SparklesIcon },
-    ],
-  },
-  {
-    id: "communication-engagement",
-    name: "Engagement",
-    cardHeading: "Communication & Engagement",
-    description:
-      "Centralize customer conversations across channels and connect outreach directly to CRM records.",
-    icon: PhoneIcon,
+    id: "inventory",
+    name: "Inventory",
+    cardHeading: "Inventory and Warehousing",
+    description: "Track stock, movements, and replenishment across locations with operational accuracy.",
+    icon: QueueListIcon,
     color: "#10b981",
     features: [
-      { name: "Two-way email sync and threading", icon: ChatBubbleLeftRightIcon },
-      { name: "Call logging and click-to-dial support", icon: PhoneIcon },
-      { name: "Meeting scheduling and calendar sync", icon: CalendarIcon },
-      { name: "Conversation history by contact/account", icon: ClipboardDocumentListIcon },
+      { name: "Real-time stock levels by location", icon: QueueListIcon },
+      { name: "Serial, lot, and batch tracking", icon: TagIcon },
+      { name: "Cycle counts and adjustments", icon: ClipboardDocumentListIcon },
+      { name: "Reorder points and replenishment rules", icon: ArrowPathIcon },
     ],
   },
   {
-    id: "customer-support-ticketing",
-    name: "Support",
-    cardHeading: "Customer Support & Ticketing",
-    description:
-      "Capture, prioritize, and resolve customer issues with full account context and team collaboration.",
-    icon: ShieldCheckIcon,
+    id: "orders",
+    name: "Orders",
+    cardHeading: "Order Management",
+    description: "Coordinate quotes, sales orders, fulfillment, and invoicing in one connected workflow.",
+    icon: TruckIcon,
+    color: "#a855f7",
+    features: [
+      { name: "Quotes, sales orders, and amendments", icon: DocumentTextIcon },
+      { name: "Fulfillment and shipment tracking", icon: TruckIcon },
+      { name: "Returns and credit memo handling", icon: ArrowsRightLeftIcon },
+      { name: "Billing handoff to finance", icon: DocumentCurrencyDollarIcon },
+    ],
+  },
+  {
+    id: "manufacturing",
+    name: "Manufacturing",
+    cardHeading: "Manufacturing Operations",
+    description: "Plan production and execute shop-floor workflows with visibility across materials and output.",
+    icon: CpuChipIcon,
     color: "#f59e0b",
     features: [
-      { name: "Ticket intake from email, forms, and chat", icon: ChatBubbleLeftRightIcon },
-      { name: "Priority, status, and queue management", icon: QueueListIcon },
-      { name: "Assignment rules and ownership handoff", icon: UserGroupIcon },
-      { name: "CSAT capture and resolution analytics", icon: Squares2X2Icon },
+      { name: "Bills of materials and routings", icon: BuildingLibraryIcon },
+      { name: "Work order scheduling and capacity planning", icon: CalendarIcon },
+      { name: "WIP tracking and production statuses", icon: Squares2X2Icon },
+      { name: "Quality checks and nonconformance logs", icon: ShieldCheckIcon },
     ],
   },
   {
-    id: "reporting-analytics-forecasting",
-    name: "Reporting",
-    cardHeading: "Reporting & Forecasting",
-    description:
-      "Turn CRM data into actionable insights for leadership, revenue planning, and team coaching.",
-    icon: QueueListIcon,
+    id: "people",
+    name: "People",
+    cardHeading: "HR and Payroll",
+    description: "Support core people operations including employee records, approvals, and payroll workflows.",
+    icon: UserGroupIcon,
     color: "#ec4899",
     features: [
-      { name: "Dashboards for pipeline, revenue, and activities", icon: Squares2X2Icon },
-      { name: "Custom reports with filters and groupings", icon: ClipboardDocumentListIcon },
-      { name: "Quota tracking and attainment views", icon: TagIcon },
-      { name: "Forecast rollups by team and region", icon: BuildingLibraryIcon },
+      { name: "Employee profiles and org structure", icon: UserCircleIcon },
+      { name: "Leave, attendance, and policy workflows", icon: CalendarIcon },
+      { name: "Payroll calculations and approvals", icon: DocumentCurrencyDollarIcon },
+      { name: "Role permissions and audit trails", icon: LockClosedIcon },
     ],
   },
   {
-    id: "integrations-ecosystem",
-    name: "Integrations",
-    cardHeading: "Integrations & Ecosystem",
-    description:
-      "Connect CRM workflows to your stack so data stays in sync across sales, marketing, support, and finance.",
-    icon: ArrowsRightLeftIcon,
+    id: "analytics-integrations",
+    name: "Analytics",
+    cardHeading: "Analytics and Integrations",
+    description: "Unify ERP data with dashboards and external systems to drive better decisions.",
+    icon: SparklesIcon,
     color: "#0ea5e9",
     features: [
-      { name: "REST API and webhook event framework", icon: ArrowsRightLeftIcon },
-      { name: "Marketing automation and ad platform sync", icon: SparklesIcon },
-      { name: "Billing and invoicing system connections", icon: CreditCardIcon },
-      { name: "Data mapping and bi-directional sync controls", icon: ArrowPathIcon },
-      { name: "Error handling and retry logic", icon: ShieldCheckIcon },
+      { name: "Executive dashboards and KPI scorecards", icon: Squares2X2Icon },
+      { name: "Ad hoc reports and drill-down filters", icon: MagnifyingGlassIcon },
+      { name: "APIs and webhooks for external systems", icon: ArrowsRightLeftIcon },
+      { name: "ETL syncs with retries and alerts", icon: ChatBubbleLeftRightIcon },
     ],
   },
 ];
 
-export function CrmTypesSection() {
+export function ErpTypesSection() {
   return (
     <div id="marketplace-types" className="scroll-mt-[88px]">
       <SampleProducts
         bgColor="bg-white"
-        products={CRM_TYPES_PRODUCTS}
+        products={ERP_FEATURES}
         label="COMMON FEATURES"
-        title="CRM features we specialize in"
-        description="From user management to billing, AI, and integrations-we build the core capabilities that make modern CRM products work. Choose what you need and we'll implement it."
+        title="ERP features we specialize in"
+        description="From finance to operations, inventory, and integrations-we build ERP capabilities around your exact business workflows."
         leftColumnClassName="lg:col-span-3"
         rightColumnClassName="lg:col-span-9"
       />
@@ -442,37 +396,27 @@ export function CrmTypesSection() {
 const LAUNCHPAD_BULLETS = [
   "You own it, no license fees",
   "A lean team to get you started",
-  "AI-powered scoping to define your marketplace and get a quote",
-  "Base features include search, payments, reviews, and more",
+  "AI-powered scoping to define your ERP product and get a quote",
+  "Base modules include workflows, permissions, and reporting",
   "Standard UX/UI with your colors, logo, and branding applied",
-  "Customizations and add-ons based on what your marketplace needs",
+  "Customizations and add-ons based on your operations",
 ];
 
 const AGENCY_BULLETS = [
   "You own it, no license fees",
   "A full team of product, design, and development experts",
   "Custom discovery and scoping process",
-  "Strategic input on marketplace model and mechanics",
+  "Strategic input on ERP architecture and rollout",
   "Custom UX/UI design",
   "Complex or unique workflows",
 ];
 
 const PRICING_PLANS = [
-  {
-    name: "Launchpad",
-    price: "$5k+",
-    subtitle: "Start from a template and make it your own",
-    bullets: LAUNCHPAD_BULLETS,
-  },
-  {
-    name: "Agency",
-    price: "$20k+",
-    subtitle: "Build anything that fits your needs",
-    bullets: AGENCY_BULLETS,
-  },
+  { name: "Launchpad", price: "$5k+", subtitle: "Start from a template and make it your own", bullets: LAUNCHPAD_BULLETS },
+  { name: "Agency", price: "$20k+", subtitle: "Build anything that fits your needs", bullets: AGENCY_BULLETS },
 ];
 
-export function CrmPricingSection() {
+export function ErpPricingSection() {
   return (
     <section id="pricing" className="scroll-mt-[88px] py-20 md:py-28 bg-[#F6F9FC]">
       <div className="max-w-[1200px] mx-auto px-6">
@@ -527,7 +471,7 @@ export function CrmPricingSection() {
   );
 }
 
-export const CRM_CASE_SLIDES = [
+export const ERP_CASE_SLIDES = [
   {
     id: "playground",
     company: "Playground IEP",
@@ -552,7 +496,8 @@ export const CRM_CASE_SLIDES = [
     heading: "How Airdev helped the consultancy Consenna build a custom no-code marketplace for HP for Education to serve 30k schools across the UK",
     description: "",
     image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/635076a5905dd76065955f2c_hp-s%20(1).png",
-    imageTitle: "How Airdev helped the consultancy Consenna build a custom no-code marketplace for HP for Education to serve 30k schools across the UK",
+    imageTitle:
+      "How Airdev helped the consultancy Consenna build a custom no-code marketplace for HP for Education to serve 30k schools across the UK",
     customFields: [
       { label: "Business type", value: "Enterprise", color: "#635bff" },
       { label: "Product type", value: "Custom marketplace", color: "#00d4ff" },
@@ -568,7 +513,8 @@ export const CRM_CASE_SLIDES = [
     heading: "How Airdev helped Kidsbook build a custom no-code marketplace in just 6 weeks to connect parents with kids activity providers",
     description: "",
     image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/635075037ab429484ab21afb_kidsbook%20(2).png",
-    imageTitle: "How Airdev helped Kidsbook build a custom no-code marketplace in just 6 weeks to connect parents with kids activity providers",
+    imageTitle:
+      "How Airdev helped Kidsbook build a custom no-code marketplace in just 6 weeks to connect parents with kids activity providers",
     customFields: [
       { label: "Business type", value: "Startup", color: "#635bff" },
       { label: "Product type", value: "2-sided marketplace", color: "#00d4ff" },
