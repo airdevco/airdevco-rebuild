@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, type ReactNode } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   SparklesIcon,
@@ -135,10 +135,13 @@ interface SampleProductsProps {
   bgColor?: string;
   products?: Product[];
   label?: string;
-  title?: string;
+  /** Plain string or JSX (e.g. line breaks) */
+  title?: ReactNode;
   description?: string;
   descriptionMaxWidth?: string;
   titleMaxWidth?: string;
+  /** Extra classes for the section title `h2` (e.g. `leading-snug` for multi-line titles) */
+  titleClassName?: string;
   /** Heading above the feature list (default: "Included features:") */
   featuresHeading?: string;
   leftColumnClassName?: string;
@@ -153,6 +156,7 @@ export const SampleProducts = ({
   description = "From simple tools to complex platforms, we've built SaaS products across dozens of industries. Here are some of the most common types.",
   descriptionMaxWidth,
   titleMaxWidth,
+  titleClassName,
   featuresHeading = "Included features:",
   leftColumnClassName,
   rightColumnClassName,
@@ -229,7 +233,7 @@ export const SampleProducts = ({
             {label}
           </span>
           <h2 
-            className="text-[48px] font-semibold tracking-tight leading-none text-[#1a1a1a] mb-6"
+            className={titleClassName ?? "text-[48px] font-semibold tracking-tight leading-none text-[#1a1a1a] mb-6"}
             style={titleMaxWidth ? { maxWidth: titleMaxWidth } : undefined}
           >
             {title}

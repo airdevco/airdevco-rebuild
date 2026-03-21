@@ -525,51 +525,27 @@ export function AiChatbotPricingSection() {
 
 export const AI_CHATBOT_CASE_SLIDES = [
   {
-    id: "playground",
-    company: "Playground IEP",
-    logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447131162x922542988700125000/playground.png",
+    id: "thehair",
+    company: "TheHair.App",
+    logo: "https://thehair.app/icon-512.png",
     logoText: "",
-    heading: "How Airdev helped Playground IEP create a special education caseload management tool for schools",
+    heading:
+      "How TheHair.App used Airdev's freelance Bubble talent to maintain and integrate AI features on a budget",
     description: "",
-    image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/63b8851d340bdc19030b55b3_adam-winger-7fF0iei80AQ-unsplash%205-p-3200.jpg",
-    imageTitle: "How Airdev helped Playground IEP create a special education caseload management tool for schools",
+    image:
+      "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/6629510c964641f9de1e196d_The%20Hair%20App-No-Code-AI-Airdev%20(1).jpg",
+    imageTitle:
+      "How TheHair.App used Airdev's freelance Bubble talent to maintain and integrate AI features on a budget",
     customFields: [
       { label: "Business type", value: "Startup", color: "#635bff" },
-      { label: "Product type", value: "Internal management portal", color: "#00d4ff" },
-      { label: "Timeline", value: "3 months", color: "#a960ee" },
-      { label: "Key results", value: "5 pilot schools signed up in <1 year", color: "#ff6b6b" },
-    ],
-  },
-  {
-    id: "consenna",
-    company: "HP",
-    logo: "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/669a98f0f9d898fd7a42ee37_hp.webp",
-    logoText: "",
-    heading: "How Airdev helped the consultancy Consenna build a custom no-code marketplace for HP for Education to serve 30k schools across the UK",
-    description: "",
-    image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/635076a5905dd76065955f2c_hp-s%20(1).png",
-    imageTitle: "How Airdev helped the consultancy Consenna build a custom no-code marketplace for HP for Education to serve 30k schools across the UK",
-    customFields: [
-      { label: "Business type", value: "Enterprise", color: "#635bff" },
-      { label: "Product type", value: "Custom marketplace", color: "#00d4ff" },
-      { label: "Timeline", value: "3 months", color: "#a960ee" },
-      { label: "Key results", value: "30k schools served", color: "#ff6b6b" },
-    ],
-  },
-  {
-    id: "kidsbook",
-    company: "Kidsbook",
-    logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1768940559825x362227103494313200/kidsbook.png",
-    logoText: "",
-    heading: "How Airdev helped Kidsbook build a custom no-code marketplace in just 6 weeks to connect parents with kids activity providers",
-    description: "",
-    image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/635075037ab429484ab21afb_kidsbook%20(2).png",
-    imageTitle: "How Airdev helped Kidsbook build a custom no-code marketplace in just 6 weeks to connect parents with kids activity providers",
-    customFields: [
-      { label: "Business type", value: "Startup", color: "#635bff" },
-      { label: "Product type", value: "2-sided marketplace", color: "#00d4ff" },
-      { label: "Timeline", value: "6 weeks", color: "#a960ee" },
-      { label: "Key results", value: "1000+ providers signed up", color: "#ff6b6b" },
+      { label: "Product type", value: "AI App", color: "#00d4ff" },
+      { label: "Timeline", value: "Ongoing (Flex)", color: "#a960ee" },
+      {
+        label: "Key results",
+        value:
+          "141% increase in salon-facing treatments; 70% boost in hair care sales among salons using the app",
+        color: "#ff6b6b",
+      },
     ],
   },
 ];

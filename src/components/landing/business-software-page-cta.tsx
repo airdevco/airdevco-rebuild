@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 
-interface HrManagementCTAProps {
+interface BusinessSoftwareCTAProps {
   title?: string;
   description?: string;
   buttonText?: string;
@@ -8,13 +8,13 @@ interface HrManagementCTAProps {
   variant?: "dark" | "light";
 }
 
-export const HrManagementCTA = ({
-  title = "Have an HR management product in mind?",
+export const BusinessSoftwareCTA = ({
+  title = "Have a business software product in mind?",
   description = "We're happy to talk through it, even if you're just exploring.",
   buttonText = "Talk to us",
   buttonLink = "#",
   variant = "dark",
-}: HrManagementCTAProps = {}) => {
+}: BusinessSoftwareCTAProps = {}) => {
   const isLight = variant === "light";
 
   return (

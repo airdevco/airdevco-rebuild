@@ -24,6 +24,8 @@ export const ROUTES = {
   QUOTING_SOFTWARE: "/quoting",
   /** Dedicated HR management software landing (edit hr-management-* components only) */
   HR_MANAGEMENT: "/hr-management",
+  /** Business software overview (edit business-software-* components only) */
+  BUSINESS_SOFTWARE: "/business-software",
   /** Dedicated ERP landing clone for enterprise resource planning */
   ERP: "/erp",
   /** Dedicated LMS landing for learning management systems */

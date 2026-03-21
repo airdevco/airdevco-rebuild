@@ -62,6 +62,7 @@ import AiChatbotLanding from "./views/AiChatbotLanding";
 import OrderManagementLanding from "./views/OrderManagementLanding";
 import QuotingSoftwareLanding from "./views/QuotingSoftwareLanding";
 import HrManagementLanding from "./views/HrManagementLanding";
+import BusinessSoftwareLanding from "./views/BusinessSoftwareLanding";
 import ErpLanding from "./views/ErpLanding";
 import LmsLanding from "./views/LmsLanding";
 import MvpLanding from "./views/MvpLanding";
@@ -105,6 +106,7 @@ const AppContent = () => {
         <Route path={ROUTES.ORDER_MANAGEMENT} element={<OrderManagementLanding />} />
         <Route path={ROUTES.QUOTING_SOFTWARE} element={<QuotingSoftwareLanding />} />
         <Route path={ROUTES.HR_MANAGEMENT} element={<HrManagementLanding />} />
+        <Route path={ROUTES.BUSINESS_SOFTWARE} element={<BusinessSoftwareLanding />} />
         <Route path={ROUTES.ERP} element={<ErpLanding />} />
         <Route path={ROUTES.LMS} element={<LmsLanding />} />
         <Route path={ROUTES.MVP} element={<MvpLanding />} />

@@ -11,6 +11,7 @@ const EXPLICIT_NEXT_PATHS = new Set([
   "/order-management",
   "/quoting",
   "/hr-management",
+  "/business-software",
   "/erp",
   "/lms",
   "/mvp",

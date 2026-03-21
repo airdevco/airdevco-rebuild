@@ -39,20 +39,23 @@ const MARKETPLACE_HERO_BLUR_BG =
 
 const REF_SCREEN_INDEX = 2;
 
+/** 1-based positions: use contain fit so wide shots aren’t cropped on the sides (cells stay same size). */
+const HR_HERO_CONTAIN_POSITIONS = new Set([2, 4, 7]);
+
 function viewportScreenshotMaxHeightPx(): number {
   if (typeof window === "undefined") return 560;
   return Math.min(560, window.innerHeight * 0.52);
 }
 
 const SCREENSHOT_IMAGES = [
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774003634701x879766162137330700/crm1.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774003908084x260139809298654660/crm2.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774004197559x467922203402921340/crm3.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774005933680x578642353117870200/crm4.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774006421831x791000213883669600/crm5.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774007591255x876566308167353000/crm8.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774006826054x168358695871838370/crm7.webp",
-  "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1772587812851x876454729909677400/flowline.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774054033098x699619459934287400/hr6.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774054070321x256633132397210620/hr5.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774054046829x558484248441124100/hr4.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774054100011x288453152424763560/hr7.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774054114721x308166416807831320/hr3.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774054057434x544872451618817500/hr1.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774054125617x468438422333223900/hr2.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774054083761x407345325527936700/hr8.webp",
 ];
 
 export function HrManagementLandingHero() {
@@ -153,7 +156,9 @@ export function HrManagementLandingHero() {
 
       <div className="relative z-10 mt-14 w-full max-w-[min(1920px,calc(100vw-1.25rem))] 2xl:max-w-[min(2000px,calc(100vw-2rem))] mx-auto px-3 sm:px-5 lg:px-8">
         <div className="grid w-full grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5">
-          {SCREENSHOT_IMAGES.map((src, i) => (
+          {SCREENSHOT_IMAGES.map((src, i) => {
+            const useContain = HR_HERO_CONTAIN_POSITIONS.has(i + 1);
+            return (
             <figure
               key={src}
               className="rounded-[8px] overflow-hidden border border-slate-200/80 bg-slate-50/70 shadow-sm min-w-0 block"
@@ -166,13 +171,18 @@ export function HrManagementLandingHero() {
                 onLoad={i === REF_SCREEN_INDEX ? recalcShotHeight : undefined}
                 className={
                   unifiedShotHeight
-                    ? "w-full h-full min-h-0 object-cover object-top"
-                    : "w-full h-auto max-h-[min(560px,52vh)] object-contain object-top"
+                    ? useContain
+                      ? "w-full h-full min-h-0 object-contain object-center"
+                      : "w-full h-full min-h-0 object-cover object-top"
+                    : useContain
+                      ? "w-full h-auto max-h-[min(560px,52vh)] object-contain object-center"
+                      : "w-full h-auto max-h-[min(560px,52vh)] object-contain object-top"
                 }
                 loading={i < 2 ? "eager" : "lazy"}
               />
             </figure>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
@@ -428,7 +438,13 @@ export function HrManagementTypesSection() {
         bgColor="bg-white"
         products={HR_MANAGEMENT_FEATURES}
         label="COMMON FEATURES"
-        title="HR management features we specialize in"
+        title={
+          <>
+            <span className="block">HR management features</span>
+            <span className="block mt-2">we specialize in</span>
+          </>
+        }
+        titleClassName="text-[clamp(1.75rem,4vw,3rem)] font-semibold tracking-tight leading-[1.15] text-[#1a1a1a] mb-6 w-max max-w-full"
         description="From employee records and time off to performance, recruiting, and compliance—we build the capabilities modern HR products need. Choose what you need and we'll implement it."
         leftColumnClassName="lg:col-span-3"
         rightColumnClassName="lg:col-span-9"
@@ -527,51 +543,63 @@ export function HrManagementPricingSection() {
 
 export const HR_MANAGEMENT_CASE_SLIDES = [
   {
-    id: "playground",
-    company: "Playground IEP",
-    logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447131162x922542988700125000/playground.png",
+    id: "camphire",
+    company: "CampHire",
+    logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1768941053053x498298402804590460/camphire.png",
     logoText: "",
-    heading: "How Airdev helped Playground IEP create a special education caseload management tool for schools",
+    heading:
+      "How Airdev helped CampHire automate their recruitment agency via a self-service marketplace platform",
     description: "",
-    image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/63b8851d340bdc19030b55b3_adam-winger-7fF0iei80AQ-unsplash%205-p-3200.jpg",
-    imageTitle: "How Airdev helped Playground IEP create a special education caseload management tool for schools",
+    image: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1768941145859x368793998371030460/camp.jpg",
+    imageTitle:
+      "How Airdev helped CampHire automate their recruitment agency via a self-service marketplace platform",
     customFields: [
-      { label: "Business type", value: "Startup", color: "#635bff" },
-      { label: "Product type", value: "Internal management portal", color: "#00d4ff" },
+      { label: "Business type", value: "SMB", color: "#635bff" },
+      { label: "Product type", value: "Marketplace platform", color: "#00d4ff" },
       { label: "Timeline", value: "3 months", color: "#a960ee" },
-      { label: "Key results", value: "5 pilot schools signed up in <1 year", color: "#ff6b6b" },
+      {
+        label: "Key results",
+        value: "30+ camp and 250+ candidate sign ups in just 1 month since launch",
+        color: "#ff6b6b",
+      },
     ],
   },
   {
-    id: "consenna",
-    company: "HP",
-    logo: "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/669a98f0f9d898fd7a42ee37_hp.webp",
+    id: "tfa",
+    company: "Teach for America",
+    logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447145612x608821623632928600/tfa.png",
     logoText: "",
-    heading: "How Airdev helped the consultancy Consenna build a custom no-code marketplace for HP for Education to serve 30k schools across the UK",
+    heading:
+      "How Airdev helped Teach for America build a custom no-code internal hub with Bubble to support corps members across their journey",
     description: "",
-    image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/635076a5905dd76065955f2c_hp-s%20(1).png",
-    imageTitle: "How Airdev helped the consultancy Consenna build a custom no-code marketplace for HP for Education to serve 30k schools across the UK",
+    image:
+      "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/635075d6712da824635efa1d_tfa%20(1).jpeg",
+    imageTitle:
+      "How Airdev helped Teach for America build a custom no-code internal hub with Bubble to support corps members across their journey",
     customFields: [
-      { label: "Business type", value: "Enterprise", color: "#635bff" },
-      { label: "Product type", value: "Custom marketplace", color: "#00d4ff" },
-      { label: "Timeline", value: "3 months", color: "#a960ee" },
-      { label: "Key results", value: "30k schools served", color: "#ff6b6b" },
+      { label: "Business type", value: "National nonprofit", color: "#635bff" },
+      { label: "Product type", value: "Internal hub", color: "#00d4ff" },
+      { label: "Timeline", value: "4 weeks", color: "#a960ee" },
+      { label: "Key results", value: "Ability to manage the organization at scale", color: "#ff6b6b" },
     ],
   },
   {
-    id: "kidsbook",
-    company: "Kidsbook",
-    logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1768940559825x362227103494313200/kidsbook.png",
+    id: "inspo",
+    company: "inspo",
+    logo: "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774055287164x846008194225493400/inspo.png",
     logoText: "",
-    heading: "How Airdev helped Kidsbook build a custom no-code marketplace in just 6 weeks to connect parents with kids activity providers",
+    heading:
+      "How Airdev helped inspo build a custom platform connecting students from all backgrounds to professional mentors",
     description: "",
-    image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/635075037ab429484ab21afb_kidsbook%20(2).png",
-    imageTitle: "How Airdev helped Kidsbook build a custom no-code marketplace in just 6 weeks to connect parents with kids activity providers",
+    image:
+      "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/63c088ec34adb07dcea369a4_desola-lanre-ologun-IgUR1iX0mqM-unsplash%20(1)%20(1).jpg",
+    imageTitle:
+      "How Airdev helped inspo build a custom platform connecting students from all backgrounds to professional mentors",
     customFields: [
       { label: "Business type", value: "Startup", color: "#635bff" },
-      { label: "Product type", value: "2-sided marketplace", color: "#00d4ff" },
-      { label: "Timeline", value: "6 weeks", color: "#a960ee" },
-      { label: "Key results", value: "1000+ providers signed up", color: "#ff6b6b" },
+      { label: "Product type", value: "Student mentoring platform", color: "#00d4ff" },
+      { label: "Timeline", value: "3 months", color: "#a960ee" },
+      { label: "Key results", value: "10 paying company customers in less than a year", color: "#ff6b6b" },
     ],
   },
 ];

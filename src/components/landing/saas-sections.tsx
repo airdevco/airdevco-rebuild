@@ -611,51 +611,64 @@ export function MarketplacePricingSection() {
 
 export const SAAS_MARKETPLACE_CASE_SLIDES = [
   {
+    id: "bubble",
+    company: "Tributi",
+    logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766777935802x342363134894177340/tributi.png",
+    logoText: "VC funded",
+    heading:
+      "How Airdev helped Tributi build a tax management software for Latin America in just 5 weeks using the no-code tool Bubble",
+    description: "",
+    image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/63507625712da8bcd35f011e_tributi.jpeg",
+    imageTitle:
+      "How Airdev helped Tributi build a tax management software for Latin America in just 5 weeks using the no-code tool Bubble",
+    customFields: [
+      { label: "Business type", value: "SMB", color: "#635bff" },
+      { label: "Product type", value: "Tax management software", color: "#00d4ff" },
+      { label: "Timeline", value: "5 weeks", color: "#a960ee" },
+      {
+        label: "Key results",
+        value: "Supported 20k daily users and launched a successful YCombinator bid",
+        color: "#ff6b6b",
+      },
+    ],
+  },
+  {
+    id: "cerebro",
+    company: "Cerebro Sports",
+    logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447113960x777797950241704700/cerebro.png",
+    logoText: "Mark Cuban-funded",
+    heading: "How a Mark Cuban-funded startup upgraded spreadsheets to a scaling product with no-code",
+    description: "",
+    image:
+      "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/64eced7d1af330bc878905e9_Cerebro_Airdev_no_code-app-build.jpg",
+    imageTitle: "How a Mark Cuban-funded startup upgraded spreadsheets to a scaling product with no-code",
+    customFields: [
+      { label: "Business type", value: "Startup", color: "#635bff" },
+      { label: "Product type", value: "Analytics Platform", color: "#00d4ff" },
+      { label: "Timeline", value: "2 months", color: "#a960ee" },
+      {
+        label: "Key results",
+        value: "A pre-seed fundraising round led by Mark Cuban to help scale internal data operations",
+        color: "#ff6b6b",
+      },
+    ],
+  },
+  {
     id: "playground",
-    company: "Playground IEP",
-    logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447131162x922542988700125000/playground.png",
+    company: "My NFT Alerts",
+    logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766777953165x204069526181363420/mynftalerts.png",
     logoText: "",
-    heading: "How Airdev helped Playground IEP create a special education caseload management tool for schools",
+    heading:
+      "How Airdev helped My NFT Alerts build a custom no-code platform on Bubble for NFT holders to track, trade and set personalized floor price alerts",
     description: "",
-    image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/63b8851d340bdc19030b55b3_adam-winger-7fF0iei80AQ-unsplash%205-p-3200.jpg",
-    imageTitle: "How Airdev helped Playground IEP create a special education caseload management tool for schools",
+    image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/635079364569b5471f0fc12d_nft.jpeg",
+    imageTitle:
+      "How Airdev helped My NFT Alerts build a custom no-code platform on Bubble for NFT holders to track, trade and set personalized floor price alerts",
     customFields: [
       { label: "Business type", value: "Startup", color: "#635bff" },
-      { label: "Product type", value: "Internal management portal", color: "#00d4ff" },
-      { label: "Timeline", value: "3 months", color: "#a960ee" },
-      { label: "Key results", value: "5 pilot schools signed up in <1 year", color: "#ff6b6b" },
-    ],
-  },
-  {
-    id: "consenna",
-    company: "HP",
-    logo: "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/669a98f0f9d898fd7a42ee37_hp.webp",
-    logoText: "",
-    heading: "How Airdev helped the consultancy Consenna build a custom no-code marketplace for HP for Education to serve 30k schools across the UK",
-    description: "",
-    image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/635076a5905dd76065955f2c_hp-s%20(1).png",
-    imageTitle: "How Airdev helped the consultancy Consenna build a custom no-code marketplace for HP for Education to serve 30k schools across the UK",
-    customFields: [
-      { label: "Business type", value: "Enterprise", color: "#635bff" },
-      { label: "Product type", value: "Custom marketplace", color: "#00d4ff" },
-      { label: "Timeline", value: "3 months", color: "#a960ee" },
-      { label: "Key results", value: "30k schools served", color: "#ff6b6b" },
-    ],
-  },
-  {
-    id: "kidsbook",
-    company: "Kidsbook",
-    logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1768940559825x362227103494313200/kidsbook.png",
-    logoText: "",
-    heading: "How Airdev helped Kidsbook build a custom no-code marketplace in just 6 weeks to connect parents with kids activity providers",
-    description: "",
-    image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/635075037ab429484ab21afb_kidsbook%20(2).png",
-    imageTitle: "How Airdev helped Kidsbook build a custom no-code marketplace in just 6 weeks to connect parents with kids activity providers",
-    customFields: [
-      { label: "Business type", value: "Startup", color: "#635bff" },
-      { label: "Product type", value: "2-sided marketplace", color: "#00d4ff" },
+      { label: "Product type", value: "Portfolio tracking app", color: "#00d4ff" },
       { label: "Timeline", value: "6 weeks", color: "#a960ee" },
-      { label: "Key results", value: "1000+ providers signed up", color: "#ff6b6b" },
+      { label: "Key results", value: "Rapid user adoption", color: "#ff6b6b" },
     ],
   },
 ];

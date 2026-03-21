@@ -1066,7 +1066,7 @@ const Footer = () => {
         </div>
         
         <div className="pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-gray-500 text-sm">© 2025 Airdev, Inc. All rights reserved.</p>
+          <p className="text-gray-500 text-sm">© 2026 Airdev, Inc. All rights reserved.</p>
           <div className="flex items-center gap-6 text-gray-500">
             <a href="#" className="hover:text-gray-900"><Facebook className="w-5 h-5" /></a>
             <a href="#" className="hover:text-gray-900"><Twitter className="w-5 h-5" /></a>

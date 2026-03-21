@@ -2,21 +2,22 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
-  ArrowsRightLeftIcon,
+  AcademicCapIcon,
   ArrowPathIcon,
+  ArrowsRightLeftIcon,
   BuildingLibraryIcon,
+  BuildingOffice2Icon,
+  CalendarIcon,
   ChartBarIcon,
   ClipboardDocumentListIcon,
+  ClockIcon,
   CpuChipIcon,
-  CreditCardIcon,
+  CubeIcon,
   DocumentCurrencyDollarIcon,
   DocumentTextIcon,
-  LockClosedIcon,
-  QueueListIcon,
   ShieldCheckIcon,
-  SparklesIcon,
   Squares2X2Icon,
-  TagIcon,
+  TruckIcon,
   UserCircleIcon,
   UserGroupIcon,
   CheckIcon,
@@ -25,7 +26,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { SampleProducts, type Product } from "@/components/landing/sample-products";
 
-const QUOTING_SOFTWARE_PRIMARY_BTN =
+const BUSINESS_SOFTWARE_PRIMARY_BTN =
   "bg-[#1265EF] text-white hover:bg-[#0d4fc7] active:bg-[#0a3fa3] rounded-[6px] px-5 pb-2 pt-2.5 text-[16px] font-medium transition-all leading-none";
 
 const scrollToContact = () => {
@@ -43,17 +44,17 @@ function viewportScreenshotMaxHeightPx(): number {
 }
 
 const SCREENSHOT_IMAGES = [
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774050422476x557133732974576700/q8.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774050433511x814832470807188700/q5.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774050445483x259722489043093600/q7.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774050483517x719614821827469400/q4.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774050459781x422097661627461200/q1.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774003634701x879766162137330700/crm1.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774008740758x320185903005129500/erp4.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774006421831x791000213883669600/crm5.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774013192856x358933448342948300/im3.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774048250107x959370001371412900/oms7.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774054070321x256633132397210620/hr5.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774008608194x406872501874940160/erp3.webp",
   "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774050494776x473908601739836860/q3.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774050470690x359861208296819600/q6.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774050508453x845116759419775100/q2.webp",
 ];
 
-export function QuotingSoftwareLandingHero() {
+export function BusinessSoftwareLandingHero() {
   const [unifiedShotHeight, setUnifiedShotHeight] = useState<number | null>(null);
   const referenceImgRef = useRef<HTMLImageElement>(null);
 
@@ -133,16 +134,16 @@ export function QuotingSoftwareLandingHero() {
       <div className="relative z-10 max-w-[1200px] mx-auto px-6">
         <div className="max-w-5xl mx-auto text-center">
           <h1 className="text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[3.5rem] xl:text-[4.5rem] 2xl:text-[5rem] leading-[1.05] font-semibold tracking-[-0.03em] text-gray-900 mb-6 sm:mb-8">
-            The smarter way to launch your quoting software
+            The smarter way to launch your business software
           </h1>
 
           <p className="text-base sm:text-lg lg:text-xl text-gray-600 mb-8 leading-relaxed max-w-2xl mx-auto">
-            We use a new approach to help entrepreneurs launch quoting software, for a fraction of cost and time of
-            traditional development.
+            We use a new approach to help entrepreneurs launch CRM, ERP, operations, and people software you own, for
+            a fraction of the cost and time of traditional development.
           </p>
 
           <div className="mt-8">
-            <Button type="button" className={QUOTING_SOFTWARE_PRIMARY_BTN} onClick={scrollToContact}>
+            <Button type="button" className={BUSINESS_SOFTWARE_PRIMARY_BTN} onClick={scrollToContact}>
               Talk to Us
             </Button>
           </div>
@@ -160,7 +161,7 @@ export function QuotingSoftwareLandingHero() {
               <img
                 ref={i === REF_SCREEN_INDEX ? referenceImgRef : undefined}
                 src={src}
-                alt={`Quoting software screenshot ${i + 1}`}
+                alt={`Business software screenshot ${i + 1}`}
                 onLoad={i === REF_SCREEN_INDEX ? recalcShotHeight : undefined}
                 className={
                   unifiedShotHeight
@@ -229,7 +230,7 @@ function CellContent({
   );
 }
 
-export function QuotingSoftwareWhyAirdev() {
+export function BusinessSoftwareWhyAirdev() {
   const lastIdx = COMPARISON_ROWS.length - 1;
   return (
     <section id="why-airdev" className="scroll-mt-[88px] py-20 md:py-28" style={{ backgroundColor: SECTION_BG }}>
@@ -239,8 +240,8 @@ export function QuotingSoftwareWhyAirdev() {
           Fast and flexible
         </h2>
         <p className="text-lg text-[#425466] text-center max-w-2xl mx-auto mb-12 md:mb-14 leading-relaxed">
-          Generic quoting tools are fast but rigid. Custom builds take forever. We help you ship quoting software you
-          own, with the flexibility your sales motion needs.
+          Off-the-shelf suites are fast but inflexible. Custom agency builds drag on. We help you ship business software
+          you own, with the workflows and integrations your teams actually need.
         </p>
 
         <div className="overflow-x-auto w-full max-w-[1180px] mx-auto">
@@ -310,126 +311,124 @@ export function QuotingSoftwareWhyAirdev() {
   );
 }
 
-const QUOTING_SOFTWARE_FEATURES: Product[] = [
+const BUSINESS_SOFTWARE_FEATURES: Product[] = [
   {
-    id: "quote-builder",
-    name: "Quotes",
-    cardHeading: "Quote builder & document flow",
+    id: "crm",
+    name: "CRM",
+    cardHeading: "Customer relationship management (CRM)",
     description:
-      "Create structured quotes with line items, optional sections, and revision history so reps and buyers stay aligned.",
-    icon: DocumentTextIcon,
+      "Software for sales and account teams to manage leads, contacts, accounts, and opportunities—so revenue and support stay aligned on every relationship.",
+    icon: UserGroupIcon,
     color: "#1265EF",
     features: [
-      { name: "Line items, bundles, and optional add-ons", icon: ClipboardDocumentListIcon },
-      { name: "Templates, merge fields, and branded proposals", icon: DocumentTextIcon },
-      { name: "Versioning, comments, and internal notes", icon: ArrowPathIcon },
-      { name: "Multi-currency and tax display hooks", icon: DocumentCurrencyDollarIcon },
+      { name: "Lead, contact, and account records", icon: UserCircleIcon },
+      { name: "Pipeline, stages, and forecasting", icon: Squares2X2Icon },
+      { name: "Activities, tasks, and email integration", icon: CalendarIcon },
+      { name: "Reporting and dashboards", icon: ChartBarIcon },
     ],
   },
   {
-    id: "catalog-pricing",
-    name: "Catalog",
-    cardHeading: "Products, SKUs & price books",
+    id: "erp",
+    name: "ERP",
+    cardHeading: "Enterprise resource planning (ERP)",
     description:
-      "Maintain catalogs and commercial terms so quotes pull accurate SKUs, units, and list prices every time.",
-    icon: TagIcon,
+      "A unified system for finance, operations, and resource planning—so leadership sees one version of the truth across entities and departments.",
+    icon: BuildingLibraryIcon,
     color: "#06b6d4",
     features: [
-      { name: "Product families, SKUs, and attributes", icon: TagIcon },
-      { name: "Price books by segment, region, or channel", icon: Squares2X2Icon },
-      { name: "Tiered and volume-based pricing", icon: DocumentCurrencyDollarIcon },
-      { name: "Effective-dated price changes", icon: ArrowPathIcon },
+      { name: "General ledger and financial close", icon: DocumentCurrencyDollarIcon },
+      { name: "Procurement, AP, and vendor records", icon: ClipboardDocumentListIcon },
+      { name: "Projects, costing, and inventory linkage", icon: Squares2X2Icon },
+      { name: "Multi-entity and approval workflows", icon: ShieldCheckIcon },
     ],
   },
   {
-    id: "discounts-rules",
-    name: "Rules",
-    cardHeading: "Discounts, margin & guardrails",
+    id: "inventory-management",
+    name: "Inventory",
+    cardHeading: "Inventory management",
     description:
-      "Apply discounts and commercial rules with visibility into margin so deals stay profitable and compliant.",
-    icon: ShieldCheckIcon,
+      "Track stock, locations, and movements so you know what you can sell, fulfill, or build—without spreadsheet chaos.",
+    icon: CubeIcon,
     color: "#a855f7",
     features: [
-      { name: "Discount caps and approval thresholds", icon: ShieldCheckIcon },
-      { name: "Coupon codes and promotional windows", icon: TagIcon },
-      { name: "Floor price and margin alerts", icon: DocumentCurrencyDollarIcon },
-      { name: "Role-based edit permissions", icon: UserGroupIcon },
+      { name: "SKU, lot, and bin-level tracking", icon: CubeIcon },
+      { name: "Receiving, transfers, and adjustments", icon: ArrowsRightLeftIcon },
+      { name: "Safety stock and reorder signals", icon: ChartBarIcon },
+      { name: "Integrations with orders and ERP", icon: CpuChipIcon },
     ],
   },
   {
-    id: "cpq",
-    name: "CPQ",
-    cardHeading: "Configure, price, quote (CPQ)",
+    id: "order-management",
+    name: "Orders",
+    cardHeading: "Order management",
     description:
-      "Guide reps through valid configurations with rules that enforce compatibility, dependencies, and upsell logic.",
-    icon: CpuChipIcon,
+      "End-to-end order lifecycle from capture through fulfillment—so ops, finance, and customers see consistent status.",
+    icon: TruckIcon,
     color: "#10b981",
     features: [
-      { name: "Product configuration and constraints", icon: CpuChipIcon },
-      { name: "BOM or bill-of-materials rollups", icon: ClipboardDocumentListIcon },
-      { name: "Guided selling and recommendations", icon: SparklesIcon },
-      { name: "What-if scenarios before sending", icon: Squares2X2Icon },
+      { name: "Order capture, holds, and edits", icon: ClipboardDocumentListIcon },
+      { name: "Allocation and fulfillment", icon: TruckIcon },
+      { name: "Returns and exchanges", icon: ArrowPathIcon },
+      { name: "Notifications and customer portal hooks", icon: UserGroupIcon },
     ],
   },
   {
-    id: "approvals",
-    name: "Approvals",
-    cardHeading: "Workflows & approvals",
+    id: "quoting",
+    name: "Quoting",
+    cardHeading: "Quoting & CPQ",
     description:
-      "Route quotes for legal, finance, or leadership review with clear SLAs and audit trails.",
-    icon: QueueListIcon,
+      "Configure, price, and quote with catalogs and rules—so reps send accurate proposals and close faster.",
+    icon: DocumentTextIcon,
     color: "#f59e0b",
     features: [
-      { name: "Multi-step approval chains", icon: QueueListIcon },
-      { name: "Conditional routing by amount or territory", icon: ArrowsRightLeftIcon },
-      { name: "Delegation and out-of-office coverage", icon: UserGroupIcon },
-      { name: "Activity timeline on each quote", icon: ClipboardDocumentListIcon },
+      { name: "Quote builder and branded PDFs", icon: DocumentTextIcon },
+      { name: "Price books and catalogs", icon: DocumentCurrencyDollarIcon },
+      { name: "Discount rules and approvals", icon: ShieldCheckIcon },
+      { name: "E-sign and CRM or ERP handoff", icon: ArrowsRightLeftIcon },
     ],
   },
   {
-    id: "delivery-signing",
-    name: "Delivery",
-    cardHeading: "Delivery, PDF & e-sign",
+    id: "hr-management",
+    name: "HR",
+    cardHeading: "HR management",
     description:
-      "Send polished PDFs and collect signatures or acceptance so closed-won is clear and searchable.",
-    icon: LockClosedIcon,
+      "People operations for profiles, time off, and performance—so HR and managers can support employees without duct tape.",
+    icon: BuildingOffice2Icon,
     color: "#ec4899",
     features: [
-      { name: "Branded PDF and web-based quote views", icon: DocumentTextIcon },
-      { name: "E-signature and counter-sign flows", icon: LockClosedIcon },
-      { name: "Customer portal for review and acceptance", icon: UserCircleIcon },
-      { name: "Email delivery and open tracking hooks", icon: ArrowPathIcon },
+      { name: "Employee records and org structure", icon: UserCircleIcon },
+      { name: "PTO, attendance, and policies", icon: ClockIcon },
+      { name: "Onboarding and offboarding workflows", icon: ClipboardDocumentListIcon },
+      { name: "Reviews, goals, and compliance reporting", icon: ShieldCheckIcon },
     ],
   },
   {
-    id: "integrations-analytics",
-    name: "Stack",
-    cardHeading: "Integrations & analytics",
+    id: "lms",
+    name: "LMS",
+    cardHeading: "Learning management (LMS)",
     description:
-      "Sync quotes with CRM, ERP, and billing so pipeline, revenue, and fulfillment stay aligned.",
-    icon: ArrowsRightLeftIcon,
+      "Deliver courses, track progress, and certify learners—whether for customers, partners, or employees.",
+    icon: AcademicCapIcon,
     color: "#0ea5e9",
     features: [
-      { name: "CRM opportunity and account sync", icon: ArrowsRightLeftIcon },
-      { name: "ERP or billing handoff for won deals", icon: CreditCardIcon },
-      { name: "REST APIs, webhooks, and events", icon: CpuChipIcon },
-      { name: "Quote conversion, win rate, and cycle-time reports", icon: ChartBarIcon },
-      { name: "Exports and BI connectors", icon: BuildingLibraryIcon },
+      { name: "Courses, modules, and learning paths", icon: AcademicCapIcon },
+      { name: "Assessments and certificates", icon: DocumentTextIcon },
+      { name: "Progress tracking and reminders", icon: ChartBarIcon },
+      { name: "SCORM, video, and SSO integrations", icon: CpuChipIcon },
     ],
   },
 ];
 
-export function QuotingSoftwareTypesSection() {
+export function BusinessSoftwareTypesSection() {
   return (
-    <div id="marketplace-types" className="scroll-mt-[88px]">
+    <div id="product-types" className="scroll-mt-[88px]">
       <SampleProducts
         bgColor="bg-white"
-        products={QUOTING_SOFTWARE_FEATURES}
-        label="COMMON FEATURES"
-        title="Quoting software features we specialize in"
-        titleMaxWidth="34rem"
-        description="From catalogs and CPQ to approvals, PDFs, and CRM integrations—we build the capabilities modern quoting products need. Choose what you need and we'll implement it."
-        descriptionMaxWidth="40rem"
+        products={BUSINESS_SOFTWARE_FEATURES}
+        label="PRODUCT TYPE"
+        title="Business software we specialize in"
+        featuresHeading="Common features"
+        description="From CRM and ERP to inventory, orders, quoting, HR, and learning—we build the core capabilities modern business software needs. Pick a product type and we'll scope what to ship first."
         leftColumnClassName="lg:col-span-3"
         rightColumnClassName="lg:col-span-9"
       />
@@ -440,17 +439,17 @@ export function QuotingSoftwareTypesSection() {
 const LAUNCHPAD_BULLETS = [
   "You own it, no license fees",
   "A lean team to get you started",
-  "AI-powered scoping to define your quoting flows and get a quote",
-  "Base features include quotes, catalogs, approvals, and PDFs",
+  "AI-powered scoping to define your product and get a quote",
+  "Base features aligned to your product type—CRM, ops, or people workflows",
   "Standard UX/UI with your colors, logo, and branding applied",
-  "Customizations and add-ons based on what your sales motion needs",
+  "Customizations and add-ons based on what your business needs",
 ];
 
 const AGENCY_BULLETS = [
   "You own it, no license fees",
   "A full team of product, design, and development experts",
   "Custom discovery and scoping process",
-  "Strategic input on CPQ rules, pricing, and integrations",
+  "Strategic input on workflows, integrations, and data model",
   "Custom UX/UI design",
   "Complex or unique workflows",
 ];
@@ -470,7 +469,7 @@ const PRICING_PLANS = [
   },
 ];
 
-export function QuotingSoftwarePricingSection() {
+export function BusinessSoftwarePricingSection() {
   return (
     <section id="pricing" className="scroll-mt-[88px] py-20 md:py-28 bg-[#F6F9FC]">
       <div className="max-w-[1200px] mx-auto px-6">
@@ -525,43 +524,67 @@ export function QuotingSoftwarePricingSection() {
   );
 }
 
-export const QUOTING_SOFTWARE_CASE_SLIDES = [
+export const BUSINESS_SOFTWARE_CASE_SLIDES = [
   {
-    id: "greener",
-    company: "Greener Corporation",
-    logo: "https://greenercorp.com/wp-content/uploads/2022/07/Greener-Logo.svg",
+    id: "dividend",
+    company: "Dividend Finance",
+    logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447523324x536489976697318800/dividend.png",
+    logoText: "$300m+ raised",
+    heading: "How we built a FinTech platform for Dividend Finance that scaled to process billions of dollars of loan",
+    description: "",
+    image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2940&auto=format&fit=crop",
+    imageTitle: "How we built a FinTech platform for Dividend Finance that scaled to process billions of dollars of loan",
+    customFields: [
+      { label: "Business type", value: "Enterprise", color: "#635bff" },
+      { label: "Product type", value: "FinTech MVP", color: "#00d4ff" },
+      { label: "Timeline", value: "6 weeks", color: "#a960ee" },
+      { label: "Key results", value: "Billions of dollars of loans processed", color: "#ff6b6b" },
+    ],
+  },
+  {
+    id: "bubble",
+    company: "Bubble.io",
+    logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766446287440x908698787583342700/bubble.io.png",
     logoText: "",
-    heading: "How Airdev helped Greener Corp build a custom manufacturing ERP on Bubble",
+    heading:
+      "How no-code leader Bubble turned to Airdev for a custom rebuild of their Developer Certification Platform... built on Bubble",
     description: "",
     image:
-      "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/6431f7a55544d733b3614a00_Manufacturing%20case%20study%20no-code.png",
-    imageTitle: "How Airdev helped Greener Corp build a custom manufacturing ERP on Bubble",
+      "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/665f5ab8b085585d4543d3ea_Certification---In-line-5.png",
+    imageTitle:
+      "How no-code leader Bubble turned to Airdev for a custom rebuild of their Developer Certification Platform... built on Bubble",
     customFields: [
       { label: "Business type", value: "SMB", color: "#635bff" },
-      { label: "Product type", value: "Enterprise resource planning (ERP) app", color: "#00d4ff" },
-      { label: "Timeline", value: "6 months", color: "#a960ee" },
+      { label: "Product type", value: "Exam platform", color: "#00d4ff" },
+      { label: "Timeline", value: "3 months", color: "#a960ee" },
       {
         label: "Key results",
-        value:
-          "Custom ERP around Greener’s processes—estimated ~75% lower lifetime cost than off-the-shelf",
+        value: "A more performant, reliable, and flexible exam for users and internal developers",
         color: "#ff6b6b",
       },
     ],
   },
   {
-    id: "bolster",
-    company: "Bolster",
-    logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1767069657325x211103928710127970/bolster.png",
+    id: "resolis",
+    company: "Resolis",
+    logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1767136295917x196197816364843680/resolis.png",
     logoText: "",
-    heading: "How Bolster developed 3 custom no-code web apps on Bubble in just 6 weeks per app",
+    heading:
+      "How Airdev helped Resolis build an internal tool to streamline their public infrastructure asset management services",
     description: "",
-    image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/635076547ab429d14db22f83_bolster.jpeg",
-    imageTitle: "How Bolster developed 3 custom no-code web apps on Bubble in just 6 weeks per app",
+    image:
+      "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/6698333e120200f6df1df8ad_Resolis%20no-code%20internal%20tool.jpg",
+    imageTitle:
+      "How Airdev helped Resolis build an internal tool to streamline their public infrastructure asset management services",
     customFields: [
-      { label: "Business type", value: "SMB", color: "#635bff" },
-      { label: "Product type", value: "Custom web portals", color: "#00d4ff" },
-      { label: "Timeline", value: "6 weeks per app", color: "#a960ee" },
-      { label: "Key results", value: "Raised $2.8M in funding", color: "#ff6b6b" },
+      { label: "Business type", value: "Enterprise", color: "#635bff" },
+      { label: "Product type", value: "Internal tool", color: "#00d4ff" },
+      { label: "Timeline", value: "5 months", color: "#a960ee" },
+      {
+        label: "Key results",
+        value: "Standardization of niche, manual processes for teams operating across the UK",
+        color: "#ff6b6b",
+      },
     ],
   },
 ];

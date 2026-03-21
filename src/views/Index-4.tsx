@@ -670,7 +670,7 @@ const Index4 = () => {
             </div>
           </div>
           <div className="pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-6 text-[15px] text-gray-600 font-medium">
-            <p>© 2025 Airdev. All rights reserved.</p>
+            <p>© 2026 Airdev. All rights reserved.</p>
             <div className="flex items-center gap-8">
               <a href="#" className="hover:text-gray-900 transition-colors">Twitter</a>
               <a href="#" className="hover:text-gray-900 transition-colors">LinkedIn</a>

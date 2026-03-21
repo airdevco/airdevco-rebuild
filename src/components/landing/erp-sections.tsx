@@ -473,53 +473,25 @@ export function ErpPricingSection() {
 
 export const ERP_CASE_SLIDES = [
   {
-    id: "playground",
-    company: "Playground IEP",
-    logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447131162x922542988700125000/playground.png",
+    id: "greener",
+    company: "Greener Corporation",
+    logo: "https://greenercorp.com/wp-content/uploads/2022/07/Greener-Logo.svg",
     logoText: "",
-    heading: "How Airdev helped Playground IEP create a special education caseload management tool for schools",
+    heading: "How Airdev helped Greener Corp build a custom manufacturing ERP on Bubble",
     description: "",
-    image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/63b8851d340bdc19030b55b3_adam-winger-7fF0iei80AQ-unsplash%205-p-3200.jpg",
-    imageTitle: "How Airdev helped Playground IEP create a special education caseload management tool for schools",
+    image:
+      "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/6431f7a55544d733b3614a00_Manufacturing%20case%20study%20no-code.png",
+    imageTitle: "How Airdev helped Greener Corp build a custom manufacturing ERP on Bubble",
     customFields: [
-      { label: "Business type", value: "Startup", color: "#635bff" },
-      { label: "Product type", value: "Internal management portal", color: "#00d4ff" },
-      { label: "Timeline", value: "3 months", color: "#a960ee" },
-      { label: "Key results", value: "5 pilot schools signed up in <1 year", color: "#ff6b6b" },
-    ],
-  },
-  {
-    id: "consenna",
-    company: "HP",
-    logo: "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/669a98f0f9d898fd7a42ee37_hp.webp",
-    logoText: "",
-    heading: "How Airdev helped the consultancy Consenna build a custom no-code marketplace for HP for Education to serve 30k schools across the UK",
-    description: "",
-    image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/635076a5905dd76065955f2c_hp-s%20(1).png",
-    imageTitle:
-      "How Airdev helped the consultancy Consenna build a custom no-code marketplace for HP for Education to serve 30k schools across the UK",
-    customFields: [
-      { label: "Business type", value: "Enterprise", color: "#635bff" },
-      { label: "Product type", value: "Custom marketplace", color: "#00d4ff" },
-      { label: "Timeline", value: "3 months", color: "#a960ee" },
-      { label: "Key results", value: "30k schools served", color: "#ff6b6b" },
-    ],
-  },
-  {
-    id: "kidsbook",
-    company: "Kidsbook",
-    logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1768940559825x362227103494313200/kidsbook.png",
-    logoText: "",
-    heading: "How Airdev helped Kidsbook build a custom no-code marketplace in just 6 weeks to connect parents with kids activity providers",
-    description: "",
-    image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/635075037ab429484ab21afb_kidsbook%20(2).png",
-    imageTitle:
-      "How Airdev helped Kidsbook build a custom no-code marketplace in just 6 weeks to connect parents with kids activity providers",
-    customFields: [
-      { label: "Business type", value: "Startup", color: "#635bff" },
-      { label: "Product type", value: "2-sided marketplace", color: "#00d4ff" },
-      { label: "Timeline", value: "6 weeks", color: "#a960ee" },
-      { label: "Key results", value: "1000+ providers signed up", color: "#ff6b6b" },
+      { label: "Business type", value: "SMB", color: "#635bff" },
+      { label: "Product type", value: "Enterprise resource planning (ERP) app", color: "#00d4ff" },
+      { label: "Timeline", value: "6 months", color: "#a960ee" },
+      {
+        label: "Key results",
+        value:
+          "Custom ERP around Greener’s processes—estimated ~75% lower lifetime cost than off-the-shelf",
+        color: "#ff6b6b",
+      },
     ],
   },
 ];

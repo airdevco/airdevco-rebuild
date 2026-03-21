@@ -1090,7 +1090,7 @@ const Index2 = () => {
             </div>
           </div>
           <div className="pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-600">
-            <p>© 2025 Airdev, Inc. All rights reserved.</p>
+            <p>© 2026 Airdev, Inc. All rights reserved.</p>
             <div className="flex items-center gap-6">
               <a href="https://www.airdev.co/privacy-policy" className="hover:text-black transition-colors">Privacy Policy</a>
               <a href="https://www.airdev.co/terms-of-service" className="hover:text-black transition-colors">Terms of Service</a>

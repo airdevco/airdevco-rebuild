@@ -19,7 +19,7 @@ const FooterBottomBar = ({
     className={`flex flex-col md:flex-row justify-between items-center ${compact ? "gap-3 md:gap-4" : "gap-6"} ${withTopBorder ? "pt-8 border-t" : ""}`}
     style={withTopBorder ? { borderColor: "#E2E8F0" } : undefined}
   >
-    <p className="text-gray-500 text-sm">© 2025 Airdev, Inc. All rights reserved.</p>
+    <p className="text-gray-500 text-sm">© 2026 Airdev, Inc. All rights reserved.</p>
     <div className="flex items-center gap-6 text-gray-500">
       <a href="#" className="hover:text-gray-900" aria-label="Facebook">
         <Facebook className="w-5 h-5" />
