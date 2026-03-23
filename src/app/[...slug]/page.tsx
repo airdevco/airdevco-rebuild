@@ -7,6 +7,7 @@ const EXPLICIT_NEXT_PATHS = new Set([
   "/marketplace",
   "/saas",
   "/crm",
+  "/customer-portal",
   "/ai-chatbot",
   "/order-management",
   "/quoting",
