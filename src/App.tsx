@@ -59,6 +59,7 @@ import Marketplace from "./views/Saas";
 import SaasLanding from "./views/SaasLanding";
 import CrmLanding from "./views/CrmLanding";
 import CustomerPortalLanding from "./views/CustomerPortalLanding";
+import KnowledgeManagementLanding from "./views/KnowledgeManagementLanding";
 import AiChatbotLanding from "./views/AiChatbotLanding";
 import OrderManagementLanding from "./views/OrderManagementLanding";
 import QuotingSoftwareLanding from "./views/QuotingSoftwareLanding";
@@ -104,6 +105,7 @@ const AppContent = () => {
         <Route path={ROUTES.SAAS} element={<SaasLanding />} />
         <Route path={ROUTES.CRM} element={<CrmLanding />} />
         <Route path={ROUTES.CUSTOMER_PORTAL} element={<CustomerPortalLanding />} />
+        <Route path={ROUTES.KNOWLEDGE_MANAGEMENT} element={<KnowledgeManagementLanding />} />
         <Route path={ROUTES.AI_CHATBOT} element={<AiChatbotLanding />} />
         <Route path={ROUTES.ORDER_MANAGEMENT} element={<OrderManagementLanding />} />
         <Route path={ROUTES.QUOTING_SOFTWARE} element={<QuotingSoftwareLanding />} />

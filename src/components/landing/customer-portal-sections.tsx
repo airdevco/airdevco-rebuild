@@ -52,14 +52,14 @@ function viewportScreenshotMaxHeightPx(): number {
 }
 
 const SCREENSHOT_IMAGES = [
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774003634701x879766162137330700/crm1.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774003908084x260139809298654660/crm2.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774004197559x467922203402921340/crm3.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774005933680x578642353117870200/crm4.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774006421831x791000213883669600/crm5.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774007591255x876566308167353000/crm8.webp",
-  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774006826054x168358695871838370/crm7.webp",
-  "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1772587812851x876454729909677400/flowline.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774308425340x175345093392262900/cp1.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774308450820x178655573694968860/cp2.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774308461317x310455908368822340/cp3.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774308472804x834777356387389300/cp4.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774308481244x911091318809670300/cp5.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774312409173x809479277865660200/cp6.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774312435536x728559571494214400/cp7.webp",
+  "https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774312462614x157206333888479940/cp8.webp",
 ];
 
 export function CustomerPortalLandingHero() {
@@ -434,6 +434,7 @@ export function CustomerPortalTypesSection() {
         products={CUSTOMER_PORTAL_TYPES_PRODUCTS}
         label="COMMON FEATURES"
         title="Customer portal features we specialize in"
+        titleMaxWidth="36rem"
         description="From secure sign-in to billing, support, and integrations—we build the core capabilities modern customer portals need. Choose what you need and we'll implement it."
         leftColumnClassName="lg:col-span-3"
         rightColumnClassName="lg:col-span-9"

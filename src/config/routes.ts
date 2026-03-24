@@ -18,6 +18,8 @@ export const ROUTES = {
   CRM: "/crm",
   /** Dedicated customer portal landing (edit customer-portal-* components only) */
   CUSTOMER_PORTAL: "/customer-portal",
+  /** Dedicated knowledge management landing (edit knowledge-management-* components only) */
+  KNOWLEDGE_MANAGEMENT: "/knowledge-management",
   /** Dedicated AI chatbot product landing (edit ai-chatbot-* components only) */
   AI_CHATBOT: "/ai-chatbot",
   /** Dedicated order management software landing (edit order-management-* components only) */
