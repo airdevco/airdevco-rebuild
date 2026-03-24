@@ -569,20 +569,4 @@ export const CUSTOMER_PORTAL_CASE_SLIDES = [
       { label: "Key results", value: "400% increase in jobs processed per month", color: "#ff6b6b" },
     ],
   },
-  {
-    id: "playground",
-    company: "Playground IEP",
-    logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447131162x922542988700125000/playground.png",
-    logoText: "",
-    heading: "How Airdev helped Playground IEP create a special education caseload management tool for schools",
-    description: "",
-    image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/63b8851d340bdc19030b55b3_adam-winger-7fF0iei80AQ-unsplash%205-p-3200.jpg",
-    imageTitle: "How Airdev helped Playground IEP create a special education caseload management tool for schools",
-    customFields: [
-      { label: "Business type", value: "Startup", color: "#635bff" },
-      { label: "Product type", value: "Internal management portal", color: "#00d4ff" },
-      { label: "Timeline", value: "3 months", color: "#a960ee" },
-      { label: "Key results", value: "5 pilot schools signed up in <1 year", color: "#ff6b6b" },
-    ],
-  },
 ];

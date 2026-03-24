@@ -547,37 +547,22 @@ export const KNOWLEDGE_MANAGEMENT_CASE_SLIDES = [
     ],
   },
   {
-    id: "cadence",
-    company: "Cadence Translate",
-    logo: "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/669a9ff1b72d8c1ec14d79f4_cadence.webp",
-    logoText: "500 startups funded",
-    heading:
-      "How Airdev helped Cadence Translate connect Salesforce data to a custom no-code gig portal in just weeks",
-    description: "",
-    image: "https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=2940&auto=format&fit=crop",
-    imageTitle:
-      "How Airdev helped Cadence Translate connect Salesforce data to a custom no-code gig portal in just weeks",
-    customFields: [
-      { label: "Business type", value: "Enterprise", color: "#635bff" },
-      { label: "Product type", value: "Salesforce-integrated gig management platform", color: "#00d4ff" },
-      { label: "Timeline", value: "4 weeks of development", color: "#a960ee" },
-      { label: "Key results", value: "400% increase in jobs processed per month", color: "#ff6b6b" },
-    ],
-  },
-  {
-    id: "playground",
-    company: "Playground IEP",
-    logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447131162x922542988700125000/playground.png",
+    id: "navigreat",
+    company: "NaviGreat",
+    logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1765319327038x377695290107660200/navigreat.png",
     logoText: "",
-    heading: "How Airdev helped Playground IEP create a special education caseload management tool for schools",
+    heading:
+      "How NaviGreat built a digital hub for nonprofit organizations with Airdev's freelance Bubble developer in just 2 weeks",
     description: "",
-    image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/63b8851d340bdc19030b55b3_adam-winger-7fF0iei80AQ-unsplash%205-p-3200.jpg",
-    imageTitle: "How Airdev helped Playground IEP create a special education caseload management tool for schools",
+    image:
+      "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/6644f29802eba3647e2d8030_NaviGreat_Airdev_no_code.jpg",
+    imageTitle:
+      "How NaviGreat built a digital hub for nonprofit organizations with Airdev's freelance Bubble developer in just 2 weeks",
     customFields: [
-      { label: "Business type", value: "Startup", color: "#635bff" },
-      { label: "Product type", value: "Internal management portal", color: "#00d4ff" },
-      { label: "Timeline", value: "3 months", color: "#a960ee" },
-      { label: "Key results", value: "5 pilot schools signed up in <1 year", color: "#ff6b6b" },
+      { label: "Business type", value: "Nonprofit organization", color: "#635bff" },
+      { label: "Product type", value: "Social network platform", color: "#00d4ff" },
+      { label: "Timeline", value: "2 weeks", color: "#a960ee" },
+      { label: "Key results", value: "A fully functional app developed in just 2 weeks", color: "#ff6b6b" },
     ],
   },
 ];
