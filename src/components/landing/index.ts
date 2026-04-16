@@ -1,5 +1,6 @@
 export { Navbar } from "./navbar";
 export { Hero } from "./hero";
+export { IndexLandingHero } from "./index-landing-hero";
 export { AudienceSection } from "./audience-section";
 export { ProcessSection } from "./process-section";
 export { CaseStudies } from "./case-studies";

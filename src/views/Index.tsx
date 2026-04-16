@@ -2,7 +2,6 @@
 
 import {
   Navbar,
-  Hero,
   CaseStudies,
   ClientLogoTicker,
   Stats,
@@ -11,6 +10,7 @@ import {
   Footer,
   BusinessTypes,
 } from "@/components/landing";
+import { IndexLandingHero } from "@/components/landing/index-landing-hero";
 
 const Index = () => {
   return (
@@ -50,7 +50,7 @@ const Index = () => {
       <div className="bg-white min-h-screen font-sans selection:bg-blue-100 selection:text-blue-900" style={{ fontFamily: "'Colfax', sans-serif" }}>
         <Navbar />
         <main>
-          <Hero centerText={true} />
+          <IndexLandingHero />
           <div className="pt-16">
             <ClientLogoTicker variant="featured" />
           </div>
