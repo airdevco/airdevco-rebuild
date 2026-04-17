@@ -67,54 +67,140 @@ export const Footer = ({ variant = "default" }: FooterProps = {}) => {
               <h4 className="font-bold text-gray-900 mb-6">Services</h4>
               <ul className="space-y-4">
                 <li>
-                  <a
-                    href={ROUTES.BUBBLE_AGENCY}
-                    className="text-gray-600 hover:text-gray-900 transition-colors"
-                  >
-                    Bubble agency
+                  <a href={ROUTES.MVPS} className="text-gray-600 hover:text-gray-900 transition-colors">
+                    MVPs
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors">
-                    Bubble freelancers
+                  <a href={ROUTES.FULL_SCALE_BUILDS} className="text-gray-600 hover:text-gray-900 transition-colors">
+                    Full-scale builds
                   </a>
                 </li>
                 <li>
-                  <a href={ROUTES.BUBBLE_APP_AUDIT} className="text-gray-600 hover:text-gray-900 transition-colors">
-                    Bubble app audit
+                  <a href={ROUTES.PRODUCT_DESIGN} className="text-gray-600 hover:text-gray-900 transition-colors">
+                    Product design
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors">
-                    Bubble developers
+                  <a href={ROUTES.AI_ENABLEMENT} className="text-gray-600 hover:text-gray-900 transition-colors">
+                    AI enablement
+                  </a>
+                </li>
+                <li>
+                  <a href={ROUTES.BUBBLE_DEVELOPMENT} className="text-gray-600 hover:text-gray-900 transition-colors">
+                    Bubble Development
                   </a>
                 </li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold text-gray-900 mb-6">What we build</h4>
+              <h4 className="font-bold text-gray-900 mb-6">Product types</h4>
               <ul className="space-y-4">
-                <li><a href={ROUTES.AI_APPLICATIONS} className="text-gray-600 hover:text-gray-900 transition-colors">AI Apps</a></li>
-                <li><a href={ROUTES.SAAS_PRODUCTS} className="text-gray-600 hover:text-gray-900 transition-colors">SaaS Products</a></li>
-                <li><a href={ROUTES.MARKETPLACES} className="text-gray-600 hover:text-gray-900 transition-colors">Marketplaces</a></li>
-                <li><a href={ROUTES.INTERNAL_TOOLS} className="text-gray-600 hover:text-gray-900 transition-colors">Internal Tools</a></li>
+                <li>
+                  <a href={ROUTES.SAAS_PRODUCTS} className="text-gray-600 hover:text-gray-900 transition-colors">
+                    SaaS
+                  </a>
+                </li>
+                <li>
+                  <a href={ROUTES.MARKETPLACES} className="text-gray-600 hover:text-gray-900 transition-colors">
+                    Marketplaces
+                  </a>
+                </li>
+                <li>
+                  <a href={ROUTES.AI_APPLICATIONS} className="text-gray-600 hover:text-gray-900 transition-colors">
+                    AI Applications
+                  </a>
+                </li>
+                <li>
+                  <a href={ROUTES.INTERNAL_TOOLS} className="text-gray-600 hover:text-gray-900 transition-colors">
+                    Internal Tools
+                  </a>
+                </li>
+                <li>
+                  <a href={ROUTES.CUSTOMER_PORTAL} className="text-gray-600 hover:text-gray-900 transition-colors">
+                    Portals
+                  </a>
+                </li>
+                <li>
+                  <a href={ROUTES.ERP} className="text-gray-600 hover:text-gray-900 transition-colors">
+                    ERPs
+                  </a>
+                </li>
+                <li>
+                  <a href={ROUTES.BUSINESS_SOFTWARE} className="text-gray-600 hover:text-gray-900 transition-colors">
+                    Others
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold text-gray-900 mb-6">Industries</h4>
+              <ul className="space-y-4">
+                <li>
+                  <a href={ROUTES.TECHNOLOGY_AND_SOFTWARE} className="text-gray-600 hover:text-gray-900 transition-colors">
+                    Technology
+                  </a>
+                </li>
+                <li>
+                  <a href={ROUTES.LMS} className="text-gray-600 hover:text-gray-900 transition-colors">
+                    Education
+                  </a>
+                </li>
+                <li>
+                  <a href={ROUTES.HEALTHCARE} className="text-gray-600 hover:text-gray-900 transition-colors">
+                    Healthcare
+                  </a>
+                </li>
+                <li>
+                  <a href={ROUTES.FINANCIAL_SERVICES} className="text-gray-600 hover:text-gray-900 transition-colors">
+                    Financial services
+                  </a>
+                </li>
+                <li>
+                  <a href={ROUTES.INDUSTRIAL_AND_MANUFACTURING} className="text-gray-600 hover:text-gray-900 transition-colors">
+                    Manufacturing
+                  </a>
+                </li>
+                <li>
+                  <a href={ROUTES.PUBLIC_SECTOR_AND_NONPROFIT} className="text-gray-600 hover:text-gray-900 transition-colors">
+                    Government
+                  </a>
+                </li>
+                <li>
+                  <a href={ROUTES.CONSUMER_AND_RETAIL} className="text-gray-600 hover:text-gray-900 transition-colors">
+                    Others
+                  </a>
+                </li>
               </ul>
             </div>
             <div>
               <h4 className="font-bold text-gray-900 mb-6">Company</h4>
               <ul className="space-y-4">
-                <li><a href={ROUTES.CLIENT_STORIES} className="text-gray-600 hover:text-gray-900 transition-colors">Client Stories</a></li>
-                <li><a href={ROUTES.CAREERS} className="text-gray-600 hover:text-gray-900 transition-colors">Careers</a></li>
-                <li><a href={ROUTES.BLOG} className="text-gray-600 hover:text-gray-900 transition-colors">Blog</a></li>
-                <li><a href="#" className="text-gray-600 hover:text-gray-900 transition-colors">About</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold text-gray-900 mb-6">For Builders</h4>
-              <ul className="space-y-4">
-                <li><a href="#" className="text-gray-600 hover:text-gray-900 transition-colors">Canvas Framework</a></li>
-                <li><a href={ROUTES.PARTNERS} className="text-gray-600 hover:text-gray-900 transition-colors">Partner Program</a></li>
-                <li><a href="#" className="text-gray-600 hover:text-gray-900 transition-colors">Bubble Bootcamp</a></li>
+                <li>
+                  <a href={ROUTES.CLIENT_STORIES} className="text-gray-600 hover:text-gray-900 transition-colors">
+                    Client Stories
+                  </a>
+                </li>
+                <li>
+                  <a href={ROUTES.APPROACH} className="text-gray-600 hover:text-gray-900 transition-colors">
+                    Approach
+                  </a>
+                </li>
+                <li>
+                  <a href={ROUTES.CAREERS} className="text-gray-600 hover:text-gray-900 transition-colors">
+                    Careers
+                  </a>
+                </li>
+                <li>
+                  <a href={ROUTES.CORE_VALUES} className="text-gray-600 hover:text-gray-900 transition-colors">
+                    Core Values
+                  </a>
+                </li>
+                <li>
+                  <a href={ROUTES.BLOG} className="text-gray-600 hover:text-gray-900 transition-colors">
+                    Blog
+                  </a>
+                </li>
               </ul>
             </div>
           </div>

@@ -24,27 +24,40 @@ export const Navbar = () => {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [openMobileDropdown, setOpenMobileDropdown] = useState<string | null>(null);
   const applicationTypesTriggerRef = useRef<HTMLButtonElement>(null);
-  const [applicationTypesMenuBox, setApplicationTypesMenuBox] = useState<{
+  const applicationTypesPanelRef = useRef<HTMLDivElement>(null);
+  const navContentRef = useRef<HTMLDivElement>(null);
+  const [applicationTypesMenuPos, setApplicationTypesMenuPos] = useState<{
     left: number;
     top: number;
-    width: number;
   } | null>(null);
 
   const updateApplicationTypesMenuPosition = useCallback(() => {
     const trigger = applicationTypesTriggerRef.current;
+    const panel = applicationTypesPanelRef.current;
+    const contentEl = navContentRef.current;
     if (!trigger || openDropdown !== "application-types") {
-      setApplicationTypesMenuBox(null);
+      setApplicationTypesMenuPos(null);
+      return;
+    }
+    if (!panel) {
+      const trOnly = trigger.getBoundingClientRect();
+      setApplicationTypesMenuPos({ left: trOnly.left, top: trOnly.bottom });
       return;
     }
     const pad = 12;
-    const vw = window.innerWidth;
-    const panelW = Math.min(1400, vw - pad * 2);
     const tr = trigger.getBoundingClientRect();
-    const centerX = tr.left + tr.width / 2;
-    let left = centerX - panelW / 2;
-    left = Math.max(pad, Math.min(left, vw - pad - panelW));
     const top = tr.bottom;
-    setApplicationTypesMenuBox({ left, top, width: panelW });
+    const naturalW = panel.offsetWidth;
+    const content = contentEl?.getBoundingClientRect();
+    const innerLeft = content ? content.left + pad : pad;
+    const innerRight = content ? content.right - pad : window.innerWidth - pad;
+    const innerWidth = Math.max(1, innerRight - innerLeft);
+    const panelW = Math.min(Math.max(naturalW, 1), innerWidth);
+    // Align panel left edge with the trigger so the menu reads as attached to the button (not centered/floating)
+    let left = tr.left;
+    left = Math.max(innerLeft, left);
+    left = Math.min(left, innerRight - panelW);
+    setApplicationTypesMenuPos({ left, top });
   }, [openDropdown]);
 
   useLayoutEffect(() => {
@@ -53,9 +66,17 @@ export const Navbar = () => {
 
   useEffect(() => {
     if (openDropdown !== "application-types") return;
-    const onResize = () => updateApplicationTypesMenuPosition();
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
+    const panel = applicationTypesPanelRef.current;
+    const ro = panel ? new ResizeObserver(() => updateApplicationTypesMenuPosition()) : null;
+    ro?.observe(panel!);
+    const onLayout = () => updateApplicationTypesMenuPosition();
+    window.addEventListener("resize", onLayout);
+    window.addEventListener("scroll", onLayout, true);
+    return () => {
+      ro?.disconnect();
+      window.removeEventListener("resize", onLayout);
+      window.removeEventListener("scroll", onLayout, true);
+    };
   }, [openDropdown, updateApplicationTypesMenuPosition]);
 
   useEffect(() => {
@@ -70,7 +91,7 @@ export const Navbar = () => {
         isScrolled ? "bg-white/95 backdrop-blur-lg border-b border-gray-100" : "bg-transparent"
       }`}
     >
-      <div className="max-w-[1200px] mx-auto overflow-visible px-6">
+      <div ref={navContentRef} className="max-w-[1200px] mx-auto overflow-visible px-6">
         <div className="flex items-center justify-between overflow-visible">
           <a href={ROUTES.HOME} className="flex items-center">
             <img 
@@ -204,28 +225,34 @@ export const Navbar = () => {
                 />
               </button>
 
-              {openDropdown === "application-types" && applicationTypesMenuBox && (
+              {openDropdown === "application-types" && (
                 <motion.div
                   initial={{ opacity: 0, y: 6, rotateX: -8 }}
                   animate={{ opacity: 1, y: 0, rotateX: 0 }}
                   exit={{ opacity: 0, y: 6, rotateX: -8 }}
                   transition={{ duration: 0.15, ease: "easeOut" }}
                   style={{
-                    transformOrigin: "top center",
-                    left: applicationTypesMenuBox.left,
-                    top: applicationTypesMenuBox.top,
-                    width: applicationTypesMenuBox.width,
+                    transformOrigin: "top left",
+                    left: applicationTypesMenuPos?.left ?? -9999,
+                    top: applicationTypesMenuPos?.top ?? 0,
+                    visibility: applicationTypesMenuPos ? "visible" : "hidden",
                   }}
-                  className="fixed z-[100] min-w-0 pt-3 perspective-[2000px]"
+                  className="fixed z-[100] w-max min-w-0 max-w-[min(100vw-3rem,calc(1200px-3rem))] pt-4 perspective-[2000px]"
                 >
-                  <div className="bg-white rounded-xl shadow-[0_50px_100px_-20px_rgba(50,50,93,0.25),0_30px_60px_-30px_rgba(0,0,0,0.3)] border-none overflow-hidden ring-1 ring-black/5 w-full min-w-0 max-h-[min(560px,calc(100vh-6rem))] overflow-y-auto">
-                    <div className="p-4 sm:p-6">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-0 md:gap-y-8 lg:gap-y-10">
-                        <div className="md:pr-8 lg:pr-10 md:border-r md:border-gray-200">
+                  <div
+                    ref={applicationTypesPanelRef}
+                    className="bg-white rounded-xl shadow-[0_50px_100px_-20px_rgba(50,50,93,0.25),0_30px_60px_-30px_rgba(0,0,0,0.3)] border-none overflow-hidden ring-1 ring-black/5 w-max min-w-0 max-h-[min(560px,calc(100vh-6rem))] overflow-y-auto"
+                  >
+                    <div className="relative flex min-w-0 flex-col gap-8 md:flex-row md:items-stretch md:gap-0">
+                      <div
+                        className="absolute inset-y-0 left-1/2 z-10 hidden w-px -translate-x-1/2 bg-gray-200 md:block pointer-events-none"
+                        aria-hidden
+                      />
+                      <div className="min-w-0 flex-1 py-6 pl-6 pr-3 sm:pr-4">
                           <div className="text-[14px] font-medium text-gray-500 uppercase tracking-wider mb-4">
                             By use case
                           </div>
-                          <div className="grid grid-cols-2 gap-x-5 gap-y-5">
+                          <div className="grid grid-cols-2 gap-x-2 gap-y-5 sm:gap-x-3">
                             <div className="flex min-w-0 flex-col gap-5">
                               <a href={ROUTES.SAAS_PRODUCTS} className="group flex items-start gap-4">
                                 <div className="flex-shrink-0 mt-0.5">
@@ -293,19 +320,21 @@ export const Navbar = () => {
                                   <p className="text-[14px] text-gray-500 font-normal leading-none whitespace-nowrap mt-1 group-hover:text-black transition-colors">Manage business ops</p>
                                 </div>
                               </a>
-                              <p className="text-[14px] text-gray-400 pt-1">And more!</p>
                             </div>
+                            <p className="col-span-2 text-center text-[12px] leading-none text-gray-400 -mt-2">
+                              And more!
+                            </p>
                           </div>
                         </div>
-                        <div className="md:pl-8 lg:pl-10">
+                        <div className="min-w-0 flex-1 py-6 pr-6 pl-3 sm:pl-4">
                           <div className="text-[14px] font-medium text-gray-500 uppercase tracking-wider mb-4">
                             By industry
                           </div>
-                          <div className="grid grid-cols-2 gap-x-5 gap-y-5">
+                          <div className="grid grid-cols-2 gap-x-2 gap-y-5 sm:gap-x-3">
                             <div className="flex min-w-0 flex-col gap-5">
                               <a href={ROUTES.TECHNOLOGY_AND_SOFTWARE} className="group flex items-start gap-4">
                                 <div className="flex-shrink-0 mt-0.5">
-                                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-[#7A73FF]" aria-hidden>
+                                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-[#4d7eeb]" aria-hidden>
                                     <path fillRule="evenodd" d="M2.25 6a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V6Zm3.97.97a.75.75 0 0 1 1.06 0l2.25 2.25a.75.75 0 0 1 0 1.06l-2.25 2.25a.75.75 0 0 1-1.06-1.06l1.72-1.72-1.72-1.72a.75.75 0 0 1 0-1.06Zm4.28 4.28a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5h-3Z" clipRule="evenodd" />
                                   </svg>
                                 </div>
@@ -316,7 +345,7 @@ export const Navbar = () => {
                               </a>
                               <a href={ROUTES.LMS} className="group flex items-start gap-4">
                                 <div className="flex-shrink-0 mt-0.5">
-                                  <AcademicCapIcon className="w-5 h-5 text-[#7A73FF]" aria-hidden />
+                                  <AcademicCapIcon className="w-5 h-5 text-[#4d7eeb]" aria-hidden />
                                 </div>
                                 <div className="min-w-0">
                                   <h3 className="text-[16px] font-medium text-gray-900 group-hover:text-black transition-colors mb-0 leading-none">Education</h3>
@@ -325,7 +354,7 @@ export const Navbar = () => {
                               </a>
                               <a href={ROUTES.HEALTHCARE} className="group flex items-start gap-4">
                                 <div className="flex-shrink-0 mt-0.5">
-                                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-[#7A73FF]" aria-hidden>
+                                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-[#4d7eeb]" aria-hidden>
                                     <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.18 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
                                   </svg>
                                 </div>
@@ -338,7 +367,7 @@ export const Navbar = () => {
                             <div className="flex min-w-0 flex-col gap-5">
                               <a href={ROUTES.FINANCIAL_SERVICES} className="group flex items-start gap-4">
                                 <div className="flex-shrink-0 mt-0.5">
-                                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-[#7A73FF]" aria-hidden>
+                                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-[#4d7eeb]" aria-hidden>
                                     <path d="M12 7.5a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Z" />
                                     <path fillRule="evenodd" d="M1.5 4.875C1.5 3.839 2.34 3 3.375 3h17.25c1.035 0 1.875.84 1.875 1.875v9.75c0 1.036-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 0 1 1.5 14.625v-9.75ZM8.25 9.75a3.75 3.75 0 1 1 7.5 0 3.75 3.75 0 0 1-7.5 0ZM18.75 9a.75.75 0 0 0-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 0 0 .75-.75V9.75a.75.75 0 0 0-.75-.75h-.008ZM4.5 9.75A.75.75 0 0 1 5.25 9h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75H5.25a.75.75 0 0 1-.75-.75V9.75Z" clipRule="evenodd" />
                                     <path d="M2.25 18a.75.75 0 0 0 0 1.5c5.4 0 10.63.722 15.6 2.075 1.19.324 2.4-.558 2.4-1.82V18.75a.75.75 0 0 0-.75-.75H2.25Z" />
@@ -351,7 +380,7 @@ export const Navbar = () => {
                               </a>
                               <a href={ROUTES.INDUSTRIAL_AND_MANUFACTURING} className="group flex items-start gap-4">
                                 <div className="flex-shrink-0 mt-0.5">
-                                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-[#7A73FF]" aria-hidden>
+                                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-[#4d7eeb]" aria-hidden>
                                     <path fillRule="evenodd" d="M3 6a3 3 0 0 1 3-3h2.25a3 3 0 0 1 3 3v2.25a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6Zm9.75 0a3 3 0 0 1 3-3H18a3 3 0 0 1 3 3v2.25a3 3 0 0 1-3 3h-2.25a3 3 0 0 1-3-3V6ZM3 15.75a3 3 0 0 1 3-3h2.25a3 3 0 0 1 3 3V18a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-2.25Zm9.75 0a3 3 0 0 1 3-3H18a3 3 0 0 1 3 3V18a3 3 0 0 1-3 3h-2.25a3 3 0 0 1-3-3v-2.25Z" clipRule="evenodd" />
                                   </svg>
                                 </div>
@@ -362,7 +391,7 @@ export const Navbar = () => {
                               </a>
                               <a href={ROUTES.PUBLIC_SECTOR_AND_NONPROFIT} className="group flex items-start gap-4">
                                 <div className="flex-shrink-0 mt-0.5">
-                                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-[#7A73FF]" aria-hidden>
+                                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-[#4d7eeb]" aria-hidden>
                                     <path d="M11.584 2.376a.75.75 0 0 1 .832 0l9 6a.75.75 0 1 1-.832 1.248L12 3.901 3.416 9.624a.75.75 0 0 1-.832-1.248l9-6Z" />
                                     <path fillRule="evenodd" d="M20.25 10.332v9.918H21a.75.75 0 0 1 0 1.5H3a.75.75 0 0 1 0-1.5h.75v-9.918a.75.75 0 0 1 .634-.74A49.109 49.109 0 0 1 12 9c2.59 0 5.134.202 7.616.592a.75.75 0 0 1 .634.74Zm-7.5 2.418a.75.75 0 0 0-1.5 0v6.75a.75.75 0 0 0 1.5 0v-6.75Zm3-.75a.75.75 0 0 1 .75.75v6.75a.75.75 0 0 1-1.5 0v-6.75a.75.75 0 0 1 .75-.75ZM9 12.75a.75.75 0 0 0-1.5 0v6.75a.75.75 0 0 0 1.5 0v-6.75Z" clipRule="evenodd" />
                                   </svg>
@@ -372,11 +401,12 @@ export const Navbar = () => {
                                   <p className="text-[14px] text-gray-500 font-normal leading-none whitespace-nowrap mt-1 group-hover:text-black transition-colors">Government &amp; social impact</p>
                                 </div>
                               </a>
-                              <p className="text-[14px] text-gray-400 pt-1">And more!</p>
                             </div>
+                            <p className="col-span-2 text-center text-[12px] leading-none text-gray-400 -mt-2">
+                              And more!
+                            </p>
                           </div>
                         </div>
-                      </div>
                     </div>
                   </div>
                 </motion.div>
@@ -824,8 +854,7 @@ export const Navbar = () => {
                   <div className="text-[12px] font-medium text-gray-500 uppercase tracking-wider mb-3">
                     By use case
                   </div>
-                  <div className="grid grid-cols-2 gap-x-3 gap-y-4">
-                    <div className="flex min-w-0 flex-col gap-4">
+                  <div className="flex flex-col gap-3">
                       <a href={ROUTES.SAAS_PRODUCTS} className="flex items-start gap-2 group">
                         <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-[#1fc9ed] flex-shrink-0 mt-0.5" aria-hidden>
                           <path fillRule="evenodd" d="M4.5 9.75a6 6 0 0 1 11.573-2.226 3.75 3.75 0 0 1 4.133 4.303A4.5 4.5 0 0 1 18 20.25H6.75a5.25 5.25 0 0 1-2.23-10.004 6.072 6.072 0 0 1-.02-.496Z" clipRule="evenodd" />
@@ -854,20 +883,18 @@ export const Navbar = () => {
                           <p className="text-[14px] text-gray-500 leading-snug">Build on top of LLMs</p>
                         </div>
                       </a>
-                    </div>
-                    <div className="flex min-w-0 flex-col gap-4">
                       <a href={ROUTES.CUSTOMER_PORTAL} className="flex items-start gap-2 group">
                         <WindowIcon className="w-5 h-5 text-[#1fc9ed] flex-shrink-0 mt-0.5" aria-hidden />
-                        <div className="min-w-0 overflow-hidden">
+                        <div className="min-w-0">
                           <h3 className="text-[16px] font-medium text-gray-900 mb-0.5">Portals</h3>
-                          <p className="text-[14px] text-gray-500 leading-none truncate">Self-service customer portals</p>
+                          <p className="text-[14px] text-gray-500 leading-snug">Self-service customer portals</p>
                         </div>
                       </a>
                       <a href={ROUTES.ERP} className="flex items-start gap-2 group">
                         <TableCellsIcon className="w-5 h-5 text-[#1fc9ed] flex-shrink-0 mt-0.5" aria-hidden />
-                        <div className="min-w-0 overflow-hidden">
+                        <div className="min-w-0">
                           <h3 className="text-[16px] font-medium text-gray-900 mb-0.5">ERPs</h3>
-                          <p className="text-[14px] text-gray-500 leading-none truncate">End-to-end business systems</p>
+                          <p className="text-[14px] text-gray-500 leading-snug">End-to-end business systems</p>
                         </div>
                       </a>
                       <a href={ROUTES.INTERNAL_TOOLS} className="flex items-start gap-2 group">
@@ -875,23 +902,21 @@ export const Navbar = () => {
                           <path fillRule="evenodd" d="M2.25 13.5a8.25 8.25 0 0 1 8.25-8.25.75.75 0 0 1 .75.75v6.75H18a.75.75 0 0 1 .75.75 8.25 8.25 0 0 1-16.5 0Z" clipRule="evenodd" />
                           <path fillRule="evenodd" d="M12.75 3a.75.75 0 0 1 .75-.75 8.25 8.25 0 0 1 8.25 8.25.75.75 0 0 1-.75.75h-7.5a.75.75 0 0 1-.75-.75V3Z" clipRule="evenodd" />
                         </svg>
-                        <div className="min-w-0 overflow-hidden">
+                        <div className="min-w-0">
                           <h3 className="text-[16px] font-medium text-gray-900 mb-0.5">Internal Tools</h3>
-                          <p className="text-[14px] text-gray-500 leading-none truncate">Manage business ops</p>
+                          <p className="text-[14px] text-gray-500 leading-snug">Manage business ops</p>
                         </div>
                       </a>
-                      <p className="text-[14px] text-gray-400 pt-0.5">And more!</p>
-                    </div>
+                      <p className="w-full text-center text-[12px] leading-none text-gray-400 -mt-2">And more!</p>
                   </div>
                 </div>
                 <div className="border-t border-gray-200 pt-4 mt-4">
                   <div className="text-[12px] font-medium text-gray-500 uppercase tracking-wider mb-3">
                     By industry
                   </div>
-                  <div className="grid grid-cols-2 gap-x-3 gap-y-4">
-                    <div className="flex min-w-0 flex-col gap-4">
+                  <div className="flex flex-col gap-3">
                       <a href={ROUTES.TECHNOLOGY_AND_SOFTWARE} className="flex items-start gap-2 group">
-                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-[#7A73FF] flex-shrink-0 mt-0.5" aria-hidden>
+                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-[#4d7eeb] flex-shrink-0 mt-0.5" aria-hidden>
                           <path fillRule="evenodd" d="M2.25 6a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V6Zm3.97.97a.75.75 0 0 1 1.06 0l2.25 2.25a.75.75 0 0 1 0 1.06l-2.25 2.25a.75.75 0 0 1-1.06-1.06l1.72-1.72-1.72-1.72a.75.75 0 0 1 0-1.06Zm4.28 4.28a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5h-3Z" clipRule="evenodd" />
                         </svg>
                         <div className="min-w-0">
@@ -900,14 +925,14 @@ export const Navbar = () => {
                         </div>
                       </a>
                       <a href={ROUTES.LMS} className="flex items-start gap-2 group">
-                        <AcademicCapIcon className="w-5 h-5 text-[#7A73FF] flex-shrink-0 mt-0.5" aria-hidden />
+                        <AcademicCapIcon className="w-5 h-5 text-[#4d7eeb] flex-shrink-0 mt-0.5" aria-hidden />
                         <div className="min-w-0">
                           <h3 className="text-[16px] font-medium text-gray-900 mb-0.5">Education</h3>
                           <p className="text-[14px] text-gray-500 leading-snug">Learning &amp; training platforms</p>
                         </div>
                       </a>
                       <a href={ROUTES.HEALTHCARE} className="flex items-start gap-2 group">
-                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-[#7A73FF] flex-shrink-0 mt-0.5" aria-hidden>
+                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-[#4d7eeb] flex-shrink-0 mt-0.5" aria-hidden>
                           <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.18 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
                         </svg>
                         <div className="min-w-0">
@@ -915,40 +940,37 @@ export const Navbar = () => {
                           <p className="text-[14px] text-gray-500 leading-snug">Health &amp; life sciences</p>
                         </div>
                       </a>
-                    </div>
-                    <div className="flex min-w-0 flex-col gap-4">
                       <a href={ROUTES.FINANCIAL_SERVICES} className="flex items-start gap-2 group">
-                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-[#7A73FF] flex-shrink-0 mt-0.5" aria-hidden>
+                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-[#4d7eeb] flex-shrink-0 mt-0.5" aria-hidden>
                           <path d="M12 7.5a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Z" />
                           <path fillRule="evenodd" d="M1.5 4.875C1.5 3.839 2.34 3 3.375 3h17.25c1.035 0 1.875.84 1.875 1.875v9.75c0 1.036-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 0 1 1.5 14.625v-9.75ZM8.25 9.75a3.75 3.75 0 1 1 7.5 0 3.75 3.75 0 0 1-7.5 0ZM18.75 9a.75.75 0 0 0-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 0 0 .75-.75V9.75a.75.75 0 0 0-.75-.75h-.008ZM4.5 9.75A.75.75 0 0 1 5.25 9h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75H5.25a.75.75 0 0 1-.75-.75V9.75Z" clipRule="evenodd" />
                           <path d="M2.25 18a.75.75 0 0 0 0 1.5c5.4 0 10.63.722 15.6 2.075 1.19.324 2.4-.558 2.4-1.82V18.75a.75.75 0 0 0-.75-.75H2.25Z" />
                         </svg>
-                        <div className="min-w-0 overflow-hidden">
+                        <div className="min-w-0">
                           <h3 className="text-[16px] font-medium text-gray-900 mb-0.5">Financial services</h3>
-                          <p className="text-[14px] text-gray-500 leading-none truncate">Fintech &amp; banking solutions</p>
+                          <p className="text-[14px] text-gray-500 leading-snug">Fintech &amp; banking solutions</p>
                         </div>
                       </a>
                       <a href={ROUTES.INDUSTRIAL_AND_MANUFACTURING} className="flex items-start gap-2 group">
-                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-[#7A73FF] flex-shrink-0 mt-0.5" aria-hidden>
+                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-[#4d7eeb] flex-shrink-0 mt-0.5" aria-hidden>
                           <path fillRule="evenodd" d="M3 6a3 3 0 0 1 3-3h2.25a3 3 0 0 1 3 3v2.25a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6Zm9.75 0a3 3 0 0 1 3-3H18a3 3 0 0 1 3 3v2.25a3 3 0 0 1-3 3h-2.25a3 3 0 0 1-3-3V6ZM3 15.75a3 3 0 0 1 3-3h2.25a3 3 0 0 1 3 3V18a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-2.25Zm9.75 0a3 3 0 0 1 3-3H18a3 3 0 0 1 3 3V18a3 3 0 0 1-3 3h-2.25a3 3 0 0 1-3-3v-2.25Z" clipRule="evenodd" />
                         </svg>
-                        <div className="min-w-0 overflow-hidden">
+                        <div className="min-w-0">
                           <h3 className="text-[16px] font-medium text-gray-900 mb-0.5">Manufacturing</h3>
-                          <p className="text-[14px] text-gray-500 leading-none truncate">Operations &amp; supply chain</p>
+                          <p className="text-[14px] text-gray-500 leading-snug">Operations &amp; supply chain</p>
                         </div>
                       </a>
                       <a href={ROUTES.PUBLIC_SECTOR_AND_NONPROFIT} className="flex items-start gap-2 group">
-                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-[#7A73FF] flex-shrink-0 mt-0.5" aria-hidden>
+                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-[#4d7eeb] flex-shrink-0 mt-0.5" aria-hidden>
                           <path d="M11.584 2.376a.75.75 0 0 1 .832 0l9 6a.75.75 0 1 1-.832 1.248L12 3.901 3.416 9.624a.75.75 0 0 1-.832-1.248l9-6Z" />
                           <path fillRule="evenodd" d="M20.25 10.332v9.918H21a.75.75 0 0 1 0 1.5H3a.75.75 0 0 1 0-1.5h.75v-9.918a.75.75 0 0 1 .634-.74A49.109 49.109 0 0 1 12 9c2.59 0 5.134.202 7.616.592a.75.75 0 0 1 .634.74Zm-7.5 2.418a.75.75 0 0 0-1.5 0v6.75a.75.75 0 0 0 1.5 0v-6.75Zm3-.75a.75.75 0 0 1 .75.75v6.75a.75.75 0 0 1-1.5 0v-6.75a.75.75 0 0 1 .75-.75ZM9 12.75a.75.75 0 0 0-1.5 0v6.75a.75.75 0 0 0 1.5 0v-6.75Z" clipRule="evenodd" />
                         </svg>
-                        <div className="min-w-0 overflow-hidden">
+                        <div className="min-w-0">
                           <h3 className="text-[16px] font-medium text-gray-900 mb-0.5">Government</h3>
-                          <p className="text-[14px] text-gray-500 leading-none truncate">Government &amp; social impact</p>
+                          <p className="text-[14px] text-gray-500 leading-snug">Government &amp; social impact</p>
                         </div>
                       </a>
-                      <p className="text-[14px] text-gray-400 pt-0.5">And more!</p>
-                    </div>
+                      <p className="w-full text-center text-[12px] leading-none text-gray-400 -mt-2">And more!</p>
                   </div>
                 </div>
               </div>
