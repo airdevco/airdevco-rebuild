@@ -19,6 +19,10 @@ interface WhoWeAreProps {
   description?: string;
   stats?: Stat[];
   items?: GalleryItem[];
+  /** When true, the image grid below stats is not rendered. */
+  hideGallery?: boolean;
+  /** Tighter margin below the stat metrics grid (e.g. home when gallery is hidden). */
+  compactMetricsBottom?: boolean;
   bgColor?: string;
   labelColor?: string;
   titleColor?: string;
@@ -57,6 +61,8 @@ export const WhoWeAre = ({
   description = "by helping others launch scalable, secure, and performant products in a fraction of the time and cost of traditional development.",
   stats = DEFAULT_STATS,
   items = DEFAULT_ITEMS,
+  hideGallery = false,
+  compactMetricsBottom = false,
   bgColor = "#0A2540",
   labelColor = "#0AE4E3",
   titleColor = "#FFFFFF",
@@ -117,7 +123,7 @@ export const WhoWeAre = ({
   return (
     <section className="py-24 relative overflow-hidden" style={{ backgroundColor: bgColor }}>
       <div className="relative z-10 max-w-[1200px] mx-auto px-6">
-        <div className="max-w-3xl mb-20">
+        <div className={`max-w-3xl ${compactMetricsBottom ? "mb-8" : "mb-20"}`}>
           <div className="text-[15px] font-semibold uppercase tracking-wider mb-3" style={{ color: labelColor }}>
             {label}
           </div>
@@ -130,7 +136,9 @@ export const WhoWeAre = ({
         </div>
 
         {stats && stats.length > 0 && (
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-20">
+          <div
+            className={`grid grid-cols-2 lg:grid-cols-4 gap-4 ${compactMetricsBottom ? "mb-4" : "mb-20"}`}
+          >
             {stats.map((stat, idx) => (
               <div key={idx} className="pt-8 pr-8 pb-8 pl-0">
                 <div className="text-5xl font-bold mb-2 tracking-tight pl-4 pt-1 relative" style={{ color: titleColor, borderLeft: `2px solid ${labelColor}` }}>
@@ -144,7 +152,7 @@ export const WhoWeAre = ({
       </div>
 
       {/* 5x3 Full Width Grid Gallery */}
-      {items && items.length > 0 && (
+      {!hideGallery && items && items.length > 0 && (
         <div className="w-full px-4 overflow-hidden">
           <div className="relative grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 auto-rows-fr min-h-[480px] md:min-h-[540px] lg:h-[480px]">
             {items.map((item, idx) => {

@@ -51,12 +51,12 @@ const Index = () => {
         <Navbar />
         <main>
           <IndexLandingHero />
-          <div className="pt-16">
-            <ClientLogoTicker variant="featured" />
-          </div>
           <CaseStudies />
           <BusinessTypes />
-          <Stats />
+          <Stats hideGallery compactMetricsBottom />
+          <div className="pt-12 pb-4 lg:pt-16 lg:pb-8 bg-white">
+            <ClientLogoTicker variant="featured" />
+          </div>
           <Testimonials />
           <SaasCTA />
         </main>

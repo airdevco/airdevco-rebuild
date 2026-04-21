@@ -26,7 +26,14 @@ const GALLERY_ITEMS = [
     { title: "Company Profile", image: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1769446525143x563993953087865000/tax.webp" },
   ];
 
-export const Stats = () => {
+type StatsProps = {
+  /** Home (`/`) only: omit the WHO WE ARE image grid. */
+  hideGallery?: boolean;
+  /** Home (`/`) only: less space below the metrics row. */
+  compactMetricsBottom?: boolean;
+};
+
+export const Stats = ({ hideGallery, compactMetricsBottom }: StatsProps = {}) => {
   return (
     <WhoWeAre
       label="WHO WE ARE"
@@ -34,10 +41,12 @@ export const Stats = () => {
       description="Visual development and AI are changing how software gets made. We're leading that shift."
       stats={STATS_ITEMS}
       items={GALLERY_ITEMS}
+      hideGallery={hideGallery}
+      compactMetricsBottom={compactMetricsBottom}
       bgColor="#0A2540"
       labelColor="#0AE4E3"
       titleColor="#FFFFFF"
       descriptionColor="#ADBDCC"
-                      />
+    />
   );
 };
