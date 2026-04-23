@@ -6,6 +6,7 @@ interface Stat {
   value: number | string;
   suffix?: string;
   decimals?: number;
+  className?: string;
 }
 
 interface GalleryItem {
@@ -27,6 +28,12 @@ interface WhoWeAreProps {
   labelColor?: string;
   titleColor?: string;
   descriptionColor?: string;
+  titleClassName?: string;
+  titleLineHeight?: string;
+  statValueClassName?: string;
+  statLabelClassName?: string;
+  statsGridClassName?: string;
+  statItemClassName?: string;
 }
 
 const DEFAULT_STATS: Stat[] = [
@@ -67,6 +74,12 @@ export const WhoWeAre = ({
   labelColor = "#0AE4E3",
   titleColor = "#FFFFFF",
   descriptionColor = "#ADBDCC",
+  titleClassName = "",
+  titleLineHeight,
+  statValueClassName = "",
+  statLabelClassName = "",
+  statsGridClassName = "",
+  statItemClassName = "",
 }: WhoWeAreProps = {}) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [isDesktop, setIsDesktop] = useState(false);
@@ -127,7 +140,10 @@ export const WhoWeAre = ({
           <div className="text-[15px] font-semibold uppercase tracking-wider mb-3" style={{ color: labelColor }}>
             {label}
           </div>
-          <h2 className="text-4xl lg:text-5xl font-semibold tracking-tight mb-6" style={{ color: titleColor }}>
+          <h2
+            className={`text-4xl lg:text-5xl font-semibold tracking-tight mb-6 ${titleClassName}`}
+            style={{ color: titleColor, lineHeight: titleLineHeight }}
+          >
             {title}
           </h2>
           <p className="text-xl leading-relaxed" style={{ color: descriptionColor }}>
@@ -137,14 +153,14 @@ export const WhoWeAre = ({
 
         {stats && stats.length > 0 && (
           <div
-            className={`grid grid-cols-2 lg:grid-cols-4 gap-4 ${compactMetricsBottom ? "mb-4" : "mb-20"}`}
+            className={`grid grid-cols-2 lg:grid-cols-4 gap-4 ${compactMetricsBottom ? "mb-4" : "mb-20"} ${statsGridClassName}`}
           >
             {stats.map((stat, idx) => (
-              <div key={idx} className="pt-8 pr-8 pb-8 pl-0">
-                <div className="text-5xl font-bold mb-2 tracking-tight pl-4 pt-1 relative" style={{ color: titleColor, borderLeft: `2px solid ${labelColor}` }}>
+              <div key={idx} className={`pt-8 pr-8 pb-8 pl-0 ${statItemClassName} ${stat.className || ""}`}>
+                <div className={`text-5xl font-bold mb-2 tracking-tight pl-4 pt-1 relative ${statValueClassName}`} style={{ color: titleColor, borderLeft: `2px solid ${labelColor}` }}>
                   {typeof stat.value === 'number' && stat.decimals ? stat.value.toFixed(stat.decimals) : stat.value}{stat.suffix}
                 </div>
-                <div className="font-medium pl-4" style={{ color: descriptionColor }}>{stat.label}</div>
+                <div className={`font-medium pl-4 ${statLabelClassName}`} style={{ color: descriptionColor }}>{stat.label}</div>
               </div>
             ))}
           </div>
