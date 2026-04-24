@@ -108,7 +108,7 @@ const Mvps = () => {
             buttonText="Talk to us"
             titleMaxWidth="800px"
             alignLeft={true}
-            rightImage="https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1767135054135x187899136101165700/craftly.png"
+            rightImage="https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774006421831x791000213883669600/crm5.webp"
             label="TRUSTED BY ORGANIZATIONS OF ALL SIZES"
           />
           <CaseStudies 

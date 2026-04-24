@@ -187,41 +187,89 @@ const MockupWireframe = () => {
           animate={isInView ? { x: 0, opacity: 1 } : { x: -20, opacity: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <div className="h-8 w-full bg-[#1E3A5F]/50 rounded-md"></div>
-          <div className="h-4 w-3/4 bg-[#1E3A5F]/30 rounded-md"></div>
+          <div className="h-8 w-full bg-gradient-to-r from-[#1265EF]/35 to-[#0AE4E3]/35 border border-[#1265EF]/50 rounded-md"></div>
+          <div className="h-4 w-3/4 bg-[#1E3A5F]/40 rounded-md"></div>
           <div className="h-4 w-5/6 bg-[#1E3A5F]/30 rounded-md"></div>
-          <div className="h-4 w-4/5 bg-[#1E3A5F]/30 rounded-md"></div>
+          <div className="h-4 w-4/5 bg-[#1E3A5F]/35 rounded-md"></div>
+          <motion.div
+            className="h-14 rounded-lg bg-[#1E3A5F]/20 border border-[#0AE4E3]/20 p-2 flex flex-col gap-2 mt-1"
+            initial={{ opacity: 0, y: 12 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
+            transition={{ duration: 0.45, delay: 0.45 }}
+          >
+            <div className="h-1.5 w-10/12 rounded-full bg-[#0AE4E3]/70" />
+            <div className="h-1.5 w-8/12 rounded-full bg-[#7C3AED]/55" />
+          </motion.div>
         </motion.div>
         {/* Main Content - Assembled Animation */}
         <div className="flex-1 flex flex-col gap-4">
           <motion.div 
-            className="h-24 w-full bg-[#1E3A5F]/30 rounded-lg flex items-center justify-center"
+            className="h-24 w-full bg-gradient-to-br from-[#1265EF]/20 via-[#7C3AED]/15 to-[#0AE4E3]/10 border border-[#1E3A5F] rounded-lg p-3 flex items-center gap-3"
             initial={{ y: -20, opacity: 0 }}
             animate={isInView ? { y: 0, opacity: 1 } : { y: -20, opacity: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            {/* Removed circle in middle */}
+            <motion.div
+              className="w-12 h-12 rounded-xl bg-[#0AE4E3]/20 border border-[#0AE4E3]/40 flex items-center justify-center"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0.8, opacity: 0 }}
+              transition={{ duration: 0.45, delay: 0.55 }}
+            >
+              <div className="w-5 h-5 rounded-md bg-[#0AE4E3]/70" />
+            </motion.div>
+            <div className="flex-1 flex flex-col gap-2">
+              <div className="h-2.5 w-3/4 rounded-full bg-white/70" />
+              <div className="h-2.5 w-2/3 rounded-full bg-white/45" />
+              <div className="flex gap-2 pt-1">
+                <div className="h-5 w-16 rounded-full bg-[#1265EF]/35 border border-[#1265EF]/60" />
+                <div className="h-5 w-16 rounded-full bg-[#7C3AED]/30 border border-[#7C3AED]/55" />
+              </div>
+            </div>
           </motion.div>
           <div className="flex gap-4">
               <motion.div 
-                className="flex-1 h-20 bg-[#1E3A5F]/20 rounded-lg"
+                className="flex-1 h-20 bg-[#1E3A5F]/20 border border-[#10B981]/35 rounded-lg p-3"
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0.8, opacity: 0 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
-              />
+              >
+                <div className="h-2 w-2/3 rounded-full bg-[#10B981]/70 mb-2" />
+                <div className="flex items-end gap-1 h-8">
+                  <div className="w-2 h-3 rounded-t bg-[#10B981]/35" />
+                  <div className="w-2 h-5 rounded-t bg-[#10B981]/50" />
+                  <div className="w-2 h-7 rounded-t bg-[#10B981]/70" />
+                  <div className="w-2 h-4 rounded-t bg-[#10B981]/45" />
+                </div>
+              </motion.div>
               <motion.div 
-                className="flex-1 h-20 bg-[#1E3A5F]/20 rounded-lg"
+                className="flex-1 h-20 bg-[#1E3A5F]/20 border border-[#F59E0B]/35 rounded-lg p-3 flex flex-col justify-between"
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0.8, opacity: 0 }}
                 transition={{ duration: 0.5, delay: 0.7 }}
-              />
+              >
+                <div className="h-2 w-1/2 rounded-full bg-[#F59E0B]/70" />
+                <div className="flex gap-1">
+                  <div className="w-3 h-3 rounded-sm bg-[#F59E0B]/35" />
+                  <div className="w-3 h-3 rounded-sm bg-[#F59E0B]/55" />
+                  <div className="w-3 h-3 rounded-sm bg-[#F59E0B]/75" />
+                </div>
+              </motion.div>
           </div>
           <motion.div 
-            className="flex-1 bg-[#1E3A5F]/20 rounded-lg"
+            className="flex-1 bg-[#1E3A5F]/20 border border-[#1265EF]/25 rounded-lg relative overflow-hidden p-3"
             initial={{ y: 20, opacity: 0 }}
             animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
             transition={{ duration: 0.5, delay: 0.8 }}
-          />
+          >
+            <div className="absolute -right-6 -top-6 w-20 h-20 rounded-full bg-[#7C3AED]/20 blur-md" />
+            <div className="absolute -left-4 bottom-0 w-16 h-16 rounded-full bg-[#0AE4E3]/15 blur-sm" />
+            <div className="h-2 w-2/5 rounded-full bg-[#1265EF]/65 mb-2" />
+            <div className="grid grid-cols-3 gap-2 h-[calc(100%-0.75rem)]">
+              <div className="rounded-md bg-[#1265EF]/20 border border-[#1265EF]/35" />
+              <div className="rounded-md bg-[#7C3AED]/20 border border-[#7C3AED]/35" />
+              <div className="rounded-md bg-[#0AE4E3]/20 border border-[#0AE4E3]/35" />
+            </div>
+          </motion.div>
         </div>
       </div>
       {/* Accent overlay */}
