@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ReactNode, useEffect, useState } from "react";
 import Lottie from "lottie-react";
+import JSZipLib from "jszip";
 
 // Add CSS for responsive transform origin
 const lottieStyles = `
@@ -30,6 +31,134 @@ interface HeroProps {
   centerText?: boolean;
 }
 
+/** Module-level so React does not remount on every Hero render (was causing freezes / jank). */
+function HeroLottiePlayer({ src }: { src: string }) {
+  const [animationData, setAnimationData] = useState<unknown>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const fail = () => {
+      if (!cancelled) setLoading(false);
+    };
+
+    if (src.endsWith(".lottie")) {
+      // JSZip is already imported at module level — fetch and parse immediately.
+      fetch(src)
+        .then((res) => res.arrayBuffer())
+        .then((buffer) => {
+          if (cancelled) return null;
+          return JSZipLib.loadAsync(buffer);
+        })
+        .then((zip) => {
+          if (cancelled || !zip) return null;
+
+          const jsonFile = Object.keys(zip.files).find(
+            (name) => name.endsWith(".json") && !name.includes("manifest")
+          );
+          if (!jsonFile) {
+            fail();
+            return null;
+          }
+
+          return zip.files[jsonFile].async("string").then((jsonString) => {
+            if (cancelled) return null;
+            const data = JSON.parse(jsonString) as { assets?: unknown[] };
+
+            const imagePromises: Promise<void>[] = [];
+            const imageMap: { [key: string]: string } = {};
+
+            Object.keys(zip.files).forEach((fileName) => {
+              if (
+                fileName.startsWith("images/") &&
+                (fileName.endsWith(".png") ||
+                  fileName.endsWith(".jpg") ||
+                  fileName.endsWith(".jpeg"))
+              ) {
+                const imageName = fileName.split("/").pop() || fileName;
+                imagePromises.push(
+                  zip.files[fileName].async("blob").then((blob) => {
+                    return new Promise<void>((resolve) => {
+                      const reader = new FileReader();
+                      reader.onloadend = () => {
+                        imageMap[imageName] = reader.result as string;
+                        resolve();
+                      };
+                      reader.readAsDataURL(blob);
+                    });
+                  })
+                );
+              }
+            });
+
+            return Promise.all(imagePromises).then(() => {
+              if (cancelled) return;
+              const updateAssets = (assets: { p?: string }[]) => {
+                if (!assets) return;
+                assets.forEach((asset) => {
+                  if (asset.p && imageMap[asset.p]) {
+                    asset.p = imageMap[asset.p];
+                  }
+                });
+              };
+
+              if (data.assets) {
+                updateAssets(data.assets as { p?: string }[]);
+              }
+
+              setAnimationData(data);
+              setLoading(false);
+            });
+          });
+        })
+        .catch(fail);
+    } else {
+      fetch(src)
+        .then((res) => res.json())
+        .then((data) => {
+          if (cancelled) return;
+          setAnimationData(data);
+          setLoading(false);
+        })
+        .catch(fail);
+    }
+
+    return () => {
+      cancelled = true;
+    };
+  }, [src]);
+
+  if (loading) {
+    return (
+      <div
+        className="w-full min-h-[400px] lg:min-h-[450px] rounded-2xl border border-slate-200/90 bg-gradient-to-br from-slate-100 via-slate-50 to-slate-100 shadow-inner"
+        aria-hidden
+      >
+        <div className="h-full w-full min-h-[400px] lg:min-h-[450px] animate-pulse rounded-2xl bg-slate-200/40" />
+      </div>
+    );
+  }
+
+  if (!animationData) {
+    return (
+      <div
+        className="w-full min-h-[400px] lg:min-h-[450px] rounded-2xl border border-dashed border-slate-200 bg-slate-50"
+        aria-hidden
+      />
+    );
+  }
+
+  return (
+    <Lottie
+      animationData={animationData}
+      loop={true}
+      autoplay={true}
+      style={{ width: "100%", height: "100%" }}
+    />
+  );
+}
+
 export const Hero = ({ 
   title = "A better way to launch your product",
   description = "We use the latest in AI and visual development to build world-class software in a fraction of time and cost of conventional agencies.",
@@ -45,118 +174,11 @@ export const Hero = ({
   label,
   centerText = false
 }: HeroProps = {}) => {
-  // Lottie Player Component for .lottie files
-  const LottiePlayer = ({ src }: { src: string }) => {
-    const [animationData, setAnimationData] = useState<any>(null);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-      if (src.endsWith('.lottie')) {
-        // For .lottie files, extract JSON and images from ZIP archive
-        import('jszip').then(JSZip => {
-          fetch(src)
-            .then(res => res.arrayBuffer())
-            .then(buffer => JSZip.default.loadAsync(buffer))
-            .then(zip => {
-              // Find the JSON file in the ZIP (usually in animations/ folder)
-              const jsonFile = Object.keys(zip.files).find(name => 
-                name.endsWith('.json') && !name.includes('manifest')
-              );
-              if (!jsonFile) {
-                setLoading(false);
-                return null;
-              }
-
-              // Extract JSON
-              return zip.files[jsonFile].async('string').then(jsonString => {
-                const data = JSON.parse(jsonString);
-                
-                // Extract images and convert to base64
-                const imagePromises: Promise<void>[] = [];
-                const imageMap: { [key: string]: string } = {};
-
-                // Find all image files in the ZIP
-                Object.keys(zip.files).forEach(fileName => {
-                  if (fileName.startsWith('images/') && 
-                      (fileName.endsWith('.png') || fileName.endsWith('.jpg') || fileName.endsWith('.jpeg'))) {
-                    const imageName = fileName.split('/').pop() || fileName;
-                    imagePromises.push(
-                      zip.files[fileName].async('blob').then(blob => {
-                        return new Promise<void>((resolve) => {
-                          const reader = new FileReader();
-                          reader.onloadend = () => {
-                            imageMap[imageName] = reader.result as string;
-                            resolve();
-                          };
-                          reader.readAsDataURL(blob);
-                        });
-                      })
-                    );
-                  }
-                });
-
-                // Wait for all images to be loaded, then update JSON with base64 URLs
-                return Promise.all(imagePromises).then(() => {
-                  // Update image references in the JSON
-                  const updateAssets = (assets: any[]) => {
-                    if (!assets) return;
-                    assets.forEach((asset: any) => {
-                      if (asset.p && imageMap[asset.p]) {
-                        asset.p = imageMap[asset.p];
-                      }
-                    });
-                  };
-
-                  if (data.assets) {
-                    updateAssets(data.assets);
-                  }
-
-                  setAnimationData(data);
-                  setLoading(false);
-                });
-              });
-            })
-            .catch(() => {
-              setLoading(false);
-            });
-        }).catch(() => {
-          setLoading(false);
-        });
-      } else {
-        // For JSON files, fetch directly
-        fetch(src)
-          .then(res => res.json())
-          .then(data => {
-            setAnimationData(data);
-            setLoading(false);
-          })
-          .catch(() => setLoading(false));
-      }
-    }, [src]);
-
-    if (loading) {
-      return <div style={{ width: '100%', height: '100%', minHeight: '400px' }} />;
-    }
-
-    if (!animationData) {
-      return <div style={{ width: '100%', height: '100%', minHeight: '400px' }} />;
-    }
-
-    return (
-      <Lottie
-        animationData={animationData}
-        loop={true}
-        autoplay={true}
-        style={{ width: '100%', height: '100%' }}
-      />
-    );
-  };
-
   if (alignLeft && (rightImage || lottieAnimation)) {
     return (
       <>
         <style>{lottieStyles}</style>
-        <section className="relative pt-24 pb-12 lg:pt-48 lg:pb-16 overflow-x-hidden">
+        <section className="relative pt-24 pb-12 lg:pt-48 lg:pb-16" style={{ overflow: "hidden" }}>
         <div className="relative z-10 max-w-[1200px] mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center relative">
             <div className="text-left">
@@ -193,19 +215,19 @@ export const Hero = ({
               )}
             </div>
             
-            <div 
-              className={`relative mt-8 lg:mt-0 lg:absolute lg:left-1/2 lg:ml-12 lg:top-1/2 lg:-translate-y-1/2 lg:flex lg:items-center lg:justify-start z-0 flex items-center justify-center lg:justify-start ${useOriginalImageSize ? '' : imageHeight ? '' : 'lg:h-[450px]'}`}
+            <div
+              className={`relative mt-8 lg:mt-0 lg:absolute lg:left-1/2 lg:ml-12 lg:top-1/2 lg:-translate-y-1/2 lg:flex lg:items-center lg:justify-start z-0 flex items-center justify-center lg:justify-start ${useOriginalImageSize ? "" : imageHeight ? "" : "lg:h-[450px]"}`}
               style={imageHeight ? { height: imageHeight } : {}}
             >
               {lottieAnimation ? (
-                <div 
+                <div
                   className={`${useOriginalImageSize ? "w-full lg:w-auto overflow-hidden" : "w-full h-auto lg:h-full lg:w-auto overflow-hidden"} lottie-animation-container`}
-                  style={{ 
-                    maxWidth: 'none',
-                    transform: 'scale(1.2)'
+                  style={{
+                    maxWidth: "none",
+                    transform: "scale(1.2)",
                   }}
                 >
-                  <LottiePlayer src={lottieAnimation} />
+                  <HeroLottiePlayer src={lottieAnimation} />
                 </div>
               ) : rightImage ? (
                 <img 

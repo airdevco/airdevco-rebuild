@@ -8,7 +8,6 @@ import {
   Footer,
   AudienceSection,
   DesignPrinciples,
-  ProductExperts,
   DiscoveryOutputs,
 } from "@/components/landing";
 import { DocumentTextIcon, PresentationChartLineIcon, CheckCircleIcon } from "@heroicons/react/24/solid";
@@ -62,8 +61,7 @@ const ProductDesign = () => {
             lottieAnimation="https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/646dcae8ab7266fb0356dd33_swipe-vector.lottie"
             label="TRUSTED BY ORGANIZATIONS OF ALL SIZES"
           />
-          <DesignPrinciples />
-          <ProductExperts />
+          <DesignPrinciples inlineLayout />
           <DiscoveryOutputs />
           <AudienceSection 
             label="HOW IT'S USED"

@@ -176,32 +176,32 @@ const ValidationAnimation = () => (
 
 export const DiscoveryOutputs = () => {
   return (
-    <section className="py-24 bg-[#F6F9FC]">
+    <section className="py-24 bg-[#0A2540]">
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-[15px] font-semibold text-[#1e3a8a] uppercase tracking-wider mb-3 block">
+          <span className="text-[15px] font-semibold text-[#0AE4E3] uppercase tracking-wider mb-3 block">
             DELIVERABLES
           </span>
-          <h2 className="text-4xl lg:text-5xl font-semibold tracking-tight text-[#1a1a1a] mb-6">
+          <h2 className="text-4xl lg:text-5xl font-semibold tracking-tight text-white mb-6">
             What you get
           </h2>
-          <p className="text-[20px] text-[#425466] leading-relaxed">
+          <p className="text-[20px] text-[#ADBDCC] leading-relaxed">
             We don't just give you a slide deck. We deliver tangible assets that prepare you for a successful build and launch.
           </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
           {OUTPUTS.map((output, index) => (
-            <div key={index} className="bg-white rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-slate-200 overflow-hidden flex flex-col h-full">
-              <div className="h-60 w-full bg-slate-50 border-b border-slate-100 overflow-hidden">
+            <div key={index} className="bg-[#112F4E]/50 border border-[#1E3A5F] rounded-2xl overflow-hidden flex flex-col h-full">
+              <div className="h-60 w-full bg-[#0A2540]/45 border-b border-[#1E3A5F] overflow-hidden">
                 {output.animation === 'prototype' && <PrototypeAnimation />}
                 {output.animation === 'documentation' && <DocumentationAnimation />}
                 {output.animation === 'validation' && <ValidationAnimation />}
               </div>
               
               <div className="p-8 flex-1 flex flex-col">
-                <h3 className="text-[24px] font-bold text-[#1a1a1a] mb-3">{output.title}</h3>
-                <p className="text-[18px] text-gray-600 leading-relaxed">
+                <h3 className="text-[24px] font-bold text-white mb-3">{output.title}</h3>
+                <p className="text-[18px] text-[#ADBDCC] leading-relaxed">
                   {output.description}
                 </p>
               </div>

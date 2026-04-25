@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import ProductDesign from "@/views/ProductDesign";
 
+const PRODUCT_DESIGN_HERO_LOTTIE =
+  "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/646dcae8ab7266fb0356dd33_swipe-vector.lottie";
+
 export const metadata: Metadata = {
   title: "Product design | Airdev",
   description:
@@ -27,5 +30,10 @@ export const metadata: Metadata = {
 };
 
 export default function ProductDesignPage() {
-  return <ProductDesign />;
+  return (
+    <>
+      <link rel="preload" href={PRODUCT_DESIGN_HERO_LOTTIE} as="fetch" crossOrigin="anonymous" />
+      <ProductDesign />
+    </>
+  );
 }

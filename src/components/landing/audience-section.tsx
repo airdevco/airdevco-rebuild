@@ -16,6 +16,7 @@ export interface AudienceSectionProps {
   description?: string;
   audience?: AudienceItem[];
   backgroundColor?: string;
+  colorMode?: "light" | "dark";
 }
 
 const DEFAULT_AUDIENCE: AudienceItem[] = [
@@ -47,20 +48,23 @@ export const AudienceSection = ({
   title = "Built for ambitious teams",
   description = "Whether you're a founder or an enterprise leader, our full-scale build process is designed to deliver production-grade software that scales.",
   audience = DEFAULT_AUDIENCE,
-  backgroundColor = "#f6f9fc"
+  backgroundColor = "#f6f9fc",
+  colorMode = "light",
 }: AudienceSectionProps) => {
+  const isDark = colorMode === "dark";
+
   return (
     <section className="py-24" style={{ backgroundColor }}>
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="mb-16 text-center max-w-3xl mx-auto">
-          <div className="text-[16px] font-semibold text-[#1e3a8a] uppercase tracking-wider mb-3">
+          <div className={`text-[16px] font-semibold uppercase tracking-wider mb-3 ${isDark ? "text-[#0AE4E3]" : "text-[#1e3a8a]"}`}>
             {label}
           </div>
-          <h2 className="text-4xl lg:text-5xl font-semibold tracking-[-0.02em] text-[#1a1a1a] mb-6">
+          <h2 className={`text-4xl lg:text-5xl font-semibold tracking-[-0.02em] mb-6 ${isDark ? "text-white" : "text-[#1a1a1a]"}`}>
             {title}
           </h2>
           {description && (
-            <p className="text-[20px] text-[#425466] leading-relaxed">
+            <p className={`text-[20px] leading-relaxed ${isDark ? "text-[#ADBDCC]" : "text-[#425466]"}`}>
               {description}
             </p>
           )}
@@ -74,23 +78,27 @@ export const AudienceSection = ({
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-white rounded-2xl shadow-[0_2px_4px_rgba(0,0,0,0.02),0_8px_16px_rgba(0,0,0,0.04)] flex flex-col overflow-hidden h-full"
+              className={
+                isDark
+                  ? "bg-[#112F4E]/50 border border-[#1E3A5F] rounded-2xl shadow-none flex flex-col overflow-hidden h-full"
+                  : "bg-white rounded-2xl shadow-[0_2px_4px_rgba(0,0,0,0.02),0_8px_16px_rgba(0,0,0,0.04)] flex flex-col overflow-hidden h-full"
+              }
             >
               <div className="h-2 w-full" style={{ backgroundColor: item.color }} />
               <div className="p-8 flex flex-col h-full">
                 <div className="flex items-center gap-3 mb-4">
-                  <item.icon className="w-6 h-6 flex-shrink-0 -translate-y-[2px]" />
-                  <h3 className="text-[24px] font-medium text-[#1a1a1a] leading-[32px]">
+                  <item.icon className={`w-6 h-6 flex-shrink-0 -translate-y-[2px] ${isDark ? "text-white" : ""}`} />
+                  <h3 className={`text-[24px] font-medium leading-[32px] ${isDark ? "text-white" : "text-[#1a1a1a]"}`}>
                     {item.title}
                   </h3>
                 </div>
                 {item.subtitle && (
-                  <div className="text-[15px] font-semibold text-[#6C7280] uppercase tracking-wide mb-4">
+                  <div className={`text-[15px] font-semibold uppercase tracking-wide mb-4 ${isDark ? "text-[#ADBDCC]" : "text-[#6C7280]"}`}>
                     {item.subtitle}
                   </div>
                 )}
                 {item.description && (
-                  <p className="text-gray-600 leading-relaxed text-[18px]">
+                  <p className={`leading-relaxed text-[18px] ${isDark ? "text-[#ADBDCC]" : "text-gray-600"}`}>
                     {item.description}
                   </p>
                 )}

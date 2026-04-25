@@ -66,6 +66,11 @@ interface DesignPrinciplesProps {
   label?: string;
   title?: string;
   description?: string;
+  /**
+   * When true, render all principles in a single page (01, 02… + two-column rows like /core-values).
+   * When false, keep the tabbed + detail card layout. Default is false so other pages stay unchanged.
+   */
+  inlineLayout?: boolean;
 }
 
 export const DesignPrinciples = ({ 
@@ -73,7 +78,8 @@ export const DesignPrinciples = ({
   principles = PRINCIPLES,
   label = "OUR APPROACH",
   title = "Our design principles",
-  description = "These core principles guide every design decision we make, ensuring we create products that are not just beautiful, but truly effective."
+  description = "These core principles guide every design decision we make, ensuring we create products that are not just beautiful, but truly effective.",
+  inlineLayout = false,
 }: DesignPrinciplesProps) => {
   const [selectedPrinciple, setSelectedPrinciple] = useState<string>(principles[0].id);
   const tabRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
@@ -108,6 +114,7 @@ export const DesignPrinciples = ({
   };
 
   useEffect(() => {
+    if (inlineLayout) return;
     // Scroll to selected tab on mount and when selectedPrinciple changes
     if (selectedPrinciple && tabRefs.current[selectedPrinciple] && scrollContainerRef.current) {
       const tabElement = tabRefs.current[selectedPrinciple];
@@ -130,7 +137,52 @@ export const DesignPrinciples = ({
         });
       }
     }
-  }, [selectedPrinciple]);
+  }, [inlineLayout, selectedPrinciple]);
+
+  if (inlineLayout) {
+    return (
+      <section className={`py-24 ${bgColor}`}>
+        <div className="mx-auto max-w-[min(100%,calc(22.75rem+4rem+56ch+3rem))] px-6">
+          <div className="mb-16 text-left">
+            <span className="text-[15px] font-semibold text-[#1265EF] uppercase tracking-wider mb-3 block">
+              {label}
+            </span>
+            <h2 className="text-[48px] font-semibold tracking-tight leading-none text-[#1a1a1a] mb-6">
+              {title}
+            </h2>
+            <p className="text-xl text-gray-600 leading-relaxed">
+              {description}
+            </p>
+          </div>
+
+          <div className="divide-y divide-gray-100">
+            {principles.map((principle, i) => (
+              <div key={principle.id} className="py-12 lg:py-16">
+                <div className="grid gap-8 lg:grid-cols-[min(22.75rem,100%)_1fr] lg:gap-16">
+                  <div className="min-w-0">
+                    <span className="text-[14px] font-[600] tracking-widest text-[#9EAAC2] uppercase mb-3 block">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <h3 className="text-[30px] font-semibold text-[#1a1a1a] leading-snug mb-3">
+                      {principle.name}
+                    </h3>
+                    <p className="text-base leading-relaxed text-[#4B5563]">
+                      {principle.description}
+                    </p>
+                  </div>
+                  <div className="min-w-0 max-w-[min(56ch,100%)]">
+                    <p className="text-[16px] leading-relaxed text-[#4B5563]">
+                      {principle.explanation}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className={`py-24 ${bgColor}`}>
