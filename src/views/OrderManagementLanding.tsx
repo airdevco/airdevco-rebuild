@@ -9,12 +9,14 @@ import {
 } from "@/components/landing";
 import { OrderManagementHeader } from "@/components/landing/order-management-header";
 import { OrderManagementCTA } from "@/components/landing/order-management-page-cta";
+import { LandingPricingPopup } from "@/components/landing/landing-pricing-popup";
 import {
   OrderManagementLandingHero,
   OrderManagementWhyAirdev,
   OrderManagementTypesSection,
   OrderManagementPricingSection,
   ORDER_MANAGEMENT_CASE_SLIDES,
+  PRICING_PLANS,
 } from "@/components/landing/order-management-sections";
 
 const ORDER_MANAGEMENT_DOC_TITLE = "Airdev | The smarter way to launch your order management software";
@@ -83,6 +85,7 @@ export default function OrderManagementLanding() {
           <div id="case-studies" className="scroll-mt-[88px]">
             <CaseStudies
               label="CASE STUDIES"
+              labelClassName="text-[15px]"
               description="From MVPs that raised millions to enterprise platforms serving thousands of users."
               slides={ORDER_MANAGEMENT_CASE_SLIDES}
             />
@@ -90,6 +93,7 @@ export default function OrderManagementLanding() {
           <OrderManagementPricingSection />
           <Testimonials
             label="Testimonials"
+            labelClassName="text-[15px]"
             title="Clients trust Airdev to launch and scale"
             description=""
           />
@@ -97,9 +101,10 @@ export default function OrderManagementLanding() {
             <OrderManagementCTA
               title="Ready to build order management software?"
               description="We're happy to talk through workflows, integrations, and rollout—even if you're just exploring."
-              buttonText="Talk to Us"
+              buttonText="Get started"
             />
           </div>
+          <LandingPricingPopup plans={PRICING_PLANS} />
         </main>
         <Footer variant="minimal" />
       </div>

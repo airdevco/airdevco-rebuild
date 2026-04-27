@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 // --- Default Data (for SaasProducts) ---
 const DEFAULT_SLIDES = [
@@ -86,11 +87,12 @@ interface Slide {
 
 interface CaseStudiesProps {
   label?: string;
+  labelClassName?: string;
   description?: string;
   slides?: Slide[];
 }
 
-export const CaseStudies = ({ label, description, slides }: CaseStudiesProps = {}) => {
+export const CaseStudies = ({ label, labelClassName, description, slides }: CaseStudiesProps = {}) => {
   const SLIDES = slides || DEFAULT_SLIDES;
   const [activeIndex, setActiveIndex] = useState(0);
   const [prevIndex, setPrevIndex] = useState(0);
@@ -119,7 +121,7 @@ export const CaseStudies = ({ label, description, slides }: CaseStudiesProps = {
       <div className="relative z-10 max-w-[1200px] mx-auto px-6">
         {/* Top Content */}
         <div className="max-w-3xl mb-8">
-          <h3 className="text-[#1e3a8a] font-semibold tracking-wide uppercase text-sm mb-3">
+          <h3 className={cn("text-[#1e3a8a] font-semibold tracking-wide uppercase text-sm mb-3", labelClassName)}>
             {label || "OUR CLIENTS"}
           </h3>
           <h2 className="text-4xl lg:text-5xl font-semibold tracking-[-0.02em] text-[#1a1a1a] mb-6">

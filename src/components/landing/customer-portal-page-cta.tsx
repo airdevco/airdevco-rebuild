@@ -11,11 +11,14 @@ interface CustomerPortalCTAProps {
 export const CustomerPortalCTA = ({
   title = "Have a project in mind?",
   description = "We're happy to talk through it, even if you're just exploring.",
-  buttonText = "Talk to us",
+  buttonText = "Get started",
   buttonLink = "#",
   variant = "dark",
 }: CustomerPortalCTAProps = {}) => {
   const isLight = variant === "light";
+  const openLandingPricingPopup = () => {
+    window.dispatchEvent(new CustomEvent("open-landing-pricing-popup"));
+  };
 
   return (
     <section className={`relative isolate overflow-hidden ${isLight ? "bg-[#f6f9fc]" : "bg-[#0A2540]"} py-20`}>
@@ -54,6 +57,7 @@ export const CustomerPortalCTA = ({
               </a>
             ) : (
               <Button
+                onClick={openLandingPricingPopup}
                 className="bg-[#1265EF] text-white hover:bg-[#0d4fc7] active:bg-[#0a3fa3] rounded-[6px] px-8 pt-5 pb-4 text-lg font-medium transition-all flex items-center justify-center"
                 style={{ minHeight: "56px", lineHeight: "0.9" }}
               >

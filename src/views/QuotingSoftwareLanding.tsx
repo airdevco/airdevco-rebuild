@@ -9,12 +9,14 @@ import {
 } from "@/components/landing";
 import { QuotingSoftwareHeader } from "@/components/landing/quoting-software-header";
 import { QuotingSoftwareCTA } from "@/components/landing/quoting-software-page-cta";
+import { LandingPricingPopup } from "@/components/landing/landing-pricing-popup";
 import {
   QuotingSoftwareLandingHero,
   QuotingSoftwareWhyAirdev,
   QuotingSoftwareTypesSection,
   QuotingSoftwarePricingSection,
   QUOTING_SOFTWARE_CASE_SLIDES,
+  PRICING_PLANS,
 } from "@/components/landing/quoting-software-sections";
 
 const QUOTING_SOFTWARE_DOC_TITLE = "Airdev | The smarter way to launch your quoting software";
@@ -83,6 +85,7 @@ export default function QuotingSoftwareLanding() {
           <div id="case-studies" className="scroll-mt-[88px]">
             <CaseStudies
               label="CASE STUDIES"
+              labelClassName="text-[15px]"
               description="From MVPs that raised millions to enterprise platforms serving thousands of users."
               slides={QUOTING_SOFTWARE_CASE_SLIDES}
             />
@@ -90,6 +93,7 @@ export default function QuotingSoftwareLanding() {
           <QuotingSoftwarePricingSection />
           <Testimonials
             label="Testimonials"
+            labelClassName="text-[15px]"
             title="Clients trust Airdev to launch and scale"
             description=""
           />
@@ -97,9 +101,10 @@ export default function QuotingSoftwareLanding() {
             <QuotingSoftwareCTA
               title="Have a quoting software product in mind?"
               description="We're happy to talk through it, even if you're just exploring."
-              buttonText="Talk to Us"
+              buttonText="Get started"
             />
           </div>
+          <LandingPricingPopup plans={PRICING_PLANS} />
         </main>
         <Footer variant="minimal" />
       </div>

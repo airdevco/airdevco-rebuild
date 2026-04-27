@@ -8,12 +8,14 @@ import {
 } from "@/components/landing";
 import { MarketplaceHeader as SaasHeader } from "@/components/landing/saas-header";
 import { SaasCTA } from "@/components/landing/saas-page-cta";
+import { LandingPricingPopup } from "@/components/landing/landing-pricing-popup";
 import {
   MarketplaceLandingHero as SaasLandingHero,
   MarketplaceWhyAirdev as SaasWhyAirdev,
   MarketplaceTypesSection as SaasTypesSection,
   MarketplacePricingSection as SaasPricingSection,
   SAAS_MARKETPLACE_CASE_SLIDES as SAAS_LANDING_CASE_SLIDES,
+  PRICING_PLANS,
 } from "@/components/landing/saas-sections";
 
 const COLFAX_STYLES = `
@@ -66,6 +68,7 @@ export default function SaasLanding() {
           <div id="case-studies" className="scroll-mt-[88px]">
             <CaseStudies
               label="CASE STUDIES"
+              labelClassName="text-[15px]"
               description="From MVPs that raised millions to enterprise platforms serving thousands of users."
               slides={SAAS_LANDING_CASE_SLIDES}
             />
@@ -73,6 +76,7 @@ export default function SaasLanding() {
           <SaasPricingSection />
           <Testimonials
             label="Testimonials"
+            labelClassName="text-[15px]"
             title="Clients trust Airdev to launch and scale"
             description=""
           />
@@ -80,9 +84,10 @@ export default function SaasLanding() {
             <SaasCTA
               title="Have a SaaS product in mind?"
               description="We're happy to talk through it, even if you're just exploring."
-              buttonText="Talk to Us"
+              buttonText="Get started"
             />
           </div>
+          <LandingPricingPopup plans={PRICING_PLANS} />
         </main>
         <Footer variant="minimal" />
       </div>

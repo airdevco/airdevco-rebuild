@@ -1,4 +1,5 @@
 import { ChevronRight } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface Testimonial {
   quote: string;
@@ -9,6 +10,7 @@ interface Testimonial {
 
 interface TestimonialsProps {
   label?: string;
+  labelClassName?: string;
   title?: string;
   description?: string;
   testimonials?: Testimonial[];
@@ -76,6 +78,7 @@ const DEFAULT_TESTIMONIALS = [
 
 export const Testimonials = ({
   label = "WHAT CLIENTS SAY",
+  labelClassName,
   title = "Clients trust Airdev to launch and scale",
   description = "Hear from the founders and teams we've worked with.",
   testimonials = DEFAULT_TESTIMONIALS,
@@ -88,7 +91,7 @@ export const Testimonials = ({
       <div className="max-w-[1200px] mx-auto px-6">
         {/* Header */}
         <div className="mb-16 text-center max-w-3xl mx-auto">
-          <div className="text-[16px] font-semibold text-[#1e3a8a] uppercase tracking-wider mb-3">
+          <div className={cn("text-[16px] font-semibold text-[#1e3a8a] uppercase tracking-wider mb-3", labelClassName)}>
             {label}
           </div>
           <h2 className={`text-4xl lg:text-5xl font-semibold tracking-tight text-gray-900 max-w-2xl mx-auto ${description ? "mb-6" : "mb-0"}`}>

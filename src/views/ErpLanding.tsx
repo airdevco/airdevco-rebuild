@@ -8,12 +8,14 @@ import {
 } from "@/components/landing";
 import { ErpHeader } from "@/components/landing/erp-header";
 import { ErpCTA } from "@/components/landing/erp-page-cta";
+import { LandingPricingPopup } from "@/components/landing/landing-pricing-popup";
 import {
   ErpLandingHero,
   ErpWhyAirdev,
   ErpTypesSection,
   ErpPricingSection,
   ERP_CASE_SLIDES,
+  PRICING_PLANS,
 } from "@/components/landing/erp-sections";
 
 const COLFAX_STYLES = `
@@ -66,6 +68,7 @@ export default function ErpLanding() {
           <div id="case-studies" className="scroll-mt-[88px]">
             <CaseStudies
               label="CASE STUDIES"
+              labelClassName="text-[15px]"
               description="From MVPs that raised millions to enterprise platforms serving thousands of users."
               slides={ERP_CASE_SLIDES}
             />
@@ -73,6 +76,7 @@ export default function ErpLanding() {
           <ErpPricingSection />
           <Testimonials
             label="Testimonials"
+            labelClassName="text-[15px]"
             title="Clients trust Airdev to launch and scale"
             description=""
           />
@@ -80,9 +84,10 @@ export default function ErpLanding() {
             <ErpCTA
               title="Have an ERP product in mind?"
               description="We're happy to talk through it, even if you're just exploring."
-              buttonText="Talk to Us"
+              buttonText="Get started"
             />
           </div>
+          <LandingPricingPopup plans={PRICING_PLANS} />
         </main>
         <Footer variant="minimal" />
       </div>

@@ -9,12 +9,14 @@ import {
 } from "@/components/landing";
 import { AiChatbotHeader } from "@/components/landing/ai-chatbot-header";
 import { AiChatbotCTA } from "@/components/landing/ai-chatbot-page-cta";
+import { LandingPricingPopup } from "@/components/landing/landing-pricing-popup";
 import {
   AiChatbotLandingHero,
   AiChatbotWhyAirdev,
   AiChatbotTypesSection,
   AiChatbotPricingSection,
   AI_CHATBOT_CASE_SLIDES,
+  PRICING_PLANS,
 } from "@/components/landing/ai-chatbot-sections";
 
 const AI_CHATBOT_DOC_TITLE = "Airdev | The smarter way to launch your AI chatbot product";
@@ -83,6 +85,7 @@ export default function AiChatbotLanding() {
           <div id="case-studies" className="scroll-mt-[88px]">
             <CaseStudies
               label="CASE STUDIES"
+              labelClassName="text-[15px]"
               description="From MVPs that raised millions to enterprise platforms serving thousands of users."
               slides={AI_CHATBOT_CASE_SLIDES}
             />
@@ -90,6 +93,7 @@ export default function AiChatbotLanding() {
           <AiChatbotPricingSection />
           <Testimonials
             label="Testimonials"
+            labelClassName="text-[15px]"
             title="Clients trust Airdev to launch and scale"
             description=""
           />
@@ -97,9 +101,10 @@ export default function AiChatbotLanding() {
             <AiChatbotCTA
               title="Have an AI chatbot product in mind?"
               description="We're happy to talk through it, even if you're just exploring."
-              buttonText="Talk to Us"
+              buttonText="Get started"
             />
           </div>
+          <LandingPricingPopup plans={PRICING_PLANS} />
         </main>
         <Footer variant="minimal" />
       </div>

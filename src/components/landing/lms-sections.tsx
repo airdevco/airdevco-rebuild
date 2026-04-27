@@ -34,6 +34,10 @@ const scrollToContact = () => {
   document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
 };
 
+const openLandingPricingPopup = () => {
+  window.dispatchEvent(new CustomEvent("open-landing-pricing-popup"));
+};
+
 const HERO_BG = "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/67d482ff67a3aac218170979_blurbg3.svg";
 const REF_SCREEN_INDEX = 2;
 
@@ -123,8 +127,8 @@ export function LmsLandingHero() {
             compliance needs, and go-to-market timeline.
           </p>
           <div className="mt-8">
-            <Button type="button" className={LMS_PRIMARY_BTN} onClick={scrollToContact}>
-              Talk to Us
+            <Button type="button" className={LMS_PRIMARY_BTN} onClick={openLandingPricingPopup}>
+              Get started
             </Button>
           </div>
         </div>
@@ -214,7 +218,7 @@ export function LmsWhyAirdev() {
   return (
     <section id="why-airdev" className="scroll-mt-[88px] py-20 md:py-28" style={{ backgroundColor: SECTION_BG }}>
       <div className="max-w-[1200px] mx-auto px-6">
-        <p className="text-[#1e3a8a] font-semibold tracking-wide uppercase text-sm mb-3 text-center">Why Airdev</p>
+        <p className="text-[#1e3a8a] font-semibold tracking-wide uppercase text-[15px] mb-3 text-center">Why Airdev</p>
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-[#0A2540] tracking-tight mb-4 text-center">
           Fast and flexible
         </h2>
@@ -417,16 +421,30 @@ const AGENCY_BULLETS = [
   "Complex workflows: multi-tenant, B2B, or regulated training",
 ];
 
-const PRICING_PLANS = [
-  { name: "Launchpad", price: "$5k+", subtitle: "Start from a template and make it your own", bullets: LAUNCHPAD_BULLETS },
-  { name: "Agency", price: "$20k+", subtitle: "Build anything that fits your needs", bullets: AGENCY_BULLETS },
+export const PRICING_PLANS = [
+  {
+    name: "Express",
+    price: "$5k+",
+    description:
+      "The fastest path from idea to shipped product. AI drives the process end to end, with human experts in product, design, and engineering involved at every key stage to ensure quality.",
+    bullets: LAUNCHPAD_BULLETS,
+    buttonLabel: "Get an instant quote",
+  },
+  {
+    name: "Agency",
+    price: "$20k+",
+    description:
+      "The right fit for complex products or when you need experienced hands guiding the process. Dedicated experts work with you every step of the way to shape, manage, and build the right product.",
+    bullets: AGENCY_BULLETS,
+    buttonLabel: "Talk to us",
+  },
 ];
 
 export function LmsPricingSection() {
   return (
     <section id="pricing" className="scroll-mt-[88px] py-20 md:py-28 bg-[#F6F9FC]">
       <div className="max-w-[1200px] mx-auto px-6">
-        <p className="text-[#1e3a8a] font-semibold tracking-wide uppercase text-sm mb-3 text-center">Pricing</p>
+        <p className="text-[#1e3a8a] font-semibold tracking-wide uppercase text-[15px] mb-3 text-center">Pricing</p>
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-[#0A2540] tracking-tight mb-4 text-center">
           Choose your path
         </h2>
@@ -442,8 +460,8 @@ export function LmsPricingSection() {
             >
               <h3 className="text-[24px] leading-[32px] font-semibold text-[#0A2540] mb-3">{plan.name}</h3>
               <p className="text-[48px] leading-[48px] font-bold text-[#0A2540] mb-3">{plan.price}</p>
-              <p className="text-[#425466] text-[16px] leading-[24px] font-normal mb-6">{plan.subtitle}</p>
-              <hr className="border-slate-200 mb-6" />
+                            <p className="text-[#425466] text-[16px] leading-[24px]">{plan.description}</p>
+              <hr className="border-slate-200 my-6" />
               <ul className="space-y-4 flex-1 mb-8">
                 {plan.bullets.map((b) => (
                   <li key={b} className="flex items-start gap-3 text-[#425466] text-[15px] leading-[24px]">
@@ -467,7 +485,7 @@ export function LmsPricingSection() {
                 onClick={scrollToContact}
                 className="w-full rounded-xl bg-[#121826] text-white font-medium text-[16px] leading-[24px] py-4 hover:bg-[#1a2438] transition-colors"
               >
-                Get started
+                {plan.buttonLabel}
               </button>
             </div>
           ))}
@@ -477,7 +495,7 @@ export function LmsPricingSection() {
   );
 }
 
-export const LMS_CASE_SLIDES = [
+const LMS_CASE_SLIDES_RAW = [
   {
     id: "bubble",
     company: "Bubble.io",
@@ -502,3 +520,8 @@ export const LMS_CASE_SLIDES = [
     ],
   },
 ];
+
+export const LMS_CASE_SLIDES = LMS_CASE_SLIDES_RAW.map((slide) => ({
+  ...slide,
+  customFields: slide.customFields.filter((field) => field.label !== "Key results"),
+}));

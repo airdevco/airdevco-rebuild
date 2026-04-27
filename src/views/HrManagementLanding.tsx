@@ -9,12 +9,14 @@ import {
 } from "@/components/landing";
 import { HrManagementHeader } from "@/components/landing/hr-management-header";
 import { HrManagementCTA } from "@/components/landing/hr-management-page-cta";
+import { LandingPricingPopup } from "@/components/landing/landing-pricing-popup";
 import {
   HrManagementLandingHero,
   HrManagementWhyAirdev,
   HrManagementTypesSection,
   HrManagementPricingSection,
   HR_MANAGEMENT_CASE_SLIDES,
+  PRICING_PLANS,
 } from "@/components/landing/hr-management-sections";
 
 const HR_MANAGEMENT_DOC_TITLE = "Airdev | The smarter way to launch your HR management software";
@@ -83,6 +85,7 @@ export default function HrManagementLanding() {
           <div id="case-studies" className="scroll-mt-[88px]">
             <CaseStudies
               label="CASE STUDIES"
+              labelClassName="text-[15px]"
               description="From MVPs that raised millions to enterprise platforms serving thousands of users."
               slides={HR_MANAGEMENT_CASE_SLIDES}
             />
@@ -90,6 +93,7 @@ export default function HrManagementLanding() {
           <HrManagementPricingSection />
           <Testimonials
             label="Testimonials"
+            labelClassName="text-[15px]"
             title="Clients trust Airdev to launch and scale"
             description=""
           />
@@ -97,9 +101,10 @@ export default function HrManagementLanding() {
             <HrManagementCTA
               title="Have an HR management product in mind?"
               description="We're happy to talk through it, even if you're just exploring."
-              buttonText="Talk to Us"
+              buttonText="Get started"
             />
           </div>
+          <LandingPricingPopup plans={PRICING_PLANS} />
         </main>
         <Footer variant="minimal" />
       </div>
