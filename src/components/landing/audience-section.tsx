@@ -17,6 +17,8 @@ export interface AudienceSectionProps {
   audience?: AudienceItem[];
   backgroundColor?: string;
   colorMode?: "light" | "dark";
+  showTopBorder?: boolean;
+  capabilitiesIconTitleStyle?: boolean;
 }
 
 const DEFAULT_AUDIENCE: AudienceItem[] = [
@@ -50,6 +52,8 @@ export const AudienceSection = ({
   audience = DEFAULT_AUDIENCE,
   backgroundColor = "#f6f9fc",
   colorMode = "light",
+  showTopBorder = true,
+  capabilitiesIconTitleStyle = false,
 }: AudienceSectionProps) => {
   const isDark = colorMode === "dark";
 
@@ -81,16 +85,36 @@ export const AudienceSection = ({
               className={
                 isDark
                   ? "bg-[#112F4E]/50 border border-[#1E3A5F] rounded-2xl shadow-none flex flex-col overflow-hidden h-full"
-                  : "bg-white rounded-2xl shadow-[0_2px_4px_rgba(0,0,0,0.02),0_8px_16px_rgba(0,0,0,0.04)] flex flex-col overflow-hidden h-full"
+                  : capabilitiesIconTitleStyle
+                    ? "bg-white rounded-[26px] border border-[#E5ECF6] shadow-[0_24px_70px_-28px_rgba(18,101,239,0.28)] flex flex-col overflow-hidden h-full"
+                    : "bg-white rounded-2xl shadow-[0_2px_4px_rgba(0,0,0,0.02),0_8px_16px_rgba(0,0,0,0.04)] flex flex-col overflow-hidden h-full"
               }
             >
-              <div className="h-2 w-full" style={{ backgroundColor: item.color }} />
+              {showTopBorder && <div className="h-2 w-full" style={{ backgroundColor: item.color }} />}
               <div className="p-8 flex flex-col h-full">
+                {capabilitiesIconTitleStyle && (
+                  <span className="text-[14px] font-[600] tracking-widest text-[#9EAAC2] uppercase mb-3 block">
+                    STEP {String(index + 1).padStart(2, "0")}
+                  </span>
+                )}
                 <div className="flex items-center gap-3 mb-4">
-                  <item.icon className={`w-6 h-6 flex-shrink-0 -translate-y-[2px] ${isDark ? "text-white" : ""}`} />
-                  <h3 className={`text-[24px] font-medium leading-[32px] ${isDark ? "text-white" : "text-[#1a1a1a]"}`}>
-                    {item.title}
-                  </h3>
+                  {capabilitiesIconTitleStyle ? (
+                    <>
+                      <div className="w-12 h-12 rounded-lg bg-[#1265EF]/10 flex items-center justify-center text-[#1265EF]">
+                        <item.icon className="w-6 h-6 flex-shrink-0" />
+                      </div>
+                      <h3 className={`${isDark ? "text-white" : "text-[#1a1a1a]"} text-2xl font-bold`}>
+                        {item.title}
+                      </h3>
+                    </>
+                  ) : (
+                    <>
+                      <item.icon className={`w-6 h-6 flex-shrink-0 -translate-y-[2px] ${isDark ? "text-white" : ""}`} />
+                      <h3 className={`text-[24px] font-medium leading-[32px] ${isDark ? "text-white" : "text-[#1a1a1a]"}`}>
+                        {item.title}
+                      </h3>
+                    </>
+                  )}
                 </div>
                 {item.subtitle && (
                   <div className={`text-[15px] font-semibold uppercase tracking-wide mb-4 ${isDark ? "text-[#ADBDCC]" : "text-[#6C7280]"}`}>

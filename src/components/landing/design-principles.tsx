@@ -64,6 +64,7 @@ interface DesignPrinciplesProps {
   bgColor?: string;
   principles?: DesignPrinciple[];
   label?: string;
+  labelColor?: string;
   title?: string;
   description?: string;
   /**
@@ -77,6 +78,7 @@ export const DesignPrinciples = ({
   bgColor = "bg-white",
   principles = PRINCIPLES,
   label = "OUR APPROACH",
+  labelColor = "#1265EF",
   title = "Our design principles",
   description = "These core principles guide every design decision we make, ensuring we create products that are not just beautiful, but truly effective.",
   inlineLayout = false,
@@ -144,7 +146,7 @@ export const DesignPrinciples = ({
       <section className={`py-24 ${bgColor}`}>
         <div className="mx-auto max-w-[min(100%,calc(22.75rem+4rem+56ch+3rem))] px-6">
           <div className="mb-16 text-left">
-            <span className="text-[15px] font-semibold text-[#1265EF] uppercase tracking-wider mb-3 block">
+            <span className="text-[15px] font-semibold uppercase tracking-wider mb-3 block" style={{ color: labelColor }}>
               {label}
             </span>
             <h2 className="text-[48px] font-semibold tracking-tight leading-none text-[#1a1a1a] mb-6">
@@ -188,7 +190,7 @@ export const DesignPrinciples = ({
     <section className={`py-24 ${bgColor}`}>
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="text-left max-w-2xl mb-16">
-          <span className="text-[15px] font-semibold text-[#1265EF] uppercase tracking-wider mb-3 block">
+          <span className="text-[15px] font-semibold uppercase tracking-wider mb-3 block" style={{ color: labelColor }}>
             {label}
           </span>
           <h2 className="text-[48px] font-semibold tracking-tight leading-none text-[#1a1a1a] mb-6">

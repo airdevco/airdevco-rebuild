@@ -166,7 +166,7 @@ const WireframeLineRow = () => (
   </div>
 );
 
-const MockupWireframe = () => {
+export const MockupWireframe = () => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { amount: 0.35, margin: "0px 0px -10% 0px" });
 

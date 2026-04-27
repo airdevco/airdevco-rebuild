@@ -61,13 +61,15 @@ const ProductDesign = () => {
             lottieAnimation="https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/646dcae8ab7266fb0356dd33_swipe-vector.lottie"
             label="TRUSTED BY ORGANIZATIONS OF ALL SIZES"
           />
-          <DesignPrinciples inlineLayout />
-          <DiscoveryOutputs />
+          <DesignPrinciples inlineLayout labelColor="#1e3a8a" />
+          <DiscoveryOutputs prototypeScale={0.8} />
           <AudienceSection 
             label="HOW IT'S USED"
-            title="How it's used"
-            description=""
+            title="Built for every stage"
+            description="From planning to validation — here's how teams put it to work at every step of the product journey."
             backgroundColor="white"
+            showTopBorder={false}
+            capabilitiesIconTitleStyle
             audience={[
               {
                 title: "Plan build",
