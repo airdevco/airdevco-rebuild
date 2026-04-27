@@ -90,9 +90,16 @@ interface CaseStudiesProps {
   labelClassName?: string;
   description?: string;
   slides?: Slide[];
+  disableLogoGrayscale?: boolean;
 }
 
-export const CaseStudies = ({ label, labelClassName, description, slides }: CaseStudiesProps = {}) => {
+export const CaseStudies = ({
+  label,
+  labelClassName,
+  description,
+  slides,
+  disableLogoGrayscale = false,
+}: CaseStudiesProps = {}) => {
   const SLIDES = slides || DEFAULT_SLIDES;
   const [activeIndex, setActiveIndex] = useState(0);
   const [prevIndex, setPrevIndex] = useState(0);
@@ -177,7 +184,7 @@ export const CaseStudies = ({ label, labelClassName, description, slides }: Case
                         ${slide.id === 'kidsbook' ? 'max-h-9' : ''}
                         ${slide.id === 'consenna' ? 'max-h-[48px]' : ''}
                         ${slide.id === 'camphire' ? 'max-h-9' : ''}
-                        ${isActive ? 'grayscale-0 opacity-100' : 'grayscale opacity-60 hover:grayscale-0 hover:opacity-100'}
+                        ${disableLogoGrayscale ? 'grayscale-0 opacity-100' : isActive ? 'grayscale-0 opacity-100' : 'grayscale opacity-60 hover:grayscale-0 hover:opacity-100'}
                       `}
                     />
                   </div>

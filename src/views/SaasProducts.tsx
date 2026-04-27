@@ -58,15 +58,15 @@ const SaasProducts = () => {
             buttonText="Talk to us"
             titleMaxWidth="800px"
             alignLeft={true}
-            rightImage="https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766614390459x575254717983908500/saas2.png"
+            rightImage="https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1772587812851x876454729909677400/flowline.webp"
           />
           <div className="pt-16 pb-24">
             <ClientLogoTicker />
           </div>
           <ValueProps />
-          <CaseStudies />
+          <CaseStudies labelClassName="text-[15px]" disableLogoGrayscale />
           <SampleProducts bgColor="#F6F9FC" />
-          <Testimonials />
+          <Testimonials label="WHAT CLIENTS SAY" labelClassName="text-[15px]" />
           <SaasCTA />
         </main>
         <Footer />
