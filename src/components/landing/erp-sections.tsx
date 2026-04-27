@@ -181,7 +181,7 @@ const COMPARISON_ROWS: ComparisonRow[] = [
   { label: "Scales with you", airdev: "Yes", saas: "Until you hit their limits", traditional: "Yes" },
 ];
 
-const SECTION_BG = "#F6F9FC";
+const WHY_AIRDEV_BG = "#ffffff";
 const AIRDEV_COL_BG = "#ECF2FB";
 const ROW_DIVIDER = "border-b border-[#E2E8F0]";
 const thHeaderBase = "text-[20px] leading-[28px] font-semibold py-5 md:py-6 px-5 md:px-6 align-middle";
@@ -217,7 +217,7 @@ function CellContent({
 export function ErpWhyAirdev() {
   const lastIdx = COMPARISON_ROWS.length - 1;
   return (
-    <section id="why-airdev" className="scroll-mt-[88px] py-20 md:py-28" style={{ backgroundColor: SECTION_BG }}>
+    <section id="why-airdev" className="scroll-mt-[88px] py-20 md:py-28 bg-white" style={{ backgroundColor: WHY_AIRDEV_BG }}>
       <div className="max-w-[1200px] mx-auto px-6">
         <p className="text-[#1e3a8a] font-semibold tracking-wide uppercase text-[15px] mb-3 text-center">Why Airdev</p>
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-[#0A2540] tracking-tight mb-4 text-center">
@@ -232,7 +232,7 @@ export function ErpWhyAirdev() {
           <table className="w-full min-w-[720px] border-separate border-spacing-0">
             <thead>
               <tr>
-                <th className={`${ROW_DIVIDER} ${thHeaderBase} text-left w-[26%]`} style={{ backgroundColor: SECTION_BG }} scope="col" />
+                <th className={`${ROW_DIVIDER} ${thHeaderBase} text-left w-[26%]`} style={{ backgroundColor: WHY_AIRDEV_BG }} scope="col" />
                 <th
                   className={`${thHeaderBase} text-center text-[#1265EF] border-b border-[#E2E8F0] rounded-t-2xl`}
                   style={{ backgroundColor: AIRDEV_COL_BG }}
@@ -240,10 +240,10 @@ export function ErpWhyAirdev() {
                 >
                   Airdev
                 </th>
-                <th className={`${ROW_DIVIDER} ${thHeaderBase} text-center text-[#0A2540]`} style={{ backgroundColor: SECTION_BG }} scope="col">
+                <th className={`${ROW_DIVIDER} ${thHeaderBase} text-center text-[#0A2540]`} style={{ backgroundColor: WHY_AIRDEV_BG }} scope="col">
                   Off-the-Shelf ERP
                 </th>
-                <th className={`${ROW_DIVIDER} ${thHeaderBase} text-center text-[#0A2540]`} style={{ backgroundColor: SECTION_BG }} scope="col">
+                <th className={`${ROW_DIVIDER} ${thHeaderBase} text-center text-[#0A2540]`} style={{ backgroundColor: WHY_AIRDEV_BG }} scope="col">
                   Traditional Dev
                 </th>
               </tr>
@@ -254,7 +254,7 @@ export function ErpWhyAirdev() {
                 const divCls = isLast ? "" : ROW_DIVIDER;
                 return (
                   <tr key={row.label}>
-                    <td className={`${divCls} ${tdBodyCls} text-left font-medium text-[#0A2540]`} style={{ backgroundColor: SECTION_BG }}>
+                    <td className={`${divCls} ${tdBodyCls} text-left font-medium text-[#0A2540]`} style={{ backgroundColor: WHY_AIRDEV_BG }}>
                       {row.label}
                     </td>
                     <td
@@ -263,10 +263,10 @@ export function ErpWhyAirdev() {
                     >
                       <CellContent value={row.airdev} statusIcons={!!row.statusIcons} isAirdev />
                     </td>
-                    <td className={`${divCls} ${tdBodyCls} text-center`} style={{ backgroundColor: SECTION_BG }}>
+                    <td className={`${divCls} ${tdBodyCls} text-center`} style={{ backgroundColor: WHY_AIRDEV_BG }}>
                       <CellContent value={row.saas} statusIcons={!!row.statusIcons} isAirdev={false} />
                     </td>
-                    <td className={`${divCls} ${tdBodyCls} text-center`} style={{ backgroundColor: SECTION_BG }}>
+                    <td className={`${divCls} ${tdBodyCls} text-center`} style={{ backgroundColor: WHY_AIRDEV_BG }}>
                       <CellContent value={row.traditional} statusIcons={!!row.statusIcons} isAirdev={false} />
                     </td>
                   </tr>
@@ -385,7 +385,7 @@ export function ErpTypesSection() {
   return (
     <div id="marketplace-types" className="scroll-mt-[88px]">
       <SampleProducts
-        bgColor="bg-white"
+        bgColor="#F6F9FC"
         products={ERP_FEATURES}
         label="COMMON FEATURES"
         title="ERP features we specialize in"

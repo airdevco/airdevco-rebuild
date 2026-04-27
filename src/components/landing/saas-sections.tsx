@@ -244,7 +244,7 @@ const COMPARISON_ROWS: ComparisonRow[] = [
 ];
 
 /** Matches marketplace Pricing / Case Studies section surface */
-const SECTION_BG = "#F6F9FC";
+const WHY_AIRDEV_BG = "#ffffff";
 /** Airdev comparison column */
 const AIRDEV_COL_BG = "#ECF2FB";
 const ROW_DIVIDER = "border-b border-[#E2E8F0]";
@@ -286,7 +286,7 @@ function CellContent({
 export function MarketplaceWhyAirdev() {
   const lastIdx = COMPARISON_ROWS.length - 1;
   return (
-    <section id="why-airdev" className="scroll-mt-[88px] py-20 md:py-28" style={{ backgroundColor: SECTION_BG }}>
+    <section id="why-airdev" className="scroll-mt-[88px] py-20 md:py-28 bg-white" style={{ backgroundColor: WHY_AIRDEV_BG }}>
       <div className="max-w-[1200px] mx-auto px-6">
         {/* Same label / title / description pattern as MarketplacePricingSection (centered) */}
         <p className="text-[#1e3a8a] font-semibold tracking-wide uppercase text-[15px] mb-3 text-center">Why Airdev</p>
@@ -304,7 +304,7 @@ export function MarketplaceWhyAirdev() {
               <tr>
                 <th
                   className={`${ROW_DIVIDER} ${thHeaderBase} text-left w-[26%]`}
-                  style={{ backgroundColor: SECTION_BG }}
+                  style={{ backgroundColor: WHY_AIRDEV_BG }}
                   scope="col"
                 />
                 <th
@@ -316,14 +316,14 @@ export function MarketplaceWhyAirdev() {
                 </th>
                 <th
                   className={`${ROW_DIVIDER} ${thHeaderBase} text-center text-[#0A2540]`}
-                  style={{ backgroundColor: SECTION_BG }}
+                  style={{ backgroundColor: WHY_AIRDEV_BG }}
                   scope="col"
                 >
                   SaaS Platforms
                 </th>
                 <th
                   className={`${ROW_DIVIDER} ${thHeaderBase} text-center text-[#0A2540]`}
-                  style={{ backgroundColor: SECTION_BG }}
+                  style={{ backgroundColor: WHY_AIRDEV_BG }}
                   scope="col"
                 >
                   Traditional Dev
@@ -338,7 +338,7 @@ export function MarketplaceWhyAirdev() {
                   <tr key={row.label}>
                     <td
                       className={`${divCls} ${tdBodyCls} text-left font-medium text-[#0A2540]`}
-                      style={{ backgroundColor: SECTION_BG }}
+                      style={{ backgroundColor: WHY_AIRDEV_BG }}
                     >
                       {row.label}
                     </td>
@@ -350,13 +350,13 @@ export function MarketplaceWhyAirdev() {
                     </td>
                     <td
                       className={`${divCls} ${tdBodyCls} text-center`}
-                      style={{ backgroundColor: SECTION_BG }}
+                      style={{ backgroundColor: WHY_AIRDEV_BG }}
                     >
                       <CellContent value={row.saas} statusIcons={!!row.statusIcons} isAirdev={false} />
                     </td>
                     <td
                       className={`${divCls} ${tdBodyCls} text-center`}
-                      style={{ backgroundColor: SECTION_BG }}
+                      style={{ backgroundColor: WHY_AIRDEV_BG }}
                     >
                       <CellContent value={row.traditional} statusIcons={!!row.statusIcons} isAirdev={false} />
                     </td>
@@ -509,7 +509,7 @@ export function MarketplaceTypesSection() {
   return (
     <div id="marketplace-types" className="scroll-mt-[88px]">
       <SampleProducts
-        bgColor="bg-white"
+        bgColor="#F6F9FC"
         products={MARKETPLACE_TYPES_PRODUCTS}
         label="COMMON FEATURES"
         title="SaaS features we specialize in"

@@ -67,9 +67,10 @@ export default function ErpLanding() {
           <ErpTypesSection />
           <div id="case-studies" className="scroll-mt-[88px]">
             <CaseStudies
-              label="CASE STUDIES"
+              label="CASE STUDY"
               description="From MVPs that raised millions to enterprise platforms serving thousands of users."
               slides={ERP_CASE_SLIDES}
+              hideLogoGrid
             />
           </div>
           <ErpPricingSection />

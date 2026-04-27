@@ -261,8 +261,8 @@ export const Navbar = () => {
                                   </svg>
                                 </div>
                                 <div className="min-w-0">
-                                  <h3 className="text-[16px] font-medium text-gray-900 group-hover:text-black transition-colors mb-0 leading-none">SaaS</h3>
-                                  <p className="text-[14px] text-gray-500 font-normal leading-none whitespace-nowrap mt-1 group-hover:text-black transition-colors">Launch a software startup</p>
+                                  <h3 className="text-[16px] font-medium text-black mb-0 leading-none opacity-[0.88] group-hover:opacity-100 transition-opacity duration-150">SaaS</h3>
+                                  <p className="text-[14px] font-normal text-black leading-none whitespace-nowrap mt-1 opacity-[0.5] group-hover:opacity-[0.78] transition-opacity duration-150">Launch a software startup</p>
                                 </div>
                               </a>
                               <a href={ROUTES.MARKETPLACES} className="group flex items-start gap-4">
@@ -272,8 +272,8 @@ export const Navbar = () => {
                                   </svg>
                                 </div>
                                 <div className="min-w-0">
-                                  <h3 className="text-[16px] font-medium text-gray-900 group-hover:text-black transition-colors mb-0 leading-none">Marketplaces</h3>
-                                  <p className="text-[14px] text-gray-500 font-normal leading-none whitespace-nowrap mt-1 group-hover:text-black transition-colors">Connect buyers &amp; sellers</p>
+                                  <h3 className="text-[16px] font-medium text-black mb-0 leading-none opacity-[0.88] group-hover:opacity-100 transition-opacity duration-150">Marketplaces</h3>
+                                  <p className="text-[14px] font-normal text-black leading-none whitespace-nowrap mt-1 opacity-[0.5] group-hover:opacity-[0.78] transition-opacity duration-150">Connect buyers &amp; sellers</p>
                                 </div>
                               </a>
                               <a href={ROUTES.AI_APPLICATIONS} className="group flex items-start gap-4">
@@ -284,30 +284,12 @@ export const Navbar = () => {
                                   </svg>
                                 </div>
                                 <div className="min-w-0">
-                                  <h3 className="text-[16px] font-medium text-gray-900 group-hover:text-black transition-colors mb-0 leading-none">AI Applications</h3>
-                                  <p className="text-[14px] text-gray-500 font-normal leading-none whitespace-nowrap mt-1 group-hover:text-black transition-colors">Build on top of LLMs</p>
+                                  <h3 className="text-[16px] font-medium text-black mb-0 leading-none opacity-[0.88] group-hover:opacity-100 transition-opacity duration-150">AI Applications</h3>
+                                  <p className="text-[14px] font-normal text-black leading-none whitespace-nowrap mt-1 opacity-[0.5] group-hover:opacity-[0.78] transition-opacity duration-150">Build on top of LLMs</p>
                                 </div>
                               </a>
                             </div>
                             <div className="flex min-w-0 flex-col gap-5">
-                              <a href={ROUTES.PORTALS} className="group flex items-start gap-4">
-                                <div className="flex-shrink-0 mt-0.5">
-                                  <WindowIcon className="w-5 h-5 text-[#1fc9ed]" aria-hidden />
-                                </div>
-                                <div className="min-w-0">
-                                  <h3 className="text-[16px] font-medium text-gray-900 group-hover:text-black transition-colors mb-0 leading-none">Portals</h3>
-                                  <p className="text-[14px] text-gray-500 font-normal leading-none whitespace-nowrap mt-1 group-hover:text-black transition-colors">Self-service customer portals</p>
-                                </div>
-                              </a>
-                              <a href={ROUTES.ERP} className="group flex items-start gap-4">
-                                <div className="flex-shrink-0 mt-0.5">
-                                  <TableCellsIcon className="w-5 h-5 text-[#1fc9ed]" aria-hidden />
-                                </div>
-                                <div className="min-w-0">
-                                  <h3 className="text-[16px] font-medium text-gray-900 group-hover:text-black transition-colors mb-0 leading-none">ERPs</h3>
-                                  <p className="text-[14px] text-gray-500 font-normal leading-none whitespace-nowrap mt-1 group-hover:text-black transition-colors">End-to-end business systems</p>
-                                </div>
-                              </a>
                               <a href={ROUTES.INTERNAL_TOOLS} className="group flex items-start gap-4">
                                 <div className="flex-shrink-0 mt-0.5">
                                   <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-[#1fc9ed]" aria-hidden>
@@ -316,8 +298,26 @@ export const Navbar = () => {
                                   </svg>
                                 </div>
                                 <div className="min-w-0">
-                                  <h3 className="text-[16px] font-medium text-gray-900 group-hover:text-black transition-colors mb-0 leading-none">Internal Tools</h3>
-                                  <p className="text-[14px] text-gray-500 font-normal leading-none whitespace-nowrap mt-1 group-hover:text-black transition-colors">Manage business ops</p>
+                                  <h3 className="text-[16px] font-medium text-black mb-0 leading-none opacity-[0.88] group-hover:opacity-100 transition-opacity duration-150">Internal Tools</h3>
+                                  <p className="text-[14px] font-normal text-black leading-none whitespace-nowrap mt-1 opacity-[0.5] group-hover:opacity-[0.78] transition-opacity duration-150">Manage business ops</p>
+                                </div>
+                              </a>
+                              <a href={ROUTES.PORTALS} className="group flex items-start gap-4">
+                                <div className="flex-shrink-0 mt-0.5">
+                                  <WindowIcon className="w-5 h-5 text-[#1fc9ed]" aria-hidden />
+                                </div>
+                                <div className="min-w-0">
+                                  <h3 className="text-[16px] font-medium text-black mb-0 leading-none opacity-[0.88] group-hover:opacity-100 transition-opacity duration-150">Portals</h3>
+                                  <p className="text-[14px] font-normal text-black leading-none whitespace-nowrap mt-1 opacity-[0.5] group-hover:opacity-[0.78] transition-opacity duration-150">Self-service customer portals</p>
+                                </div>
+                              </a>
+                              <a href={ROUTES.ERP} className="group flex items-start gap-4">
+                                <div className="flex-shrink-0 mt-0.5">
+                                  <TableCellsIcon className="w-5 h-5 text-[#1fc9ed]" aria-hidden />
+                                </div>
+                                <div className="min-w-0">
+                                  <h3 className="text-[16px] font-medium text-black mb-0 leading-none opacity-[0.88] group-hover:opacity-100 transition-opacity duration-150">ERPs</h3>
+                                  <p className="text-[14px] font-normal text-black leading-none whitespace-nowrap mt-1 opacity-[0.5] group-hover:opacity-[0.78] transition-opacity duration-150">End-to-end business systems</p>
                                 </div>
                               </a>
                             </div>
@@ -339,8 +339,8 @@ export const Navbar = () => {
                                   </svg>
                                 </div>
                                 <div className="min-w-0">
-                                  <h3 className="text-[16px] font-medium text-gray-900 group-hover:text-black transition-colors mb-0 leading-none">Technology</h3>
-                                  <p className="text-[14px] text-gray-500 font-normal leading-none whitespace-nowrap mt-1 group-hover:text-black transition-colors">Tech products &amp; platforms</p>
+                                  <h3 className="text-[16px] font-medium text-black mb-0 leading-none opacity-[0.88] group-hover:opacity-100 transition-opacity duration-150">Technology</h3>
+                                  <p className="text-[14px] font-normal text-black leading-none whitespace-nowrap mt-1 opacity-[0.5] group-hover:opacity-[0.78] transition-opacity duration-150">Tech products &amp; platforms</p>
                                 </div>
                               </a>
                               <a href={ROUTES.LMS} className="group flex items-start gap-4">
@@ -348,8 +348,8 @@ export const Navbar = () => {
                                   <AcademicCapIcon className="w-5 h-5 text-[#4d7eeb]" aria-hidden />
                                 </div>
                                 <div className="min-w-0">
-                                  <h3 className="text-[16px] font-medium text-gray-900 group-hover:text-black transition-colors mb-0 leading-none">Education</h3>
-                                  <p className="text-[14px] text-gray-500 font-normal leading-none whitespace-nowrap mt-1 group-hover:text-black transition-colors">Learning &amp; training platforms</p>
+                                  <h3 className="text-[16px] font-medium text-black mb-0 leading-none opacity-[0.88] group-hover:opacity-100 transition-opacity duration-150">Education</h3>
+                                  <p className="text-[14px] font-normal text-black leading-none whitespace-nowrap mt-1 opacity-[0.5] group-hover:opacity-[0.78] transition-opacity duration-150">Learning &amp; training platforms</p>
                                 </div>
                               </a>
                               <a href={ROUTES.HEALTHCARE} className="group flex items-start gap-4">
@@ -359,8 +359,8 @@ export const Navbar = () => {
                                   </svg>
                                 </div>
                                 <div className="min-w-0">
-                                  <h3 className="text-[16px] font-medium text-gray-900 group-hover:text-black transition-colors mb-0 leading-none">Healthcare</h3>
-                                  <p className="text-[14px] text-gray-500 font-normal leading-none whitespace-nowrap mt-1 group-hover:text-black transition-colors">Health &amp; life sciences</p>
+                                  <h3 className="text-[16px] font-medium text-black mb-0 leading-none opacity-[0.88] group-hover:opacity-100 transition-opacity duration-150">Healthcare</h3>
+                                  <p className="text-[14px] font-normal text-black leading-none whitespace-nowrap mt-1 opacity-[0.5] group-hover:opacity-[0.78] transition-opacity duration-150">Health &amp; life sciences</p>
                                 </div>
                               </a>
                             </div>
@@ -374,8 +374,8 @@ export const Navbar = () => {
                                   </svg>
                                 </div>
                                 <div className="min-w-0">
-                                  <h3 className="text-[16px] font-medium text-gray-900 group-hover:text-black transition-colors mb-0 leading-none">Financial services</h3>
-                                  <p className="text-[14px] text-gray-500 font-normal leading-none whitespace-nowrap mt-1 group-hover:text-black transition-colors">Fintech &amp; banking solutions</p>
+                                  <h3 className="text-[16px] font-medium text-black mb-0 leading-none opacity-[0.88] group-hover:opacity-100 transition-opacity duration-150">Financial services</h3>
+                                  <p className="text-[14px] font-normal text-black leading-none whitespace-nowrap mt-1 opacity-[0.5] group-hover:opacity-[0.78] transition-opacity duration-150">Fintech &amp; banking solutions</p>
                                 </div>
                               </a>
                               <a href={ROUTES.INDUSTRIAL_AND_MANUFACTURING} className="group flex items-start gap-4">
@@ -385,8 +385,8 @@ export const Navbar = () => {
                                   </svg>
                                 </div>
                                 <div className="min-w-0">
-                                  <h3 className="text-[16px] font-medium text-gray-900 group-hover:text-black transition-colors mb-0 leading-none">Manufacturing</h3>
-                                  <p className="text-[14px] text-gray-500 font-normal leading-none whitespace-nowrap mt-1 group-hover:text-black transition-colors">Operations &amp; supply chain</p>
+                                  <h3 className="text-[16px] font-medium text-black mb-0 leading-none opacity-[0.88] group-hover:opacity-100 transition-opacity duration-150">Manufacturing</h3>
+                                  <p className="text-[14px] font-normal text-black leading-none whitespace-nowrap mt-1 opacity-[0.5] group-hover:opacity-[0.78] transition-opacity duration-150">Operations &amp; supply chain</p>
                                 </div>
                               </a>
                               <a href={ROUTES.PUBLIC_SECTOR_AND_NONPROFIT} className="group flex items-start gap-4">
@@ -397,8 +397,8 @@ export const Navbar = () => {
                                   </svg>
                                 </div>
                                 <div className="min-w-0">
-                                  <h3 className="text-[16px] font-medium text-gray-900 group-hover:text-black transition-colors mb-0 leading-none">Government</h3>
-                                  <p className="text-[14px] text-gray-500 font-normal leading-none whitespace-nowrap mt-1 group-hover:text-black transition-colors">Government &amp; social impact</p>
+                                  <h3 className="text-[16px] font-medium text-black mb-0 leading-none opacity-[0.88] group-hover:opacity-100 transition-opacity duration-150">Government</h3>
+                                  <p className="text-[14px] font-normal text-black leading-none whitespace-nowrap mt-1 opacity-[0.5] group-hover:opacity-[0.78] transition-opacity duration-150">Government &amp; social impact</p>
                                 </div>
                               </a>
                             </div>
@@ -860,8 +860,8 @@ export const Navbar = () => {
                           <path fillRule="evenodd" d="M4.5 9.75a6 6 0 0 1 11.573-2.226 3.75 3.75 0 0 1 4.133 4.303A4.5 4.5 0 0 1 18 20.25H6.75a5.25 5.25 0 0 1-2.23-10.004 6.072 6.072 0 0 1-.02-.496Z" clipRule="evenodd" />
                         </svg>
                         <div className="min-w-0">
-                          <h3 className="text-[16px] font-medium text-gray-900 mb-0.5">SaaS</h3>
-                          <p className="text-[14px] text-gray-500 leading-snug">Launch a software startup</p>
+                          <h3 className="text-[16px] font-medium text-black mb-0.5 opacity-[0.88] group-hover:opacity-100 transition-opacity duration-150">SaaS</h3>
+                          <p className="text-[14px] font-normal text-black leading-snug opacity-[0.5] group-hover:opacity-[0.78] transition-opacity duration-150">Launch a software startup</p>
                         </div>
                       </a>
                       <a href={ROUTES.MARKETPLACES} className="flex items-start gap-2 group">
@@ -869,8 +869,8 @@ export const Navbar = () => {
                           <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
                         </svg>
                         <div className="min-w-0">
-                          <h3 className="text-[16px] font-medium text-gray-900 mb-0.5">Marketplaces</h3>
-                          <p className="text-[14px] text-gray-500 leading-snug">Connect buyers &amp; sellers</p>
+                          <h3 className="text-[16px] font-medium text-black mb-0.5 opacity-[0.88] group-hover:opacity-100 transition-opacity duration-150">Marketplaces</h3>
+                          <p className="text-[14px] font-normal text-black leading-snug opacity-[0.5] group-hover:opacity-[0.78] transition-opacity duration-150">Connect buyers &amp; sellers</p>
                         </div>
                       </a>
                       <a href={ROUTES.AI_APPLICATIONS} className="flex items-start gap-2 group">
@@ -879,22 +879,8 @@ export const Navbar = () => {
                           <path fillRule="evenodd" d="M8.25 2.25A.75.75 0 0 1 9 3v.75h2.25V3a.75.75 0 0 1 1.5 0v.75H15V3a.75.75 0 0 1 1.5 0v.75h.75a3 3 0 0 1 3 3v.75H21A.75.75 0 0 1 21 9h-.75v2.25H21a.75.75 0 0 1 0 1.5h-.75V15H21a.75.75 0 0 1 0 1.5h-.75v.75a3 3 0 0 1-3 3h-.75V21a.75.75 0 0 1-1.5 0v-.75h-2.25V21a.75.75 0 0 1-1.5 0v-.75H9V21a.75.75 0 0 1-1.5 0v-.75h-.75a3 3 0 0 1-3-3v-.75H3A.75.75 0 0 1 3 15h.75v-2.25H3a.75.75 0 0 1 0-1.5h.75V9H3a.75.75 0 0 1 0-1.5h.75v-.75a3 3 0 0 1 3-3h.75V3a.75.75 0 0 1 .75-.75ZM6 6.75A.75.75 0 0 1 6.75 6h10.5a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-.75.75H6.75a.75.75 0 0 1-.75-.75V6.75Z" clipRule="evenodd" />
                         </svg>
                         <div className="min-w-0">
-                          <h3 className="text-[16px] font-medium text-gray-900 mb-0.5">AI Applications</h3>
-                          <p className="text-[14px] text-gray-500 leading-snug">Build on top of LLMs</p>
-                        </div>
-                      </a>
-                      <a href={ROUTES.PORTALS} className="flex items-start gap-2 group">
-                        <WindowIcon className="w-5 h-5 text-[#1fc9ed] flex-shrink-0 mt-0.5" aria-hidden />
-                        <div className="min-w-0">
-                          <h3 className="text-[16px] font-medium text-gray-900 mb-0.5">Portals</h3>
-                          <p className="text-[14px] text-gray-500 leading-snug">Self-service customer portals</p>
-                        </div>
-                      </a>
-                      <a href={ROUTES.ERP} className="flex items-start gap-2 group">
-                        <TableCellsIcon className="w-5 h-5 text-[#1fc9ed] flex-shrink-0 mt-0.5" aria-hidden />
-                        <div className="min-w-0">
-                          <h3 className="text-[16px] font-medium text-gray-900 mb-0.5">ERPs</h3>
-                          <p className="text-[14px] text-gray-500 leading-snug">End-to-end business systems</p>
+                          <h3 className="text-[16px] font-medium text-black mb-0.5 opacity-[0.88] group-hover:opacity-100 transition-opacity duration-150">AI Applications</h3>
+                          <p className="text-[14px] font-normal text-black leading-snug opacity-[0.5] group-hover:opacity-[0.78] transition-opacity duration-150">Build on top of LLMs</p>
                         </div>
                       </a>
                       <a href={ROUTES.INTERNAL_TOOLS} className="flex items-start gap-2 group">
@@ -903,8 +889,22 @@ export const Navbar = () => {
                           <path fillRule="evenodd" d="M12.75 3a.75.75 0 0 1 .75-.75 8.25 8.25 0 0 1 8.25 8.25.75.75 0 0 1-.75.75h-7.5a.75.75 0 0 1-.75-.75V3Z" clipRule="evenodd" />
                         </svg>
                         <div className="min-w-0">
-                          <h3 className="text-[16px] font-medium text-gray-900 mb-0.5">Internal Tools</h3>
-                          <p className="text-[14px] text-gray-500 leading-snug">Manage business ops</p>
+                          <h3 className="text-[16px] font-medium text-black mb-0.5 opacity-[0.88] group-hover:opacity-100 transition-opacity duration-150">Internal Tools</h3>
+                          <p className="text-[14px] font-normal text-black leading-snug opacity-[0.5] group-hover:opacity-[0.78] transition-opacity duration-150">Manage business ops</p>
+                        </div>
+                      </a>
+                      <a href={ROUTES.PORTALS} className="flex items-start gap-2 group">
+                        <WindowIcon className="w-5 h-5 text-[#1fc9ed] flex-shrink-0 mt-0.5" aria-hidden />
+                        <div className="min-w-0">
+                          <h3 className="text-[16px] font-medium text-black mb-0.5 opacity-[0.88] group-hover:opacity-100 transition-opacity duration-150">Portals</h3>
+                          <p className="text-[14px] font-normal text-black leading-snug opacity-[0.5] group-hover:opacity-[0.78] transition-opacity duration-150">Self-service customer portals</p>
+                        </div>
+                      </a>
+                      <a href={ROUTES.ERP} className="flex items-start gap-2 group">
+                        <TableCellsIcon className="w-5 h-5 text-[#1fc9ed] flex-shrink-0 mt-0.5" aria-hidden />
+                        <div className="min-w-0">
+                          <h3 className="text-[16px] font-medium text-black mb-0.5 opacity-[0.88] group-hover:opacity-100 transition-opacity duration-150">ERPs</h3>
+                          <p className="text-[14px] font-normal text-black leading-snug opacity-[0.5] group-hover:opacity-[0.78] transition-opacity duration-150">End-to-end business systems</p>
                         </div>
                       </a>
                       <p className="w-full text-center text-[12px] leading-none text-gray-400 -mt-2">And more!</p>

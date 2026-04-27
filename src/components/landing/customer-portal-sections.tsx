@@ -580,6 +580,25 @@ const CUSTOMER_PORTAL_CASE_SLIDES_RAW = [
       { label: "Key results", value: "400% increase in jobs processed per month", color: "#ff6b6b" },
     ],
   },
+  {
+    id: "resolis",
+    company: "Resolis",
+    logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1767136295917x196197816364843680/resolis.png",
+    logoText: "",
+    heading:
+      "How Airdev helped Resolis build an internal tool to streamline their public infrastructure asset management services",
+    description: "",
+    image:
+      "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/6698333e120200f6df1df8ad_Resolis%20no-code%20internal%20tool.jpg",
+    imageTitle:
+      "How Airdev helped Resolis build an internal tool to streamline their public infrastructure asset management services",
+    customFields: [
+      { label: "Business type", value: "Enterprise", color: "#635bff" },
+      { label: "Product type", value: "Internal tool", color: "#00d4ff" },
+      { label: "Timeline", value: "5 months", color: "#a960ee" },
+      { label: "Key results", value: "Standardization of niche, manual processes for teams operating across the UK", color: "#ff6b6b" },
+    ],
+  },
 ];
 
 export const CUSTOMER_PORTAL_CASE_SLIDES = CUSTOMER_PORTAL_CASE_SLIDES_RAW.map((slide) => ({

@@ -86,6 +86,8 @@ const DEFAULT_SLIDES = [
   },
 ];
 
+/** Home (index) page: same stories as default, without Resolis in the logo row. */
+export const HOME_CASE_STUDY_SLIDES = DEFAULT_SLIDES.filter((slide) => slide.id !== "resolis");
 
 const DURATION = 6000; // 6 seconds per slide
 
@@ -109,6 +111,8 @@ interface CaseStudiesProps {
   disableLogoGrayscale?: boolean;
   /** Outer section background (default `bg-white`). */
   sectionClassName?: string;
+  /** When true, the logo tab row is not rendered (e.g. single case study on ERP). */
+  hideLogoGrid?: boolean;
 }
 
 export const CaseStudies = ({
@@ -118,6 +122,7 @@ export const CaseStudies = ({
   slides,
   disableLogoGrayscale = false,
   sectionClassName,
+  hideLogoGrid = false,
 }: CaseStudiesProps = {}) => {
   const SLIDES = slides || DEFAULT_SLIDES;
   const [activeIndex, setActiveIndex] = useState(0);
@@ -153,7 +158,7 @@ export const CaseStudies = ({
 
       <div className="relative z-10 max-w-[1200px] mx-auto px-6">
         {/* Top Content */}
-        <div className="max-w-3xl mb-8">
+        <div className={cn("max-w-3xl", hideLogoGrid ? "mb-12 lg:mb-16" : "mb-8")}>
           <h3 className={cn("text-[#1e3a8a] font-semibold tracking-wide uppercase text-[15px] mb-3", labelClassName)}>
             {label || "OUR CLIENTS"}
           </h3>
@@ -166,64 +171,66 @@ export const CaseStudies = ({
         </div>
 
         {/* Bottom Logo Grid with Progress Bar - Full Width */}
-        <div className={`border-t border-solid border-slate-200 border-l border-solid border-b border-solid border-r border-solid border-slate-200 grid ${gridCols} mb-12 lg:mb-16`}>
-          {SLIDES.map((slide, index) => {
-            const isActive = index === activeIndex;
-            return (
-              <button
-                key={slide.id}
-                onClick={() => handleManualSwitch(index)}
-                className={`relative h-24 flex items-center justify-center ${index < SLIDES.length - 1 ? 'border-r border-solid border-slate-200' : ''} transition-all duration-300 bg-white hover:bg-slate-50`}
-              >
-                {/* Progress Line */}
-                {isActive && (
-                  <motion.div 
-                    className="absolute -top-px left-0 right-0 h-[1px] bg-[#1265EF] z-30"
-                    initial={{ width: "0%" }}
-                    animate={{ width: "100%" }}
-                    transition={{ duration: DURATION / 1000, ease: "linear" }}
-                    onAnimationComplete={() => {
-                      // Only advance slide when progress bar finishes
-                      if (isActive) {
-                        setActiveIndex((prev) => {
-                          setPrevIndex(prev);
-                          return (prev + 1) % SLIDES.length;
-                        });
-                        setProgressKey((prev) => prev + 1);
-                      }
-                    }}
-                    key={progressKey} // Force reset on slide change
-                  />
-                )}
-                
-                {/* Logo */}
-                <div className="flex flex-col items-center justify-center w-full px-4">
-                  <div className={`w-full flex items-center justify-center ${slide.id === 'consenna' ? 'h-12' : (slide.id === 'kidsbook' || slide.id === 'camphire') ? 'h-10' : 'h-9'}`}>
-                    <img 
-                      src={slide.logo} 
-                      alt={slide.company} 
-                      className={`h-full w-auto object-contain transition-all duration-300 
-                        ${slide.id === 'dividend' ? 'max-h-5' : ''} 
-                        ${slide.id === 'bubble' ? (slide.company === 'Tributi' ? 'max-h-5 mt-1' : 'max-h-6') : ''} 
-                        ${slide.id === 'playground' ? (slide.company === 'My NFT Alerts' ? '' : 'mix-blend-multiply') : ''}
-                        ${slide.id === 'ticketrev' || slide.id === 'resolis' ? 'max-h-6' : ''}
-                        ${slide.id === 'kidsbook' ? 'max-h-9' : ''}
-                        ${slide.id === 'consenna' ? 'max-h-[48px]' : ''}
-                        ${slide.id === 'camphire' ? 'max-h-9' : ''}
-                        ${disableLogoGrayscale ? 'grayscale-0 opacity-100' : isActive ? 'grayscale-0 opacity-100' : 'grayscale opacity-60 hover:grayscale-0 hover:opacity-100'}
-                      `}
+        {!hideLogoGrid && (
+          <div className={`border-t border-solid border-slate-200 border-l border-solid border-b border-solid border-r border-solid border-slate-200 grid ${gridCols} mb-12 lg:mb-16`}>
+            {SLIDES.map((slide, index) => {
+              const isActive = index === activeIndex;
+              return (
+                <button
+                  key={slide.id}
+                  onClick={() => handleManualSwitch(index)}
+                  className={`relative h-24 flex items-center justify-center ${index < SLIDES.length - 1 ? 'border-r border-solid border-slate-200' : ''} transition-all duration-300 bg-white hover:bg-slate-50`}
+                >
+                  {/* Progress Line */}
+                  {isActive && (
+                    <motion.div 
+                      className="absolute -top-px left-0 right-0 h-[1px] bg-[#1265EF] z-30"
+                      initial={{ width: "0%" }}
+                      animate={{ width: "100%" }}
+                      transition={{ duration: DURATION / 1000, ease: "linear" }}
+                      onAnimationComplete={() => {
+                        // Only advance slide when progress bar finishes
+                        if (isActive) {
+                          setActiveIndex((prev) => {
+                            setPrevIndex(prev);
+                            return (prev + 1) % SLIDES.length;
+                          });
+                          setProgressKey((prev) => prev + 1);
+                        }
+                      }}
+                      key={progressKey} // Force reset on slide change
                     />
-                  </div>
-                  {slide.logoText && (
-                    <p className={`text-[10px] text-gray-400 text-center font-medium whitespace-nowrap ${slide.id === 'bubble' && slide.company === 'Tributi' ? 'mt-0.5' : 'mt-1.5'}`}>
-                      {slide.logoText}
-                    </p>
                   )}
-                </div>
-              </button>
-            );
-          })}
-        </div>
+                  
+                  {/* Logo */}
+                  <div className="flex flex-col items-center justify-center w-full px-4">
+                    <div className={`w-full flex items-center justify-center ${slide.id === 'consenna' ? 'h-12' : (slide.id === 'kidsbook' || slide.id === 'camphire') ? 'h-10' : 'h-9'}`}>
+                      <img 
+                        src={slide.logo} 
+                        alt={slide.company} 
+                        className={`h-full w-auto object-contain transition-all duration-300 
+                          ${slide.id === 'dividend' ? 'max-h-5' : ''} 
+                          ${slide.id === 'bubble' ? (slide.company === 'Tributi' ? 'max-h-5 mt-1' : 'max-h-6') : ''} 
+                          ${slide.id === 'playground' ? (slide.company === 'My NFT Alerts' ? '' : 'mix-blend-multiply') : ''}
+                          ${slide.id === 'ticketrev' || slide.id === 'resolis' ? 'max-h-6' : ''}
+                          ${slide.id === 'kidsbook' ? 'max-h-9' : ''}
+                          ${slide.id === 'consenna' ? 'max-h-[48px]' : ''}
+                          ${slide.id === 'camphire' ? 'max-h-9' : ''}
+                          ${disableLogoGrayscale ? 'grayscale-0 opacity-100' : isActive ? 'grayscale-0 opacity-100' : 'grayscale opacity-60 hover:grayscale-0 hover:opacity-100'}
+                        `}
+                      />
+                    </div>
+                    {slide.logoText && (
+                      <p className={`text-[10px] text-gray-400 text-center font-medium whitespace-nowrap ${slide.id === 'bubble' && slide.company === 'Tributi' ? 'mt-0.5' : 'mt-1.5'}`}>
+                        {slide.logoText}
+                      </p>
+                    )}
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        )}
 
         {/* Main Grid Content - Animated Switch */}
         <div className="min-h-[400px] mb-8">

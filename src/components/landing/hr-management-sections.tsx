@@ -211,7 +211,7 @@ const COMPARISON_ROWS: ComparisonRow[] = [
   { label: "Scales with you", airdev: "Yes", saas: "Until you hit their limits", traditional: "Yes" },
 ];
 
-const SECTION_BG = "#F6F9FC";
+const WHY_AIRDEV_BG = "#ffffff";
 const AIRDEV_COL_BG = "#ECF2FB";
 const ROW_DIVIDER = "border-b border-[#E2E8F0]";
 const thHeaderBase = "text-[20px] leading-[28px] font-semibold py-5 md:py-6 px-5 md:px-6 align-middle";
@@ -248,7 +248,7 @@ function CellContent({
 export function HrManagementWhyAirdev() {
   const lastIdx = COMPARISON_ROWS.length - 1;
   return (
-    <section id="why-airdev" className="scroll-mt-[88px] py-20 md:py-28" style={{ backgroundColor: SECTION_BG }}>
+    <section id="why-airdev" className="scroll-mt-[88px] py-20 md:py-28 bg-white" style={{ backgroundColor: WHY_AIRDEV_BG }}>
       <div className="max-w-[1200px] mx-auto px-6">
         <p className="text-[#1e3a8a] font-semibold tracking-wide uppercase text-[15px] mb-3 text-center">Why Airdev</p>
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-[#0A2540] tracking-tight mb-4 text-center">
@@ -265,7 +265,7 @@ export function HrManagementWhyAirdev() {
               <tr>
                 <th
                   className={`${ROW_DIVIDER} ${thHeaderBase} text-left w-[26%]`}
-                  style={{ backgroundColor: SECTION_BG }}
+                  style={{ backgroundColor: WHY_AIRDEV_BG }}
                   scope="col"
                 />
                 <th
@@ -277,14 +277,14 @@ export function HrManagementWhyAirdev() {
                 </th>
                 <th
                   className={`${ROW_DIVIDER} ${thHeaderBase} text-center text-[#0A2540]`}
-                  style={{ backgroundColor: SECTION_BG }}
+                  style={{ backgroundColor: WHY_AIRDEV_BG }}
                   scope="col"
                 >
                   SaaS Platforms
                 </th>
                 <th
                   className={`${ROW_DIVIDER} ${thHeaderBase} text-center text-[#0A2540]`}
-                  style={{ backgroundColor: SECTION_BG }}
+                  style={{ backgroundColor: WHY_AIRDEV_BG }}
                   scope="col"
                 >
                   Traditional Dev
@@ -299,7 +299,7 @@ export function HrManagementWhyAirdev() {
                   <tr key={row.label}>
                     <td
                       className={`${divCls} ${tdBodyCls} text-left font-medium text-[#0A2540]`}
-                      style={{ backgroundColor: SECTION_BG }}
+                      style={{ backgroundColor: WHY_AIRDEV_BG }}
                     >
                       {row.label}
                     </td>
@@ -309,10 +309,10 @@ export function HrManagementWhyAirdev() {
                     >
                       <CellContent value={row.airdev} statusIcons={!!row.statusIcons} isAirdev />
                     </td>
-                    <td className={`${divCls} ${tdBodyCls} text-center`} style={{ backgroundColor: SECTION_BG }}>
+                    <td className={`${divCls} ${tdBodyCls} text-center`} style={{ backgroundColor: WHY_AIRDEV_BG }}>
                       <CellContent value={row.saas} statusIcons={!!row.statusIcons} isAirdev={false} />
                     </td>
-                    <td className={`${divCls} ${tdBodyCls} text-center`} style={{ backgroundColor: SECTION_BG }}>
+                    <td className={`${divCls} ${tdBodyCls} text-center`} style={{ backgroundColor: WHY_AIRDEV_BG }}>
                       <CellContent value={row.traditional} statusIcons={!!row.statusIcons} isAirdev={false} />
                     </td>
                   </tr>
@@ -439,7 +439,7 @@ export function HrManagementTypesSection() {
   return (
     <div id="marketplace-types" className="scroll-mt-[88px]">
       <SampleProducts
-        bgColor="bg-white"
+        bgColor="#F6F9FC"
         products={HR_MANAGEMENT_FEATURES}
         label="COMMON FEATURES"
         title={

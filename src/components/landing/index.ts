@@ -3,7 +3,7 @@ export { Hero } from "./hero";
 export { IndexLandingHero } from "./index-landing-hero";
 export { AudienceSection } from "./audience-section";
 export { ProcessSection } from "./process-section";
-export { CaseStudies } from "./case-studies";
+export { CaseStudies, HOME_CASE_STUDY_SLIDES } from "./case-studies";
 export { ClientLogoTicker } from "./client-logo-ticker";
 export { Stats } from "./stats";
 export { Testimonials } from "./testimonials";

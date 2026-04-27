@@ -3,6 +3,7 @@
 import {
   Navbar,
   CaseStudies,
+  HOME_CASE_STUDY_SLIDES,
   ClientLogoTicker,
   Stats,
   Testimonials,
@@ -51,7 +52,7 @@ const Index = () => {
         <Navbar />
         <main>
           <IndexLandingHero />
-          <CaseStudies />
+          <CaseStudies slides={HOME_CASE_STUDY_SLIDES} />
           <BusinessTypes />
           <Stats hideGallery compactMetricsBottom />
           <div className="pt-12 pb-4 lg:pt-16 lg:pb-8 bg-white">
