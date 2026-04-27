@@ -34,7 +34,7 @@ const AI_ENABLEMENT_SLIDES = [
     imageTitle: "How Airdev helped Kidsbook build a custom no-code marketplace in just 6 weeks to connect parents with kids activity providers",
     customFields: [
       { label: "Business type", value: "Startup", color: "#635bff" },
-      { label: "Product type", value: "2-sided marketplace", color: "#00d4ff" },
+      { label: "Product type", value: "Kids' activities marketplace", color: "#00d4ff" },
       { label: "Timeline", value: "6 weeks", color: "#a960ee" },
       { label: "Key results", value: "1000+ providers signed up", color: "#ff6b6b" },
     ]

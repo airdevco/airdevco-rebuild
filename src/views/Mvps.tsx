@@ -23,7 +23,7 @@ const MVP_SLIDES = [
     imageTitle: "How Airdev helped Kidsbook build a custom no-code marketplace in just 6 weeks to connect parents with kids activity providers",
     customFields: [
       { label: "Business type", value: "Startup", color: "#635bff" },
-      { label: "Product type", value: "2-sided marketplace", color: "#00d4ff" },
+      { label: "Product type", value: "Kids' activities marketplace", color: "#00d4ff" },
       { label: "Timeline", value: "6 weeks", color: "#a960ee" },
       { label: "Key results", value: "1000+ providers signed up", color: "#ff6b6b" },
     ]
@@ -113,13 +113,12 @@ const Mvps = () => {
           />
           <CaseStudies 
             label="FROM MVP TO SCALE"
-            labelClassName="text-[15px]"
             description="We've helped startups launch lean MVPs in weeks, validate ideas quickly, and scale seamlessly as they grow. Our visual development approach delivers fast results without compromising on quality."
             slides={MVP_SLIDES}
           />
           <ProcessSection />
           <BusinessTypes />
-          <Testimonials label="WHAT CLIENTS SAY" labelClassName="text-[15px]" />
+          <Testimonials label="WHAT CLIENTS SAY" />
           <SaasCTA />
         </main>
         <Footer />

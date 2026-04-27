@@ -58,7 +58,7 @@ export const Footer = ({ variant = "default" }: FooterProps = {}) => {
               />
             </a>
             <p className="text-gray-600 leading-relaxed max-w-sm">
-              The trusted no-code & Bubble agency. Helping businesses launch world-class software products in a fraction of the time and cost.
+              Helping businesses launch world-class software products in a fraction of the time and cost of traditional developers.
             </p>
           </div>
           
@@ -117,7 +117,7 @@ export const Footer = ({ variant = "default" }: FooterProps = {}) => {
                   </a>
                 </li>
                 <li>
-                  <a href={ROUTES.CUSTOMER_PORTAL} className="text-gray-600 hover:text-gray-900 transition-colors">
+                  <a href={ROUTES.PORTALS} className="text-gray-600 hover:text-gray-900 transition-colors">
                     Portals
                   </a>
                 </li>

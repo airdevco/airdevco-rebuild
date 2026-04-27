@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import { ArrowLeft, ArrowRight, ChevronRight } from "lucide-react";
+import { ROUTES } from "@/config/routes";
 
 const DEFAULT_BUSINESS_TYPES = [
   {
@@ -51,7 +52,7 @@ const DEFAULT_BUSINESS_TYPES = [
   {
     title: "Portals",
     description: "Secure spaces for customers, partners, or vendors to access information, submit requests, and get things done.",
-    link: "#",
+    link: ROUTES.PORTALS,
     iconColor: "#1265EF",
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">

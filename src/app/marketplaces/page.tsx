@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import Marketplaces from "@/views/Marketplaces";
 
 export const metadata: Metadata = {
-  title: "Marketplaces | Airdev",
+  title: "Launch your two-sided marketplace | Airdev",
   description:
     "Build two-sided marketplaces, matching platforms, and multi-party apps with no-code. Airdev builds scalable marketplace software for startups and enterprises.",
   authors: [{ name: "Airdev" }],
   openGraph: {
     type: "website",
-    title: "Marketplaces | Airdev",
+    title: "Launch your two-sided marketplace | Airdev",
     description:
       "Build two-sided marketplaces, matching platforms, and multi-party apps with no-code. Airdev builds scalable marketplace software for startups and enterprises.",
     images: [
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Marketplaces | Airdev",
+    title: "Launch your two-sided marketplace | Airdev",
     description:
       "Build two-sided marketplaces, matching platforms, and multi-party apps with no-code. Airdev builds scalable marketplace software for startups and enterprises.",
     images: [

@@ -41,7 +41,7 @@ const MARKETPLACE_CASE_STUDIES = [
     imageTitle: "How a buyer-first ticket marketplace startup quickly secured $1.1M in funding with Bubble.io",
     customFields: [
       { label: "Business type", value: "Startup", color: "#635bff" },
-      { label: "Product type", value: "Marketplace app", color: "#00d4ff" },
+      { label: "Product type", value: "Ticket marketplace", color: "#00d4ff" },
       { label: "Timeline", value: "2 months", color: "#a960ee" },
       { label: "Key results", value: "$1.1M in pre-seed funding raised in 2 years", color: "#ff6b6b" },
     ]
@@ -57,7 +57,7 @@ const MARKETPLACE_CASE_STUDIES = [
     imageTitle: "How Airdev helped Kidsbook build a custom no-code marketplace in just 6 weeks to connect parents with kids activity providers",
     customFields: [
       { label: "Business type", value: "Startup", color: "#635bff" },
-      { label: "Product type", value: "2-sided marketplace", color: "#00d4ff" },
+      { label: "Product type", value: "Kids' activities marketplace", color: "#00d4ff" },
       { label: "Timeline", value: "6 weeks", color: "#a960ee" },
       { label: "Key results", value: "1000+ providers signed up", color: "#ff6b6b" },
     ]
@@ -89,7 +89,7 @@ const MARKETPLACE_CASE_STUDIES = [
     imageTitle: "How Airdev helped CampHire automate their recruitment agency via a self-service marketplace platform",
     customFields: [
       { label: "Business type", value: "SMB", color: "#635bff" },
-      { label: "Product type", value: "Marketplace platform", color: "#00d4ff" },
+      { label: "Product type", value: "Camp staffing marketplace", color: "#00d4ff" },
       { label: "Timeline", value: "3 months", color: "#a960ee" },
       { label: "Key results", value: "30+ camp and 250+ candidate sign ups in just 1 month since launch", color: "#ff6b6b" },
     ]
@@ -223,7 +223,7 @@ const Marketplaces = () => {
             rightImage="https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1768942292841x753883318458439700/docseek.webp"
           />
           <div className="pt-16 pb-24">
-            <ClientLogoTicker />
+            <ClientLogoTicker variant="featured" />
           </div>
           <ValueProps />
           <CaseStudies slides={MARKETPLACE_CASE_STUDIES} />

@@ -22,7 +22,7 @@ const ALL_SLIDES = [
     imageTitle: "How a buyer-first ticket marketplace startup quickly secured $1.1M in funding with Bubble.io",
     customFields: [
       { label: "Business type", value: "Startup", color: "#635bff" },
-      { label: "Product type", value: "Marketplace app", color: "#00d4ff" },
+      { label: "Product type", value: "Ticket marketplace", color: "#00d4ff" },
       { label: "Timeline", value: "2 months", color: "#a960ee" },
       { label: "Key results", value: "$1.1M in pre-seed funding raised in 2 years", color: "#ff6b6b" },
     ]

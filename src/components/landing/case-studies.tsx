@@ -63,11 +63,27 @@ const DEFAULT_SLIDES = [
     imageTitle: "How a buyer-first ticket marketplace startup quickly secured $1.1M in funding with Bubble.io",
     customFields: [
       { label: "Business type", value: "Startup", color: "#635bff" },
-      { label: "Product type", value: "Marketplace app", color: "#00d4ff" },
+      { label: "Product type", value: "Ticket marketplace", color: "#00d4ff" },
       { label: "Timeline", value: "2 months", color: "#a960ee" },
       { label: "Key results", value: "$1.1M in pre-seed funding raised in 2 years", color: "#ff6b6b" },
     ]
-  }
+  },
+  {
+    id: "resolis",
+    company: "Resolis",
+    logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1767136295917x196197816364843680/resolis.png",
+    logoText: "",
+    heading: "How Airdev helped Resolis build an internal tool to streamline their public infrastructure asset management services",
+    description: "",
+    image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/6698333e120200f6df1df8ad_Resolis%20no-code%20internal%20tool.jpg",
+    imageTitle: "How Airdev helped Resolis build an internal tool to streamline their public infrastructure asset management services",
+    customFields: [
+      { label: "Business type", value: "Enterprise", color: "#635bff" },
+      { label: "Product type", value: "Internal tool", color: "#00d4ff" },
+      { label: "Timeline", value: "5 months", color: "#a960ee" },
+      { label: "Key results", value: "Standardization of niche, manual processes for teams operating across the UK", color: "#ff6b6b" },
+    ],
+  },
 ];
 
 
@@ -91,6 +107,8 @@ interface CaseStudiesProps {
   description?: string;
   slides?: Slide[];
   disableLogoGrayscale?: boolean;
+  /** Outer section background (default `bg-white`). */
+  sectionClassName?: string;
 }
 
 export const CaseStudies = ({
@@ -99,13 +117,21 @@ export const CaseStudies = ({
   description,
   slides,
   disableLogoGrayscale = false,
+  sectionClassName,
 }: CaseStudiesProps = {}) => {
   const SLIDES = slides || DEFAULT_SLIDES;
   const [activeIndex, setActiveIndex] = useState(0);
   const [prevIndex, setPrevIndex] = useState(0);
   // Using a key to force re-render of the progress bar animation
   const [progressKey, setProgressKey] = useState(0);
-  const gridCols = SLIDES.length === 2 ? 'grid-cols-2' : SLIDES.length === 4 ? 'grid-cols-4' : 'grid-cols-3';
+  const gridCols =
+    SLIDES.length === 2
+      ? "grid-cols-2"
+      : SLIDES.length === 4
+        ? "grid-cols-4"
+        : SLIDES.length === 5
+          ? "grid-cols-5"
+          : "grid-cols-3";
 
   useEffect(() => {
     // Initial start logic or any other side effects
@@ -123,12 +149,12 @@ export const CaseStudies = ({
   const direction = activeIndex > prevIndex ? 1 : activeIndex < prevIndex ? -1 : 1;
 
   return (
-    <section className="relative py-24 bg-white overflow-hidden">
+    <section className={cn("relative py-24 overflow-hidden bg-white", sectionClassName)}>
 
       <div className="relative z-10 max-w-[1200px] mx-auto px-6">
         {/* Top Content */}
         <div className="max-w-3xl mb-8">
-          <h3 className={cn("text-[#1e3a8a] font-semibold tracking-wide uppercase text-sm mb-3", labelClassName)}>
+          <h3 className={cn("text-[#1e3a8a] font-semibold tracking-wide uppercase text-[15px] mb-3", labelClassName)}>
             {label || "OUR CLIENTS"}
           </h3>
           <h2 className="text-4xl lg:text-5xl font-semibold tracking-[-0.02em] text-[#1a1a1a] mb-6">
@@ -180,7 +206,7 @@ export const CaseStudies = ({
                         ${slide.id === 'dividend' ? 'max-h-5' : ''} 
                         ${slide.id === 'bubble' ? (slide.company === 'Tributi' ? 'max-h-5 mt-1' : 'max-h-6') : ''} 
                         ${slide.id === 'playground' ? (slide.company === 'My NFT Alerts' ? '' : 'mix-blend-multiply') : ''}
-                        ${slide.id === 'ticketrev' ? 'max-h-6' : ''}
+                        ${slide.id === 'ticketrev' || slide.id === 'resolis' ? 'max-h-6' : ''}
                         ${slide.id === 'kidsbook' ? 'max-h-9' : ''}
                         ${slide.id === 'consenna' ? 'max-h-[48px]' : ''}
                         ${slide.id === 'camphire' ? 'max-h-9' : ''}

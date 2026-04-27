@@ -61,12 +61,12 @@ const SaasProducts = () => {
             rightImage="https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1772587812851x876454729909677400/flowline.webp"
           />
           <div className="pt-16 pb-24">
-            <ClientLogoTicker />
+            <ClientLogoTicker variant="featured" />
           </div>
           <ValueProps />
-          <CaseStudies labelClassName="text-[15px]" disableLogoGrayscale />
+          <CaseStudies disableLogoGrayscale />
           <SampleProducts bgColor="#F6F9FC" />
-          <Testimonials label="WHAT CLIENTS SAY" labelClassName="text-[15px]" />
+          <Testimonials label="WHAT CLIENTS SAY" />
           <SaasCTA />
         </main>
         <Footer />

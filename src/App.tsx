@@ -41,6 +41,7 @@ const queryClient = new QueryClient();
 import ClientStories from "./views/ClientStories";
 import SaasProducts from "./views/SaasProducts";
 import Marketplaces from "./views/Marketplaces";
+import Portals from "./views/Portals";
 import InternalTools from "./views/InternalTools";
 import AiApplications from "./views/AiApplications";
 import FinancialServices from "./views/FinancialServices";
@@ -119,6 +120,7 @@ const AppContent = () => {
         <Route path={ROUTES.CLIENT_STORIES} element={<ClientStories />} />
         <Route path={ROUTES.SAAS_PRODUCTS} element={<SaasProducts />} />
         <Route path={ROUTES.MARKETPLACES} element={<Marketplaces />} />
+        <Route path={ROUTES.PORTALS} element={<Portals />} />
         <Route path={ROUTES.INTERNAL_TOOLS} element={<InternalTools />} />
         <Route path={ROUTES.AI_APPLICATIONS} element={<AiApplications />} />
         <Route path={ROUTES.FINANCIAL_SERVICES} element={<FinancialServices />} />

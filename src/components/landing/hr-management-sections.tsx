@@ -563,7 +563,7 @@ const HR_MANAGEMENT_CASE_SLIDES_RAW = [
       "How Airdev helped CampHire automate their recruitment agency via a self-service marketplace platform",
     customFields: [
       { label: "Business type", value: "SMB", color: "#635bff" },
-      { label: "Product type", value: "Marketplace platform", color: "#00d4ff" },
+      { label: "Product type", value: "Camp staffing marketplace", color: "#00d4ff" },
       { label: "Timeline", value: "3 months", color: "#a960ee" },
       {
         label: "Key results",

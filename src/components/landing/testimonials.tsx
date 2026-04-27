@@ -91,7 +91,7 @@ export const Testimonials = ({
       <div className="max-w-[1200px] mx-auto px-6">
         {/* Header */}
         <div className="mb-16 text-center max-w-3xl mx-auto">
-          <div className={cn("text-[16px] font-semibold text-[#1e3a8a] uppercase tracking-wider mb-3", labelClassName)}>
+          <div className={cn("text-[15px] font-semibold text-[#1e3a8a] uppercase tracking-wider mb-3", labelClassName)}>
             {label}
           </div>
           <h2 className={`text-4xl lg:text-5xl font-semibold tracking-tight text-gray-900 max-w-2xl mx-auto ${description ? "mb-6" : "mb-0"}`}>

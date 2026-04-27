@@ -73,7 +73,6 @@ const ProductDesign = () => {
           <DiscoveryOutputs prototypeScale={0.8} />
           <AudienceSection 
             label="HOW IT'S USED"
-            labelClassName="text-[15px]"
             title="Built for every stage"
             description="From planning to validation — here's how teams put it to work at every step of the product journey."
             backgroundColor="white"
@@ -103,7 +102,7 @@ const ProductDesign = () => {
               }
             ]}
           />
-          <Testimonials backgroundColor="#F6F9FC" label="WHAT CLIENTS SAY" labelClassName="text-[15px]" />
+          <Testimonials backgroundColor="#F6F9FC" label="WHAT CLIENTS SAY" />
           <SaasCTA />
         </main>
         <Footer />

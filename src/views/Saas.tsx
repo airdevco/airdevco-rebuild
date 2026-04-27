@@ -68,7 +68,6 @@ export default function Marketplace() {
           <div id="case-studies" className="scroll-mt-[88px]">
             <CaseStudies
               label="CASE STUDIES"
-              labelClassName="text-[15px]"
               description="From MVPs that raised millions to enterprise platforms serving thousands of users."
               slides={SAAS_MARKETPLACE_CASE_SLIDES}
             />
@@ -76,7 +75,6 @@ export default function Marketplace() {
           <MarketplacePricingSection />
           <Testimonials
             label="Testimonials"
-            labelClassName="text-[15px]"
             title="Clients trust Airdev to launch and scale"
             description=""
           />

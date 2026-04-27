@@ -2,7 +2,6 @@
 
 import {
   Navbar,
-  CaseStudies,
   ClientLogoTicker,
   Testimonials,
   SaasCTA,
@@ -35,74 +34,6 @@ import {
   CircleStackIcon,
   SparklesIcon,
 } from "@heroicons/react/24/solid";
-
-// Custom slides for AI Applications page
-const AI_APPLICATIONS_CASE_STUDIES = [
-  {
-    id: "ticketrev",
-    company: "TicketRev",
-    logo: "https://cdn.prod.website-files.com/64e8a789efa42eaf8fe4d068/64e8b49e181622332d021cee_Logo.svg",
-    logoText: "",
-    heading: "How a buyer-first ticket marketplace startup quickly secured $1.1M in funding with Bubble.io",
-    description: "",
-    image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/64cc2c786d693702395f21b1_TicketRev-built-with-no-code-Airdev.jpg",
-    imageTitle: "How a buyer-first ticket marketplace startup quickly secured $1.1M in funding with Bubble.io",
-    customFields: [
-      { label: "Business type", value: "Startup", color: "#635bff" },
-      { label: "Product type", value: "Marketplace app", color: "#00d4ff" },
-      { label: "Timeline", value: "2 months", color: "#a960ee" },
-      { label: "Key results", value: "$1.1M in pre-seed funding raised in 2 years", color: "#ff6b6b" },
-    ]
-  },
-  {
-    id: "kidsbook",
-    company: "Kidsbook",
-    logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1768940559825x362227103494313200/kidsbook.png",
-    logoText: "",
-    heading: "How Airdev helped Kidsbook build a custom no-code marketplace in just 6 weeks to connect parents with kids activity providers",
-    description: "",
-    image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/635075037ab429484ab21afb_kidsbook%20(2).png",
-    imageTitle: "How Airdev helped Kidsbook build a custom no-code marketplace in just 6 weeks to connect parents with kids activity providers",
-    customFields: [
-      { label: "Business type", value: "Startup", color: "#635bff" },
-      { label: "Product type", value: "2-sided marketplace", color: "#00d4ff" },
-      { label: "Timeline", value: "6 weeks", color: "#a960ee" },
-      { label: "Key results", value: "1000+ providers signed up", color: "#ff6b6b" },
-    ]
-  },
-  {
-    id: "consenna",
-    company: "Consenna",
-    logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1768940931729x657157670211085600/consenna.png",
-    logoText: "",
-    heading: "How Airdev helped the consultancy Consenna build a custom no-code marketplace for HP for Education to serve 30k schools across the UK",
-    description: "",
-    image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/635076a5905dd76065955f2c_hp-s%20(1).png",
-    imageTitle: "How Airdev helped the consultancy Consenna build a custom no-code marketplace for HP for Education to serve 30k schools across the UK",
-    customFields: [
-      { label: "Business type", value: "Enterprise", color: "#635bff" },
-      { label: "Product type", value: "Custom marketplace", color: "#00d4ff" },
-      { label: "Timeline", value: "3 months", color: "#a960ee" },
-      { label: "Key results", value: "30k schools served", color: "#ff6b6b" },
-    ]
-  },
-  {
-    id: "camphire",
-    company: "CampHire",
-    logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1768941053053x498298402804590460/camphire.png",
-    logoText: "",
-    heading: "How Airdev helped CampHire automate their recruitment agency via a self-service marketplace platform",
-    description: "",
-    image: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1768941145859x368793998371030460/camp.jpg",
-    imageTitle: "How Airdev helped CampHire automate their recruitment agency via a self-service marketplace platform",
-    customFields: [
-      { label: "Business type", value: "SMB", color: "#635bff" },
-      { label: "Product type", value: "Marketplace platform", color: "#00d4ff" },
-      { label: "Timeline", value: "3 months", color: "#a960ee" },
-      { label: "Key results", value: "30+ camp and 250+ candidate sign ups in just 1 month since launch", color: "#ff6b6b" },
-    ]
-  }
-];
 
 const AI_APPLICATIONS_PRODUCTS: Product[] = [
   {
@@ -276,6 +207,9 @@ const AiApplications = () => {
               </div>
             </div>
           </section>
+          <div className="pt-16 pb-24">
+            <ClientLogoTicker variant="featured" />
+          </div>
           <ValueProps />
           <SampleProducts 
             products={AI_APPLICATIONS_PRODUCTS}
@@ -284,9 +218,6 @@ const AiApplications = () => {
             description="We build AI-powered applications that leverage large language models and machine learning to automate workflows, enhance decision-making, and create intelligent experiences. Here are the types of AI applications we excel at building."
             bgColor="#F6F9FC"
           />
-          <div className="pt-16 pb-8">
-            <ClientLogoTicker />
-          </div>
           <Testimonials />
           <SaasCTA />
         </main>

@@ -177,7 +177,9 @@ export function CustomerPortalLandingHero() {
                 onLoad={i === KIDSBOOK_HERO_SCREEN_INDEX ? recalcShotHeightFromKidsbook : undefined}
                 className={
                   unifiedShotHeight
-                    ? "w-full h-full min-h-0 object-cover object-top"
+                    ? i < 2
+                      ? "w-full h-auto min-h-0 max-w-full block object-top"
+                      : "w-full h-full min-h-0 object-cover object-top"
                     : "w-full h-auto max-h-[min(560px,52vh)] object-contain object-top"
                 }
                 loading={i < 2 ? "eager" : "lazy"}
@@ -208,7 +210,6 @@ const COMPARISON_ROWS: ComparisonRow[] = [
   { label: "Scales with you", airdev: "Yes", saas: "Until you hit their limits", traditional: "Yes" },
 ];
 
-const SECTION_BG = "#F6F9FC";
 const AIRDEV_COL_BG = "#ECF2FB";
 const ROW_DIVIDER = "border-b border-[#E2E8F0]";
 const thHeaderBase = "text-[20px] leading-[28px] font-semibold py-5 md:py-6 px-5 md:px-6 align-middle";
@@ -242,10 +243,12 @@ function CellContent({
   );
 }
 
+const WHY_AIRDEV_BG = "#ffffff";
+
 export function CustomerPortalWhyAirdev() {
   const lastIdx = COMPARISON_ROWS.length - 1;
   return (
-    <section id="why-airdev" className="scroll-mt-[88px] py-20 md:py-28" style={{ backgroundColor: SECTION_BG }}>
+    <section id="why-airdev" className="scroll-mt-[88px] py-20 md:py-28 bg-white" style={{ backgroundColor: WHY_AIRDEV_BG }}>
       <div className="max-w-[1200px] mx-auto px-6">
         <p className="text-[#1e3a8a] font-semibold tracking-wide uppercase text-[15px] mb-3 text-center">Why Airdev</p>
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-[#0A2540] tracking-tight mb-4 text-center">
@@ -261,7 +264,7 @@ export function CustomerPortalWhyAirdev() {
               <tr>
                 <th
                   className={`${ROW_DIVIDER} ${thHeaderBase} text-left w-[26%]`}
-                  style={{ backgroundColor: SECTION_BG }}
+                  style={{ backgroundColor: WHY_AIRDEV_BG }}
                   scope="col"
                 />
                 <th
@@ -273,14 +276,14 @@ export function CustomerPortalWhyAirdev() {
                 </th>
                 <th
                   className={`${ROW_DIVIDER} ${thHeaderBase} text-center text-[#0A2540]`}
-                  style={{ backgroundColor: SECTION_BG }}
+                  style={{ backgroundColor: WHY_AIRDEV_BG }}
                   scope="col"
                 >
                   SaaS Platforms
                 </th>
                 <th
                   className={`${ROW_DIVIDER} ${thHeaderBase} text-center text-[#0A2540]`}
-                  style={{ backgroundColor: SECTION_BG }}
+                  style={{ backgroundColor: WHY_AIRDEV_BG }}
                   scope="col"
                 >
                   Traditional Dev
@@ -295,7 +298,7 @@ export function CustomerPortalWhyAirdev() {
                   <tr key={row.label}>
                     <td
                       className={`${divCls} ${tdBodyCls} text-left font-medium text-[#0A2540]`}
-                      style={{ backgroundColor: SECTION_BG }}
+                      style={{ backgroundColor: WHY_AIRDEV_BG }}
                     >
                       {row.label}
                     </td>
@@ -305,10 +308,10 @@ export function CustomerPortalWhyAirdev() {
                     >
                       <CellContent value={row.airdev} statusIcons={!!row.statusIcons} isAirdev />
                     </td>
-                    <td className={`${divCls} ${tdBodyCls} text-center`} style={{ backgroundColor: SECTION_BG }}>
+                    <td className={`${divCls} ${tdBodyCls} text-center`} style={{ backgroundColor: WHY_AIRDEV_BG }}>
                       <CellContent value={row.saas} statusIcons={!!row.statusIcons} isAirdev={false} />
                     </td>
-                    <td className={`${divCls} ${tdBodyCls} text-center`} style={{ backgroundColor: SECTION_BG }}>
+                    <td className={`${divCls} ${tdBodyCls} text-center`} style={{ backgroundColor: WHY_AIRDEV_BG }}>
                       <CellContent value={row.traditional} statusIcons={!!row.statusIcons} isAirdev={false} />
                     </td>
                   </tr>
@@ -322,7 +325,7 @@ export function CustomerPortalWhyAirdev() {
   );
 }
 
-const CUSTOMER_PORTAL_TYPES_PRODUCTS: Product[] = [
+export const CUSTOMER_PORTAL_TYPES_PRODUCTS: Product[] = [
   {
     id: "account-access-security",
     name: "Accounts",
@@ -434,7 +437,7 @@ export function CustomerPortalTypesSection() {
   return (
     <div id="customer-portal-features" className="scroll-mt-[88px]">
       <SampleProducts
-        bgColor="bg-white"
+        bgColor="#F6F9FC"
         products={CUSTOMER_PORTAL_TYPES_PRODUCTS}
         label="COMMON FEATURES"
         title="Customer portal features we specialize in"

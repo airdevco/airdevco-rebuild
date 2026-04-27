@@ -290,7 +290,7 @@ export const Navbar = () => {
                               </a>
                             </div>
                             <div className="flex min-w-0 flex-col gap-5">
-                              <a href={ROUTES.CUSTOMER_PORTAL} className="group flex items-start gap-4">
+                              <a href={ROUTES.PORTALS} className="group flex items-start gap-4">
                                 <div className="flex-shrink-0 mt-0.5">
                                   <WindowIcon className="w-5 h-5 text-[#1fc9ed]" aria-hidden />
                                 </div>
@@ -883,7 +883,7 @@ export const Navbar = () => {
                           <p className="text-[14px] text-gray-500 leading-snug">Build on top of LLMs</p>
                         </div>
                       </a>
-                      <a href={ROUTES.CUSTOMER_PORTAL} className="flex items-start gap-2 group">
+                      <a href={ROUTES.PORTALS} className="flex items-start gap-2 group">
                         <WindowIcon className="w-5 h-5 text-[#1fc9ed] flex-shrink-0 mt-0.5" aria-hidden />
                         <div className="min-w-0">
                           <h3 className="text-[16px] font-medium text-gray-900 mb-0.5">Portals</h3>

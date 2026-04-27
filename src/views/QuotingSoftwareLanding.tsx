@@ -85,7 +85,6 @@ export default function QuotingSoftwareLanding() {
           <div id="case-studies" className="scroll-mt-[88px]">
             <CaseStudies
               label="CASE STUDIES"
-              labelClassName="text-[15px]"
               description="From MVPs that raised millions to enterprise platforms serving thousands of users."
               slides={QUOTING_SOFTWARE_CASE_SLIDES}
             />
@@ -93,7 +92,6 @@ export default function QuotingSoftwareLanding() {
           <QuotingSoftwarePricingSection />
           <Testimonials
             label="Testimonials"
-            labelClassName="text-[15px]"
             title="Clients trust Airdev to launch and scale"
             description=""
           />

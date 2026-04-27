@@ -46,6 +46,8 @@ export const ROUTES = {
   BUBBLE_DEVELOPMENT: "/bubble-development",
   BUBBLE_AGENCY: "/bubble-development/bubble-agency",
   MARKETPLACES: "/marketplaces",
+  /** Customer / partner / vendor portals (marketing page; edit `Portals.tsx` only) */
+  PORTALS: "/portals",
   INTERNAL_TOOLS: "/internal-tools",
   AI_APPLICATIONS: "/ai-applications",
   TECHNOLOGY_AND_SOFTWARE: "/technology-and-software",

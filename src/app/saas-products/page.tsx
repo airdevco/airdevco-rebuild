@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import SaasProducts from "@/views/SaasProducts";
 
 export const metadata: Metadata = {
-  title: "A better way to launch your SaaS startup | Airdev",
+  title: "Launch your SaaS startup | Airdev",
   description:
     "Launch your SaaS startup faster with no-code. Airdev builds secure, scalable SaaS products in a fraction of the time and cost of traditional development.",
   authors: [{ name: "Airdev" }],
   openGraph: {
     type: "website",
-    title: "A better way to launch your SaaS startup | Airdev",
+    title: "Launch your SaaS startup | Airdev",
     description:
       "Launch your SaaS startup faster with no-code. Airdev builds secure, scalable SaaS products in a fraction of the time and cost of traditional development.",
     images: [
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "A better way to launch your SaaS startup | Airdev",
+    title: "Launch your SaaS startup | Airdev",
     description:
       "Launch your SaaS startup faster with no-code. Airdev builds secure, scalable SaaS products in a fraction of the time and cost of traditional development.",
     images: [
