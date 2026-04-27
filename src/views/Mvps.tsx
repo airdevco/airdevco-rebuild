@@ -113,12 +113,13 @@ const Mvps = () => {
           />
           <CaseStudies 
             label="FROM MVP TO SCALE"
+            labelClassName="text-[15px]"
             description="We've helped startups launch lean MVPs in weeks, validate ideas quickly, and scale seamlessly as they grow. Our visual development approach delivers fast results without compromising on quality."
             slides={MVP_SLIDES}
           />
           <ProcessSection />
           <BusinessTypes />
-          <Testimonials />
+          <Testimonials label="WHAT CLIENTS SAY" labelClassName="text-[15px]" />
           <SaasCTA />
         </main>
         <Footer />

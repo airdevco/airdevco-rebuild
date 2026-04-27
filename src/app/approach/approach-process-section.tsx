@@ -141,7 +141,7 @@ export function ApproachProcessSection() {
       <div className="max-w-[1200px] mx-auto px-6">
         {/* Top content */}
         <div className="max-w-3xl mb-16">
-          <p className="text-[#1e3a8a] font-semibold tracking-wide uppercase text-sm mb-3">
+          <p className="text-[#1e3a8a] font-semibold tracking-wide uppercase text-[15px] mb-3">
             Our process
           </p>
           <h2 className="text-4xl lg:text-5xl font-semibold tracking-[-0.02em] text-[#1a1a1a] mb-6">

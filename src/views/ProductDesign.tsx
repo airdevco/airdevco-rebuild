@@ -8,6 +8,7 @@ import {
   Footer,
   AudienceSection,
   DesignPrinciples,
+  ProductExperts,
   DiscoveryOutputs,
 } from "@/components/landing";
 import { DocumentTextIcon, PresentationChartLineIcon, CheckCircleIcon } from "@heroicons/react/24/solid";
@@ -62,9 +63,17 @@ const ProductDesign = () => {
             label="TRUSTED BY ORGANIZATIONS OF ALL SIZES"
           />
           <DesignPrinciples inlineLayout labelColor="#1e3a8a" />
+          <ProductExperts
+            hideProfiles
+            backgroundColor="#F6F9FC"
+            labelColor="#1e3a8a"
+            titleColor="#1a1a1a"
+            descriptionColor="#425466"
+          />
           <DiscoveryOutputs prototypeScale={0.8} />
           <AudienceSection 
             label="HOW IT'S USED"
+            labelClassName="text-[15px]"
             title="Built for every stage"
             description="From planning to validation — here's how teams put it to work at every step of the product journey."
             backgroundColor="white"
@@ -94,7 +103,7 @@ const ProductDesign = () => {
               }
             ]}
           />
-          <Testimonials backgroundColor="#F6F9FC" />
+          <Testimonials backgroundColor="#F6F9FC" label="WHAT CLIENTS SAY" labelClassName="text-[15px]" />
           <SaasCTA />
         </main>
         <Footer />

@@ -12,6 +12,7 @@ export interface AudienceItem {
 
 export interface AudienceSectionProps {
   label?: string;
+  labelClassName?: string;
   title?: string;
   description?: string;
   audience?: AudienceItem[];
@@ -47,6 +48,7 @@ const DEFAULT_AUDIENCE: AudienceItem[] = [
 
 export const AudienceSection = ({ 
   label = "WHO WE HELP",
+  labelClassName,
   title = "Built for ambitious teams",
   description = "Whether you're a founder or an enterprise leader, our full-scale build process is designed to deliver production-grade software that scales.",
   audience = DEFAULT_AUDIENCE,
@@ -61,7 +63,7 @@ export const AudienceSection = ({
     <section className="py-24" style={{ backgroundColor }}>
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="mb-16 text-center max-w-3xl mx-auto">
-          <div className={`text-[16px] font-semibold uppercase tracking-wider mb-3 ${isDark ? "text-[#0AE4E3]" : "text-[#1e3a8a]"}`}>
+          <div className={`text-[16px] font-semibold uppercase tracking-wider mb-3 ${isDark ? "text-[#0AE4E3]" : "text-[#1e3a8a]"} ${labelClassName ?? ""}`}>
             {label}
           </div>
           <h2 className={`text-4xl lg:text-5xl font-semibold tracking-[-0.02em] mb-6 ${isDark ? "text-white" : "text-[#1a1a1a]"}`}>

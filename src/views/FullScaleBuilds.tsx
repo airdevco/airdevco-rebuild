@@ -130,13 +130,14 @@ const FullScaleBuilds = () => {
           />
           <CaseStudies 
             label="PRODUCTION-READY APPLICATIONS"
+            labelClassName="text-[15px]"
             description="See how we've transformed businesses with custom-built applications that handle millions of users, process complex workflows, and integrate seamlessly with existing systems. Each project showcases our ability to deliver enterprise-grade solutions."
             slides={FULL_SCALE_SLIDES}
           />
-          <AudienceSection />
+          <AudienceSection label="WHO WE HELP" labelClassName="text-[15px]" />
           <ProcessSection />
           <CapabilitiesSection />
-          <Testimonials />
+          <Testimonials label="WHAT CLIENTS SAY" labelClassName="text-[15px]" />
           <SaasCTA />
         </main>
         <Footer />

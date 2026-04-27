@@ -29,7 +29,7 @@ export function ApproachTestimonialsSection() {
     <section className="pt-28 pb-28 bg-[#F6F9FC]">
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="mb-14 text-center max-w-3xl mx-auto">
-          <div className="text-[16px] font-semibold text-[#1e3a8a] uppercase tracking-wider mb-3">
+          <div className="text-[15px] font-semibold text-[#1e3a8a] uppercase tracking-wider mb-3">
             WHAT CLIENTS SAY
           </div>
           <h2 className="text-4xl lg:text-5xl font-semibold tracking-tight text-gray-900 max-w-2xl mx-auto">
