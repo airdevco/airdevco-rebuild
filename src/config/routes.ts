@@ -65,6 +65,7 @@ export const ROUTES = {
   // ============================================
   SAAS_PRODUCTS: "/saas-products",
   CLIENT_STORIES: "/client-stories",
+  MORE_CASE_STUDIES: "/more-case-studies",
   FINANCIAL_SERVICES: "/financial-services",
   MVPS: "/mvps",
   FULL_SCALE_BUILDS: "/full-scale-builds",
@@ -119,6 +120,8 @@ export const ROUTES = {
 
 // Type for route values (for TypeScript autocomplete and type safety)
 export type Route = typeof ROUTES[keyof typeof ROUTES];
+
+export const caseStudyRoute = (slug: string) => `/case-studies/${slug}`;
 
 // Helper function to build routes with query parameters
 export const buildRoute = (route: Route, params?: Record<string, string>): string => {

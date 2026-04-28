@@ -4,150 +4,11 @@ import { Navbar, Footer, ClientLogoTicker, SaasCTA } from "@/components/landing"
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
-
 import { ChevronRight } from "lucide-react";
+import { useQuery } from "convex/react";
+import { api } from "../../convex/_generated/api";
+import { caseStudyRoute, ROUTES } from "@/config/routes";
 
-// --- Agility Section Data ---
-const ALL_SLIDES = [
-  // Startups
-  {
-    id: "ticketrev",
-    company: "TicketRev",
-    category: "startups",
-    logo: "https://cdn.prod.website-files.com/64e8a789efa42eaf8fe4d068/64e8b49e181622332d021cee_Logo.svg",
-    logoText: "",
-    heading: "How a buyer-first ticket marketplace startup quickly secured $1.1M in funding with Bubble.io",
-    description: "Modernizing logistics with instant payments and automated reconciliation.",
-    image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/64cc2c786d693702395f21b1_TicketRev-built-with-no-code-Airdev.jpg",
-    imageTitle: "How a buyer-first ticket marketplace startup quickly secured $1.1M in funding with Bubble.io",
-    customFields: [
-      { label: "Business type", value: "Startup", color: "#635bff" },
-      { label: "Product type", value: "Ticket marketplace", color: "#00d4ff" },
-      { label: "Timeline", value: "2 months", color: "#a960ee" },
-      { label: "Key results", value: "$1.1M in pre-seed funding raised in 2 years", color: "#ff6b6b" },
-    ]
-  },
-  {
-    id: "navigreat",
-    company: "NaviGreat",
-    category: "startups",
-    logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1765319327038x377695290107660200/navigreat.png",
-    logoText: "",
-    heading: "How NaviGreat built a digital hub for nonprofit organizations with Airdev's freelance Bubble developer in just 2 weeks",
-    description: "Handling millions of transactions for developer-first communications APIs.",
-    image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/6644f29802eba3647e2d8030_NaviGreat_Airdev_no_code.jpg",
-    imageTitle: "How NaviGreat built a digital hub for nonprofit organizations with Airdev's freelance Bubble developer in just 2 weeks",
-    customFields: [
-      { label: "Business type", value: "Nonprofit organization", color: "#635bff" },
-      { label: "Product type", value: "Social network platform", color: "#00d4ff" },
-      { label: "Timeline", value: "2 weeks", color: "#a960ee" },
-      { label: "Key results", value: "A fully functional app developed in just 2 weeks", color: "#ff6b6b" },
-    ]
-  },
-  {
-    id: "playground",
-    company: "Playground IEP",
-    category: "startups",
-    logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447131162x922542988700125000/playground.png",
-    logoText: "",
-    heading: "How Airdev helped Playground IEP create a special education caseload management tool for schools",
-    description: "",
-    image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/63b8851d340bdc19030b55b3_adam-winger-7fF0iei80AQ-unsplash%205-p-3200.jpg",
-    imageTitle: "How Airdev helped Playground IEP create a special education caseload management tool for schools",
-    customFields: [
-      { label: "Business type", value: "Startup", color: "#635bff" },
-      { label: "Product type", value: "Internal management portal", color: "#00d4ff" },
-      { label: "Timeline", value: "3 months", color: "#a960ee" },
-      { label: "Key results", value: "5 pilot schools signed up in <1 year", color: "#ff6b6b" },
-    ]
-  },
-  {
-    id: "cerebro",
-    company: "Cerebro Sports",
-    category: "startups",
-    logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447113960x777797950241704700/cerebro.png",
-    logoText: "",
-    heading: "How a Mark Cuban-funded startup upgraded spreadsheets to a scaling product with no-code",
-    description: "",
-    image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/64eced7d1af330bc878905e9_Cerebro_Airdev_no_code-app-build.jpg",
-    imageTitle: "How a Mark Cuban-funded startup upgraded spreadsheets to a scaling product with no-code",
-    customFields: [
-      { label: "Business type", value: "Startup", color: "#635bff" },
-      { label: "Product type", value: "Analytics Platform", color: "#00d4ff" },
-      { label: "Timeline", value: "2 months", color: "#a960ee" },
-      { label: "Key results", value: "A pre-seed fundraising round led by Mark Cuban to help scale internal data operations", color: "#ff6b6b" },
-    ]
-  },
-  // Enterprises
-  {
-    id: "dividend",
-    company: "Dividend Finance",
-    category: "enterprises",
-    logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447523324x536489976697318800/dividend.png",
-    logoText: "$300m+ raised",
-    heading: "See how Amazon simplified cross-border payments with Stripe",
-    description: "Amazon businesses on Stripe including Prime, Audible, and Amazon Pay.",
-    image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2940&auto=format&fit=crop",
-    imageTitle: "How we built a FinTech platform for Dividend Finance that scaled to process billions of dollars of loan",
-    customFields: [
-      { label: "Business type", value: "Enterprise", color: "#635bff" },
-      { label: "Product type", value: "FinTech MVP", color: "#00d4ff" },
-      { label: "Timeline", value: "6 weeks", color: "#a960ee" },
-      { label: "Key results", value: "Billions of dollars of loans processed", color: "#ff6b6b" },
-    ]
-  },
-  {
-    id: "cadence",
-    company: "Cadence Translate",
-    category: "enterprises",
-    logo: "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/669a9ff1b72d8c1ec14d79f4_cadence.webp",
-    logoText: "500 startups funded",
-    heading: "How Airdev helped Cadence Translate connect Salesforce data to a custom no-code gig portal in just weeks",
-    description: "Creating a seamless digital purchasing experience for premium vehicles and services.",
-    image: "https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=2940&auto=format&fit=crop",
-    imageTitle: "How Airdev helped Cadence Translate connect Salesforce data to a custom no-code gig portal in just weeks",
-    customFields: [
-      { label: "Business type", value: "Enterprise", color: "#635bff" },
-      { label: "Product type", value: "Salesforce-integrated gig management platform", color: "#00d4ff" },
-      { label: "Timeline", value: "4 weeks of development", color: "#a960ee" },
-      { label: "Key results", value: "400% increase in jobs processed per month", color: "#ff6b6b" },
-    ]
-  },
-  {
-    id: "bubble",
-    company: "Bubble.io",
-    category: "enterprises",
-    logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766446287440x908698787583342700/bubble.io.png",
-    logoText: "",
-    heading: "How no-code leader Bubble turned to Airdev for a custom rebuild of their Developer Certification Platform... built on Bubble",
-    description: "",
-    image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/665f5ab8b085585d4543d3ea_Certification---In-line-5.png",
-    imageTitle: "How no-code leader Bubble turned to Airdev for a custom rebuild of their Developer Certification Platform... built on Bubble",
-    customFields: [
-      { label: "Business type", value: "SMB", color: "#635bff" },
-      { label: "Product type", value: "Exam platform", color: "#00d4ff" },
-      { label: "Timeline", value: "3 months", color: "#a960ee" },
-      { label: "Key results", value: "A more performant, reliable, and flexible exam for users and internal developers", color: "#ff6b6b" },
-    ]
-  },
-  {
-    id: "tfa",
-    company: "Teach for America",
-    category: "enterprises",
-    logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447145612x608821623632928600/tfa.png",
-    logoText: "",
-    heading: "How Airdev helped Teach for America build a custom no-code internal hub with Bubble to support corps members across their journey",
-    description: "",
-    image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/635075d6712da824635efa1d_tfa%20(1).jpeg",
-    imageTitle: "How Airdev helped Teach for America build a custom no-code internal hub with Bubble to support corps members across their journey",
-    customFields: [
-      { label: "Business type", value: "National nonprofit", color: "#635bff" },
-      { label: "Product type", value: "Internal hub", color: "#00d4ff" },
-      { label: "Timeline", value: "4 weeks", color: "#a960ee" },
-      { label: "Key results", value: "Ability to manage the organization at scale", color: "#ff6b6b" },
-    ]
-  }
-];
 
 const DURATION = 6000; // 6 seconds per slide
 
@@ -156,9 +17,9 @@ const ClientStories = () => {
   const [prevIndex, setPrevIndex] = useState(0);
   const [progressKey, setProgressKey] = useState(0);
   const [selectedTab, setSelectedTab] = useState<'startups' | 'enterprises'>('startups');
-  
-  // Filter slides based on selected tab
-  const SLIDES = ALL_SLIDES.filter(slide => slide.category === selectedTab);
+
+  const slidesData = useQuery(api.caseStudies.listByCategory, { category: selectedTab });
+  const SLIDES = slidesData ?? [];
 
   const handleManualSwitch = (index: number) => {
     setPrevIndex(activeIndex);
@@ -166,14 +27,23 @@ const ClientStories = () => {
     setProgressKey((prev) => prev + 1);
   };
 
-  // Reset active index when tab changes
+  // Reset active index when tab or data changes
   useEffect(() => {
     setActiveIndex(0);
     setProgressKey(0);
-  }, [selectedTab]);
+  }, [selectedTab, slidesData]);
 
   const activeSlide = SLIDES[activeIndex] || SLIDES[0];
   const direction = activeIndex > prevIndex ? 1 : activeIndex < prevIndex ? -1 : 1;
+
+  const activeFields = activeSlide
+    ? [
+        { label: "Business type", value: activeSlide.businessType },
+        { label: "Product type", value: activeSlide.productType },
+        { label: "Timeline", value: activeSlide.timeline },
+        { label: "Key results", value: activeSlide.keyResults },
+      ].filter((f) => f.value)
+    : [];
 
   return (
     <div className="bg-white min-h-screen selection:bg-blue-100 selection:text-blue-900 font-['Colfax']">
@@ -197,10 +67,7 @@ const ClientStories = () => {
                 <Button 
                   className="h-12 px-8 text-lg font-medium rounded-[6px] bg-[#1265EF] hover:bg-[#0E4FCC]"
                   onClick={() => {
-                    const element = document.getElementById('customers-by-sizes');
-                    if (element) {
-                      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
+                    window.location.href = ROUTES.MORE_CASE_STUDIES;
                   }}
                 >
                   See all stories
@@ -215,7 +82,7 @@ const ClientStories = () => {
                         title: "TicketRev",
                         logo: "https://cdn.prod.website-files.com/64e8a789efa42eaf8fe4d068/64e8b49e181622332d021cee_Logo.svg",
                         image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/64cc2c786d693702395f21b1_TicketRev-built-with-no-code-Airdev.jpg",
-                        link: "#",
+                        link: caseStudyRoute("ticketrev"),
                         type: "video",
                         logoClass: "h-5",
                         imageClass: "",
@@ -225,7 +92,7 @@ const ClientStories = () => {
                         title: "Playground IEP",
                         logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447131162x922542988700125000/playground.png",
                         image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/63b8851d340bdc19030b55b3_adam-winger-7fF0iei80AQ-unsplash%205-p-3200.jpg",
-                        link: "#",
+                        link: caseStudyRoute("playground"),
                         type: "story",
                         logoClass: "h-8",
                         imageClass: "",
@@ -267,7 +134,7 @@ const ClientStories = () => {
                         title: "Dividend Finance",
                         logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766446287440x908698787583342700/bubble.io.png",
                         image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2940&auto=format&fit=crop",
-                        link: "#",
+                        link: caseStudyRoute("dividend"),
                         type: "video",
                         imageClass: "object-left",
                         logoClass: "h-6",
@@ -277,7 +144,7 @@ const ClientStories = () => {
                         title: "NaviGreat",
                         logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1765319327038x377695290107660200/navigreat.png",
                         image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/6644f29802eba3647e2d8030_NaviGreat_Airdev_no_code.jpg",
-                        link: "#",
+                        link: caseStudyRoute("navigreat"),
                         type: "video",
                         imageClass: "",
                         logoClass: "h-8",
@@ -319,7 +186,7 @@ const ClientStories = () => {
                         title: "Teach for America",
                         logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447145612x608821623632928600/tfa.png",
                         image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/635075d6712da824635efa1d_tfa%20(1).jpeg",
-                        link: "#",
+                        link: caseStudyRoute("tfa"),
                         type: "video",
                         imageClass: "",
                         logoClass: "h-8",
@@ -329,7 +196,7 @@ const ClientStories = () => {
                         title: "Cerebro Sports",
                         logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447113960x777797950241704700/cerebro.png",
                         image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/64eced7d1af330bc878905e9_Cerebro_Airdev_no_code-app-build.jpg",
-                        link: "#",
+                        link: caseStudyRoute("cerebro"),
                         type: "story",
                         imageClass: "",
                         logoClass: "h-8",
@@ -417,7 +284,7 @@ const ClientStories = () => {
                 </button>
                 
                 <a 
-                  href="/more-case-studies" 
+                  href={ROUTES.MORE_CASE_STUDIES} 
                   className="flex items-center gap-1 text-[#1265EF] font-medium hover:underline text-[16px]"
                 >
                   All customer stories <ChevronRight className="w-4 h-4" />
@@ -432,14 +299,14 @@ const ClientStories = () => {
                 <div className="lg:col-span-4 relative h-[320px] lg:h-[400px]">
                   <AnimatePresence initial={false}>
                     <motion.div
-                      key={activeSlide.id}
+                      key={activeSlide?.slug ?? "empty"}
                       initial={{ opacity: 0, x: direction * 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: direction * -20 }}
                       transition={{ duration: 0.25, ease: "easeOut" }}
                       className="absolute inset-0 space-y-6 flex flex-col justify-center"
                     >
-                      {activeSlide.customFields && activeSlide.customFields.map((field, idx) => (
+                      {activeFields.map((field, idx) => (
                         <div key={idx} className="relative">
                           <div className="text-[16px] text-gray-500 mb-1 pl-4">{field.label}</div>
                           <p className="text-[18px] font-semibold text-[#1a1a1a] leading-relaxed pl-4" style={{ borderLeft: `1px solid #00d4ff` }}>
@@ -455,32 +322,34 @@ const ClientStories = () => {
                 <div className="lg:col-span-8 h-[320px] lg:h-[400px] relative overflow-hidden">
                   <AnimatePresence initial={false}>
                     <motion.div 
-                      key={activeSlide.id}
+                      key={activeSlide?.slug ?? "empty-img"}
                       initial={{ opacity: 0, x: direction * 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: direction * -20 }}
                       transition={{ duration: 0.25, ease: "easeOut" }}
                       className="absolute inset-0 w-full h-full"
                     >
-                      <div className="w-full h-full relative group rounded-2xl overflow-hidden cursor-pointer shadow-lg hover:shadow-xl transition-all duration-300">
-                        <img 
-                          src={activeSlide.image}
-                          alt={activeSlide.company}
-                          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        />
-                        {/* Strong Blue Tint Gradient Overlay */}
+                      <a
+                        href={activeSlide ? caseStudyRoute(activeSlide.slug) : "#"}
+                        className="w-full h-full relative group rounded-2xl overflow-hidden cursor-pointer shadow-lg hover:shadow-xl transition-all duration-300 block"
+                      >
+                        {activeSlide?.thumbnailImage && (
+                          <img
+                            src={activeSlide.thumbnailImage}
+                            alt={activeSlide.slug}
+                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                          />
+                        )}
                         <div className="absolute inset-0 bg-gradient-to-t from-[#176AAF] via-[#176AAF]/90 to-[#176AAF]/50 mix-blend-color opacity-100" />
-                        {/* Darker gradient at bottom for text readability */}
                         <div className="absolute inset-0 bg-gradient-to-t from-[#176AAF]/90 via-[#176AAF]/40 to-transparent" />
-                        {/* Title Overlay */}
-                        {activeSlide.imageTitle && (
+                        {activeSlide?.name && (
                           <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
                             <h3 className="text-white text-[20px] lg:text-[24px] font-semibold leading-tight">
-                              {activeSlide.imageTitle}
+                              {activeSlide.name}
                             </h3>
                           </div>
                         )}
-                      </div>
+                      </a>
                     </motion.div>
                   </AnimatePresence>
                 </div>
@@ -493,7 +362,7 @@ const ClientStories = () => {
                 const isActive = index === activeIndex;
                 return (
                   <button
-                    key={slide.id}
+                    key={slide.slug}
                     onClick={() => handleManualSwitch(index)}
                     className={`relative h-24 flex items-center justify-center border-r border-solid border-slate-200 transition-all duration-300 bg-white hover:bg-slate-50 ${index >= 2 ? 'border-t md:border-t-0' : ''}`}
                   >
@@ -505,7 +374,6 @@ const ClientStories = () => {
                         animate={{ width: "100%" }}
                         transition={{ duration: DURATION / 1000, ease: "linear" }}
                         onAnimationComplete={() => {
-                          // Only advance slide when progress bar finishes
                           if (isActive) {
                             setActiveIndex((prev) => {
                               setPrevIndex(prev);
@@ -514,30 +382,27 @@ const ClientStories = () => {
                             setProgressKey((prev) => prev + 1);
                           }
                         }}
-                        key={progressKey} // Force reset on slide change
+                        key={progressKey}
                       />
                     )}
                     
                     {/* Logo */}
                     <div className="flex flex-col items-center justify-center w-full px-4">
                       <div className="h-9 w-full flex items-center justify-center">
-                        <img 
-                          src={slide.logo} 
-                          alt={slide.company} 
-                          className={`h-full w-auto object-contain transition-all duration-300 
-                            ${slide.id === 'ticketrev' ? 'max-h-6' : ''} 
-                            ${slide.id === 'dividend' ? 'max-h-5' : ''} 
-                            ${slide.id === 'bubble' ? 'max-h-5' : ''} 
-                            ${slide.id === 'playground' || slide.id === 'cerebro' ? 'mix-blend-multiply' : ''}
-                            ${isActive ? 'grayscale-0 opacity-100' : 'grayscale opacity-60 hover:grayscale-0 hover:opacity-100'}
-                          `}
-                        />
+                        {slide.customerLogo && (
+                          <img 
+                            src={slide.customerLogo} 
+                            alt={slide.slug} 
+                            className={`h-full w-auto object-contain transition-all duration-300 
+                              ${slide.slug === 'ticketrev' ? 'max-h-6' : ''} 
+                              ${slide.slug === 'dividend' ? 'max-h-5' : ''} 
+                              ${slide.slug === 'bubble' ? 'max-h-5' : ''} 
+                              ${slide.slug === 'playground' || slide.slug === 'cerebro' ? 'mix-blend-multiply' : ''}
+                              ${isActive ? 'grayscale-0 opacity-100' : 'grayscale opacity-60 hover:grayscale-0 hover:opacity-100'}
+                            `}
+                          />
+                        )}
                       </div>
-                      {slide.logoText && (
-                        <p className="text-[10px] text-gray-400 text-center font-medium mt-1.5 whitespace-nowrap">
-                          {slide.logoText}
-                        </p>
-                      )}
                     </div>
                   </button>
                 );
@@ -768,7 +633,7 @@ const ClientStories = () => {
               {/* More Client Stories Link - centered below entire masonry */}
               <div className="mt-8 flex justify-center">
                 <a 
-                  href="#" 
+                  href={ROUTES.MORE_CASE_STUDIES} 
                   className="text-[16px] font-medium text-[#1265EF] hover:text-[#1a1a1a] transition-colors flex items-center gap-1.5 group/link"
                 >
                   More client stories

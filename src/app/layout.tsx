@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "@/index.css";
 import { UsersnapScript } from "./usersnap-script";
+import { ConvexClientProvider } from "@/components/ConvexClientProvider";
 
 export const metadata: Metadata = {
   title: "Airdev | The leading no-code and Bubble app development agency",
@@ -57,7 +58,9 @@ export default function RootLayout({
       </head>
       <body>
         <UsersnapScript />
-        <div id="root">{children}</div>
+        <ConvexClientProvider>
+          <div id="root">{children}</div>
+        </ConvexClientProvider>
       </body>
     </html>
   );
