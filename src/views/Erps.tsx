@@ -33,8 +33,8 @@ import {
   StarIcon,
 } from "@heroicons/react/24/solid";
 
-// Custom slides for Internal Tools page (OUR CLIENTS)
-const INTERNAL_TOOLS_CASE_STUDIES = [
+// Custom slides for ERPs page (OUR CLIENTS) — page-specific; edit here without affecting Internal Tools.
+const ERPS_CASE_STUDIES = [
   {
     id: "tfa",
     company: "Teach for America",
@@ -86,9 +86,31 @@ const INTERNAL_TOOLS_CASE_STUDIES = [
       { label: "Key results", value: "5 pilot schools signed up in <1 year", color: "#ff6b6b" },
     ]
   },
+  {
+    id: "greener",
+    company: "Greener Corporation",
+    logo: "https://greenercorp.com/wp-content/uploads/2022/07/Greener-Logo.svg",
+    logoText: "",
+    heading: "How Airdev helped Greener Corp build a custom manufacturing ERP on Bubble",
+    description: "",
+    image:
+      "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/6431f7a55544d733b3614a00_Manufacturing%20case%20study%20no-code.png",
+    imageTitle: "How Airdev helped Greener Corp build a custom manufacturing ERP on Bubble",
+    customFields: [
+      { label: "Business type", value: "SMB", color: "#635bff" },
+      { label: "Product type", value: "Enterprise resource planning (ERP) app", color: "#00d4ff" },
+      { label: "Timeline", value: "6 months", color: "#a960ee" },
+      {
+        label: "Key results",
+        value:
+          "Custom ERP around Greener’s processes—estimated ~75% lower lifetime cost than off-the-shelf",
+        color: "#ff6b6b",
+      },
+    ],
+  },
 ];
 
-const INTERNAL_TOOLS_PRODUCTS: Product[] = [
+const ERPS_PRODUCTS: Product[] = [
   {
     id: "crm",
     name: "Customer Relationship Management",
@@ -181,7 +203,7 @@ const INTERNAL_TOOLS_PRODUCTS: Product[] = [
   },
 ];
 
-const InternalTools = () => {
+const Erps = () => {
   return (
     <>
       <style dangerouslySetInnerHTML={{
@@ -220,8 +242,8 @@ const InternalTools = () => {
         <Navbar />
         <main>
           <Hero 
-            title="Custom internal tools, at the speed of SaaS"
-            description="We use a new visual programming + AI approach to help companies build 100% flexible tools for a fraction of cost and time of traditional development"
+            title="Custom ERP systems, at the speed of SaaS"
+            description="We use visual programming and AI to help teams ship ERP-style operations software—inventory, orders, finance, and workflows—tailored to how you actually run the business, without multi-year enterprise timelines."
             showImages={false}
             showButton={true}
             buttonText="Get a quote"
@@ -234,14 +256,14 @@ const InternalTools = () => {
           </div>
           <ValueProps />
           <CaseStudies
-            slides={INTERNAL_TOOLS_CASE_STUDIES}
-            description="From team hubs and certification platforms to operations portals—see how we've helped organizations ship internal software they can own, iterate on quickly, and scale without generic off-the-shelf limits."
+            slides={ERPS_CASE_STUDIES}
+            description="From manufacturing and inventory to finance and reporting—see how we've helped teams replace rigid spreadsheets and off-the-shelf ERPs with modular systems built around their real processes."
           />
           <SampleProducts 
-            products={INTERNAL_TOOLS_PRODUCTS}
+            products={ERPS_PRODUCTS}
             label="SAMPLE PRODUCTS"
-            title="Internal tools we specialize in"
-            description="We build custom internal tools that streamline operations, improve efficiency, and empower teams. From CRM and ERP systems to HR and learning platforms, we create tools that fit your unique workflows and scale with your business."
+            title="ERP-style systems we specialize in"
+            description="We build integrated operations software: finance, inventory, procurement, production, and reporting in one place—so your data and workflows stay aligned as you grow."
             bgColor="#F6F9FC"
           />
           <Testimonials />
@@ -253,4 +275,4 @@ const InternalTools = () => {
   );
 };
 
-export default InternalTools;
+export default Erps;

@@ -311,7 +311,7 @@ export const Navbar = () => {
                                   <p className="text-[14px] font-normal text-black leading-none whitespace-nowrap mt-1 opacity-[0.5] group-hover:opacity-[0.78] transition-opacity duration-150">Self-service customer portals</p>
                                 </div>
                               </a>
-                              <a href={ROUTES.ERP} className="group flex items-start gap-4">
+                              <a href={ROUTES.ERPS} className="group flex items-start gap-4">
                                 <div className="flex-shrink-0 mt-0.5">
                                   <TableCellsIcon className="w-5 h-5 text-[#1fc9ed]" aria-hidden />
                                 </div>
@@ -900,7 +900,7 @@ export const Navbar = () => {
                           <p className="text-[14px] font-normal text-black leading-snug opacity-[0.5] group-hover:opacity-[0.78] transition-opacity duration-150">Self-service customer portals</p>
                         </div>
                       </a>
-                      <a href={ROUTES.ERP} className="flex items-start gap-2 group">
+                      <a href={ROUTES.ERPS} className="flex items-start gap-2 group">
                         <TableCellsIcon className="w-5 h-5 text-[#1fc9ed] flex-shrink-0 mt-0.5" aria-hidden />
                         <div className="min-w-0">
                           <h3 className="text-[16px] font-medium text-black mb-0.5 opacity-[0.88] group-hover:opacity-100 transition-opacity duration-150">ERPs</h3>

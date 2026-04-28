@@ -31,6 +31,7 @@ const EXPLICIT_NEXT_PATHS = new Set([
   "/marketplaces",
   "/portals",
   "/internal-tools",
+  "/erps",
   "/ai-applications",
   "/financial-services",
   "/technology-and-software",

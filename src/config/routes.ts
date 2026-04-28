@@ -32,6 +32,8 @@ export const ROUTES = {
   BUSINESS_SOFTWARE: "/business-software",
   /** Dedicated ERP landing clone for enterprise resource planning */
   ERP: "/erp",
+  /** Application-types ERPs marketing page (isolated layout; edit `Erps.tsx` only) */
+  ERPS: "/erps",
   /** Dedicated LMS landing for learning management systems */
   LMS: "/lms",
   /** Dedicated MVP product landing (ERP-style layout; edit mvp-* components only) */

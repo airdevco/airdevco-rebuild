@@ -63,7 +63,7 @@ const DEFAULT_BUSINESS_TYPES = [
   {
     title: "ERPs",
     description: "Operations software tailored to how your business actually runs. Inventory, orders, workflows, reporting.",
-    link: "#",
+    link: ROUTES.ERPS,
     iconColor: "#f59e0b",
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">

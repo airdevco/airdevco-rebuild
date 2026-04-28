@@ -43,6 +43,7 @@ import SaasProducts from "./views/SaasProducts";
 import Marketplaces from "./views/Marketplaces";
 import Portals from "./views/Portals";
 import InternalTools from "./views/InternalTools";
+import Erps from "./views/Erps";
 import AiApplications from "./views/AiApplications";
 import FinancialServices from "./views/FinancialServices";
 import TechnologyAndSoftware from "./views/TechnologyAndSoftware";
@@ -122,6 +123,7 @@ const AppContent = () => {
         <Route path={ROUTES.MARKETPLACES} element={<Marketplaces />} />
         <Route path={ROUTES.PORTALS} element={<Portals />} />
         <Route path={ROUTES.INTERNAL_TOOLS} element={<InternalTools />} />
+        <Route path={ROUTES.ERPS} element={<Erps />} />
         <Route path={ROUTES.AI_APPLICATIONS} element={<AiApplications />} />
         <Route path={ROUTES.FINANCIAL_SERVICES} element={<FinancialServices />} />
         <Route path={ROUTES.TECHNOLOGY_AND_SOFTWARE} element={<TechnologyAndSoftware />} />
