@@ -220,7 +220,7 @@ const Marketplaces = () => {
             buttonText="Talk to us"
             titleMaxWidth="800px"
             alignLeft={true}
-            rightImage="https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1768942292841x753883318458439700/docseek.webp"
+            rightImage="https://4b71d08d04d5d7c66482fc6e8486501c.cdn.bubble.io/f1777415636079x228130196142636500/mplace.webp"
           />
           <div className="pt-16 pb-24">
             <ClientLogoTicker variant="featured" />

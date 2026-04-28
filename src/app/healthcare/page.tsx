@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import Healthcare from "@/views/Healthcare";
 
 export const metadata: Metadata = {
-  title: "Healthcare | Airdev",
+  title: "A better way to build for healthcare | Airdev",
   description:
     "Build healthcare and life sciences software with no-code. Airdev builds HIPAA-aware, secure applications for healthcare providers, payers, and startups.",
   authors: [{ name: "Airdev" }],
   openGraph: {
     type: "website",
-    title: "Healthcare | Airdev",
+    title: "A better way to build for healthcare | Airdev",
     description:
       "Build healthcare and life sciences software with no-code. Airdev builds HIPAA-aware, secure applications for healthcare providers, payers, and startups.",
     images: [
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Healthcare | Airdev",
+    title: "A better way to build for healthcare | Airdev",
     description:
       "Build healthcare and life sciences software with no-code. Airdev builds HIPAA-aware, secure applications for healthcare providers, payers, and startups.",
     images: [

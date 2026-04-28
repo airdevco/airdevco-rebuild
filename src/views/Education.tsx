@@ -9,122 +9,173 @@ import {
   Footer,
   SampleProducts,
   FintechValueProps,
+  type FintechValuePropItem,
 } from "@/components/landing";
 import {
-  CodeBracketIcon,
-  CpuChipIcon,
-  CloudIcon,
-  CubeTransparentIcon,
-  CommandLineIcon,
-  ServerStackIcon,
-  DocumentTextIcon,
-  ChartBarIcon,
-  CogIcon,
+  AcademicCapIcon,
   ArrowPathIcon,
+  BuildingLibraryIcon,
+  BuildingStorefrontIcon,
+  ChartBarIcon,
+  ClipboardDocumentCheckIcon,
+  ClockIcon,
+  DocumentTextIcon,
+  GlobeAltIcon,
+  LockClosedIcon,
+  PuzzlePieceIcon,
+  RocketLaunchIcon,
   ShieldCheckIcon,
   UserGroupIcon,
-  BoltIcon,
-  CircleStackIcon,
-  GlobeAltIcon,
-  PresentationChartLineIcon,
+  VideoCameraIcon,
 } from "@heroicons/react/24/solid";
 import { Product } from "@/components/landing/sample-products";
 
-const TECH_SOFTWARE_PRODUCTS: Product[] = [
+const EDUCATION_BENEFITS: FintechValuePropItem[] = [
   {
-    id: "developer-tools",
-    name: "Developer Tools",
-    subtitle: "Platforms that help developers build better software",
-    description: "IDEs, code editors, debugging tools, and development environments. Products that streamline the software development lifecycle and help engineering teams ship faster with better quality.",
-    icon: CodeBracketIcon,
-    color: "#6366f1",
+    title: "Built for compliance",
+    description:
+      "Education products handle sensitive student and educator data. We design roles, audit trails, and data-handling patterns that align with how schools and districts actually operate.",
+    icon: ShieldCheckIcon,
+  },
+  {
+    title: "Secure, dependable infrastructure",
+    description:
+      "Launch on hardened foundations with encryption, access controls, and monitoring so administrators can trust your platform during registration and peak usage.",
+    icon: LockClosedIcon,
+  },
+  {
+    title: "Complex integrations handled",
+    description:
+      "Connect SSO, SIS, LMS ecosystems, calendars, and common productivity tools so your product fits into district workflows instead of fighting them.",
+    icon: PuzzlePieceIcon,
+  },
+  {
+    title: "Ship on academic timelines",
+    description:
+      "Visual development keeps iterations fast when you need to hit semesters, cohort kickoffs, or grant milestones.",
+    icon: RocketLaunchIcon,
+  },
+  {
+    title: "Reporting that drives meaningful action",
+    description:
+      "Dashboards for enrollment, completion, interventions, and program outcomes so leaders see adoption and impact without relying on spreadsheets.",
+    icon: ChartBarIcon,
+  },
+  {
+    title: "Ongoing partnership",
+    description:
+      "Education programs evolve with standards and stakeholders. We stay engaged after go-live for new terms, integrations, and product roadmap delivery.",
+    icon: UserGroupIcon,
+  },
+];
+
+const EDUCATION_PRODUCTS: Product[] = [
+  {
+    id: "learning-platforms-lms",
+    name: "Learning platforms",
+    cardHeading: "LMS & course delivery",
+    subtitle: "Courses, cohorts, and learner progress tailored to your audience",
+    description:
+      "Full learning environments with catalogs, modules, prerequisites, cohort calendars, and mobile-friendly portals for schools, nonprofits, and training organizations.",
+    icon: AcademicCapIcon,
+    color: "#1265EF",
     features: [
-      { name: "Code editing and syntax highlighting", icon: CommandLineIcon },
-      { name: "Version control integration", icon: ArrowPathIcon },
-      { name: "Debugging and profiling tools", icon: CogIcon },
-      { name: "CI/CD pipeline management", icon: BoltIcon },
-      { name: "API development and testing", icon: GlobeAltIcon },
-      { name: "Team collaboration features", icon: UserGroupIcon },
+      { name: "Course authoring, versioning, and reusable content libraries", icon: BuildingLibraryIcon },
+      { name: "Enrollment rules, sections, waitlists, and rolling or fixed cohorts", icon: UserGroupIcon },
+      { name: "Learner dashboards, progress, bookmarks, and completion signals", icon: ChartBarIcon },
+      { name: "Live and async sessions, recordings, and announcements", icon: VideoCameraIcon },
+      { name: "Branding and hierarchy for districts or multi-campus operators", icon: GlobeAltIcon },
+      { name: "Exports and handoffs to HRIS, CRM, or partner systems", icon: ArrowPathIcon },
     ],
   },
   {
-    id: "data-analytics",
-    name: "Data & Analytics",
-    subtitle: "Platforms for processing and visualizing data",
-    description: "Business intelligence tools, data pipelines, and analytics platforms. Products that help organizations collect, process, and derive insights from their data to make better decisions.",
-    icon: ChartBarIcon,
+    id: "district-school-operations",
+    name: "District & schools",
+    cardHeading: "Portals & school operations",
+    subtitle: "Tools for administrators, educators, and families",
+    description:
+      "Operational portals that unify schedules, communications, permissions, and resource access across campuses, from enrollment to internal hubs that keep teams aligned.",
+    icon: UserGroupIcon,
+    color: "#06b6d4",
+    features: [
+      { name: "Role-based access for admins, teachers, staff, and guardians", icon: ShieldCheckIcon },
+      { name: "Unified directories and organizational hierarchy", icon: UserGroupIcon },
+      { name: "Forms, approvals, and task routing across departments", icon: ClipboardDocumentCheckIcon },
+      { name: "Calendars, deadlines, and reminders tied to terms", icon: ClockIcon },
+      { name: "Document repositories with governed visibility", icon: DocumentTextIcon },
+      { name: "Notifications via email and in-app messaging patterns", icon: GlobeAltIcon },
+    ],
+  },
+  {
+    id: "assessment-credentials",
+    name: "Assessments",
+    cardHeading: "Assessment & certification",
+    subtitle: "Validate skills and issue trusted credentials",
+    description:
+      "Exam engines, rubrics, practice modes, and credentialing flows for certification programs, licensure prep, or competency checks at scale.",
+    icon: ClipboardDocumentCheckIcon,
     color: "#10b981",
     features: [
-      { name: "Data visualization dashboards", icon: PresentationChartLineIcon },
-      { name: "ETL and data pipeline tools", icon: ArrowPathIcon },
-      { name: "Real-time analytics processing", icon: BoltIcon },
-      { name: "Custom report builders", icon: DocumentTextIcon },
-      { name: "Data warehouse integrations", icon: CircleStackIcon },
-      { name: "Predictive analytics models", icon: CpuChipIcon },
+      { name: "Question banks, randomization, attempts, and anti-abuse controls", icon: DocumentTextIcon },
+      { name: "Weighted scoring, outcomes mapping, and appeals workflows", icon: ChartBarIcon },
+      { name: "Proctor-friendly configurations and audit trails", icon: ShieldCheckIcon },
+      { name: "Certificates, transcripts, and verification artifacts", icon: ClipboardDocumentCheckIcon },
+      { name: "Scheduling windows aligned to testing calendars", icon: ClockIcon },
+      { name: "Analytics for item performance and cohort readiness", icon: ChartBarIcon },
     ],
   },
   {
-    id: "cloud-infrastructure",
-    name: "Cloud & Infrastructure",
-    subtitle: "Tools for managing cloud resources and deployments",
-    description: "Cloud management platforms, infrastructure automation, and DevOps tools. Products that simplify the complexity of modern cloud infrastructure and help teams deploy and scale applications reliably.",
-    icon: CloudIcon,
-    color: "#0ea5e9",
+    id: "education-marketplaces",
+    name: "Marketplaces",
+    cardHeading: "Education marketplaces",
+    subtitle: "Connect buyers and sellers of programs, products, and services",
+    description:
+      "Multi-sided platforms for procurement, fulfillment, and governance across schools and vendors when geography, approvals, or bundles matter as much as listings.",
+    icon: BuildingStorefrontIcon,
+    color: "#a855f7",
     features: [
-      { name: "Multi-cloud resource management", icon: ServerStackIcon },
-      { name: "Container orchestration", icon: CubeTransparentIcon },
-      { name: "Infrastructure as code", icon: CommandLineIcon },
-      { name: "Monitoring and alerting", icon: BoltIcon },
-      { name: "Cost optimization tools", icon: ChartBarIcon },
-      { name: "Security and compliance automation", icon: ShieldCheckIcon },
+      { name: "Supplier onboarding, catalogs, and entitlement rules", icon: BuildingStorefrontIcon },
+      { name: "Cart, checkout, and order workflows with approvals where needed", icon: ClipboardDocumentCheckIcon },
+      { name: "Segmentation by district, role, or purchasing authority", icon: UserGroupIcon },
+      { name: "Fulfillment tracking and customer communications", icon: GlobeAltIcon },
+      { name: "Reporting for adoption, utilization, and outcomes", icon: ChartBarIcon },
+      { name: "Integration hooks for billing and procurement systems", icon: ArrowPathIcon },
     ],
   },
   {
-    id: "automation-integration",
-    name: "Automation & Integration",
-    subtitle: "Platforms that connect systems and automate workflows",
-    description: "iPaaS solutions, workflow automation, and integration platforms. Products that help businesses connect their disparate systems and automate repetitive processes to improve efficiency.",
-    icon: CogIcon,
-    color: "#8b5cf6",
-    features: [
-      { name: "API connectors and integrations", icon: GlobeAltIcon },
-      { name: "Workflow automation builders", icon: ArrowPathIcon },
-      { name: "Event-driven triggers", icon: BoltIcon },
-      { name: "Data transformation tools", icon: CircleStackIcon },
-      { name: "Error handling and monitoring", icon: ShieldCheckIcon },
-      { name: "Custom logic and scripting", icon: CommandLineIcon },
-    ],
-  },
-  {
-    id: "enterprise-platforms",
-    name: "Enterprise Platforms",
-    subtitle: "Large-scale business software solutions",
-    description: "Enterprise resource planning, project management, and collaboration platforms. Products designed to handle the complexity and scale requirements of large organizations.",
-    icon: ServerStackIcon,
+    id: "student-services",
+    name: "Student services",
+    cardHeading: "Caseload & intervention tools",
+    subtitle: "Operational clarity for specialized programs",
+    description:
+      "Workflow-heavy apps for caseloads, service delivery, documentation, and coordination for teams managing individualized plans and compliance-heavy processes.",
+    icon: DocumentTextIcon,
     color: "#f59e0b",
     features: [
-      { name: "Multi-tenant architecture", icon: CloudIcon },
-      { name: "Role-based access control", icon: ShieldCheckIcon },
-      { name: "Enterprise SSO integration", icon: UserGroupIcon },
-      { name: "Audit logging and compliance", icon: DocumentTextIcon },
-      { name: "Custom workflows and approvals", icon: ArrowPathIcon },
-      { name: "Advanced reporting and analytics", icon: PresentationChartLineIcon },
+      { name: "Case timelines, assignments, and coverage across providers", icon: UserGroupIcon },
+      { name: "Structured notes, forms, and configurable review cycles", icon: DocumentTextIcon },
+      { name: "Permissions tuned for sensitive student records", icon: ShieldCheckIcon },
+      { name: "Routing and escalations between specialists and administrators", icon: ArrowPathIcon },
+      { name: "Operational dashboards for backlog and outcomes", icon: ChartBarIcon },
+      { name: "Exports compatible with district reporting expectations", icon: GlobeAltIcon },
     ],
   },
   {
-    id: "ai-ml-platforms",
-    name: "AI & ML Platforms",
-    subtitle: "Tools for building and deploying AI applications",
-    description: "Machine learning platforms, AI model management, and intelligent automation tools. Products that help organizations leverage artificial intelligence to enhance their products and operations.",
-    icon: CpuChipIcon,
+    id: "educator-program-hubs",
+    name: "Program hubs",
+    cardHeading: "Educator & corps hubs",
+    subtitle: "Central hubs for programs that span regions",
+    description:
+      "Internal platforms that onboard cohorts, distribute resources, coordinate milestones, and measure participation for scaled educator or leadership programs.",
+    icon: GlobeAltIcon,
     color: "#ec4899",
     features: [
-      { name: "Model training and deployment", icon: CloudIcon },
-      { name: "Data labeling and preparation", icon: CircleStackIcon },
-      { name: "LLM integration and orchestration", icon: CubeTransparentIcon },
-      { name: "Real-time inference APIs", icon: BoltIcon },
-      { name: "Model monitoring and versioning", icon: ArrowPathIcon },
-      { name: "Custom AI agent builders", icon: CogIcon },
+      { name: "Program journeys with gated milestones and resource drops", icon: RocketLaunchIcon },
+      { name: "Community spaces, FAQs, and targeted broadcasts", icon: UserGroupIcon },
+      { name: "Attendance, tasks, and manager workflows", icon: ClipboardDocumentCheckIcon },
+      { name: "Skills trackers and lightweight credentialing", icon: AcademicCapIcon },
+      { name: "Mobile-first patterns for distributed cohorts", icon: GlobeAltIcon },
+      { name: "Analytics on engagement across regions or cohorts", icon: ChartBarIcon },
     ],
   },
 ];
@@ -169,86 +220,88 @@ const Education = () => {
         <main>
           <div className="pb-24 lg:pb-32">
             <Hero
-              title="A better way to build for tech & software"
-              description="We help technology and software companies launch innovative products in a fraction of the time and cost of traditional development. From developer tools to enterprise platforms, we've built solutions that power some of the most ambitious tech companies."
+              title="A better way to build for education"
+              description="We help schools, EdTech companies, and mission-driven organizations launch learning products, district tools, and education marketplaces in a fraction of the time and cost of traditional development. From LMS platforms to specialized programs, we ship products that scale with students and educators."
               showImages={false}
               showButton={true}
               buttonText="Get a quote"
               titleMaxWidth="800px"
               alignLeft={true}
-              rightImage="https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774054070321x256633132397210620/hr5.webp"
+              rightImage="https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774027428617x992217413442989600/lms1.webp"
             />
           </div>
           <FintechValueProps
-            title="Why software companies choose us"
-            description="Building great software requires deep technical expertise and industry knowledge. Here's why teams trust us with their technology products."
+            title="Why education teams choose us"
+            description="Education products need thoughtful permissions, accessibility, and timelines that align with school years and funding cycles. Here's why teams trust us with learning technology."
+            items={EDUCATION_BENEFITS}
+            introMaxWidthClassName="max-w-xl"
           />
           <div className="pt-16 pb-24 hidden">
             <ClientLogoTicker />
           </div>
           <CaseStudies
-            description="We've helped technology and software companies build developer tools, enterprise platforms, automation solutions, and scalable SaaS products."
+            description="We've helped education organizations build learning platforms, district and program hubs, assessment tools, and marketplaces that serve schools at scale."
             slides={[
               {
-                id: "bubble",
-                company: "Bubble.io",
-                logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766446287440x908698787583342700/bubble.io.png",
+                id: "playground",
+                company: "Playground IEP",
+                logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447131162x922542988700125000/playground.png",
                 logoText: "",
-                heading: "How no-code leader Bubble turned to Airdev for a custom rebuild of their Developer Certification Platform... built on Bubble",
+                heading: "How Airdev helped Playground IEP create a special education caseload management tool for schools",
                 description: "",
-                image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/665f5ab8b085585d4543d3ea_Certification---In-line-5.png",
-                imageTitle: "How no-code leader Bubble turned to Airdev for a custom rebuild of their Developer Certification Platform... built on Bubble",
+                image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/63b8851d340bdc19030b55b3_adam-winger-7fF0iei80AQ-unsplash%205-p-3200.jpg",
+                imageTitle: "How Airdev helped Playground IEP create a special education caseload management tool for schools",
                 customFields: [
-                  { label: "Business type", value: "SMB", color: "#635bff" },
-                  { label: "Product type", value: "Exam platform", color: "#00d4ff" },
+                  { label: "Business type", value: "Startup", color: "#635bff" },
+                  { label: "Product type", value: "Internal management portal", color: "#00d4ff" },
                   { label: "Timeline", value: "3 months", color: "#a960ee" },
-                  { label: "Key results", value: "A more performant, reliable, and flexible exam for users and internal developers", color: "#ff6b6b" },
-                ]
+                  { label: "Key results", value: "5 pilot schools signed up in <1 year", color: "#ff6b6b" },
+                ],
               },
               {
-                id: "cerebro",
-                company: "Cerebro Sports",
-                logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447113960x777797950241704700/cerebro.png",
-                logoText: "Mark Cuban-funded",
-                heading: "How a Mark Cuban-funded startup upgraded spreadsheets to a scaling product with no-code",
-                description: "",
-                image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/64eced7d1af330bc878905e9_Cerebro_Airdev_no_code-app-build.jpg",
-                imageTitle: "How a Mark Cuban-funded startup upgraded spreadsheets to a scaling product with no-code",
-                customFields: [
-                  { label: "Business type", value: "Startup", color: "#635bff" },
-                  { label: "Product type", value: "Analytics Platform", color: "#00d4ff" },
-                  { label: "Timeline", value: "2 months", color: "#a960ee" },
-                  { label: "Key results", value: "A pre-seed fundraising round led by Mark Cuban to help scale internal data operations", color: "#ff6b6b" },
-                ]
-              },
-              {
-                id: "ticketrev",
-                company: "TicketRev",
-                logo: "https://cdn.prod.website-files.com/64e8a789efa42eaf8fe4d068/64e8b49e181622332d021cee_Logo.svg",
+                id: "tfa",
+                company: "Teach for America",
+                logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447145612x608821623632928600/tfa.png",
                 logoText: "",
-                heading: "How a buyer-first ticket marketplace startup quickly secured $1.1M in funding with Bubble.io",
+                heading: "How Airdev helped Teach for America build a custom no-code internal hub with Bubble to support corps members across their journey",
                 description: "",
-                image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/64cc2c786d693702395f21b1_TicketRev-built-with-no-code-Airdev.jpg",
-                imageTitle: "How a buyer-first ticket marketplace startup quickly secured $1.1M in funding with Bubble.io",
+                image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/635075d6712da824635efa1d_tfa%20(1).jpeg",
+                imageTitle: "How Airdev helped Teach for America build a custom no-code internal hub with Bubble to support corps members across their journey",
                 customFields: [
-                  { label: "Business type", value: "Startup", color: "#635bff" },
-                  { label: "Product type", value: "Ticket marketplace", color: "#00d4ff" },
-                  { label: "Timeline", value: "2 months", color: "#a960ee" },
-                  { label: "Key results", value: "$1.1M in pre-seed funding raised in 2 years", color: "#ff6b6b" },
-                ]
-              }
+                  { label: "Business type", value: "National nonprofit", color: "#635bff" },
+                  { label: "Product type", value: "Internal hub", color: "#00d4ff" },
+                  { label: "Timeline", value: "4 weeks", color: "#a960ee" },
+                  { label: "Key results", value: "Ability to manage the organization at scale", color: "#ff6b6b" },
+                ],
+              },
+              {
+                id: "consenna",
+                company: "Consenna",
+                logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1768940931729x657157670211085600/consenna.png",
+                logoText: "",
+                heading: "How Airdev helped the consultancy Consenna build a custom no-code marketplace for HP for Education to serve 30k schools across the UK",
+                description: "",
+                image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/635076a5905dd76065955f2c_hp-s%20(1).png",
+                imageTitle: "How Airdev helped the consultancy Consenna build a custom no-code marketplace for HP for Education to serve 30k schools across the UK",
+                customFields: [
+                  { label: "Business type", value: "Enterprise", color: "#635bff" },
+                  { label: "Product type", value: "Custom marketplace", color: "#00d4ff" },
+                  { label: "Timeline", value: "3 months", color: "#a960ee" },
+                  { label: "Key results", value: "30k schools served", color: "#ff6b6b" },
+                ],
+              },
             ]}
           />
           <SampleProducts
             bgColor="bg-[#F6F9FC]"
-            products={TECH_SOFTWARE_PRODUCTS}
+            products={EDUCATION_PRODUCTS}
             label="SAMPLE PRODUCTS"
-            title="Softwares we build"
-            description="Powerful, scalable solutions across the technology landscape. Here are some of the most common types."
-            descriptionMaxWidth="600px"
+            title="Education products we build"
+            description="Purpose-built software for schools, districts, and education organizations. Here are common product shapes we deliver."
+            descriptionMaxWidth="760px"
           />
           <SaasCTA
-            title="Building a software?"
+            title="Building an education product?"
             description="We're happy to talk through your project, even if you're still in the early stages."
           />
         </main>

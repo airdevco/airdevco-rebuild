@@ -50,16 +50,19 @@ const FinancialServices = () => {
       <div className="bg-white min-h-screen font-sans selection:bg-blue-100 selection:text-blue-900" style={{ fontFamily: "'Colfax', sans-serif" }}>
         <Navbar />
         <main>
-          <Hero 
-            title="A better way to build fintech"
-            description="We help fintech companies and financial institutions launch secure, compliant, and scalable applications in a fraction of the time and cost of traditional development. From lending platforms to payment tools, we've built fintech products that process billions in transactions."
-            showImages={false}
-            showButton={true}
-            buttonText="Talk to us"
-            titleMaxWidth="800px"
-            alignLeft={true}
-            rightImage="https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/65bd08c2480b92d9276b8e97_2-Company%20Profile.jpg"
-          />
+          <div className="pb-24 lg:pb-32">
+            <Hero
+              title="A better way to build fintech"
+              description="We help fintech companies and financial institutions launch secure, compliant, and scalable applications in a fraction of the time and cost of traditional development. From lending platforms to payment tools, we've built fintech products that process billions in transactions."
+              showImages={false}
+              showButton={true}
+              buttonText="Get a quote"
+              titleMaxWidth="800px"
+              alignLeft={true}
+              rightImage="https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1772588533645x277504609261276960/clearpay.webp"
+            />
+          </div>
+          <FintechValueProps />
           <div className="pt-16 pb-24 hidden">
             <ClientLogoTicker />
           </div>
@@ -124,9 +127,7 @@ const FinancialServices = () => {
             description="Secure, compliant products across the fintech landscape. Here are some of the most common types."
             descriptionMaxWidth="600px"
           />
-          <FintechValueProps />
           <SaasCTA 
-            variant="light" 
             title="Building something in fintech?"
             description="We're happy to talk through your project, even if you're still in the early stages."
           />

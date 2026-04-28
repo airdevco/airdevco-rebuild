@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import PublicSectorAndNonprofit from "@/views/PublicSectorAndNonprofit";
 
 export const metadata: Metadata = {
-  title: "Public Sector & Nonprofit | Airdev",
+  title: "A better way to build for the public sector and nonprofits | Airdev",
   description:
     "Build grant management, program delivery, and civic software with no-code. Airdev builds secure, compliant apps for public sector and nonprofit organizations.",
   authors: [{ name: "Airdev" }],
   openGraph: {
     type: "website",
-    title: "Public Sector & Nonprofit | Airdev",
+    title: "A better way to build for the public sector and nonprofits | Airdev",
     description:
       "Build grant management, program delivery, and civic software with no-code. Airdev builds secure, compliant apps for public sector and nonprofit organizations.",
     images: [
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Public Sector & Nonprofit | Airdev",
+    title: "A better way to build for the public sector and nonprofits | Airdev",
     description:
       "Build grant management, program delivery, and civic software with no-code. Airdev builds secure, compliant apps for public sector and nonprofit organizations.",
     images: [

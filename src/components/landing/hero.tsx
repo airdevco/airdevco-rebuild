@@ -22,6 +22,8 @@ interface HeroProps {
   showButton?: boolean;
   buttonText?: string;
   titleMaxWidth?: string;
+  /** When set (alignLeft hero), replaces default `max-w-2xl` on the description paragraph. */
+  descriptionMaxWidth?: string;
   alignLeft?: boolean;
   rightImage?: string;
   lottieAnimation?: string;
@@ -166,6 +168,7 @@ export const Hero = ({
   showButton = false,
   buttonText = "Talk to us",
   titleMaxWidth = "100%",
+  descriptionMaxWidth,
   alignLeft = false,
   rightImage,
   lottieAnimation,
@@ -186,7 +189,10 @@ export const Hero = ({
                 {title}
               </h1>
               
-              <p className="text-base sm:text-lg lg:text-xl text-gray-600 mb-6 lg:mb-8 leading-relaxed max-w-2xl">
+              <p
+                className={`text-base sm:text-lg lg:text-xl text-gray-600 mb-6 lg:mb-8 leading-relaxed ${descriptionMaxWidth ? "" : "max-w-2xl"}`}
+                style={descriptionMaxWidth ? { maxWidth: descriptionMaxWidth } : undefined}
+              >
                 {description}
               </p>
 

@@ -1,3 +1,4 @@
+import type { ComponentType, ReactNode } from "react";
 import { 
   ShieldCheckIcon, 
   LockClosedIcon, 
@@ -7,7 +8,14 @@ import {
   UserGroupIcon 
 } from "@heroicons/react/24/solid";
 
-const FINTECH_VALUES = [
+export type FintechValuePropItem = {
+  /** Plain string or JSX (e.g. line break before the last word). */
+  title: ReactNode;
+  description: string;
+  icon: ComponentType<{ className?: string }>;
+};
+
+const FINTECH_VALUES: FintechValuePropItem[] = [
   {
     title: "Built for compliance",
     description: "Fintech products need audit trails, permission controls, and careful data handling. We build with those requirements in mind from day one.",
@@ -43,16 +51,23 @@ const FINTECH_VALUES = [
 interface FintechValuePropsProps {
   title?: string;
   description?: string;
+  /** When set, replaces the default fintech benefit cards (e.g. vertical-specific pages). */
+  items?: FintechValuePropItem[];
+  /** Tailwind max-width class for the heading block (section eyebrow + title + description). */
+  introMaxWidthClassName?: string;
 }
 
 export const FintechValueProps = ({ 
   title = "Why fintech companies choose us",
-  description = "Building fintech is harder than building regular software. Here's why teams trust us with their financial products."
+  description = "Building fintech is harder than building regular software. Here's why teams trust us with their financial products.",
+  items,
+  introMaxWidthClassName = "max-w-2xl",
 }: FintechValuePropsProps) => {
+  const values = items ?? FINTECH_VALUES;
   return (
     <section className="py-24 bg-[#0A2540]">
       <div className="max-w-[1200px] mx-auto px-6">
-        <div className="text-left max-w-2xl mb-16">
+        <div className={`text-left mb-16 ${introMaxWidthClassName}`}>
           <span className="text-[15px] font-semibold text-[#0AE4E3] uppercase tracking-wider mb-3 block">
             BENEFITS
           </span>
@@ -65,12 +80,12 @@ export const FintechValueProps = ({
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {FINTECH_VALUES.map((value, index) => (
+          {values.map((value, index) => (
             <div key={index} className="bg-[#112F4E]/50 border border-[#1E3A5F] rounded-2xl p-8 flex flex-col h-full">
               <div className="mb-4">
                 <value.icon className="w-8 h-8 text-[#0AE4E3]" />
               </div>
-              <h3 className="text-2xl font-bold text-white mb-3">{value.title}</h3>
+              <h3 className="text-2xl font-bold text-white mb-3 leading-snug">{value.title}</h3>
               <p className="text-[#ADBDCC] text-[18px] leading-relaxed flex-grow">
                 {value.description}
               </p>

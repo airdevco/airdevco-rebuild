@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import IndustrialAndManufacturing from "@/views/IndustrialAndManufacturing";
 
 export const metadata: Metadata = {
-  title: "Industrial & Manufacturing | Airdev",
+  title: "A better way to build for industrial and manufacturing | Airdev",
   description:
     "Build operations, supply chain, and manufacturing software with no-code. Airdev builds internal tools and platforms for industrial and manufacturing companies.",
   authors: [{ name: "Airdev" }],
   openGraph: {
     type: "website",
-    title: "Industrial & Manufacturing | Airdev",
+    title: "A better way to build for industrial and manufacturing | Airdev",
     description:
       "Build operations, supply chain, and manufacturing software with no-code. Airdev builds internal tools and platforms for industrial and manufacturing companies.",
     images: [
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Industrial & Manufacturing | Airdev",
+    title: "A better way to build for industrial and manufacturing | Airdev",
     description:
       "Build operations, supply chain, and manufacturing software with no-code. Airdev builds internal tools and platforms for industrial and manufacturing companies.",
     images: [

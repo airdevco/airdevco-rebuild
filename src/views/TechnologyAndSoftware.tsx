@@ -9,6 +9,7 @@ import {
   Footer,
   SampleProducts,
   FintechValueProps,
+  type FintechValuePropItem,
 } from "@/components/landing";
 import {
   CodeBracketIcon,
@@ -27,6 +28,8 @@ import {
   CircleStackIcon,
   GlobeAltIcon,
   PresentationChartLineIcon,
+  PuzzlePieceIcon,
+  RocketLaunchIcon,
 } from "@heroicons/react/24/solid";
 import { Product } from "@/components/landing/sample-products";
 
@@ -129,6 +132,45 @@ const TECH_SOFTWARE_PRODUCTS: Product[] = [
   },
 ];
 
+const TECH_SOFTWARE_BENEFITS: FintechValuePropItem[] = [
+  {
+    title: "Built for production-grade software",
+    description:
+      "Technology products need environments, roles, and release discipline—not disposable demos. We structure builds so permissions, data modeling, and workflows stay coherent as your roadmap grows.",
+    icon: CodeBracketIcon,
+  },
+  {
+    title: "Secure by default",
+    description:
+      "Enterprise buyers expect sensible identity, encryption, and access patterns. We align with SOC 2-ready infrastructure and controls so security isn't bolted on at the end.",
+    icon: ShieldCheckIcon,
+  },
+  {
+    title: "Complex integrations handled",
+    description:
+      "Developer tools and SaaS platforms rarely stand alone. REST APIs, webhooks, OAuth, CRMs, cloud providers—we connect the systems your users and internal teams already depend on.",
+    icon: PuzzlePieceIcon,
+  },
+  {
+    title: "Ship faster, iterate sooner",
+    description:
+      "Visual development shrinks build cycles so you can validate ideas, onboard design partners, and reach GA without burning through runway on a traditional agency timeline.",
+    icon: RocketLaunchIcon,
+  },
+  {
+    title: "Scales with adoption and load",
+    description:
+      "From early adopters to enterprise rollouts, infrastructure can grow with traffic and tenants so you aren’t forced into a rewrite when usage spikes or contracts expand.",
+    icon: BoltIcon,
+  },
+  {
+    title: "Ongoing partnership",
+    description:
+      "Software products evolve with customer feedback and roadmap bets. We stay engaged after launch for new modules, refactors, integrations, and whatever the next release demands.",
+    icon: UserGroupIcon,
+  },
+];
+
 const TechnologyAndSoftware = () => {
   return (
     <>
@@ -179,9 +221,10 @@ const TechnologyAndSoftware = () => {
               rightImage="https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774054070321x256633132397210620/hr5.webp"
             />
           </div>
-          <FintechValueProps 
+          <FintechValueProps
             title="Why software companies choose us"
-            description="Building great software requires deep technical expertise and industry knowledge. Here's why teams trust us with their technology products."
+            description="Shipping credible SaaS and developer-facing products takes architecture judgment, integration depth, and iteration speed. Here's why technology teams trust us with their builds."
+            items={TECH_SOFTWARE_BENEFITS}
           />
           <div className="pt-16 pb-24 hidden">
             <ClientLogoTicker />

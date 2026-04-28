@@ -9,6 +9,7 @@ import {
   Footer,
   SampleProducts,
   FintechValueProps,
+  type FintechValuePropItem,
 } from "@/components/landing";
 import {
   UserGroupIcon,
@@ -27,6 +28,8 @@ import {
   BellIcon,
   FolderIcon,
   IdentificationIcon,
+  PuzzlePieceIcon,
+  RocketLaunchIcon,
 } from "@heroicons/react/24/solid";
 import { Product } from "@/components/landing/sample-products";
 
@@ -123,6 +126,45 @@ const PUBLIC_SECTOR_PRODUCTS: Product[] = [
   },
 ];
 
+const PUBLIC_SECTOR_BENEFITS: FintechValuePropItem[] = [
+  {
+    title: "Built for mission and public trust",
+    description:
+      "Nonprofits and agencies ship software under scrutiny from boards, funders, and the public. We scope and build with clear roles, documentation, and outcomes so stakeholders stay aligned.",
+    icon: HeartIcon,
+  },
+  {
+    title: "Accountability and compliance",
+    description:
+      "Grants, procurement rules, and citizen data demand audit-friendly workflows, permissions, and retention patterns. We design for the reporting and oversight your programs actually face.",
+    icon: ShieldCheckIcon,
+  },
+  {
+    title: "Citizen and community centered",
+    description:
+      "Residents, clients, and volunteers use your tools under real-world constraints. We prioritize plain flows, multilingual patterns where needed, and accessibility-minded layouts.",
+    icon: GlobeAltIcon,
+  },
+  {
+    title: "Integrate with what you already run",
+    description:
+      "Finance systems, HR tools, CRMs, and legacy databases rarely go away. We connect data and handoffs so staff are not retyping between spreadsheets and official systems of record.",
+    icon: PuzzlePieceIcon,
+  },
+  {
+    title: "Ship inside fiscal realities",
+    description:
+      "Budget cycles, RFP windows, and grant periods do not wait. Visual development keeps delivery predictable so you can hit enrollment, program launch, or compliance dates.",
+    icon: RocketLaunchIcon,
+  },
+  {
+    title: "Partnership beyond go-live",
+    description:
+      "Programs evolve with policy, funding, and community needs. We stay engaged after launch for new forms, integrations, and seasonal or legislative changes.",
+    icon: UserGroupIcon,
+  },
+];
+
 const PublicSectorAndNonprofit = () => {
   return (
     <>
@@ -161,15 +203,22 @@ const PublicSectorAndNonprofit = () => {
       <div className="bg-white min-h-screen font-sans selection:bg-blue-100 selection:text-blue-900" style={{ fontFamily: "'Colfax', sans-serif" }}>
         <Navbar />
         <main>
-          <Hero 
-            title="A better way to build for the public sector"
-            description="We help government agencies and nonprofit organizations launch mission-driven applications in a fraction of the time and cost of traditional development. From grant management to civic engagement platforms, we've built solutions that serve millions of citizens and beneficiaries."
-            showImages={false}
-            showButton={true}
-            buttonText="Talk to us"
-            titleMaxWidth="800px"
-            alignLeft={true}
-            rightImage="https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1768956850212x425965442327471200/grantworks.webp"
+          <div className="pb-24 lg:pb-32">
+            <Hero
+              title="A better way to build for the public sector"
+              description="We help government agencies and nonprofit organizations launch mission-driven applications in a fraction of the time and cost of traditional development. From grant management to civic engagement platforms, we've built solutions that serve millions of citizens and beneficiaries."
+              showImages={false}
+              showButton={true}
+              buttonText="Talk to us"
+              titleMaxWidth="800px"
+              alignLeft={true}
+              rightImage="https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1768956850212x425965442327471200/grantworks.webp"
+            />
+          </div>
+          <FintechValueProps
+            title="Why public sector and nonprofit teams choose us"
+            description="Agencies and nonprofits balance constituents, funders, and compliance every day. Here's why mission-driven teams trust us to ship software that holds up in the real world."
+            items={PUBLIC_SECTOR_BENEFITS}
           />
           <div className="pt-16 pb-24 hidden">
             <ClientLogoTicker />
@@ -220,13 +269,8 @@ const PublicSectorAndNonprofit = () => {
             description="Mission-driven solutions for government agencies and nonprofit organizations. Here are some of the most common types."
             descriptionMaxWidth="650px"
           />
-          <FintechValueProps 
-            title="Why nonprofits choose us"
-            description="Building for the public good requires understanding unique constraints and priorities. Here's why mission-driven organizations trust us with their technology."
-          />
-          <SaasCTA 
-            variant="light" 
-            title="Building something in nonprofit?"
+          <SaasCTA
+            title="Building a product in the public sector?"
             description="We're happy to talk through your project, even if you're still in the early stages."
           />
         </main>
