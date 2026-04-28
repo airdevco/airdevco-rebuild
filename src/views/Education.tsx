@@ -129,7 +129,7 @@ const TECH_SOFTWARE_PRODUCTS: Product[] = [
   },
 ];
 
-const TechnologyAndSoftware = () => {
+const Education = () => {
   return (
     <>
       <style dangerouslySetInnerHTML={{
@@ -168,7 +168,7 @@ const TechnologyAndSoftware = () => {
         <Navbar />
         <main>
           <div className="pb-24 lg:pb-32">
-            <Hero 
+            <Hero
               title="A better way to build for tech & software"
               description="We help technology and software companies launch innovative products in a fraction of the time and cost of traditional development. From developer tools to enterprise platforms, we've built solutions that power some of the most ambitious tech companies."
               showImages={false}
@@ -179,14 +179,14 @@ const TechnologyAndSoftware = () => {
               rightImage="https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774054070321x256633132397210620/hr5.webp"
             />
           </div>
-          <FintechValueProps 
+          <FintechValueProps
             title="Why software companies choose us"
             description="Building great software requires deep technical expertise and industry knowledge. Here's why teams trust us with their technology products."
           />
           <div className="pt-16 pb-24 hidden">
             <ClientLogoTicker />
           </div>
-          <CaseStudies 
+          <CaseStudies
             description="We've helped technology and software companies build developer tools, enterprise platforms, automation solutions, and scalable SaaS products."
             slides={[
               {
@@ -239,8 +239,8 @@ const TechnologyAndSoftware = () => {
               }
             ]}
           />
-          <SampleProducts 
-            bgColor="bg-[#F6F9FC]" 
+          <SampleProducts
+            bgColor="bg-[#F6F9FC]"
             products={TECH_SOFTWARE_PRODUCTS}
             label="SAMPLE PRODUCTS"
             title="Softwares we build"
@@ -258,4 +258,4 @@ const TechnologyAndSoftware = () => {
   );
 };
 
-export default TechnologyAndSoftware;
+export default Education;

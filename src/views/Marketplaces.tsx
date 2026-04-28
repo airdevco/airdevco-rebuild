@@ -226,7 +226,10 @@ const Marketplaces = () => {
             <ClientLogoTicker variant="featured" />
           </div>
           <ValueProps />
-          <CaseStudies slides={MARKETPLACE_CASE_STUDIES} />
+          <CaseStudies
+            slides={MARKETPLACE_CASE_STUDIES}
+            description="From first-launch marketplaces finding product-market fit to enterprise ecosystems coordinating millions of buyers, sellers, and transactions. See how we've helped marketplace teams launch faster, build trust, and scale confidently."
+          />
           <SampleProducts 
             products={MARKETPLACE_PRODUCTS}
             label="SAMPLE PRODUCTS"

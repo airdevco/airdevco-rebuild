@@ -13,79 +13,31 @@ import {
 } from "@/components/landing";
 import type { Product } from "@/components/landing/sample-products";
 import {
-  ShoppingBagIcon,
-  HomeIcon,
-  BriefcaseIcon,
+  ArrowsRightLeftIcon,
+  ArrowPathIcon,
+  BuildingLibraryIcon,
+  BuildingOffice2Icon,
   CalendarIcon,
+  ChatBubbleLeftRightIcon,
+  ClipboardDocumentListIcon,
+  CpuChipIcon,
+  CreditCardIcon,
+  DocumentCurrencyDollarIcon,
+  DocumentTextIcon,
+  LockClosedIcon,
+  MagnifyingGlassIcon,
+  QueueListIcon,
+  SparklesIcon,
+  Squares2X2Icon,
+  TagIcon,
+  TruckIcon,
+  UserCircleIcon,
   UserGroupIcon,
-  BuildingStorefrontIcon,
-  SquaresPlusIcon,
-  ChartPieIcon,
   ShieldCheckIcon,
-  GlobeAltIcon,
-  BellIcon,
-  KeyIcon,
-  ClockIcon,
-  FolderIcon,
-  AcademicCapIcon,
-  ClipboardDocumentCheckIcon,
-  CubeIcon,
-  StarIcon,
 } from "@heroicons/react/24/solid";
 
 // Custom slides for ERPs page (OUR CLIENTS) — page-specific; edit here without affecting Internal Tools.
 const ERPS_CASE_STUDIES = [
-  {
-    id: "tfa",
-    company: "Teach for America",
-    logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447145612x608821623632928600/tfa.png",
-    logoText: "",
-    heading:
-      "How Airdev helped Teach for America build a custom no-code internal hub with Bubble to support corps members across their journey",
-    description: "",
-    image:
-      "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/635075d6712da824635efa1d_tfa%20(1).jpeg",
-    imageTitle:
-      "How Airdev helped Teach for America build a custom no-code internal hub with Bubble to support corps members across their journey",
-    customFields: [
-      { label: "Business type", value: "National nonprofit", color: "#635bff" },
-      { label: "Product type", value: "Internal hub", color: "#00d4ff" },
-      { label: "Timeline", value: "4 weeks", color: "#a960ee" },
-      { label: "Key results", value: "Ability to manage the organization at scale", color: "#ff6b6b" },
-    ],
-  },
-  {
-    id: "bubble",
-    company: "Bubble.io",
-    logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766446287440x908698787583342700/bubble.io.png",
-    logoText: "",
-    heading: "How no-code leader Bubble turned to Airdev for a custom rebuild of their Developer Certification Platform... built on Bubble",
-    description: "",
-    image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/665f5ab8b085585d4543d3ea_Certification---In-line-5.png",
-    imageTitle: "How no-code leader Bubble turned to Airdev for a custom rebuild of their Developer Certification Platform... built on Bubble",
-    customFields: [
-      { label: "Business type", value: "SMB", color: "#635bff" },
-      { label: "Product type", value: "Exam platform", color: "#00d4ff" },
-      { label: "Timeline", value: "3 months", color: "#a960ee" },
-      { label: "Key results", value: "A more performant, reliable, and flexible exam for users and internal developers", color: "#ff6b6b" },
-    ]
-  },
-  {
-    id: "playground",
-    company: "Playground IEP",
-    logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447131162x922542988700125000/playground.png",
-    logoText: "",
-    heading: "How Airdev helped Playground IEP create a special education caseload management tool for schools",
-    description: "",
-    image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/63b8851d340bdc19030b55b3_adam-winger-7fF0iei80AQ-unsplash%205-p-3200.jpg",
-    imageTitle: "How Airdev helped Playground IEP create a special education caseload management tool for schools",
-    customFields: [
-      { label: "Business type", value: "Startup", color: "#635bff" },
-      { label: "Product type", value: "Internal management portal", color: "#00d4ff" },
-      { label: "Timeline", value: "3 months", color: "#a960ee" },
-      { label: "Key results", value: "5 pilot schools signed up in <1 year", color: "#ff6b6b" },
-    ]
-  },
   {
     id: "greener",
     company: "Greener Corporation",
@@ -112,93 +64,101 @@ const ERPS_CASE_STUDIES = [
 
 const ERPS_PRODUCTS: Product[] = [
   {
-    id: "crm",
-    name: "Customer Relationship Management",
-    description: "Comprehensive CRM systems that help businesses manage customer interactions, track sales pipelines, automate follow-ups, and maintain detailed customer histories. These tools centralize all customer data and communication in one place.",
-    icon: UserGroupIcon,
-    color: "#a855f7",
+    id: "finance",
+    name: "Finance",
+    cardHeading: "Core Finance",
+    description: "Manage accounting, cash flow, and financial controls with a real-time system of record.",
+    icon: DocumentCurrencyDollarIcon,
+    color: "#1265EF",
     features: [
-      { name: "Contact and company database management", icon: BuildingStorefrontIcon },
-      { name: "Sales pipeline and opportunity tracking", icon: ChartPieIcon },
-      { name: "Email and communication history", icon: BellIcon },
-      { name: "Task and activity scheduling", icon: CalendarIcon },
-      { name: "Reporting and analytics dashboards", icon: ChartPieIcon },
-      { name: "Integration with email and calendar systems", icon: GlobeAltIcon },
+      { name: "General ledger and journal entries", icon: DocumentTextIcon },
+      { name: "Accounts payable and receivable", icon: CreditCardIcon },
+      { name: "Multi-entity and multi-currency support", icon: BuildingLibraryIcon },
+      { name: "Month-end close workflows", icon: CalendarIcon },
     ],
   },
   {
-    id: "erp",
-    name: "Enterprise Resource Planning",
-    description: "Integrated ERP systems that manage core business processes including finance, inventory, procurement, manufacturing, and human resources. These platforms provide a unified view of business operations and automate workflows across departments.",
-    icon: SquaresPlusIcon,
-    color: "#ff6b35",
-    features: [
-      { name: "Financial management and accounting", icon: ChartPieIcon },
-      { name: "Inventory and supply chain tracking", icon: CubeIcon },
-      { name: "Purchase order and vendor management", icon: ShoppingBagIcon },
-      { name: "Production planning and scheduling", icon: ClockIcon },
-      { name: "Multi-department workflow automation", icon: SquaresPlusIcon },
-      { name: "Comprehensive reporting and analytics", icon: ChartPieIcon },
-    ],
-  },
-  {
-    id: "ats",
-    name: "Applicant Tracking System",
-    description: "ATS platforms streamline the hiring process from job posting to onboarding. These systems help recruiters manage candidates, schedule interviews, track applications, and make data-driven hiring decisions while maintaining compliance.",
-    icon: ClipboardDocumentCheckIcon,
+    id: "procurement",
+    name: "Procurement",
+    cardHeading: "Procurement and Purchasing",
+    description: "Control spend from requisition through vendor management and purchase order approvals.",
+    icon: ClipboardDocumentListIcon,
     color: "#06b6d4",
     features: [
-      { name: "Job posting and candidate sourcing", icon: SquaresPlusIcon },
-      { name: "Resume parsing and candidate profiles", icon: FolderIcon },
-      { name: "Interview scheduling and coordination", icon: CalendarIcon },
-      { name: "Application tracking and status management", icon: ClockIcon },
-      { name: "Collaborative hiring workflows", icon: UserGroupIcon },
-      { name: "Reporting and hiring analytics", icon: ChartPieIcon },
+      { name: "Purchase requisitions and approvals", icon: ClipboardDocumentListIcon },
+      { name: "Supplier onboarding and management", icon: BuildingOffice2Icon },
+      { name: "PO generation and change tracking", icon: DocumentTextIcon },
+      { name: "Spend analysis by category and vendor", icon: TagIcon },
     ],
   },
   {
-    id: "lms",
-    name: "Learning Management System",
-    description: "LMS platforms enable organizations to create, deliver, and track training programs and educational content. These systems support employee onboarding, compliance training, skill development, and certification management.",
-    icon: AcademicCapIcon,
+    id: "inventory",
+    name: "Inventory",
+    cardHeading: "Inventory and Warehousing",
+    description: "Track stock, movements, and replenishment across locations with operational accuracy.",
+    icon: QueueListIcon,
     color: "#10b981",
     features: [
-      { name: "Course creation and content management", icon: FolderIcon },
-      { name: "Student enrollment and progress tracking", icon: UserGroupIcon },
-      { name: "Assessments and quizzes", icon: ClipboardDocumentCheckIcon },
-      { name: "Certification and credential management", icon: ShieldCheckIcon },
-      { name: "Reporting on learning outcomes", icon: ChartPieIcon },
-      { name: "Integration with HR and performance systems", icon: SquaresPlusIcon },
+      { name: "Real-time stock levels by location", icon: QueueListIcon },
+      { name: "Serial, lot, and batch tracking", icon: TagIcon },
+      { name: "Cycle counts and adjustments", icon: ClipboardDocumentListIcon },
+      { name: "Reorder points and replenishment rules", icon: ArrowPathIcon },
     ],
   },
   {
-    id: "asset-inventory",
-    name: "Asset & Inventory Management",
-    description: "Comprehensive systems for tracking physical and digital assets, managing inventory levels, monitoring equipment maintenance, and optimizing resource utilization. These tools help organizations maintain accurate asset records and reduce operational costs.",
-    icon: CubeIcon,
+    id: "orders",
+    name: "Orders",
+    cardHeading: "Order Management",
+    description: "Coordinate quotes, sales orders, fulfillment, and invoicing in one connected workflow.",
+    icon: TruckIcon,
+    color: "#a855f7",
+    features: [
+      { name: "Quotes, sales orders, and amendments", icon: DocumentTextIcon },
+      { name: "Fulfillment and shipment tracking", icon: TruckIcon },
+      { name: "Returns and credit memo handling", icon: ArrowsRightLeftIcon },
+      { name: "Billing handoff to finance", icon: DocumentCurrencyDollarIcon },
+    ],
+  },
+  {
+    id: "manufacturing",
+    name: "Manufacturing",
+    cardHeading: "Manufacturing Operations",
+    description: "Plan production and execute shop-floor workflows with visibility across materials and output.",
+    icon: CpuChipIcon,
     color: "#f59e0b",
     features: [
-      { name: "Asset registration and categorization", icon: BuildingStorefrontIcon },
-      { name: "Inventory tracking and stock management", icon: ClockIcon },
-      { name: "Maintenance scheduling and work orders", icon: CalendarIcon },
-      { name: "Asset lifecycle and depreciation tracking", icon: ChartPieIcon },
-      { name: "Barcode and QR code scanning", icon: SquaresPlusIcon },
-      { name: "Reporting and asset analytics", icon: ChartPieIcon },
+      { name: "Bills of materials and routings", icon: BuildingLibraryIcon },
+      { name: "Work order scheduling and capacity planning", icon: CalendarIcon },
+      { name: "WIP tracking and production statuses", icon: Squares2X2Icon },
+      { name: "Quality checks and nonconformance logs", icon: ShieldCheckIcon },
     ],
   },
   {
-    id: "performance-review",
-    name: "Performance Review & Feedback",
-    description: "Performance management systems that facilitate regular employee reviews, goal setting, 360-degree feedback, and continuous performance tracking. These platforms help organizations align individual performance with business objectives and support employee development.",
-    icon: StarIcon,
+    id: "people",
+    name: "People",
+    cardHeading: "HR and Payroll",
+    description: "Support core people operations including employee records, approvals, and payroll workflows.",
+    icon: UserGroupIcon,
     color: "#ec4899",
     features: [
-      { name: "Goal setting and OKR tracking", icon: ChartPieIcon },
-      { name: "360-degree feedback collection", icon: UserGroupIcon },
-      { name: "Performance review cycles and scheduling", icon: CalendarIcon },
-      { name: "One-on-one meeting notes and action items", icon: BellIcon },
-      { name: "Performance analytics and insights", icon: ChartPieIcon },
-      { name: "Integration with HR and payroll systems", icon: SquaresPlusIcon },
+      { name: "Employee profiles and org structure", icon: UserCircleIcon },
+      { name: "Leave, attendance, and policy workflows", icon: CalendarIcon },
+      { name: "Payroll calculations and approvals", icon: DocumentCurrencyDollarIcon },
+      { name: "Role permissions and audit trails", icon: LockClosedIcon },
+    ],
+  },
+  {
+    id: "analytics-integrations",
+    name: "Analytics",
+    cardHeading: "Analytics and Integrations",
+    description: "Unify ERP data with dashboards and external systems to drive better decisions.",
+    icon: SparklesIcon,
+    color: "#0ea5e9",
+    features: [
+      { name: "Executive dashboards and KPI scorecards", icon: Squares2X2Icon },
+      { name: "Ad hoc reports and drill-down filters", icon: MagnifyingGlassIcon },
+      { name: "APIs and webhooks for external systems", icon: ArrowsRightLeftIcon },
+      { name: "ETL syncs with retries and alerts", icon: ChatBubbleLeftRightIcon },
     ],
   },
 ];
@@ -242,14 +202,14 @@ const Erps = () => {
         <Navbar />
         <main>
           <Hero 
-            title="Custom ERP systems, at the speed of SaaS"
-            description="We use visual programming and AI to help teams ship ERP-style operations software—inventory, orders, finance, and workflows—tailored to how you actually run the business, without multi-year enterprise timelines."
+            title="A better way to launch your ERP"
+            description="We help startups and enterprises launch custom ERP systems that fit their real operations, from finance and inventory to procurement, order management, and reporting."
             showImages={false}
             showButton={true}
             buttonText="Get a quote"
             titleMaxWidth="800px"
             alignLeft={true}
-            rightImage="https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774007591255x876566308167353000/crm8.webp"
+            rightImage="https://1ad0fcb18ec6cf492f21eeb75aa30267.cdn.bubble.io/d44/f1774008740758x320185903005129500/erp4.webp"
           />
           <div className="pt-16 pb-24">
             <ClientLogoTicker variant="featured" />
@@ -258,12 +218,14 @@ const Erps = () => {
           <CaseStudies
             slides={ERPS_CASE_STUDIES}
             description="From manufacturing and inventory to finance and reporting—see how we've helped teams replace rigid spreadsheets and off-the-shelf ERPs with modular systems built around their real processes."
+            hideLogoGrid
           />
           <SampleProducts 
             products={ERPS_PRODUCTS}
-            label="SAMPLE PRODUCTS"
+            label="COMMON FEATURES"
             title="ERP-style systems we specialize in"
-            description="We build integrated operations software: finance, inventory, procurement, production, and reporting in one place—so your data and workflows stay aligned as you grow."
+            description="From finance to operations, inventory, and integrations-we build ERP capabilities around your exact business workflows."
+            descriptionMaxWidth="760px"
             bgColor="#F6F9FC"
           />
           <Testimonials />

@@ -142,7 +142,7 @@ export const Footer = ({ variant = "default" }: FooterProps = {}) => {
                   </a>
                 </li>
                 <li>
-                  <a href={ROUTES.LMS} className="text-gray-600 hover:text-gray-900 transition-colors">
+                  <a href={ROUTES.EDUCATION} className="text-gray-600 hover:text-gray-900 transition-colors">
                     Education
                   </a>
                 </li>

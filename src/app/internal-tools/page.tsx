@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import InternalTools from "@/views/InternalTools";
 
 export const metadata: Metadata = {
-  title: "Internal Tools | Airdev",
+  title: "A better way to launch your custom internal tool | Airdev",
   description:
     "Build custom internal tools, ops dashboards, and workflow apps with no-code. Airdev builds secure, performant internal software for teams and enterprises.",
   authors: [{ name: "Airdev" }],
   openGraph: {
     type: "website",
-    title: "Internal Tools | Airdev",
+    title: "A better way to launch your custom internal tool | Airdev",
     description:
       "Build custom internal tools, ops dashboards, and workflow apps with no-code. Airdev builds secure, performant internal software for teams and enterprises.",
     images: [
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Internal Tools | Airdev",
+    title: "A better way to launch your custom internal tool | Airdev",
     description:
       "Build custom internal tools, ops dashboards, and workflow apps with no-code. Airdev builds secure, performant internal software for teams and enterprises.",
     images: [

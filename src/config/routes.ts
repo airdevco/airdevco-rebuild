@@ -36,6 +36,8 @@ export const ROUTES = {
   ERPS: "/erps",
   /** Dedicated LMS landing for learning management systems */
   LMS: "/lms",
+  /** Dedicated Education page (isolated copy; edit `Education.tsx` only) */
+  EDUCATION: "/education",
   /** Dedicated MVP product landing (ERP-style layout; edit mvp-* components only) */
   MVP: "/mvp",
   /** Dedicated inventory management product landing */

@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import TechnologyAndSoftware from "@/views/TechnologyAndSoftware";
 
 export const metadata: Metadata = {
-  title: "Technology & Software | Airdev",
+  title: "A better way to build for tech & software companies | Airdev",
   description:
     "Build developer tools, data & analytics, and technology platforms with no-code. Airdev builds software products for tech companies and enterprises.",
   authors: [{ name: "Airdev" }],
   openGraph: {
     type: "website",
-    title: "Technology & Software | Airdev",
+    title: "A better way to build for tech & software companies | Airdev",
     description:
       "Build developer tools, data & analytics, and technology platforms with no-code. Airdev builds software products for tech companies and enterprises.",
     images: [
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Technology & Software | Airdev",
+    title: "A better way to build for tech & software companies | Airdev",
     description:
       "Build developer tools, data & analytics, and technology platforms with no-code. Airdev builds software products for tech companies and enterprises.",
     images: [

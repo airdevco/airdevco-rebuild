@@ -71,6 +71,7 @@ import ErpLanding from "./views/ErpLanding";
 import LmsLanding from "./views/LmsLanding";
 import MvpLanding from "./views/MvpLanding";
 import InventoryManagementLanding from "./views/InventoryManagementLanding";
+import Education from "./views/Education";
 
 const AppContent = () => {
   const location = useLocation();
@@ -115,6 +116,7 @@ const AppContent = () => {
         <Route path={ROUTES.BUSINESS_SOFTWARE} element={<BusinessSoftwareLanding />} />
         <Route path={ROUTES.ERP} element={<ErpLanding />} />
         <Route path={ROUTES.LMS} element={<LmsLanding />} />
+        <Route path={ROUTES.EDUCATION} element={<Education />} />
         <Route path={ROUTES.MVP} element={<MvpLanding />} />
         <Route path={ROUTES.INVENTORY_MANAGEMENT} element={<InventoryManagementLanding />} />
         <Route path={ROUTES.BUBBLE_APP_AUDIT} element={<BubbleAppAudit />} />

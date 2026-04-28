@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import Erps from "@/views/Erps";
 
 export const metadata: Metadata = {
-  title: "ERPs | Airdev",
+  title: "A better way to launch your ERP | Airdev",
   description:
     "Build custom ERP-style operations software with no-code. Airdev helps teams ship finance, inventory, orders, and workflows tailored to how the business actually runs.",
   authors: [{ name: "Airdev" }],
   openGraph: {
     type: "website",
-    title: "ERPs | Airdev",
+    title: "A better way to launch your ERP | Airdev",
     description:
       "Build custom ERP-style operations software with no-code. Airdev helps teams ship finance, inventory, orders, and workflows tailored to how the business actually runs.",
     images: [
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ERPs | Airdev",
+    title: "A better way to launch your ERP | Airdev",
     description:
       "Build custom ERP-style operations software with no-code. Airdev helps teams ship finance, inventory, orders, and workflows tailored to how the business actually runs.",
     images: [
