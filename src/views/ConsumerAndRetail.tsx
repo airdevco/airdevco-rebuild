@@ -11,6 +11,7 @@ import {
   FintechValueProps,
   FINTECH_PRODUCTS,
 } from "@/components/landing";
+import { CASE_STUDY_SLUG } from "@/config/case-study-static-slugs";
 
 const ConsumerAndRetail = () => {
   return (
@@ -67,7 +68,7 @@ const ConsumerAndRetail = () => {
             description="We've helped financial services companies build secure fintech platforms, tax management software, portfolio tracking applications, and payment processing solutions."
             slides={[
               {
-                id: "dividend",
+                id: CASE_STUDY_SLUG.dividend,
                 company: "Dividend Finance",
                 logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447523324x536489976697318800/dividend.png",
                 logoText: "$300m+ raised",
@@ -83,7 +84,7 @@ const ConsumerAndRetail = () => {
                 ]
               },
               {
-                id: "bubble",
+                id: CASE_STUDY_SLUG.bubble,
                 company: "Tributi",
                 logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766777935802x342363134894177340/tributi.png",
                 logoText: "VC funded",
@@ -99,7 +100,7 @@ const ConsumerAndRetail = () => {
                 ]
               },
               {
-                id: "playground",
+                id: CASE_STUDY_SLUG.playground,
                 company: "My NFT Alerts",
                 logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766777953165x204069526181363420/mynftalerts.png",
                 logoText: "",

@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { CASE_STUDY_SLUG } from "@/config/case-study-static-slugs";
+import { caseStudyRoute } from "@/config/routes";
 
 // --- Default Data (for SaasProducts) ---
 const DEFAULT_SLIDES = [
   {
-    id: "dividend",
+    id: CASE_STUDY_SLUG.dividend,
+    caseStudySlug: CASE_STUDY_SLUG.dividend,
     company: "Dividend Finance",
     logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447523324x536489976697318800/dividend.png",
     logoText: "$300m+ raised",
@@ -21,7 +24,8 @@ const DEFAULT_SLIDES = [
     ]
   },
   {
-    id: "bubble",
+    id: CASE_STUDY_SLUG.bubble,
+    caseStudySlug: CASE_STUDY_SLUG.bubble,
     company: "Bubble.io",
     logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766446287440x908698787583342700/bubble.io.png",
     logoText: "",
@@ -37,7 +41,8 @@ const DEFAULT_SLIDES = [
     ]
   },
   {
-    id: "playground",
+    id: CASE_STUDY_SLUG.playground,
+    caseStudySlug: CASE_STUDY_SLUG.playground,
     company: "Playground IEP",
     logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447131162x922542988700125000/playground.png",
     logoText: "",
@@ -53,7 +58,8 @@ const DEFAULT_SLIDES = [
     ]
   },
   {
-    id: "ticketrev",
+    id: CASE_STUDY_SLUG.ticketrev,
+    caseStudySlug: CASE_STUDY_SLUG.ticketrev,
     company: "TicketRev",
     logo: "https://cdn.prod.website-files.com/64e8a789efa42eaf8fe4d068/64e8b49e181622332d021cee_Logo.svg",
     logoText: "",
@@ -70,6 +76,7 @@ const DEFAULT_SLIDES = [
   },
   {
     id: "resolis",
+    caseStudySlug: "resolis",
     company: "Resolis",
     logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1767136295917x196197816364843680/resolis.png",
     logoText: "",
@@ -93,6 +100,8 @@ const DURATION = 6000; // 6 seconds per slide
 
 interface Slide {
   id: string;
+  /** When set, hero image links to this Convex case study (`/case-studies/:slug`). */
+  caseStudySlug?: string;
   company: string;
   logo: string;
   logoText: string;
@@ -209,10 +218,10 @@ export const CaseStudies = ({
                         src={slide.logo} 
                         alt={slide.company} 
                         className={`h-full w-auto object-contain transition-all duration-300 
-                          ${slide.id === 'dividend' ? 'max-h-5' : ''} 
-                          ${slide.id === 'bubble' ? (slide.company === 'Tributi' ? 'max-h-5 mt-1' : 'max-h-6') : ''} 
-                          ${slide.id === 'playground' ? (slide.company === 'My NFT Alerts' ? '' : 'mix-blend-multiply') : ''}
-                          ${slide.id === 'ticketrev' || slide.id === 'resolis' ? 'max-h-6' : ''}
+                          ${slide.id === CASE_STUDY_SLUG.dividend ? 'max-h-5' : ''} 
+                          ${slide.id === CASE_STUDY_SLUG.bubble ? (slide.company === 'Tributi' ? 'max-h-5 mt-1' : 'max-h-6') : ''} 
+                          ${slide.id === CASE_STUDY_SLUG.playground ? (slide.company === 'My NFT Alerts' ? '' : 'mix-blend-multiply') : ''}
+                          ${slide.id === CASE_STUDY_SLUG.ticketrev || slide.id === "resolis" ? "max-h-6" : ""}
                           ${slide.id === 'kidsbook' ? 'max-h-9' : ''}
                           ${slide.id === 'consenna' ? 'max-h-[48px]' : ''}
                           ${slide.id === 'camphire' ? 'max-h-9' : ''}
@@ -221,7 +230,7 @@ export const CaseStudies = ({
                       />
                     </div>
                     {slide.logoText && (
-                      <p className={`text-[10px] text-gray-400 text-center font-medium whitespace-nowrap ${slide.id === 'bubble' && slide.company === 'Tributi' ? 'mt-0.5' : 'mt-1.5'}`}>
+                      <p className={`text-[10px] text-gray-400 text-center font-medium whitespace-nowrap ${slide.id === CASE_STUDY_SLUG.bubble && slide.company === 'Tributi' ? 'mt-0.5' : 'mt-1.5'}`}>
                         {slide.logoText}
                       </p>
                     )}
@@ -258,7 +267,7 @@ export const CaseStudies = ({
               </AnimatePresence>
             </div>
 
-            {/* Right Column - Image Card */}
+            {/* Right Column - Image Card (links to case study when slug is set; logos stay static in `slide.logo`) */}
             <div className="lg:col-span-8 h-[320px] lg:h-[400px] relative overflow-hidden">
               <AnimatePresence initial={false}>
                 <motion.div 
@@ -269,25 +278,47 @@ export const CaseStudies = ({
                   transition={{ duration: 0.25, ease: "easeOut" }}
                   className="absolute inset-0 w-full h-full"
                 >
-                  <div className="w-full h-full relative group rounded-2xl overflow-hidden cursor-pointer shadow-lg hover:shadow-xl transition-all duration-300">
-                    <img 
-                      src={activeSlide.image}
-                      alt={activeSlide.company}
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    {/* Strong Blue Tint Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#176AAF] via-[#176AAF]/90 to-[#176AAF]/50 mix-blend-color opacity-100" />
-                    {/* Darker gradient at bottom for text readability */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#176AAF]/90 via-[#176AAF]/40 to-transparent" />
-                    {/* Title Overlay */}
-                    {activeSlide.imageTitle && (
-                      <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
-                        <h3 className="text-white text-[20px] lg:text-[24px] font-semibold leading-tight">
-                          {activeSlide.imageTitle}
-                        </h3>
+                  {activeSlide.caseStudySlug ? (
+                    <a
+                      href={caseStudyRoute(activeSlide.caseStudySlug)}
+                      className="block h-full w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1265EF] focus-visible:ring-offset-2 rounded-2xl"
+                      aria-label={`Read ${activeSlide.company} case study`}
+                    >
+                      <div className="w-full h-full relative group rounded-2xl overflow-hidden cursor-pointer shadow-lg hover:shadow-xl transition-all duration-300">
+                        <img 
+                          src={activeSlide.image}
+                          alt={activeSlide.company}
+                          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#176AAF] via-[#176AAF]/90 to-[#176AAF]/50 mix-blend-color opacity-100" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#176AAF]/90 via-[#176AAF]/40 to-transparent" />
+                        {activeSlide.imageTitle && (
+                          <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
+                            <h3 className="text-white text-[20px] lg:text-[24px] font-semibold leading-tight">
+                              {activeSlide.imageTitle}
+                            </h3>
+                          </div>
+                        )}
                       </div>
-                    )}
-                  </div>
+                    </a>
+                  ) : (
+                    <div className="w-full h-full relative group rounded-2xl overflow-hidden cursor-default shadow-lg transition-all duration-300">
+                      <img 
+                        src={activeSlide.image}
+                        alt={activeSlide.company}
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#176AAF] via-[#176AAF]/90 to-[#176AAF]/50 mix-blend-color opacity-100" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#176AAF]/90 via-[#176AAF]/40 to-transparent" />
+                      {activeSlide.imageTitle && (
+                        <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
+                          <h3 className="text-white text-[20px] lg:text-[24px] font-semibold leading-tight">
+                            {activeSlide.imageTitle}
+                          </h3>
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </motion.div>
               </AnimatePresence>
             </div>

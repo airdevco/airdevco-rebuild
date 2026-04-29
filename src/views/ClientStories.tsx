@@ -8,6 +8,7 @@ import { ChevronRight } from "lucide-react";
 import { useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { caseStudyRoute, ROUTES } from "@/config/routes";
+import { CASE_STUDY_SLUG } from "@/config/case-study-static-slugs";
 
 
 const DURATION = 6000; // 6 seconds per slide
@@ -15,12 +16,40 @@ const DURATION = 6000; // 6 seconds per slide
 /** Featured slugs per tab on this page only (logo row + carousel). Full list lives on /more-case-studies. */
 const CASE_STUDIES_TAB_SLUGS: Record<"startups" | "enterprises", string[]> = {
   startups: [
-    "ticketrev-marketplace-startup-bubble",
-    "navigreat",
-    "playground",
-    "cerebro",
+    CASE_STUDY_SLUG.ticketrev,
+    CASE_STUDY_SLUG.navigreat,
+    CASE_STUDY_SLUG.playground,
+    CASE_STUDY_SLUG.cerebro,
   ],
-  enterprises: ["dividend", "cadence", "bubble", "tfa"],
+  enterprises: [
+    CASE_STUDY_SLUG.dividend,
+    CASE_STUDY_SLUG.cadence,
+    CASE_STUDY_SLUG.bubble,
+    CASE_STUDY_SLUG.tfa,
+  ],
+};
+
+/**
+ * Brand marks for the Customers by sizes logo row (same assets as CaseStudies / CRM carousels).
+ * Convex `thumbnailImage` is usually a hero photo — use these first so the row always shows logos.
+ */
+const CLIENT_STORIES_FEATURED_LOGO_BY_SLUG: Record<string, string> = {
+  [CASE_STUDY_SLUG.ticketrev]:
+    "https://cdn.prod.website-files.com/64e8a789efa42eaf8fe4d068/64e8b49e181622332d021cee_Logo.svg",
+  [CASE_STUDY_SLUG.navigreat]:
+    "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1765319327038x377695290107660200/navigreat.png",
+  [CASE_STUDY_SLUG.playground]:
+    "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447131162x922542988700125000/playground.png",
+  [CASE_STUDY_SLUG.cerebro]:
+    "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447113960x777797950241704700/cerebro.png",
+  [CASE_STUDY_SLUG.dividend]:
+    "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447523324x536489976697318800/dividend.png",
+  [CASE_STUDY_SLUG.cadence]:
+    "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/669a9ff1b72d8c1ec14d79f4_cadence.webp",
+  [CASE_STUDY_SLUG.bubble]:
+    "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766446287440x908698787583342700/bubble.io.png",
+  [CASE_STUDY_SLUG.tfa]:
+    "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447145612x608821623632928600/tfa.png",
 };
 
 const ClientStories = () => {
@@ -281,16 +310,16 @@ const ClientStories = () => {
                         {activeSlide?.thumbnailImage && (
                           <img
                             src={activeSlide.thumbnailImage}
-                            alt={activeSlide.slug}
+                            alt={activeSlide.name}
                             className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                           />
                         )}
                         <div className="absolute inset-0 bg-gradient-to-t from-[#176AAF] via-[#176AAF]/90 to-[#176AAF]/50 mix-blend-color opacity-100" />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#176AAF]/90 via-[#176AAF]/40 to-transparent" />
-                        {activeSlide?.name && (
+                        {(activeSlide?.thumbnailSummary?.trim() || activeSlide?.name) && (
                           <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
                             <h3 className="text-white text-[20px] lg:text-[24px] font-semibold leading-tight">
-                              {activeSlide.name}
+                              {activeSlide.thumbnailSummary?.trim() || activeSlide.name}
                             </h3>
                           </div>
                         )}
@@ -305,6 +334,11 @@ const ClientStories = () => {
             <div className="border-t border-solid border-slate-200 border-l border-solid border-b border-solid grid grid-cols-2 md:grid-cols-4 mb-12 lg:mb-16 mt-12">
               {SLIDES.map((slide, index) => {
                 const isActive = index === activeIndex;
+                const logoSrc =
+                  CLIENT_STORIES_FEATURED_LOGO_BY_SLUG[slide.slug] ||
+                  slide.customerLogo?.trim() ||
+                  slide.thumbnailImage?.trim() ||
+                  "";
                 return (
                   <button
                     key={slide.slug}
@@ -331,22 +365,27 @@ const ClientStories = () => {
                       />
                     )}
                     
-                    {/* Logo */}
+                    {/* Logo — prefer customerLogo; fall back to thumbnail (matches historical Client Stories behavior) */}
                     <div className="flex flex-col items-center justify-center w-full px-4">
                       <div className="h-9 w-full flex items-center justify-center">
-                        {slide.customerLogo && (
-                          <img 
-                            src={slide.customerLogo} 
-                            alt={slide.slug} 
+                        {logoSrc ? (
+                          <img
+                            src={logoSrc}
+                            alt={slide.name}
                             className={`h-full w-auto object-contain transition-all duration-300 
-                              ${slide.slug === "ticketrev-marketplace-startup-bubble" ? "max-h-6" : ""} 
-                              ${slide.slug === 'dividend' ? 'max-h-5' : ''} 
-                              ${slide.slug === 'bubble' ? 'max-h-5' : ''} 
-                              ${slide.slug === 'playground' || slide.slug === 'cerebro' ? 'mix-blend-multiply' : ''}
-                              ${isActive ? 'grayscale-0 opacity-100' : 'grayscale opacity-60 hover:grayscale-0 hover:opacity-100'}
+                              ${slide.slug === CASE_STUDY_SLUG.ticketrev ? "max-h-6" : ""} 
+                              ${slide.slug === CASE_STUDY_SLUG.dividend ? "max-h-5" : ""} 
+                              ${slide.slug === CASE_STUDY_SLUG.bubble ? "max-h-5" : ""} 
+                              ${
+                                slide.slug === CASE_STUDY_SLUG.playground ||
+                                slide.slug === CASE_STUDY_SLUG.cerebro
+                                  ? "mix-blend-multiply"
+                                  : ""
+                              }
+                              ${isActive ? "grayscale-0 opacity-100" : "grayscale opacity-60 hover:grayscale-0 hover:opacity-100"}
                             `}
                           />
-                        )}
+                        ) : null}
                       </div>
                     </div>
                   </button>

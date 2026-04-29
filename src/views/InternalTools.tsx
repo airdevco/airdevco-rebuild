@@ -11,6 +11,7 @@ import {
   ValueProps,
   SampleProducts,
 } from "@/components/landing";
+import { CASE_STUDY_SLUG } from "@/config/case-study-static-slugs";
 import type { Product } from "@/components/landing/sample-products";
 import {
   ShoppingBagIcon,
@@ -55,7 +56,7 @@ const INTERNAL_TOOLS_CASE_STUDIES = [
     ],
   },
   {
-    id: "bubble",
+                id: CASE_STUDY_SLUG.bubble,
     company: "Bubble.io",
     logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766446287440x908698787583342700/bubble.io.png",
     logoText: "",
@@ -71,7 +72,7 @@ const INTERNAL_TOOLS_CASE_STUDIES = [
     ]
   },
   {
-    id: "playground",
+                id: CASE_STUDY_SLUG.playground,
     company: "Playground IEP",
     logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447131162x922542988700125000/playground.png",
     logoText: "",

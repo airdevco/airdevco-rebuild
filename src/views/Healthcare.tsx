@@ -11,6 +11,7 @@ import {
   FintechValueProps,
   type FintechValuePropItem,
 } from "@/components/landing";
+import { CASE_STUDY_SLUG } from "@/config/case-study-static-slugs";
 import { Product } from "@/components/landing/sample-products";
 import {
   ArrowPathIcon,
@@ -250,7 +251,7 @@ const Healthcare = () => {
             description="We've helped healthcare and digital health organizations build patient engagement tools, revenue operations workflows, and analytics that support better access and outcomes."
             slides={[
               {
-                id: "dividend",
+                id: CASE_STUDY_SLUG.dividend,
                 company: "Dividend Finance",
                 logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447523324x536489976697318800/dividend.png",
                 logoText: "$300m+ raised",
@@ -266,7 +267,7 @@ const Healthcare = () => {
                 ]
               },
               {
-                id: "bubble",
+                id: CASE_STUDY_SLUG.bubble,
                 company: "Tributi",
                 logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766777935802x342363134894177340/tributi.png",
                 logoText: "VC funded",
@@ -282,7 +283,7 @@ const Healthcare = () => {
                 ]
               },
               {
-                id: "playground",
+                id: CASE_STUDY_SLUG.playground,
                 company: "My NFT Alerts",
                 logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766777953165x204069526181363420/mynftalerts.png",
                 logoText: "",

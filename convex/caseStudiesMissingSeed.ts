@@ -15,7 +15,6 @@ export const MISSING_CASE_STUDIES_SEED = [
     keyResults:
       "A custom 2-sided marketplace platform with custom database search filters and in-app messaging",
     sortOrder: 16,
-    companyUrl: "https://002sponsorships.com/?stay=yes",
     thumbnailSummary:
       "How 002 Sponsorships became the first-to-market pickleball influencer marketplace",
     thumbnailImage:
@@ -150,7 +149,6 @@ export const MISSING_CASE_STUDIES_SEED = [
     timeline: "3 months",
     keyResults: "2 rounds of iterations to the platform based on user feedback",
     sortOrder: 17,
-    companyUrl: "https://inspo.uk/",
     thumbnailSummary:
       "How Airdev helped inspo build a custom platform connecting students from all backgrounds to professional mentors",
     thumbnailImage:
@@ -243,7 +241,6 @@ export const MISSING_CASE_STUDIES_SEED = [
     timeline: "6 weeks",
     keyResults: "Rapid user adoption",
     sortOrder: 15,
-    companyUrl: "https://www.mynftalerts.com/",
     thumbnailSummary:
       "How Airdev helped My NFT Alerts build a custom platform for NFT holders to track, trade and set personalized floor price alerts",
     thumbnailImage:

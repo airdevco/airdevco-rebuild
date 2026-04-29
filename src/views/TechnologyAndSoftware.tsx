@@ -11,6 +11,7 @@ import {
   FintechValueProps,
   type FintechValuePropItem,
 } from "@/components/landing";
+import { CASE_STUDY_SLUG } from "@/config/case-study-static-slugs";
 import {
   CodeBracketIcon,
   CpuChipIcon,
@@ -233,7 +234,7 @@ const TechnologyAndSoftware = () => {
             description="We've helped technology and software companies build developer tools, enterprise platforms, automation solutions, and scalable SaaS products."
             slides={[
               {
-                id: "bubble",
+                id: CASE_STUDY_SLUG.bubble,
                 company: "Bubble.io",
                 logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766446287440x908698787583342700/bubble.io.png",
                 logoText: "",
@@ -249,7 +250,7 @@ const TechnologyAndSoftware = () => {
                 ]
               },
               {
-                id: "cerebro",
+                id: CASE_STUDY_SLUG.cerebro,
                 company: "Cerebro Sports",
                 logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447113960x777797950241704700/cerebro.png",
                 logoText: "Mark Cuban-funded",
@@ -265,7 +266,7 @@ const TechnologyAndSoftware = () => {
                 ]
               },
               {
-                id: "ticketrev",
+                id: CASE_STUDY_SLUG.ticketrev,
                 company: "TicketRev",
                 logo: "https://cdn.prod.website-files.com/64e8a789efa42eaf8fe4d068/64e8b49e181622332d021cee_Logo.svg",
                 logoText: "",

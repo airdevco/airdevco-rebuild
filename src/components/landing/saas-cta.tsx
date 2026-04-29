@@ -8,16 +8,20 @@ interface SaasCTAProps {
   buttonText?: string;
   buttonLink?: string;
   variant?: "dark" | "light";
+  /** `responsive`: left-aligned on small screens, centered from md up. */
+  contentLayout?: "center" | "responsive";
 }
 
 export const SaasCTA = ({
-  title = "Want to explore building a custom application?",
+  title = "Looking to build the next big thing?",
   description = "Chat with our team to see what we can do.",
   buttonText = "Talk to us",
   buttonLink = "#",
-  variant = "dark"
+  variant = "dark",
+  contentLayout = "center",
 }: SaasCTAProps = {}) => {
   const isLight = variant === "light";
+  const isResponsive = contentLayout === "responsive";
   const openLandingPricingPopup = () => {
     window.dispatchEvent(new CustomEvent("open-landing-pricing-popup"));
   };
@@ -40,15 +44,36 @@ export const SaasCTA = ({
         <div className="absolute w-[900px] h-[900px] border border-white/5 rounded-full" />
       </div>
 
-      <div className="relative z-10 max-w-[1200px] mx-auto px-6 text-center">
-        <div className="max-w-4xl mx-auto">
-          <h2 className={`text-4xl lg:text-5xl font-semibold tracking-tight ${isLight ? "text-gray-900" : "text-white"}`} style={{ marginBottom: '6px' }}>
+      <div
+        className={`relative z-10 mx-auto max-w-[1200px] px-6 ${
+          isResponsive ? "text-left md:text-center" : "text-center"
+        }`}
+      >
+        <div
+          className={`max-w-4xl w-full ${
+            isResponsive ? "md:mx-auto" : "mx-auto"
+          }`}
+        >
+          <h2
+            className={`text-4xl font-semibold tracking-tight lg:text-5xl ${
+              isLight ? "text-gray-900" : "text-white"
+            } ${isResponsive ? "text-left md:text-center" : ""}`}
+            style={{ marginBottom: "6px" }}
+          >
             {title}
           </h2>
-          <p className={`text-xl ${isLight ? "text-gray-700" : "text-white"} leading-relaxed mb-4`}>
+          <p
+            className={`mb-4 text-xl leading-relaxed ${
+              isLight ? "text-gray-700" : "text-white"
+            } ${isResponsive ? "text-left md:text-center" : ""}`}
+          >
             {description}
           </p>
-          <div className="flex justify-center">
+          <div
+            className={`flex ${
+              isResponsive ? "justify-start md:justify-center" : "justify-center"
+            }`}
+          >
             {buttonLink && buttonLink !== '#' ? (
               <a href={buttonLink}>
                 <Button 

@@ -2,8 +2,12 @@ import type { Metadata } from "next";
 import "@/index.css";
 import { UsersnapScript } from "./usersnap-script";
 import { ConvexClientProvider } from "@/components/ConvexClientProvider";
+import { resolveSiteOrigin } from "@/lib/case-study-seo";
+
+const siteOrigin = resolveSiteOrigin();
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteOrigin),
   title: "Airdev | The leading no-code and Bubble app development agency",
   description:
     "Airdev is the leader in no-code & Bubble app development. We help businesses launch software products in a fraction of the time & cost of traditional developers.",

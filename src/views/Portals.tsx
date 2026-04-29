@@ -12,11 +12,12 @@ import {
   SampleProducts,
 } from "@/components/landing";
 import { CUSTOMER_PORTAL_TYPES_PRODUCTS } from "@/components/landing/customer-portal-sections";
+import { CASE_STUDY_SLUG } from "@/config/case-study-static-slugs";
 
 /** Case studies for the Portals page only — Teach for America, Cadence, Resolis (aligned with CRM / customer-portal / full-scale data). */
 const PORTALS_CASE_STUDIES = [
   {
-    id: "tfa",
+    id: CASE_STUDY_SLUG.tfa,
     company: "Teach for America",
     logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447145612x608821623632928600/tfa.png",
     logoText: "",
@@ -34,7 +35,7 @@ const PORTALS_CASE_STUDIES = [
     ],
   },
   {
-    id: "cadence",
+    id: CASE_STUDY_SLUG.cadence,
     company: "Cadence Translate",
     logo: "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/669a9ff1b72d8c1ec14d79f4_cadence.webp",
     logoText: "500 startups funded",

@@ -26,6 +26,7 @@ import {
   CheckIcon,
   XMarkIcon,
 } from "@heroicons/react/24/solid";
+import { CASE_STUDY_SLUG } from "@/config/case-study-static-slugs";
 import { Button } from "@/components/ui/button";
 import { SampleProducts, type Product } from "@/components/landing/sample-products";
 
@@ -537,7 +538,7 @@ export function CrmPricingSection() {
 
 const CRM_CASE_SLIDES_RAW = [
   {
-    id: "tfa",
+    id: CASE_STUDY_SLUG.tfa,
     company: "Teach for America",
     logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447145612x608821623632928600/tfa.png",
     logoText: "",
@@ -556,7 +557,7 @@ const CRM_CASE_SLIDES_RAW = [
     ],
   },
   {
-    id: "cadence",
+    id: CASE_STUDY_SLUG.cadence,
     company: "Cadence Translate",
     logo: "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/669a9ff1b72d8c1ec14d79f4_cadence.webp",
     logoText: "500 startups funded",
@@ -574,7 +575,7 @@ const CRM_CASE_SLIDES_RAW = [
     ],
   },
   {
-    id: "playground",
+    id: CASE_STUDY_SLUG.playground,
     company: "Playground IEP",
     logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447131162x922542988700125000/playground.png",
     logoText: "",

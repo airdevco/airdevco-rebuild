@@ -23,6 +23,7 @@ import {
   CheckIcon,
   XMarkIcon,
 } from "@heroicons/react/24/solid";
+import { CASE_STUDY_SLUG } from "@/config/case-study-static-slugs";
 import { Button } from "@/components/ui/button";
 import { SampleProducts, type Product } from "@/components/landing/sample-products";
 
@@ -534,7 +535,7 @@ export function BusinessSoftwarePricingSection() {
 
 const BUSINESS_SOFTWARE_CASE_SLIDES_RAW = [
   {
-    id: "dividend",
+    id: CASE_STUDY_SLUG.dividend,
     company: "Dividend Finance",
     logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447523324x536489976697318800/dividend.png",
     logoText: "$300m+ raised",
@@ -550,7 +551,7 @@ const BUSINESS_SOFTWARE_CASE_SLIDES_RAW = [
     ],
   },
   {
-    id: "bubble",
+    id: CASE_STUDY_SLUG.bubble,
     company: "Bubble.io",
     logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766446287440x908698787583342700/bubble.io.png",
     logoText: "",

@@ -11,10 +11,11 @@ import {
   ProcessSection,
   AudienceSection,
 } from "@/components/landing";
+import { CASE_STUDY_SLUG } from "@/config/case-study-static-slugs";
 
 const FULL_SCALE_SLIDES = [
   {
-    id: "dividend",
+    id: CASE_STUDY_SLUG.dividend,
     company: "Dividend Finance",
     logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447523324x536489976697318800/dividend.png",
     logoText: "$300m+ raised",
@@ -30,7 +31,7 @@ const FULL_SCALE_SLIDES = [
     ]
   },
   {
-    id: "bubble",
+    id: CASE_STUDY_SLUG.bubble,
     company: "Bubble.io",
     logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766446287440x908698787583342700/bubble.io.png",
     logoText: "",

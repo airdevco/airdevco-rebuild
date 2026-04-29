@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { CASE_STUDY_SLUG } from "@/config/case-study-static-slugs";
 
 // --- Default Data (for SaasProducts) ---
 const DEFAULT_SLIDES = [
   {
-    id: "dividend",
+    id: CASE_STUDY_SLUG.dividend,
     company: "Dividend Finance",
     logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447523324x536489976697318800/dividend.png",
     logoText: "$300m+ raised",
@@ -20,7 +21,7 @@ const DEFAULT_SLIDES = [
     ]
   },
   {
-    id: "bubble",
+    id: CASE_STUDY_SLUG.bubble,
     company: "Bubble.io",
     logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766446287440x908698787583342700/bubble.io.png",
     logoText: "",
@@ -36,7 +37,7 @@ const DEFAULT_SLIDES = [
     ]
   },
   {
-    id: "playground",
+    id: CASE_STUDY_SLUG.playground,
     company: "Playground IEP",
     logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447131162x922542988700125000/playground.png",
     logoText: "",
@@ -150,15 +151,15 @@ export const CaseStudies = ({ description, slides }: CaseStudiesProps = {}) => {
                       src={slide.logo} 
                       alt={slide.company} 
                       className={`h-full w-auto object-contain transition-all duration-300 
-                        ${slide.id === 'dividend' ? 'max-h-5' : ''} 
-                        ${slide.id === 'bubble' ? (slide.company === 'Tributi' ? 'max-h-5 mt-1' : 'max-h-5') : ''} 
-                        ${slide.id === 'playground' ? (slide.company === 'My NFT Alerts' ? '' : 'mix-blend-multiply') : ''}
+                        ${slide.id === CASE_STUDY_SLUG.dividend ? 'max-h-5' : ''} 
+                        ${slide.id === CASE_STUDY_SLUG.bubble ? (slide.company === 'Tributi' ? 'max-h-5 mt-1' : 'max-h-5') : ''} 
+                        ${slide.id === CASE_STUDY_SLUG.playground ? (slide.company === 'My NFT Alerts' ? '' : 'mix-blend-multiply') : ''}
                         ${isActive ? 'grayscale-0 opacity-100' : 'grayscale opacity-60 hover:grayscale-0 hover:opacity-100'}
                       `}
                     />
                   </div>
                   {slide.logoText && (
-                    <p className={`text-[10px] text-gray-400 text-center font-medium whitespace-nowrap ${slide.id === 'bubble' && slide.company === 'Tributi' ? 'mt-0.5' : 'mt-1.5'}`}>
+                    <p className={`text-[10px] text-gray-400 text-center font-medium whitespace-nowrap ${slide.id === CASE_STUDY_SLUG.bubble && slide.company === 'Tributi' ? 'mt-0.5' : 'mt-1.5'}`}>
                       {slide.logoText}
                     </p>
                   )}

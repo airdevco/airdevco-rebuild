@@ -1,6 +1,14 @@
+import type { Metadata } from "next";
+import { fetchQuery } from "convex/nextjs";
 import { ClientOnly } from "./client";
 import { ROUTES } from "@/config/routes";
 import { CASE_STUDY_STATIC_SLUGS } from "@/config/case-study-static-slugs";
+import { api } from "../../../convex/_generated/api";
+import {
+  absolutizeImageUrl,
+  caseStudyMetaDescription,
+  resolveSiteOrigin,
+} from "@/lib/case-study-seo";
 
 /** Paths with explicit Next.js routes; exclude from catch-all static params */
 const EXPLICIT_NEXT_PATHS = new Set([
@@ -91,6 +99,67 @@ export function generateStaticParams() {
     return [{ slug: ["_"] }];
   }
   return params;
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string[] };
+}): Promise<Metadata> {
+  const segments = params.slug ?? [];
+  if (segments.length !== 2 || segments[0] !== "case-studies") {
+    return {};
+  }
+
+  const studySlug = segments[1];
+  if (!process.env.NEXT_PUBLIC_CONVEX_URL) {
+    return {};
+  }
+
+  try {
+    const study = await fetchQuery(api.caseStudies.getBySlug, {
+      slug: studySlug,
+    });
+
+    if (study === null) {
+      return {
+        title: "Case study not found | Airdev",
+        description:
+          "This case study may have been removed or the URL is incorrect.",
+      };
+    }
+
+    const siteOrigin = resolveSiteOrigin();
+    const titleBase = study.metaTitle?.trim() || study.name;
+    const title = `${titleBase} | Airdev`;
+    const description = caseStudyMetaDescription(study);
+    const ogImage = absolutizeImageUrl(siteOrigin, study.thumbnailImage);
+    const path = `/case-studies/${studySlug}`;
+
+    return {
+      title,
+      description: description || undefined,
+      alternates: { canonical: path },
+      openGraph: {
+        type: "article",
+        title,
+        description: description || undefined,
+        url: `${siteOrigin}${path}`,
+        images: ogImage ? [{ url: ogImage, alt: study.name }] : undefined,
+      },
+      twitter: {
+        card: "summary_large_image",
+        title,
+        description: description || undefined,
+        images: ogImage ? [ogImage] : undefined,
+      },
+    };
+  } catch {
+    return {
+      title: "Case study | Airdev",
+      description: "Client story from Airdev.",
+    };
+  }
 }
 
 export default function Page() {

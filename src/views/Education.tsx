@@ -11,6 +11,7 @@ import {
   FintechValueProps,
   type FintechValuePropItem,
 } from "@/components/landing";
+import { CASE_STUDY_SLUG } from "@/config/case-study-static-slugs";
 import {
   AcademicCapIcon,
   ArrowPathIcon,
@@ -243,7 +244,7 @@ const Education = () => {
             description="We've helped education organizations build learning platforms, district and program hubs, assessment tools, and marketplaces that serve schools at scale."
             slides={[
               {
-                id: "playground",
+                id: CASE_STUDY_SLUG.playground,
                 company: "Playground IEP",
                 logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447131162x922542988700125000/playground.png",
                 logoText: "",

@@ -6,7 +6,7 @@ const DEFAULT_BUSINESS_TYPES = [
   {
     title: "SaaS",
     description: "Subscription platforms that scale with your customers. From simple tools to complex multi-tenant systems.",
-    link: "#",
+    link: ROUTES.SAAS_PRODUCTS,
     iconColor: "#ff6b35",
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
@@ -17,7 +17,7 @@ const DEFAULT_BUSINESS_TYPES = [
   {
     title: "Marketplaces",
     description: "Two-sided platforms that connect buyers and sellers with matching, payments, and everything in between.",
-    link: "#",
+    link: ROUTES.MARKETPLACES,
     iconColor: "#06b6d4",
     icon: (
       <svg viewBox="0 0 20 20" fill="currentColor" className="w-6 h-6">
@@ -28,7 +28,7 @@ const DEFAULT_BUSINESS_TYPES = [
   {
     title: "AI Applications",
     description: "Products powered by machine learning, automation, and intelligent workflows. Built for real business problems.",
-    link: "#",
+    link: ROUTES.AI_APPLICATIONS,
     iconColor: "#a855f7",
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
@@ -40,7 +40,7 @@ const DEFAULT_BUSINESS_TYPES = [
   {
     title: "Internal Tools",
     description: "Custom software for your team. Replace spreadsheets and manual processes with something that actually works.",
-    link: "#",
+    link: ROUTES.INTERNAL_TOOLS,
     iconColor: "#10b981",
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
