@@ -39,6 +39,8 @@ import Onboarding from "./views/Onboarding";
 const queryClient = new QueryClient();
 
 import ClientStories from "./views/ClientStories";
+import MoreCaseStudies from "./views/MoreCaseStudies";
+import CaseStudyDetail from "./views/CaseStudyDetail";
 import SaasProducts from "./views/SaasProducts";
 import Marketplaces from "./views/Marketplaces";
 import Portals from "./views/Portals";
@@ -121,6 +123,8 @@ const AppContent = () => {
         <Route path={ROUTES.INVENTORY_MANAGEMENT} element={<InventoryManagementLanding />} />
         <Route path={ROUTES.BUBBLE_APP_AUDIT} element={<BubbleAppAudit />} />
         <Route path={ROUTES.CLIENT_STORIES} element={<ClientStories />} />
+        <Route path={ROUTES.MORE_CASE_STUDIES} element={<MoreCaseStudies />} />
+        <Route path="/case-studies/:slug" element={<CaseStudyDetail />} />
         <Route path={ROUTES.SAAS_PRODUCTS} element={<SaasProducts />} />
         <Route path={ROUTES.MARKETPLACES} element={<Marketplaces />} />
         <Route path={ROUTES.PORTALS} element={<Portals />} />

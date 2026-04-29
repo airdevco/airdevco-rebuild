@@ -12,6 +12,17 @@ import { caseStudyRoute, ROUTES } from "@/config/routes";
 
 const DURATION = 6000; // 6 seconds per slide
 
+/** Featured slugs per tab on this page only (logo row + carousel). Full list lives on /more-case-studies. */
+const CASE_STUDIES_TAB_SLUGS: Record<"startups" | "enterprises", string[]> = {
+  startups: [
+    "ticketrev-marketplace-startup-bubble",
+    "navigreat",
+    "playground",
+    "cerebro",
+  ],
+  enterprises: ["dividend", "cadence", "bubble", "tfa"],
+};
+
 const ClientStories = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [prevIndex, setPrevIndex] = useState(0);
@@ -19,7 +30,10 @@ const ClientStories = () => {
   const [selectedTab, setSelectedTab] = useState<'startups' | 'enterprises'>('startups');
 
   const slidesData = useQuery(api.caseStudies.listByCategory, { category: selectedTab });
-  const SLIDES = slidesData ?? [];
+  const rawSlides = slidesData ?? [];
+  const SLIDES = CASE_STUDIES_TAB_SLUGS[selectedTab]
+    .map((slug) => rawSlides.find((s) => s.slug === slug))
+    .filter((s): s is NonNullable<typeof s> => s != null);
 
   const handleManualSwitch = (index: number) => {
     setPrevIndex(activeIndex);
@@ -80,29 +94,18 @@ const ClientStories = () => {
                     {[
                       {
                         title: "TicketRev",
-                        logo: "https://cdn.prod.website-files.com/64e8a789efa42eaf8fe4d068/64e8b49e181622332d021cee_Logo.svg",
                         image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/64cc2c786d693702395f21b1_TicketRev-built-with-no-code-Airdev.jpg",
-                        link: caseStudyRoute("ticketrev"),
-                        type: "video",
-                        logoClass: "h-5",
                         imageClass: "",
-                        whiteBg: false
                       },
                       {
                         title: "Playground IEP",
-                        logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447131162x922542988700125000/playground.png",
                         image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/63b8851d340bdc19030b55b3_adam-winger-7fF0iei80AQ-unsplash%205-p-3200.jpg",
-                        link: caseStudyRoute("playground"),
-                        type: "story",
-                        logoClass: "h-8",
                         imageClass: "",
-                        whiteBg: true
-                      }
+                      },
                     ].map((card, index) => (
-                      <a 
+                      <div
                         key={index}
-                        href={card.link}
-                        className="group relative aspect-[4/5] rounded-2xl overflow-hidden bg-gray-100 hover:scale-[1.02] transition-transform duration-300 w-full shadow-lg"
+                        className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-gray-100 w-full shadow-lg"
                       >
                         <img 
                           src={card.image} 
@@ -111,19 +114,7 @@ const ClientStories = () => {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#176AAF] via-[#176AAF]/90 to-[#176AAF]/50 mix-blend-color opacity-100" />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#176AAF]/90 via-[#176AAF]/40 to-transparent" />
-                        
-                        <div className="absolute top-6 left-6 z-10">
-                          {card.logo ? (
-                            <img 
-                              src={card.logo} 
-                              alt={card.title}
-                              className={`w-auto object-contain ${card.logoClass || 'h-8'} ${card.whiteBg ? 'invert grayscale mix-blend-screen brightness-200 contrast-200' : 'brightness-0 invert'}`}
-                            />
-                          ) : (
-                            <h3 className="text-white font-bold text-xl">{card.title}</h3>
-                          )}
-                        </div>
-                      </a>
+                      </div>
                     ))}
                   </div>
 
@@ -132,29 +123,18 @@ const ClientStories = () => {
                     {[
                       {
                         title: "Dividend Finance",
-                        logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766446287440x908698787583342700/bubble.io.png",
                         image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2940&auto=format&fit=crop",
-                        link: caseStudyRoute("dividend"),
-                        type: "video",
                         imageClass: "object-left",
-                        logoClass: "h-6",
-                        whiteBg: false
                       },
                       {
                         title: "NaviGreat",
-                        logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1765319327038x377695290107660200/navigreat.png",
                         image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/6644f29802eba3647e2d8030_NaviGreat_Airdev_no_code.jpg",
-                        link: caseStudyRoute("navigreat"),
-                        type: "video",
                         imageClass: "",
-                        logoClass: "h-8",
-                        whiteBg: false
-                      }
+                      },
                     ].map((card, index) => (
-                      <a 
+                      <div
                         key={index}
-                        href={card.link}
-                        className="group relative aspect-[4/5] rounded-2xl overflow-hidden bg-gray-100 hover:scale-[1.02] transition-transform duration-300 w-full shadow-lg"
+                        className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-gray-100 w-full shadow-lg"
                       >
                         <img 
                           src={card.image} 
@@ -163,19 +143,7 @@ const ClientStories = () => {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#176AAF] via-[#176AAF]/90 to-[#176AAF]/50 mix-blend-color opacity-100" />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#176AAF]/90 via-[#176AAF]/40 to-transparent" />
-                        
-                        <div className="absolute top-6 left-6 z-10">
-                          {card.logo ? (
-                            <img 
-                              src={card.logo} 
-                              alt={card.title}
-                              className={`w-auto object-contain ${card.logoClass} ${card.whiteBg ? 'invert grayscale mix-blend-screen brightness-200 contrast-200' : 'brightness-0 invert'}`}
-                            />
-                          ) : (
-                            <h3 className="text-white font-bold text-xl">{card.title}</h3>
-                          )}
-                        </div>
-                      </a>
+                      </div>
                     ))}
                   </div>
 
@@ -184,29 +152,18 @@ const ClientStories = () => {
                     {[
                       {
                         title: "Teach for America",
-                        logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447145612x608821623632928600/tfa.png",
                         image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/635075d6712da824635efa1d_tfa%20(1).jpeg",
-                        link: caseStudyRoute("tfa"),
-                        type: "video",
                         imageClass: "",
-                        logoClass: "h-8",
-                        whiteBg: false
                       },
                       {
                         title: "Cerebro Sports",
-                        logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447113960x777797950241704700/cerebro.png",
                         image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/64eced7d1af330bc878905e9_Cerebro_Airdev_no_code-app-build.jpg",
-                        link: caseStudyRoute("cerebro"),
-                        type: "story",
                         imageClass: "",
-                        logoClass: "h-8",
-                        whiteBg: true
-                      }
+                      },
                     ].map((card, index) => (
-                      <a 
+                      <div
                         key={index}
-                        href={card.link}
-                        className="group relative aspect-[4/5] rounded-2xl overflow-hidden bg-gray-100 hover:scale-[1.02] transition-transform duration-300 w-full shadow-lg"
+                        className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-gray-100 w-full shadow-lg"
                       >
                         <img 
                           src={card.image} 
@@ -215,19 +172,7 @@ const ClientStories = () => {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#176AAF] via-[#176AAF]/90 to-[#176AAF]/50 mix-blend-color opacity-100" />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#176AAF]/90 via-[#176AAF]/40 to-transparent" />
-                        
-                        <div className="absolute top-6 left-6 z-10">
-                          {card.logo ? (
-                            <img 
-                              src={card.logo} 
-                              alt={card.title}
-                              className={`w-auto object-contain ${card.logoClass || 'h-8'} ${card.whiteBg ? 'invert grayscale mix-blend-screen brightness-200 contrast-200' : 'brightness-0 invert'}`}
-                            />
-                          ) : (
-                            <h3 className="text-white font-bold text-xl">{card.title}</h3>
-                          )}
-                        </div>
-                      </a>
+                      </div>
                     ))}
                   </div>
                 </div>
@@ -238,7 +183,7 @@ const ClientStories = () => {
 
         {/* Logo Section */}
         <div className="pb-16">
-          <ClientLogoTicker />
+          <ClientLogoTicker variant="featured" />
         </div>
 
         {/* Trusted By Section */}
@@ -394,7 +339,7 @@ const ClientStories = () => {
                             src={slide.customerLogo} 
                             alt={slide.slug} 
                             className={`h-full w-auto object-contain transition-all duration-300 
-                              ${slide.slug === 'ticketrev' ? 'max-h-6' : ''} 
+                              ${slide.slug === "ticketrev-marketplace-startup-bubble" ? "max-h-6" : ""} 
                               ${slide.slug === 'dividend' ? 'max-h-5' : ''} 
                               ${slide.slug === 'bubble' ? 'max-h-5' : ''} 
                               ${slide.slug === 'playground' || slide.slug === 'cerebro' ? 'mix-blend-multiply' : ''}

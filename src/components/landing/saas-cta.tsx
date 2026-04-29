@@ -11,9 +11,9 @@ interface SaasCTAProps {
 }
 
 export const SaasCTA = ({
-  title = "Have a project in mind?",
-  description = "We're happy to talk through it, even if you're just exploring.",
-  buttonText = "Get started",
+  title = "Want to explore building a custom application?",
+  description = "Chat with our team to see what we can do.",
+  buttonText = "Talk to us",
   buttonLink = "#",
   variant = "dark"
 }: SaasCTAProps = {}) => {

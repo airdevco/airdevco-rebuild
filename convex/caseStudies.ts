@@ -95,3 +95,22 @@ export const upsertMany = internalMutation({
     return { count: args.items.length };
   },
 });
+
+/** Remove rows by slug (e.g. after renaming a case study URL). */
+export const deleteBySlugs = internalMutation({
+  args: { slugs: v.array(v.string()) },
+  handler: async (ctx, args) => {
+    let removed = 0;
+    for (const slug of args.slugs) {
+      const doc = await ctx.db
+        .query("caseStudies")
+        .withIndex("by_slug", (q) => q.eq("slug", slug))
+        .unique();
+      if (doc) {
+        await ctx.db.delete(doc._id);
+        removed += 1;
+      }
+    }
+    return { removed };
+  },
+});

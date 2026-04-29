@@ -1,5 +1,6 @@
 import { ClientOnly } from "./client";
 import { ROUTES } from "@/config/routes";
+import { CASE_STUDY_STATIC_SLUGS } from "@/config/case-study-static-slugs";
 
 /** Paths with explicit Next.js routes; exclude from catch-all static params */
 const EXPLICIT_NEXT_PATHS = new Set([
@@ -76,11 +77,16 @@ export function generateStaticParams() {
       !EXPLICIT_NEXT_PATHS.has(path) &&
       !EXCLUDED_ROUTES.has(path)
   );
-  const params = routes.map((path) => {
-    const slug = path.slice(1).split("/").filter(Boolean);
-    return { slug };
-  });
-  // output: 'export' requires at least one static path for dynamic routes
+  const routeParams = routes.map((path) => ({
+    slug: path.slice(1).split("/").filter(Boolean),
+  }));
+
+  // Include all case study detail paths so the SPA router handles them
+  const caseStudyParams = CASE_STUDY_STATIC_SLUGS.map((s) => ({
+    slug: ["case-studies", s],
+  }));
+
+  const params = [...routeParams, ...caseStudyParams];
   if (params.length === 0) {
     return [{ slug: ["_"] }];
   }

@@ -3,7 +3,7 @@ export type ClientLogoTickerVariant = "default" | "featured";
 type ClientLogoTickerProps = {
   /**
    * `featured` — full color, larger logos (same relative scale: Next smaller, Cadence bigger, etc.).
-   * Use on home + marketplace only; other pages stay `default`.
+   * Default variant applies grayscale; use `featured` for home, marketplace-style pages, client stories, etc.
    */
   variant?: ClientLogoTickerVariant;
 };
