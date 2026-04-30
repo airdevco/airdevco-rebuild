@@ -301,7 +301,7 @@ const BubbleDevelopment = () => {
                         Start inquiry
                       </Button>
                     </a>
-                    <a href={ROUTES.FULL_SCALE_BUILDS}>
+                    <a href={ROUTES.FLEX_BUBBLE_FREELANCERS}>
                       <Button
                         variant="outline"
                         className="border-[#D0D5DD] text-[#0A0A0A] bg-white hover:bg-[#F9FAFB] px-6 pb-2 pt-2.5 text-[16px] font-medium rounded-[6px]"

@@ -31,6 +31,10 @@ interface HeroProps {
   imageHeight?: string;
   label?: string;
   centerText?: boolean;
+  /** When set, primary CTA renders as a link (e.g. portal). */
+  buttonHref?: string;
+  /** Right-side hero image: no border/shadow; capped width scales up at sm/lg (align-left + rightImage only). */
+  rightImagePlain?: boolean;
 }
 
 /** Module-level so React does not remount on every Hero render (was causing freezes / jank). */
@@ -175,7 +179,9 @@ export const Hero = ({
   useOriginalImageSize = false,
   imageHeight,
   label,
-  centerText = false
+  centerText = false,
+  buttonHref,
+  rightImagePlain = false,
 }: HeroProps = {}) => {
   if (alignLeft && (rightImage || lottieAnimation)) {
     return (
@@ -198,9 +204,17 @@ export const Hero = ({
 
               {showButton && (
                 <div className="mt-6 lg:mt-8">
-                  <Button className="bg-[#1265EF] text-white hover:bg-[#0d4fc7] active:bg-[#0a3fa3] rounded-[6px] px-5 pb-2 pt-2.5 text-[16px] font-medium transition-all leading-none">
-                    {buttonText}
-                  </Button>
+                  {buttonHref ? (
+                    <a href={buttonHref} target="_blank" rel="noreferrer">
+                      <Button className="bg-[#1265EF] text-white hover:bg-[#0d4fc7] active:bg-[#0a3fa3] rounded-[6px] px-5 pb-2 pt-2.5 text-[16px] font-medium transition-all leading-none">
+                        {buttonText}
+                      </Button>
+                    </a>
+                  ) : (
+                    <Button className="bg-[#1265EF] text-white hover:bg-[#0d4fc7] active:bg-[#0a3fa3] rounded-[6px] px-5 pb-2 pt-2.5 text-[16px] font-medium transition-all leading-none">
+                      {buttonText}
+                    </Button>
+                  )}
                 </div>
               )}
 
@@ -236,16 +250,28 @@ export const Hero = ({
                   <HeroLottiePlayer src={lottieAnimation} />
                 </div>
               ) : rightImage ? (
-                <img 
-                  src={rightImage}
-                  alt="Hero"
-                  className={useOriginalImageSize ? "w-full max-w-full lg:w-auto lg:max-h-[600px] object-cover rounded-2xl border" : "w-full h-auto lg:h-full lg:w-auto rounded-2xl border"}
-                  style={{ 
-                    maxWidth: 'none',
-                    boxShadow: '0 10px 40px -10px rgba(0, 0, 0, 0.08)',
-                    borderColor: 'hsl(var(--border))'
-                  }}
-                />
+                rightImagePlain ? (
+                  <img
+                    src={rightImage}
+                    alt="Airdev Flex experts"
+                    className="w-full max-w-[min(100%,480px)] sm:max-w-[min(100%,520px)] lg:max-w-[min(100%,560px)] h-auto object-contain mx-auto lg:ml-0 lg:mr-auto"
+                  />
+                ) : (
+                  <img
+                    src={rightImage}
+                    alt="Hero"
+                    className={
+                      useOriginalImageSize
+                        ? "w-full max-w-full lg:w-auto lg:max-h-[600px] object-cover rounded-2xl border"
+                        : "w-full h-auto lg:h-full lg:w-auto rounded-2xl border"
+                    }
+                    style={{
+                      maxWidth: "none",
+                      boxShadow: "0 10px 40px -10px rgba(0, 0, 0, 0.08)",
+                      borderColor: "hsl(var(--border))",
+                    }}
+                  />
+                )
               ) : null}
             </div>
           </div>
@@ -306,9 +332,17 @@ export const Hero = ({
 
             {showButton && (
               <div className="mt-8">
-                <Button className="bg-[#1265EF] text-white hover:bg-[#0d4fc7] active:bg-[#0a3fa3] rounded-[6px] px-5 pb-2 pt-2.5 text-[16px] font-medium transition-all leading-none">
-                  {buttonText}
-                </Button>
+                {buttonHref ? (
+                  <a href={buttonHref} target="_blank" rel="noreferrer">
+                    <Button className="bg-[#1265EF] text-white hover:bg-[#0d4fc7] active:bg-[#0a3fa3] rounded-[6px] px-5 pb-2 pt-2.5 text-[16px] font-medium transition-all leading-none">
+                      {buttonText}
+                    </Button>
+                  </a>
+                ) : (
+                  <Button className="bg-[#1265EF] text-white hover:bg-[#0d4fc7] active:bg-[#0a3fa3] rounded-[6px] px-5 pb-2 pt-2.5 text-[16px] font-medium transition-all leading-none">
+                    {buttonText}
+                  </Button>
+                )}
               </div>
             )}
           </div>

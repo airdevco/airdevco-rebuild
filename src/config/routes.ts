@@ -49,6 +49,8 @@ export const ROUTES = {
   BUBBLE_APP_AUDIT: "/bubble-app-audit",
   BUBBLE_DEVELOPMENT: "/bubble-development",
   BUBBLE_AGENCY: "/bubble-development/bubble-agency",
+  /** Flex freelancers landing (isolated view: `FlexBubbleFreelancers.tsx`) */
+  FLEX_BUBBLE_FREELANCERS: "/bubble-development/flex-bubble-freelancers",
   MARKETPLACES: "/marketplaces",
   /** Customer / partner / vendor portals (marketing page; edit `Portals.tsx` only) */
   PORTALS: "/portals",

@@ -54,6 +54,7 @@ const EXPLICIT_NEXT_PATHS = new Set([
   "/product-design",
   "/bubble-development",
   "/bubble-development/bubble-agency",
+  "/bubble-development/flex-bubble-freelancers",
   "/ai-enablement",
   "/careers",
   "/blog",

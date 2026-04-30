@@ -58,6 +58,7 @@ import FullScaleBuilds from "./views/FullScaleBuilds";
 import ProductDesign from "./views/ProductDesign";
 import BubbleDevelopment from "./views/BubbleDevelopment";
 import BubbleAgency from "./views/BubbleAgency";
+import FlexBubbleFreelancers from "./views/FlexBubbleFreelancers";
 import AiEnablement from "./views/AiEnablement";
 import Marketplace from "./views/Saas";
 import SaasLanding from "./views/SaasLanding";
@@ -142,6 +143,7 @@ const AppContent = () => {
         <Route path={ROUTES.PRODUCT_DESIGN} element={<ProductDesign />} />
         <Route path={ROUTES.BUBBLE_DEVELOPMENT} element={<BubbleDevelopment />} />
         <Route path={ROUTES.BUBBLE_AGENCY} element={<BubbleAgency />} />
+        <Route path={ROUTES.FLEX_BUBBLE_FREELANCERS} element={<FlexBubbleFreelancers />} />
         <Route path={ROUTES.AI_ENABLEMENT} element={<AiEnablement />} />
         <Route path={ROUTES.PARTNERS} element={<Partners />} />
         <Route path={ROUTES.PARTNERS_DEVELOPERS} element={<Developers />} />

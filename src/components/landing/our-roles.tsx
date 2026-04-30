@@ -1,5 +1,7 @@
 import { useState } from "react";
+import type { ComponentType, SVGProps } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Check } from "lucide-react";
 import {
   SparklesIcon,
   ClipboardDocumentListIcon,
@@ -12,20 +14,25 @@ import {
   ChartBarIcon,
 } from "@heroicons/react/24/solid";
 
-interface Role {
+export type RoleIcon = ComponentType<SVGProps<SVGSVGElement>>;
+
+export interface Role {
   id: string;
   title: string;
   description: string;
-  icon: any;
+  icon: RoleIcon;
   color: string;
   bio?: string;
-  person: {
+  person?: {
     name: string;
     location: string;
     experience: string;
     projects: string;
     avatar: string;
   };
+  /** Shown below description when `hideProfiles` is true (e.g. Flex page). */
+  helpTitle?: string;
+  helpPoints?: string[];
 }
 
 const ROLES: Role[] = [
@@ -121,28 +128,51 @@ const ROLES: Role[] = [
   }
 ];
 
-export const OurRoles = () => {
-  const [activeTab, setActiveTab] = useState(ROLES[0].id);
+export type OurRolesProps = {
+  eyebrow?: string;
+  heading?: string;
+  /** Paragraph under heading (e.g. match NoCodeSpeed body: `text-xl text-gray-600 leading-relaxed`) */
+  intro?: string;
+  /** Tailwind max-width class for the eyebrow + heading + intro block (default `max-w-[900px]`). */
+  headerMaxWidthClass?: string;
+  roles?: Role[];
+  /** When true, hide profile / bio blocks (e.g. Flex). Use `helpTitle` + `helpPoints` on each role for checklists. */
+  hideProfiles?: boolean;
+};
 
-  const activeRole = ROLES.find(r => r.id === activeTab) || ROLES[0];
+export const OurRoles = ({
+  eyebrow = "OUR ROLES",
+  heading = "Great software is made by teams of specialists",
+  intro,
+  headerMaxWidthClass = "max-w-[900px]",
+  roles: rolesProp,
+  hideProfiles = false,
+}: OurRolesProps = {}) => {
+  const roles = rolesProp ?? ROLES;
+  const [activeTab, setActiveTab] = useState(roles[0]?.id ?? ROLES[0].id);
+
+  const activeRole = roles.find((r) => r.id === activeTab) || roles[0];
 
   return (
     <section className="py-24 bg-[#F6F9FC]">
       <div className="max-w-[1200px] mx-auto px-6">
-        <div className="text-left max-w-[900px] mb-16">
+        <div className={`text-left mb-16 ${headerMaxWidthClass}`}>
           <span className="text-[15px] font-semibold text-[#1e3a8a] uppercase tracking-wider mb-3 block">
-            OUR ROLES
+            {eyebrow}
           </span>
           <h2 className="text-[48px] font-semibold tracking-tight leading-none text-[#1a1a1a] mb-6">
-            Great software is made by teams of specialists
+            {heading}
           </h2>
+          {intro ? (
+            <p className="text-xl text-gray-600 leading-relaxed">{intro}</p>
+          ) : null}
         </div>
 
         <div className="grid lg:grid-cols-12 gap-0 lg:gap-24">
           {/* Left Side: Tabs – match SampleProducts vertical tabs (width + layout) */}
           <div className="lg:col-span-3">
             <div className="flex flex-col gap-2 max-w-xs">
-              {ROLES.map((role) => (
+              {roles.map((role) => (
                 <button
                   key={role.id}
                   onClick={() => setActiveTab(role.id)}
@@ -189,7 +219,24 @@ export const OurRoles = () => {
                       </p>
                     </div>
 
-                    {/* Profile group in place of Included features */}
+                    {/* Profile or checklist (Flex uses hideProfiles + helpPoints) */}
+                    {hideProfiles && activeRole.helpTitle && activeRole.helpPoints?.length ? (
+                      <div className="pt-6 -mx-8 px-8 border-t border-slate-200">
+                        <p className="text-[16px] font-semibold text-[#1a1a1a] mb-4">{activeRole.helpTitle}</p>
+                        <ul className="space-y-3">
+                          {activeRole.helpPoints.map((line, idx) => (
+                            <li key={idx} className="flex items-start gap-3">
+                              <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#1265EF]/10 text-[#1265EF]">
+                                <Check className="h-3 w-3" strokeWidth={3} />
+                              </span>
+                              <span className="text-[17px] text-gray-600 leading-relaxed">{line}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ) : null}
+
+                    {!hideProfiles && activeRole.person ? (
                     <div className="pt-6 -mx-8 px-8 border-t border-slate-200">
                       {/* Special layout for roles with rich profile content (any role with a bio) */}
                       {activeRole.bio ? (
@@ -289,6 +336,7 @@ export const OurRoles = () => {
                         </div>
                       )}
                     </div>
+                    ) : null}
                   </div>
                 </div>
               </motion.div>

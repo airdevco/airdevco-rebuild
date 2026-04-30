@@ -2,27 +2,41 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { MockupWireframe } from "./process-section";
 
-type DiscoveryOutputsProps = {
-  prototypeScale?: number;
+export type DiscoveryOutputSlide = {
+  title: string;
+  description: string;
+  animation: "prototype" | "documentation" | "validation";
 };
 
-const OUTPUTS = [
+const DEFAULT_INTRO =
+  "We don't just give you a slide deck. We deliver tangible assets that prepare you for a successful build and launch.";
+
+const OUTPUTS: DiscoveryOutputSlide[] = [
   {
     title: "Live prototype",
-    description: "Experience your full product before a single line of code is written. We build a clickable, high-fidelity prototype you can use to pitch investors and validate with users.",
-    animation: "prototype"
+    description:
+      "Experience your full product before a single line of code is written. We build a clickable, high-fidelity prototype you can use to pitch investors and validate with users.",
+    animation: "prototype",
   },
   {
     title: "Written documentation",
-    description: "Comprehensive technical specs, logic flows, user stories, and database schema that serve as the detailed blueprint for your build.",
-    animation: "documentation"
+    description:
+      "Comprehensive technical specs, logic flows, user stories, and database schema that serve as the detailed blueprint for your build.",
+    animation: "documentation",
   },
   {
     title: "Technical validation",
-    description: "Detailed analysis of feasibility, AI proof-of-concepts, API integrations, and scalability requirements to de-risk your most complex features.",
-    animation: "validation"
-  }
+    description:
+      "Detailed analysis of feasibility, AI proof-of-concepts, API integrations, and scalability requirements to de-risk your most complex features.",
+    animation: "validation",
+  },
 ];
+
+export type DiscoveryOutputsProps = {
+  prototypeScale?: number;
+  /** When stacked under another `bg-[#0A2540]` block, subtle top separator */
+  showTopBorder?: boolean;
+};
 
 const wireframeSpring = (delay: number) => ({
   type: "spring" as const,
@@ -257,9 +271,14 @@ const ValidationAnimation = ({ scale = 1 }: { scale?: number }) => {
   );
 };
 
-export const DiscoveryOutputs = ({ prototypeScale = 1 }: DiscoveryOutputsProps) => {
+export const DiscoveryOutputs = ({
+  prototypeScale = 1,
+  showTopBorder = false,
+}: DiscoveryOutputsProps = {}) => {
   return (
-    <section className="py-24 bg-[#0A2540]">
+    <section
+      className={`py-24 bg-[#0A2540]${showTopBorder ? " border-t border-[#1E3A5F]" : ""}`}
+    >
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-[15px] font-semibold text-[#0AE4E3] uppercase tracking-wider mb-3 block">
@@ -268,25 +287,20 @@ export const DiscoveryOutputs = ({ prototypeScale = 1 }: DiscoveryOutputsProps) 
           <h2 className="text-4xl lg:text-5xl font-semibold tracking-tight text-white mb-6">
             What you get
           </h2>
-          <p className="text-[20px] text-[#ADBDCC] leading-relaxed">
-            We don't just give you a slide deck. We deliver tangible assets that prepare you for a successful build and launch.
-          </p>
+          <p className="text-[20px] text-[#ADBDCC] leading-relaxed">{DEFAULT_INTRO}</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
           {OUTPUTS.map((output, index) => (
             <div key={index} className="bg-[#112F4E]/50 border border-[#1E3A5F] rounded-2xl overflow-hidden flex flex-col h-full">
               <div className="h-60 w-full bg-[#0A2540]/45 border-b border-[#1E3A5F] overflow-hidden">
-                {output.animation === 'prototype' && <PrototypeAnimation scale={prototypeScale} />}
-                {output.animation === 'documentation' && <DocumentationAnimation scale={prototypeScale} />}
-                {output.animation === 'validation' && <ValidationAnimation scale={prototypeScale} />}
+                {output.animation === "prototype" && <PrototypeAnimation scale={prototypeScale} />}
+                {output.animation === "documentation" && <DocumentationAnimation scale={prototypeScale} />}
+                {output.animation === "validation" && <ValidationAnimation scale={prototypeScale} />}
               </div>
-              
               <div className="p-8 flex-1 flex flex-col">
                 <h3 className="text-[24px] font-bold text-white mb-3">{output.title}</h3>
-                <p className="text-[18px] text-[#ADBDCC] leading-relaxed">
-                  {output.description}
-                </p>
+                <p className="text-[18px] text-[#ADBDCC] leading-relaxed">{output.description}</p>
               </div>
             </div>
           ))}

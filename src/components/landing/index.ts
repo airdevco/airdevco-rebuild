@@ -24,6 +24,6 @@ export { DiscoveryOutputs } from "./discovery-outputs";
 export { FintechValueProps } from "./fintech-value-props";
 export type { FintechValuePropItem } from "./fintech-value-props";
 export { FINTECH_PRODUCTS } from "./fintech-products";
-export { OurRoles } from "./our-roles";
+export { OurRoles, type Role, type OurRolesProps, type RoleIcon } from "./our-roles";
 export { NoCodeSpeed } from "./no-code-speed";
 export { MarketplaceHeader, SaasMarketplaceHeader } from "./saas-marketplace-header";

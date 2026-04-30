@@ -78,8 +78,8 @@ const BubbleAgency = () => {
             lottieAnimation="https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/646dcae8ab7266fb0356dd33_swipe-vector.lottie"
             label="TRUSTED BY ORGANIZATIONS OF ALL SIZES"
           />
-          <div className="pt-16">
-            <ClientLogoTicker />
+          <div className="bg-white pt-16 pb-12 lg:pb-16">
+            <ClientLogoTicker variant="featured" />
           </div>
 
           {/* Benefits section – local copy of ValueProps layout so content can differ on this page */}
