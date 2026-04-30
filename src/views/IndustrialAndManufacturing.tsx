@@ -12,6 +12,24 @@ import {
   type FintechValuePropItem,
 } from "@/components/landing";
 import { Product } from "@/components/landing/sample-products";
+import {
+  ArrowPathIcon,
+  BoltIcon,
+  ChartBarIcon,
+  ClipboardDocumentCheckIcon,
+  ClipboardDocumentListIcon,
+  ClockIcon,
+  CogIcon,
+  CubeTransparentIcon,
+  DocumentTextIcon,
+  GlobeAltIcon,
+  PuzzlePieceIcon,
+  RocketLaunchIcon,
+  ShieldCheckIcon,
+  TruckIcon,
+  UserGroupIcon,
+  WrenchScrewdriverIcon,
+} from "@heroicons/react/24/solid";
 
 // Single case study for this page only; does not affect other routes.
 const INDUSTRIAL_MANUFACTURING_CLIENT_STORY = {
@@ -35,25 +53,7 @@ const INDUSTRIAL_MANUFACTURING_CLIENT_STORY = {
       color: "#ff6b6b",
     },
   ],
-} as const;
-import {
-  ArrowPathIcon,
-  BoltIcon,
-  ChartBarIcon,
-  ClipboardDocumentCheckIcon,
-  ClipboardDocumentListIcon,
-  ClockIcon,
-  CogIcon,
-  CubeTransparentIcon,
-  DocumentTextIcon,
-  GlobeAltIcon,
-  PuzzlePieceIcon,
-  RocketLaunchIcon,
-  ShieldCheckIcon,
-  TruckIcon,
-  UserGroupIcon,
-  WrenchScrewdriverIcon,
-} from "@heroicons/react/24/solid";
+};
 
 const MANUFACTURING_BENEFITS: FintechValuePropItem[] = [
   {

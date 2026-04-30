@@ -188,13 +188,11 @@ const ValidationAnimation = ({ scale = 1 }: { scale?: number }) => {
                     opacity: 0.8,
                   }}
                   initial={{ rotate: 0, opacity: 0 }}
-                  animate={isInView
-                    ? [
-                        { rotate: 0, opacity: 1 },
-                        { rotate: 270, opacity: 1 },
-                        { rotate: 270, opacity: 0 },
-                      ]
-                    : { rotate: 0, opacity: 0 }}
+                  animate={
+                    isInView
+                      ? { rotate: [0, 270, 270], opacity: [0, 1, 0] }
+                      : { rotate: 0, opacity: 0 }
+                  }
                   transition={{
                     times: [0, 0.75, 1],
                     duration: check.delay + 0.5,
