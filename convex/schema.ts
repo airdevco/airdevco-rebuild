@@ -36,4 +36,33 @@ export default defineSchema({
     .index("by_slug", ["slug"])
     .index("by_category", ["filteringCategory"])
     .index("by_filteringCategory_and_sortOrder", ["filteringCategory", "sortOrder"]),
+
+  blogPosts: defineTable({
+    title: v.string(),
+    slug: v.string(),
+    archived: v.boolean(),
+    draft: v.boolean(),
+    hidden: v.boolean(),
+    content: v.optional(v.string()),
+    summary: v.optional(v.string()),
+    featuredImage: v.optional(v.string()),
+    imageAltText: v.optional(v.string()),
+    ogImage: v.optional(v.string()),
+    readTime: v.optional(v.float64()),
+    author: v.optional(v.string()),
+    metaTitle: v.optional(v.string()),
+    metaDescription: v.optional(v.string()),
+    suggestedPosts: v.optional(v.array(v.string())),
+    showOnProcessPage: v.optional(v.boolean()),
+    showOnBubblePage: v.optional(v.boolean()),
+    featured: v.optional(v.boolean()),
+    customSchema: v.optional(v.string()),
+    publishedOn: v.optional(v.string()),
+    updatedOn: v.optional(v.string()),
+    createdOn: v.optional(v.string()),
+  })
+    .index("by_slug", ["slug"])
+    .index("by_author", ["author"])
+    .index("by_featured", ["featured"])
+    .index("by_draft_and_hidden", ["draft", "hidden"]),
 });

@@ -21,7 +21,7 @@ import Mission from "./views/Mission";
 import Approach from "./views/Approach";
 import Careers from "./views/Careers";
 import Blog from "./views/Blog";
-import WillAIMakeDevelopersObsolete from "./views/WillAIMakeDevelopersObsolete";
+import BlogPostDetail from "./views/BlogPostDetail";
 import Signup from "./views/Signup";
 import Login from "./views/Login";
 import { ForgotPassword } from "./views/ForgotPassword";
@@ -154,7 +154,7 @@ const AppContent = () => {
         <Route path={ROUTES.APPROACH} element={<Approach />} />
         <Route path={ROUTES.CAREERS} element={<Careers />} />
         <Route path={ROUTES.BLOG} element={<Blog />} />
-        <Route path={ROUTES.BLOG_AI_DEVELOPERS} element={<WillAIMakeDevelopersObsolete />} />
+        <Route path="/post/:slug" element={<BlogPostDetail />} />
         <Route path={ROUTES.SIGNUP} element={
           <AuthRoute>
             <Signup />

@@ -58,7 +58,6 @@ const EXPLICIT_NEXT_PATHS = new Set([
   "/ai-enablement",
   "/careers",
   "/blog",
-  "/post/will-ai-make-software-developers-obsolete",
 ]);
 
 /** Auth and protected routes – exclude from static generation (not needed for SEO, cause build errors) */
@@ -79,7 +78,7 @@ const EXCLUDED_ROUTES = new Set([
   "/portal/customers",
 ]);
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
   const routes = Object.values(ROUTES).filter(
     (path) =>
       path !== "*" &&
@@ -95,7 +94,19 @@ export function generateStaticParams() {
     slug: ["case-studies", s],
   }));
 
-  const params = [...routeParams, ...caseStudyParams];
+  // Fetch blog post slugs from Convex so /post/:slug pages get static shells
+  let blogParams: { slug: string[] }[] = [];
+  if (process.env.NEXT_PUBLIC_CONVEX_URL) {
+    try {
+      const posts = await fetchQuery(api.blogPosts.list);
+      blogParams = posts.map((p) => ({ slug: ["post", p.slug] }));
+    } catch {
+      // If Convex is unreachable at build time, blog post direct URLs rely on
+      // client-side navigation; links from /blog still work fine.
+    }
+  }
+
+  const params = [...routeParams, ...caseStudyParams, ...blogParams];
   if (params.length === 0) {
     return [{ slug: ["_"] }];
   }

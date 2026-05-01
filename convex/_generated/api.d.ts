@@ -8,6 +8,7 @@
  * @module
  */
 
+import type * as blogPosts from "../blogPosts.js";
 import type * as bolsterCaseStudySeed from "../bolsterCaseStudySeed.js";
 import type * as caseStudies from "../caseStudies.js";
 import type * as caseStudiesMissingSeed from "../caseStudiesMissingSeed.js";
@@ -21,6 +22,7 @@ import type {
 } from "convex/server";
 
 declare const fullApi: ApiFromModules<{
+  blogPosts: typeof blogPosts;
   bolsterCaseStudySeed: typeof bolsterCaseStudySeed;
   caseStudies: typeof caseStudies;
   caseStudiesMissingSeed: typeof caseStudiesMissingSeed;
