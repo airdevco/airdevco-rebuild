@@ -3,7 +3,33 @@
 import { useEffect, useMemo, useState } from "react";
 import { useQuery } from "convex/react";
 import { Navbar, Footer } from "@/components/landing";
-import Link from "next/link";
+import NextLink from "next/link";
+import { Link as RouterLink, useInRouterContext } from "react-router-dom";
+
+/** `/blog` is served by Next without React Router; Vite wraps the app in BrowserRouter. */
+function BlogPostCardLink({
+  href,
+  className,
+  children,
+}: {
+  href: string;
+  className?: string;
+  children: React.ReactNode;
+}) {
+  const inRouter = useInRouterContext();
+  if (inRouter) {
+    return (
+      <RouterLink to={href} className={className}>
+        {children}
+      </RouterLink>
+    );
+  }
+  return (
+    <NextLink href={href} className={className}>
+      {children}
+    </NextLink>
+  );
+}
 import { api } from "../../convex/_generated/api";
 import type { Doc } from "../../convex/_generated/dataModel";
 
@@ -132,7 +158,7 @@ const Blog = () => {
                       const img = postImage(post);
                       const href = `/post/${post.slug}`;
                       return (
-                        <Link href={href} key={post._id} className="group flex flex-col h-full">
+                        <BlogPostCardLink href={href} key={post._id} className="group flex flex-col h-full">
                           <div className="relative mb-6 overflow-hidden rounded-2xl aspect-[16/10] bg-gray-100">
                             {img ? (
                               <img
@@ -152,7 +178,7 @@ const Blog = () => {
                               {excerpt(post)}
                             </p>
                           </div>
-                        </Link>
+                        </BlogPostCardLink>
                       );
                     })}
                   </div>

@@ -126,11 +126,6 @@ export const Footer = ({ variant = "default" }: FooterProps = {}) => {
                     ERPs
                   </a>
                 </li>
-                <li>
-                  <a href={ROUTES.BUSINESS_SOFTWARE} className="text-gray-600 hover:text-gray-900 transition-colors">
-                    Others
-                  </a>
-                </li>
               </ul>
             </div>
             <div>
@@ -164,11 +159,6 @@ export const Footer = ({ variant = "default" }: FooterProps = {}) => {
                 <li>
                   <a href={ROUTES.PUBLIC_SECTOR_AND_NONPROFIT} className="text-gray-600 hover:text-gray-900 transition-colors">
                     Government
-                  </a>
-                </li>
-                <li>
-                  <a href={ROUTES.CONSUMER_AND_RETAIL} className="text-gray-600 hover:text-gray-900 transition-colors">
-                    Others
                   </a>
                 </li>
               </ul>

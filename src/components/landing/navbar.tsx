@@ -23,53 +23,38 @@ export const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [openMobileDropdown, setOpenMobileDropdown] = useState<string | null>(null);
-  const applicationTypesTriggerRef = useRef<HTMLButtonElement>(null);
-  const applicationTypesPanelRef = useRef<HTMLDivElement>(null);
-  const navContentRef = useRef<HTMLDivElement>(null);
-  const [applicationTypesMenuPos, setApplicationTypesMenuPos] = useState<{
-    left: number;
-    top: number;
-  } | null>(null);
+  const applicationTypesDropdownRef = useRef<HTMLDivElement>(null);
+  const [applicationTypesShiftX, setApplicationTypesShiftX] = useState(0);
 
-  const updateApplicationTypesMenuPosition = useCallback(() => {
-    const trigger = applicationTypesTriggerRef.current;
-    const panel = applicationTypesPanelRef.current;
-    const contentEl = navContentRef.current;
-    if (!trigger || openDropdown !== "application-types") {
-      setApplicationTypesMenuPos(null);
-      return;
-    }
-    if (!panel) {
-      const trOnly = trigger.getBoundingClientRect();
-      setApplicationTypesMenuPos({ left: trOnly.left, top: trOnly.bottom });
+  /** Keep dropdown left-aligned with trigger (absolute left-0); shift horizontally if it overflows the viewport. */
+  const clampApplicationTypesDropdown = useCallback(() => {
+    const el = applicationTypesDropdownRef.current;
+    if (!el || openDropdown !== "application-types") {
+      setApplicationTypesShiftX(0);
       return;
     }
     const pad = 12;
-    const tr = trigger.getBoundingClientRect();
-    const top = tr.bottom;
-    const naturalW = panel.offsetWidth;
-    const content = contentEl?.getBoundingClientRect();
-    const innerLeft = content ? content.left + pad : pad;
-    const innerRight = content ? content.right - pad : window.innerWidth - pad;
-    const innerWidth = Math.max(1, innerRight - innerLeft);
-    const panelW = Math.min(Math.max(naturalW, 1), innerWidth);
-    // Align panel left edge with the trigger so the menu reads as attached to the button (not centered/floating)
-    let left = tr.left;
-    left = Math.max(innerLeft, left);
-    left = Math.min(left, innerRight - panelW);
-    setApplicationTypesMenuPos({ left, top });
+    const rect = el.getBoundingClientRect();
+    let dx = 0;
+    if (rect.right > window.innerWidth - pad) {
+      dx += window.innerWidth - pad - rect.right;
+    }
+    if (rect.left + dx < pad) {
+      dx += pad - (rect.left + dx);
+    }
+    setApplicationTypesShiftX(dx);
   }, [openDropdown]);
 
   useLayoutEffect(() => {
-    updateApplicationTypesMenuPosition();
-  }, [updateApplicationTypesMenuPosition]);
+    clampApplicationTypesDropdown();
+  }, [clampApplicationTypesDropdown]);
 
   useEffect(() => {
     if (openDropdown !== "application-types") return;
-    const panel = applicationTypesPanelRef.current;
-    const ro = panel ? new ResizeObserver(() => updateApplicationTypesMenuPosition()) : null;
-    ro?.observe(panel!);
-    const onLayout = () => updateApplicationTypesMenuPosition();
+    const el = applicationTypesDropdownRef.current;
+    const ro = el ? new ResizeObserver(() => clampApplicationTypesDropdown()) : null;
+    ro?.observe(el!);
+    const onLayout = () => clampApplicationTypesDropdown();
     window.addEventListener("resize", onLayout);
     window.addEventListener("scroll", onLayout, true);
     return () => {
@@ -77,7 +62,7 @@ export const Navbar = () => {
       window.removeEventListener("resize", onLayout);
       window.removeEventListener("scroll", onLayout, true);
     };
-  }, [openDropdown, updateApplicationTypesMenuPosition]);
+  }, [openDropdown, clampApplicationTypesDropdown]);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 0);
@@ -91,7 +76,7 @@ export const Navbar = () => {
         isScrolled ? "bg-white/95 backdrop-blur-lg border-b border-gray-100" : "bg-transparent"
       }`}
     >
-      <div ref={navContentRef} className="max-w-[1200px] mx-auto overflow-visible px-6">
+      <div className="max-w-[1200px] mx-auto overflow-visible px-6">
         <div className="flex items-center justify-between overflow-visible">
           <a href={ROUTES.HOME} className="flex items-center">
             <img 
@@ -215,7 +200,6 @@ export const Navbar = () => {
               onMouseLeave={() => setOpenDropdown(null)}
             >
               <button
-                ref={applicationTypesTriggerRef}
                 type="button"
                 className={`flex items-center gap-1 text-[16px] font-medium transition-colors ${isScrolled ? "text-gray-700 hover:text-gray-900" : "text-[#1a1a1a] hover:text-gray-600"}`}
               >
@@ -227,27 +211,22 @@ export const Navbar = () => {
 
               {openDropdown === "application-types" && (
                 <motion.div
-                  initial={{ opacity: 0, y: 6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 6 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
                   transition={{ duration: 0.15, ease: "easeOut" }}
-                  style={{
-                    left: applicationTypesMenuPos?.left ?? -9999,
-                    top: applicationTypesMenuPos?.top ?? 0,
-                    visibility: applicationTypesMenuPos ? "visible" : "hidden",
-                  }}
-                  className="fixed z-[100] w-max min-w-0 max-w-[min(100vw-3rem,calc(1200px-3rem))] pt-4"
+                  className="absolute top-full left-0 z-[100] pt-4"
                 >
                   <div
-                    ref={applicationTypesPanelRef}
+                    ref={applicationTypesDropdownRef}
+                    style={{ transform: `translateX(${applicationTypesShiftX}px)` }}
+                    className="w-max min-w-0 max-w-[min(100vw-3rem,calc(1200px-3rem))]"
+                  >
+                  <div
                     className="bg-white rounded-xl shadow-[0_50px_100px_-20px_rgba(50,50,93,0.25),0_30px_60px_-30px_rgba(0,0,0,0.3)] border-none overflow-hidden ring-1 ring-black/5 w-max min-w-0 max-h-[min(560px,calc(100vh-6rem))] overflow-y-auto"
                   >
-                    <div className="relative flex min-w-0 flex-col gap-8 md:flex-row md:items-stretch md:gap-0">
-                      <div
-                        className="absolute inset-y-0 left-1/2 z-10 hidden w-px -translate-x-1/2 bg-gray-200 md:block pointer-events-none"
-                        aria-hidden
-                      />
-                      <div className="min-w-0 flex-1 py-6 pl-6 pr-3 sm:pr-4">
+                    <div className="relative flex min-w-0 flex-col">
+                      <div className="min-w-0 py-6 px-6">
                           <div className="text-[14px] font-medium text-gray-500 uppercase tracking-wider mb-4">
                             By use case
                           </div>
@@ -325,7 +304,7 @@ export const Navbar = () => {
                             </p>
                           </div>
                         </div>
-                        <div className="min-w-0 flex-1 py-6 pr-6 pl-3 sm:pl-4">
+                        <div className="min-w-0 border-t border-gray-200 py-6 px-6">
                           <div className="text-[14px] font-medium text-gray-500 uppercase tracking-wider mb-4">
                             By industry
                           </div>
@@ -407,6 +386,7 @@ export const Navbar = () => {
                           </div>
                         </div>
                     </div>
+                  </div>
                   </div>
                 </motion.div>
               )}

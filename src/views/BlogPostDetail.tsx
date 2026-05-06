@@ -1,9 +1,11 @@
 "use client";
 
+import { useLayoutEffect } from "react";
 import { useQuery } from "convex/react";
 import { Link, useParams } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ChevronRight } from "lucide-react";
 import { Navbar, Footer } from "@/components/landing";
+import { ROUTES } from "@/config/routes";
 import { api } from "../../convex/_generated/api";
 import type { Doc } from "../../convex/_generated/dataModel";
 
@@ -95,16 +97,65 @@ function postImage(post: Doc<"blogPosts">): string | undefined {
   return post.featuredImage?.trim() || post.ogImage?.trim() || undefined;
 }
 
-/** Pick up to 2 "you may also like" posts: prefer suggestedPosts slugs, fall back to others */
-function pickRelated(
+function hashToSeed(s: string): number {
+  let h = 2166136261;
+  for (let i = 0; i < s.length; i++) {
+    h ^= s.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return h >>> 0 || 1;
+}
+
+/** Fisher–Yates shuffle with a seeded PRNG so filler order is stable per post but varies between posts. */
+function shuffleDeterministic<T>(items: T[], seedStr: string): T[] {
+  const arr = [...items];
+  let state = hashToSeed(seedStr);
+  const next = () => {
+    state = (state * 1664525 + 1013904223) >>> 0;
+    return state / 0xffffffff;
+  };
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(next() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+/**
+ * Up to 3 related posts: Convex `suggestedPosts` slugs first (order preserved),
+ * then filler from other posts (deterministic “random” shuffle per post).
+ */
+function pickRelatedPosts(
   current: Doc<"blogPosts">,
   all: Doc<"blogPosts">[]
 ): Doc<"blogPosts">[] {
-  const suggestedSlugs = new Set<string>(current.suggestedPosts ?? []);
-  const others = all.filter((p) => p._id !== current._id);
-  const suggested = others.filter((p) => suggestedSlugs.has(p.slug));
-  const rest = others.filter((p) => !suggestedSlugs.has(p.slug));
-  return [...suggested, ...rest].slice(0, 2);
+  const suggestedSlugs = current.suggestedPosts ?? [];
+  const bySlug = new Map(all.map((p) => [p.slug, p]));
+  const out: Doc<"blogPosts">[] = [];
+  const seen = new Set<string>();
+
+  for (const s of suggestedSlugs) {
+    if (out.length >= 3) break;
+    const p = bySlug.get(s);
+    if (p && p._id !== current._id && !seen.has(p._id)) {
+      out.push(p);
+      seen.add(p._id);
+    }
+  }
+
+  if (out.length >= 3) return out;
+
+  const pool = all.filter((p) => p._id !== current._id && !seen.has(p._id));
+  const shuffled = shuffleDeterministic(
+    pool,
+    `related:${current.slug}:${current._id}`
+  );
+  for (const p of shuffled) {
+    if (out.length >= 3) break;
+    out.push(p);
+    seen.add(p._id);
+  }
+  return out;
 }
 
 /* ── Skeleton ── */
@@ -114,7 +165,11 @@ function BlogPostDetailSkeleton() {
       {/* Header skeleton */}
       <section className="pt-32 pb-8 lg:pt-48 lg:pb-12 bg-white">
         <div className="max-w-[800px] mx-auto px-6">
-          <div className="h-3 w-12 bg-gray-200 rounded mb-6" />
+          <div className="flex gap-2 mb-8">
+            <div className="h-4 w-14 bg-gray-200 rounded" />
+            <div className="h-4 w-4 bg-gray-200 rounded shrink-0" />
+            <div className="h-4 w-12 bg-gray-200 rounded" />
+          </div>
           <div className="h-10 w-5/6 bg-gray-200 rounded mb-3" />
           <div className="h-10 w-3/5 bg-gray-200 rounded mb-6" />
           <div className="h-4 w-36 bg-gray-200 rounded" />
@@ -177,14 +232,22 @@ export default function BlogPostDetail() {
   const post = useQuery(api.blogPosts.getBySlug, { slug });
   const allPosts = useQuery(api.blogPosts.list);
 
-  const loading = post === undefined;
-  const notFound = post === null;
+  /** Convex can briefly return the previous document after `slug` changes — avoid showing the wrong post. */
+  const loading =
+    post === undefined || (post !== null && post.slug !== slug);
+  const notFound = post === null && !loading;
 
-  const related =
-    post && allPosts ? pickRelated(post, allPosts) : [];
+  const postReady = post !== null && post !== undefined && post.slug === slug;
 
-  const img = post ? postImage(post) : undefined;
-  const date = post ? formatDate(post.publishedOn) : null;
+  const relatedPosts =
+    postReady && allPosts ? pickRelatedPosts(post, allPosts) : [];
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
+
+  const img = postReady ? postImage(post) : undefined;
+  const date = postReady ? formatDate(post.publishedOn) : null;
 
   return (
     <>
@@ -206,7 +269,7 @@ export default function BlogPostDetail() {
                   This post may have been removed or the URL is incorrect.
                 </p>
                 <Link
-                  to="/blog"
+                  to={ROUTES.BLOG}
                   className="inline-flex items-center gap-2 text-[#1265EF] font-medium hover:text-[#0A0A0A] transition-colors"
                 >
                   <ArrowLeft className="w-4 h-4" />
@@ -216,22 +279,24 @@ export default function BlogPostDetail() {
             </section>
           )}
 
-          {post && (
+          {postReady && (
             <>
               {/* Hero header */}
               <section className="relative pt-32 pb-8 lg:pt-48 lg:pb-10 overflow-hidden bg-white">
                 <div className="relative z-10 max-w-[800px] mx-auto px-6">
-                  <div className="relative mb-5">
+                  <nav
+                    className="flex flex-wrap items-center gap-2 text-[15px] text-gray-400 mb-8"
+                    aria-label="Breadcrumb"
+                  >
                     <Link
-                    to="/blog"
-                    className="absolute left-[-56px] text-[#1E3B8A] hover:text-[#0A0A0A] transition-colors -top-3 hidden md:block"
+                      to={ROUTES.BLOG}
+                      className="hover:text-[#1265EF] transition-colors"
                     >
-                      <ArrowLeft className="w-10 h-10" />
+                      Blog
                     </Link>
-                    <div className="text-[13px] font-bold text-[#1F3A8A] uppercase tracking-wider">
-                      BLOG
-                    </div>
-                  </div>
+                    <ChevronRight className="w-3.5 h-3.5 shrink-0 opacity-60" />
+                    <span className="text-[#1a1a1a]">Post</span>
+                  </nav>
 
                   <h1 className="text-[36px] lg:text-[52px] leading-[1.1] font-bold tracking-tight text-[#0A0A0A] mb-6">
                     {post.title}
@@ -282,34 +347,21 @@ export default function BlogPostDetail() {
                 </div>
               </article>
 
-              {/* You may also like */}
-              {related.length > 0 && (
-                <section className="pb-16 bg-white border-t border-gray-100">
+              {/* You may also like — suggestedPosts first, then fillers to 3 when possible */}
+              {relatedPosts.length > 0 && (
+                <section className="pb-20 bg-white border-t border-gray-100">
                   <div className="max-w-[1200px] mx-auto px-6 pt-12">
                     <div className="text-[13px] font-bold text-[#4B5563] uppercase tracking-wider mb-8">
                       YOU MAY ALSO LIKE
                     </div>
-                    <div className="grid md:grid-cols-2 gap-8">
-                      {related.map((p) => (
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                      {relatedPosts.map((p) => (
                         <RelatedCard key={p._id} post={p} />
                       ))}
                     </div>
                   </div>
                 </section>
               )}
-
-              {/* Back to blog */}
-              <section className="pb-20 bg-white">
-                <div className="max-w-[800px] mx-auto px-6">
-                  <Link
-                  to="/blog"
-                  className="inline-flex items-center gap-2 text-[#1265EF] font-medium hover:text-[#0A0A0A] transition-colors"
-                >
-                  <ArrowLeft className="w-4 h-4" />
-                  Back to all posts
-                  </Link>
-                </div>
-              </section>
             </>
           )}
         </main>
