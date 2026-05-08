@@ -4,7 +4,7 @@ import {
   Navbar,
   Hero,
   Testimonials,
-  SaasCTA,
+  IndexLandingCTA,
   Footer,
   AudienceSection,
   DesignPrinciples,
@@ -103,7 +103,9 @@ const ProductDesign = () => {
             ]}
           />
           <Testimonials backgroundColor="#F6F9FC" label="WHAT CLIENTS SAY" />
-          <SaasCTA />
+          <div className="pt-24">
+            <IndexLandingCTA />
+          </div>
         </main>
         <Footer />
       </div>

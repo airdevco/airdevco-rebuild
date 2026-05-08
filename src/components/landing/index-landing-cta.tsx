@@ -5,7 +5,7 @@ import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ROUTES } from "@/config/routes";
 
-interface IndexLandingCTAProps {
+export interface IndexLandingCTAProps {
   eyebrow?: string;
   title?: string;
   description?: string;

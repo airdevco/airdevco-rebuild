@@ -5,15 +5,17 @@ import {
   Hero,
   CaseStudies,
   Testimonials,
-  SaasCTA,
   Footer,
   BusinessTypes,
   ProcessSection,
+  IndexLandingCTA,
 } from "@/components/landing";
+import { CASE_STUDY_SLUG } from "@/config/case-study-static-slugs";
 
 const MVP_SLIDES = [
   {
     id: "kidsbook",
+    caseStudySlug: "kidsbook-marketplace-app",
     company: "Kidsbook",
     logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1767135534066x924543251627778700/kidsbook.png",
     logoText: "",
@@ -30,6 +32,7 @@ const MVP_SLIDES = [
   },
   {
     id: "bolster",
+    caseStudySlug: CASE_STUDY_SLUG.bolster,
     company: "Bolster",
     logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1767069657325x211103928710127970/bolster.png",
     logoText: "",
@@ -46,6 +49,7 @@ const MVP_SLIDES = [
   },
   {
     id: "playground",
+    caseStudySlug: "my-nft-alerts-web-platform-no-code",
     company: "My NFT Alerts",
     logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766777953165x204069526181363420/mynftalerts.png",
     logoText: "",
@@ -119,7 +123,7 @@ const Mvps = () => {
           <ProcessSection />
           <BusinessTypes />
           <Testimonials label="WHAT CLIENTS SAY" />
-          <SaasCTA />
+          <IndexLandingCTA />
         </main>
         <Footer />
       </div>

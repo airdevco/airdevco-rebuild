@@ -5,17 +5,18 @@ import {
   Hero,
   CaseStudies,
   Testimonials,
-  SaasCTA,
   Footer,
   CapabilitiesSection,
   ProcessSection,
   AudienceSection,
+  IndexLandingCTA,
 } from "@/components/landing";
 import { CASE_STUDY_SLUG } from "@/config/case-study-static-slugs";
 
 const FULL_SCALE_SLIDES = [
   {
     id: CASE_STUDY_SLUG.dividend,
+    caseStudySlug: CASE_STUDY_SLUG.dividend,
     company: "Dividend Finance",
     logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447523324x536489976697318800/dividend.png",
     logoText: "$300m+ raised",
@@ -32,6 +33,7 @@ const FULL_SCALE_SLIDES = [
   },
   {
     id: CASE_STUDY_SLUG.bubble,
+    caseStudySlug: CASE_STUDY_SLUG.bubble,
     company: "Bubble.io",
     logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766446287440x908698787583342700/bubble.io.png",
     logoText: "",
@@ -48,6 +50,7 @@ const FULL_SCALE_SLIDES = [
   },
   {
     id: "consenna",
+    caseStudySlug: CASE_STUDY_SLUG.consenna,
     company: "Consenna",
     logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1767136271437x995467453409817100/consenna.png",
     logoText: "",
@@ -64,6 +67,7 @@ const FULL_SCALE_SLIDES = [
   },
   {
     id: "resolis",
+    caseStudySlug: "resolis",
     company: "Resolis",
     logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1767136295917x196197816364843680/resolis.png",
     logoText: "",
@@ -138,7 +142,7 @@ const FullScaleBuilds = () => {
           <ProcessSection />
           <CapabilitiesSection />
           <Testimonials label="WHAT CLIENTS SAY" />
-          <SaasCTA />
+          <IndexLandingCTA />
         </main>
         <Footer />
       </div>
