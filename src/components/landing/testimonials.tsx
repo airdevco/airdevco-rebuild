@@ -17,6 +17,8 @@ interface TestimonialsProps {
   linkText?: string;
   linkUrl?: string;
   backgroundColor?: string;
+  /** Use `"lazy"` on homepage so portraits defer (section is far below fold). Default `"eager"`. */
+  avatarImgLoading?: "eager" | "lazy";
 }
 
 const DEFAULT_TESTIMONIALS = [
@@ -84,7 +86,8 @@ export const Testimonials = ({
   testimonials = DEFAULT_TESTIMONIALS,
   linkText = "More client stories",
   linkUrl = "/client-stories",
-  backgroundColor = "white"
+  backgroundColor = "white",
+  avatarImgLoading = "eager",
 }: TestimonialsProps = {}) => {
   return (
     <section className="pt-32 pb-16 overflow-visible relative" style={{ backgroundColor }}>
@@ -119,6 +122,10 @@ export const Testimonials = ({
                   <img 
                     src={testimonial.image} 
                     alt={testimonial.name}
+                    width={48}
+                    height={48}
+                    loading={avatarImgLoading}
+                    decoding="async"
                     className="w-12 h-12 rounded-full object-cover flex-shrink-0 border border-gray-100"
                   />
                   <div>

@@ -14,7 +14,7 @@ const DEFAULT_SLIDES = [
     logoText: "$300m+ raised",
     heading: "How we built a FinTech platform for Dividend Finance that scaled to process billions of dollars of loan",
     description: "",
-    image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2940&auto=format&fit=crop",
+    image: "https://4b71d08d04d5d7c66482fc6e8486501c.cdn.bubble.io/f1778270057645x439456688648404600/dividend.webp",
     imageTitle: "How we built a FinTech platform for Dividend Finance that scaled to process billions of dollars of loan",
     customFields: [
       { label: "Business type", value: "Enterprise", color: "#635bff" },
@@ -122,6 +122,15 @@ interface CaseStudiesProps {
   sectionClassName?: string;
   /** When true, the logo tab row is not rendered (e.g. single case study on ERP). */
   hideLogoGrid?: boolean;
+  /**
+   * When true, logo-tab images use `loading="lazy"` + `decoding="async"` (e.g. homepage below hero).
+   * Default keeps eager loading so other pages behave unchanged.
+   */
+  lazyLogoRowImages?: boolean;
+  /**
+   * When true, the large case-study card image uses `loading="lazy"` (e.g. homepage; section is below hero).
+   */
+  lazyHeroImage?: boolean;
 }
 
 export const CaseStudies = ({
@@ -132,6 +141,8 @@ export const CaseStudies = ({
   disableLogoGrayscale = false,
   sectionClassName,
   hideLogoGrid = false,
+  lazyLogoRowImages = false,
+  lazyHeroImage = false,
 }: CaseStudiesProps = {}) => {
   const SLIDES = slides || DEFAULT_SLIDES;
   const [activeIndex, setActiveIndex] = useState(0);
@@ -216,11 +227,13 @@ export const CaseStudies = ({
                     <div className={`w-full flex items-center justify-center ${slide.id === 'consenna' ? 'h-12' : (slide.id === 'kidsbook' || slide.id === 'camphire') ? 'h-10' : 'h-9'}`}>
                       <img 
                         src={slide.logo} 
-                        alt={slide.company} 
+                        alt={slide.company}
+                        loading={lazyLogoRowImages ? "lazy" : undefined}
+                        decoding="async"
                         className={`h-full w-auto object-contain transition-all duration-300 
                           ${slide.id === CASE_STUDY_SLUG.dividend ? 'max-h-5' : ''} 
-                          ${slide.id === CASE_STUDY_SLUG.bubble ? (slide.company === 'Tributi' ? 'max-h-5 mt-1' : 'max-h-6') : ''} 
-                          ${slide.id === CASE_STUDY_SLUG.playground ? (slide.company === 'My NFT Alerts' ? '' : 'mix-blend-multiply') : ''}
+                          ${slide.company === 'Tributi' ? 'max-h-5 mt-1' : slide.id === CASE_STUDY_SLUG.bubble ? 'max-h-6' : ''} 
+                          ${slide.company === 'Playground IEP' ? 'mix-blend-multiply' : ''}
                           ${slide.id === CASE_STUDY_SLUG.ticketrev || slide.id === "resolis" ? "max-h-6" : ""}
                           ${slide.id === 'kidsbook' ? 'max-h-9' : ''}
                           ${slide.id === 'consenna' ? 'max-h-[48px]' : ''}
@@ -230,7 +243,7 @@ export const CaseStudies = ({
                       />
                     </div>
                     {slide.logoText && (
-                      <p className={`text-[10px] text-gray-400 text-center font-medium whitespace-nowrap ${slide.id === CASE_STUDY_SLUG.bubble && slide.company === 'Tributi' ? 'mt-0.5' : 'mt-1.5'}`}>
+                      <p className={`text-[10px] text-gray-400 text-center font-medium whitespace-nowrap ${slide.company === 'Tributi' ? 'mt-0.5' : 'mt-1.5'}`}>
                         {slide.logoText}
                       </p>
                     )}
@@ -288,6 +301,8 @@ export const CaseStudies = ({
                         <img 
                           src={activeSlide.image}
                           alt={activeSlide.company}
+                          decoding="async"
+                          loading={lazyHeroImage ? "lazy" : undefined}
                           className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#176AAF] via-[#176AAF]/90 to-[#176AAF]/50 mix-blend-color opacity-100" />
@@ -306,6 +321,8 @@ export const CaseStudies = ({
                       <img 
                         src={activeSlide.image}
                         alt={activeSlide.company}
+                        decoding="async"
+                        loading={lazyHeroImage ? "lazy" : undefined}
                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#176AAF] via-[#176AAF]/90 to-[#176AAF]/50 mix-blend-color opacity-100" />

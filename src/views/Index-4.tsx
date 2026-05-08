@@ -324,7 +324,7 @@ const Index4 = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white antialiased" style={{ fontFamily: "'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}>
+    <div className="min-h-screen bg-white antialiased" style={{ fontFamily: "'Colfax', sans-serif" }}>
       
       {/* Navigation */}
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white/70 backdrop-blur-xl border-b border-gray-200/50" : "bg-transparent"}`}>

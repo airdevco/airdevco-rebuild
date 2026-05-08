@@ -22,7 +22,7 @@ const FULL_SCALE_SLIDES = [
     logoText: "$300m+ raised",
     heading: "How we built a FinTech platform for Dividend Finance that scaled to process billions of dollars of loan",
     description: "",
-    image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2940&auto=format&fit=crop",
+    image: "https://4b71d08d04d5d7c66482fc6e8486501c.cdn.bubble.io/f1778270057645x439456688648404600/dividend.webp",
     imageTitle: "How we built a FinTech platform for Dividend Finance that scaled to process billions of dollars of loan",
     customFields: [
       { label: "Business type", value: "Enterprise", color: "#635bff" },

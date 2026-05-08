@@ -20,13 +20,17 @@ const Index = () => {
         <Navbar />
         <main>
           <IndexLandingHero />
-          <CaseStudies slides={HOME_CASE_STUDY_SLIDES} />
+          <CaseStudies
+            slides={HOME_CASE_STUDY_SLIDES}
+            lazyLogoRowImages
+            lazyHeroImage
+          />
           <BusinessTypes />
           <Stats hideGallery compactMetricsBottom />
           <div className="pt-12 pb-4 lg:pt-16 lg:pb-8 bg-white">
-            <ClientLogoTicker variant="featured" />
+            <ClientLogoTicker variant="featured" logoImgLoading="lazy" />
           </div>
-          <Testimonials />
+          <Testimonials avatarImgLoading="lazy" />
           <IndexLandingCTA />
         </main>
         <Footer />

@@ -225,17 +225,6 @@ const Index2 = () => {
     };
   }, [hasAnimated]);
 
-  // Add font to document head
-  useEffect(() => {
-    const link = document.createElement('link');
-    link.href = 'https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap';
-    link.rel = 'stylesheet';
-    document.head.appendChild(link);
-    return () => {
-      document.head.removeChild(link);
-    };
-  }, []);
-
   const TimelineStep = ({ item, index, acceleratedProgress, isMobile }: { item: any, index: number, acceleratedProgress: any, isMobile: boolean }) => {
     // Step positions in the accelerated progress space: 0 -> 0, 1 -> 0.33, 2 -> 0.66, 3 -> 1.0
     const stepPosition = index / 3; 
@@ -338,7 +327,7 @@ const Index2 = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white text-[#0A0A0A] antialiased" style={{ fontFamily: "'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif" }}>
+    <div className="min-h-screen bg-white text-[#0A0A0A] antialiased" style={{ fontFamily: "'Colfax', sans-serif" }}>
       {/* Navigation */}
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${

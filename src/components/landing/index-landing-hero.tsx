@@ -127,11 +127,21 @@ export function IndexLandingHero() {
               src="https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/69a8b5f68f33f4d708ddd0c5_claudec.png"
               alt="Claude Code"
               className="h-9 w-auto shrink-0 sm:h-10"
+              width={160}
+              height={40}
+              loading="lazy"
+              decoding="async"
+              fetchPriority="low"
             />
             <img
               src="https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/69a8b601263e827cb653e9bb_openaic.png"
               alt="OpenAI Codex"
               className="h-9 w-auto shrink-0 sm:h-10"
+              width={160}
+              height={40}
+              loading="lazy"
+              decoding="async"
+              fetchPriority="low"
             />
           </div>
           <div className="flex items-center gap-6">
@@ -139,11 +149,21 @@ export function IndexLandingHero() {
               src="https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/66969187efb02a2bec53fa5e_bubble.webp"
               alt="Bubble"
               className="h-16 w-auto shrink-0"
+              width={120}
+              height={64}
+              loading="lazy"
+              decoding="async"
+              fetchPriority="low"
             />
             <img
               src="https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/67d0c3731de254210406f2e4_star-rating.png"
               alt="Star rating"
               className="h-16 w-auto shrink-0"
+              width={120}
+              height={64}
+              loading="lazy"
+              decoding="async"
+              fetchPriority="low"
             />
           </div>
         </div>
@@ -172,8 +192,9 @@ export function IndexLandingHero() {
                       : "w-full h-full min-h-0 object-contain object-top"
                     : "w-full h-auto max-h-[min(560px,52vh)] object-contain object-top"
                 }
-                loading={i < 2 ? "eager" : "lazy"}
-                fetchPriority={i === 0 ? "high" : undefined}
+                decoding="async"
+                loading={i === 0 ? "eager" : "lazy"}
+                fetchPriority={i === 0 ? "high" : "low"}
               />
             </figure>
             );

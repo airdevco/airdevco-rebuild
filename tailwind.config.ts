@@ -1,6 +1,22 @@
 import type { Config } from "tailwindcss";
 import tailwindcssAnimate from "tailwindcss-animate";
 
+/** Matches `body` in `src/index.css` — Colfax is loaded via `@font-face` there (no Google Fonts). */
+const fontSansStack = [
+  "Colfax",
+  "-apple-system",
+  "BlinkMacSystemFont",
+  '"Segoe UI"',
+  "Roboto",
+  "Oxygen",
+  "Ubuntu",
+  "Cantarell",
+  '"Fira Sans"',
+  '"Droid Sans"',
+  '"Helvetica Neue"',
+  "sans-serif",
+] as const;
+
 export default {
 	darkMode: ["class"],
 	content: [
@@ -76,8 +92,8 @@ export default {
     			sm: 'calc(var(--radius) - 4px)'
     		},
             fontFamily: {
-                sans: ['DM Sans', 'sans-serif'],
-                heading: ['DM Sans', 'sans-serif'],
+                sans: [...fontSansStack],
+                heading: [...fontSansStack],
             },
     		keyframes: {
     			'accordion-down': {

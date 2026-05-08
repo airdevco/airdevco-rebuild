@@ -6,9 +6,14 @@ type ClientLogoTickerProps = {
    * Default variant applies grayscale; use `featured` for home, marketplace-style pages, client stories, etc.
    */
   variant?: ClientLogoTickerVariant;
+  /** Set `"lazy"` on homepage-style routes so logos defer until needed (default preserves legacy eager loads). */
+  logoImgLoading?: "eager" | "lazy";
 };
 
-export const ClientLogoTicker = ({ variant = "default" }: ClientLogoTickerProps = {}) => {
+export const ClientLogoTicker = ({
+  variant = "default",
+  logoImgLoading = "eager",
+}: ClientLogoTickerProps = {}) => {
   const isFeatured = variant === "featured";
 
   const logos = [
@@ -60,7 +65,13 @@ export const ClientLogoTicker = ({ variant = "default" }: ClientLogoTickerProps 
                 <div
                   className={`w-full flex items-center justify-center mb-1 ${isFeatured ? "h-16" : "h-12"}`}
                 >
-                  <img src={logo.src} alt={logo.alt} className={`${logoClass} ${imgTone}`} />
+                  <img
+                    src={logo.src}
+                    alt={logo.alt}
+                    className={`${logoClass} ${imgTone}`}
+                    loading={logoImgLoading}
+                    decoding="async"
+                  />
                 </div>
                 {logo.text && (
                   <p className="text-[10px] text-gray-400 text-center font-medium whitespace-nowrap">
