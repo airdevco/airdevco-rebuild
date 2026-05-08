@@ -1,9 +1,41 @@
 import type { Metadata } from "next";
+import fs from "node:fs";
+import path from "node:path";
 import "@/index.css";
 import { ConvexClientProvider } from "@/components/ConvexClientProvider";
 import { resolveSiteOrigin } from "@/lib/case-study-seo";
 
 const siteOrigin = resolveSiteOrigin();
+
+/**
+ * At production build time, Next emits hashed CSS under `.next/static/css`.
+ * Preload the largest chunk so the browser can fetch it in parallel with HTML.
+ * Skipped in development (no stable path until compile settles).
+ */
+function getMainStylesheetPreloadHref(): string | null {
+  if (process.env.NODE_ENV !== "production") {
+    return null;
+  }
+  try {
+    const cssDir = path.join(process.cwd(), ".next/static/css");
+    const files = fs.readdirSync(cssDir).filter((n) => n.endsWith(".css"));
+    if (files.length === 0) {
+      return null;
+    }
+    let best = files[0];
+    let bestSize = -1;
+    for (const name of files) {
+      const size = fs.statSync(path.join(cssDir, name)).size;
+      if (size > bestSize) {
+        bestSize = size;
+        best = name;
+      }
+    }
+    return `/_next/static/css/${best}`;
+  } catch {
+    return null;
+  }
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteOrigin),
@@ -36,9 +68,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const mainCssHref = getMainStylesheetPreloadHref();
+
   return (
     <html lang="en">
       <head>
+        {mainCssHref ? (
+          <link rel="preload" href={mainCssHref} as="style" />
+        ) : null}
         <link
           rel="shortcut icon"
           type="image/x-icon"

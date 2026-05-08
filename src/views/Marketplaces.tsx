@@ -181,28 +181,28 @@ const Marketplaces = () => {
         __html: `
           @font-face {
             font-family: 'Colfax';
-            src: url('https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1765238405098x558032232358736100/Colfax-Regular.woff') format('woff');
+            src: url('/fonts/Colfax-Regular.woff2') format('woff2'), url('/fonts/Colfax-Regular.woff') format('woff');
             font-weight: 400;
             font-style: normal;
             font-display: swap;
           }
           @font-face {
             font-family: 'Colfax';
-            src: url('https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1765238390337x266305410589744440/Colfax-Medium.woff') format('woff');
+            src: url('/fonts/Colfax-Medium.woff2') format('woff2'), url('/fonts/Colfax-Medium.woff') format('woff');
             font-weight: 500;
             font-style: normal;
             font-display: swap;
           }
           @font-face {
             font-family: 'Colfax';
-            src: url('https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1765238365698x537474310193827300/Colfax-Bold.woff') format('woff');
+            src: url('/fonts/Colfax-Bold.woff2') format('woff2'), url('/fonts/Colfax-Bold.woff') format('woff');
             font-weight: 700;
             font-style: normal;
             font-display: swap;
           }
           @font-face {
             font-family: 'Colfax';
-            src: url('https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1765238333088x971494408092793500/Colfax-Black.woff') format('woff');
+            src: url('/fonts/Colfax-Black.woff2') format('woff2'), url('/fonts/Colfax-Black.woff') format('woff');
             font-weight: 900;
             font-style: normal;
             font-display: swap;

@@ -23,7 +23,11 @@ export default {
 		"./src/views/**/*.{ts,tsx}",
 		"./src/components/**/*.{ts,tsx}",
 		"./src/app/**/*.{ts,tsx}",
-		"./src/**/*.{ts,tsx}",
+		"./src/contexts/**/*.{ts,tsx}",
+		"./src/hooks/**/*.{ts,tsx}",
+		"./src/utils/**/*.{ts,tsx}",
+		"./src/main.tsx",
+		"./src/App.tsx",
 	],
 	prefix: "",
 	theme: {
