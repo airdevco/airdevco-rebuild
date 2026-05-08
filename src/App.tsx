@@ -8,73 +8,81 @@ import { AuthProvider } from "@/contexts/AuthContext";
 import { ProtectedRoute, AuthRoute } from "@/components/auth";
 import { SettingsDialog } from "@/components/settings-dialog";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
-import { useEffect, useState } from "react";
-import Index from "./views/Index";
-import BubbleAppAudit from "./views/BubbleAppAudit";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { ROUTES } from "@/config/routes";
-import Partners from "./views/Partners";
-import Developers from "./views/Developers";
-import ProductManagers from "./views/ProductManagers";
-import UxDesigners from "./views/UxDesigners";
-import CoreValues from "./views/CoreValues";
-import Mission from "./views/Mission";
-import Approach from "./views/Approach";
-import Careers from "./views/Careers";
-import Blog from "./views/Blog";
-import BlogPostDetail from "./views/BlogPostDetail";
-import Signup from "./views/Signup";
-import Login from "./views/Login";
-import { ForgotPassword } from "./views/ForgotPassword";
-import { ResetPassword } from "./views/ResetPassword";
-import Dashboard from "./views/Dashboard";
-import Projects from "./views/Projects";
-import Team from "./views/Team";
-import Settings from "./views/Settings";
-import Account from "./views/Account";
-import Admin from "./views/Admin";
-import Portal from "./views/Portal";
-import NotFound from "./views/NotFound";
-import Onboarding from "./views/Onboarding";
+
+const Index = lazy(() => import("./views/Index"));
+const BubbleAppAudit = lazy(() => import("./views/BubbleAppAudit"));
+const Partners = lazy(() => import("./views/Partners"));
+const Developers = lazy(() => import("./views/Developers"));
+const ProductManagers = lazy(() => import("./views/ProductManagers"));
+const UxDesigners = lazy(() => import("./views/UxDesigners"));
+const CoreValues = lazy(() => import("./views/CoreValues"));
+const Mission = lazy(() => import("./views/Mission"));
+const Approach = lazy(() => import("./views/Approach"));
+const Careers = lazy(() => import("./views/Careers"));
+const Blog = lazy(() => import("./views/Blog"));
+const BlogPostDetail = lazy(() => import("./views/BlogPostDetail"));
+const Signup = lazy(() => import("./views/Signup"));
+const Login = lazy(() => import("./views/Login"));
+const ForgotPassword = lazy(() => import("./views/ForgotPassword"));
+const ResetPassword = lazy(() => import("./views/ResetPassword"));
+const Dashboard = lazy(() => import("./views/Dashboard"));
+const Projects = lazy(() => import("./views/Projects"));
+const Team = lazy(() => import("./views/Team"));
+const Settings = lazy(() => import("./views/Settings"));
+const Account = lazy(() => import("./views/Account"));
+const Admin = lazy(() => import("./views/Admin"));
+const Portal = lazy(() => import("./views/Portal"));
+const NotFound = lazy(() => import("./views/NotFound"));
+const Onboarding = lazy(() => import("./views/Onboarding"));
+const ClientStories = lazy(() => import("./views/ClientStories"));
+const MoreCaseStudies = lazy(() => import("./views/MoreCaseStudies"));
+const CaseStudyDetail = lazy(() => import("./views/CaseStudyDetail"));
+const SaasProducts = lazy(() => import("./views/SaasProducts"));
+const Marketplaces = lazy(() => import("./views/Marketplaces"));
+const Portals = lazy(() => import("./views/Portals"));
+const InternalTools = lazy(() => import("./views/InternalTools"));
+const Erps = lazy(() => import("./views/Erps"));
+const AiApplications = lazy(() => import("./views/AiApplications"));
+const FinancialServices = lazy(() => import("./views/FinancialServices"));
+const TechnologyAndSoftware = lazy(() => import("./views/TechnologyAndSoftware"));
+const IndustrialAndManufacturing = lazy(() => import("./views/IndustrialAndManufacturing"));
+const PublicSectorAndNonprofit = lazy(() => import("./views/PublicSectorAndNonprofit"));
+const Healthcare = lazy(() => import("./views/Healthcare"));
+const ConsumerAndRetail = lazy(() => import("./views/ConsumerAndRetail"));
+const Mvps = lazy(() => import("./views/Mvps"));
+const FullScaleBuilds = lazy(() => import("./views/FullScaleBuilds"));
+const ProductDesign = lazy(() => import("./views/ProductDesign"));
+const BubbleDevelopment = lazy(() => import("./views/BubbleDevelopment"));
+const BubbleAgency = lazy(() => import("./views/BubbleAgency"));
+const FlexBubbleFreelancers = lazy(() => import("./views/FlexBubbleFreelancers"));
+const AiEnablement = lazy(() => import("./views/AiEnablement"));
+const Marketplace = lazy(() => import("./views/Saas"));
+const SaasLanding = lazy(() => import("./views/SaasLanding"));
+const CrmLanding = lazy(() => import("./views/CrmLanding"));
+const CustomerPortalLanding = lazy(() => import("./views/CustomerPortalLanding"));
+const KnowledgeManagementLanding = lazy(() => import("./views/KnowledgeManagementLanding"));
+const AiChatbotLanding = lazy(() => import("./views/AiChatbotLanding"));
+const OrderManagementLanding = lazy(() => import("./views/OrderManagementLanding"));
+const QuotingSoftwareLanding = lazy(() => import("./views/QuotingSoftwareLanding"));
+const HrManagementLanding = lazy(() => import("./views/HrManagementLanding"));
+const BusinessSoftwareLanding = lazy(() => import("./views/BusinessSoftwareLanding"));
+const ErpLanding = lazy(() => import("./views/ErpLanding"));
+const LmsLanding = lazy(() => import("./views/LmsLanding"));
+const MvpLanding = lazy(() => import("./views/MvpLanding"));
+const InventoryManagementLanding = lazy(() => import("./views/InventoryManagementLanding"));
+const Education = lazy(() => import("./views/Education"));
 
 const queryClient = new QueryClient();
 
-import ClientStories from "./views/ClientStories";
-import MoreCaseStudies from "./views/MoreCaseStudies";
-import CaseStudyDetail from "./views/CaseStudyDetail";
-import SaasProducts from "./views/SaasProducts";
-import Marketplaces from "./views/Marketplaces";
-import Portals from "./views/Portals";
-import InternalTools from "./views/InternalTools";
-import Erps from "./views/Erps";
-import AiApplications from "./views/AiApplications";
-import FinancialServices from "./views/FinancialServices";
-import TechnologyAndSoftware from "./views/TechnologyAndSoftware";
-import IndustrialAndManufacturing from "./views/IndustrialAndManufacturing";
-import PublicSectorAndNonprofit from "./views/PublicSectorAndNonprofit";
-import Healthcare from "./views/Healthcare";
-import ConsumerAndRetail from "./views/ConsumerAndRetail";
-import Mvps from "./views/Mvps";
-import FullScaleBuilds from "./views/FullScaleBuilds";
-import ProductDesign from "./views/ProductDesign";
-import BubbleDevelopment from "./views/BubbleDevelopment";
-import BubbleAgency from "./views/BubbleAgency";
-import FlexBubbleFreelancers from "./views/FlexBubbleFreelancers";
-import AiEnablement from "./views/AiEnablement";
-import Marketplace from "./views/Saas";
-import SaasLanding from "./views/SaasLanding";
-import CrmLanding from "./views/CrmLanding";
-import CustomerPortalLanding from "./views/CustomerPortalLanding";
-import KnowledgeManagementLanding from "./views/KnowledgeManagementLanding";
-import AiChatbotLanding from "./views/AiChatbotLanding";
-import OrderManagementLanding from "./views/OrderManagementLanding";
-import QuotingSoftwareLanding from "./views/QuotingSoftwareLanding";
-import HrManagementLanding from "./views/HrManagementLanding";
-import BusinessSoftwareLanding from "./views/BusinessSoftwareLanding";
-import ErpLanding from "./views/ErpLanding";
-import LmsLanding from "./views/LmsLanding";
-import MvpLanding from "./views/MvpLanding";
-import InventoryManagementLanding from "./views/InventoryManagementLanding";
-import Education from "./views/Education";
+function RouteFallback() {
+  return (
+    <div className="flex min-h-[50vh] w-full items-center justify-center">
+      <p className="text-sm text-muted-foreground">Loading…</p>
+    </div>
+  );
+}
 
 const AppContent = () => {
   const location = useLocation();
@@ -83,7 +91,6 @@ const AppContent = () => {
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
-    // Open dialog when account=true parameter is present
     if (params.get('account') === 'true') {
       setSettingsOpen(true);
     }
@@ -92,7 +99,6 @@ const AppContent = () => {
   const handleSettingsOpenChange = (open: boolean) => {
     setSettingsOpen(open);
     if (!open) {
-      // Remove account param when closing
       const params = new URLSearchParams(location.search);
       params.delete('account');
       const newSearch = params.toString();
@@ -105,7 +111,8 @@ const AppContent = () => {
 
   return (
     <>
-      <Routes>
+      <Suspense fallback={<RouteFallback />}>
+        <Routes>
         <Route path={ROUTES.HOME} element={<Index />} />
         <Route path={ROUTES.MARKETPLACE} element={<Marketplace />} />
         <Route path={ROUTES.SAAS} element={<SaasLanding />} />
@@ -176,13 +183,13 @@ const AppContent = () => {
           </AuthRoute>
         } />
         <Route path={ROUTES.ONBOARDING} element={<Onboarding />} />
-        <Route 
-          path={ROUTES.ACCOUNT} 
+        <Route
+          path={ROUTES.ACCOUNT}
           element={
             <ProtectedRoute>
               <Account />
             </ProtectedRoute>
-          } 
+          }
         />
         <Route
           path={ROUTES.ADMIN}
@@ -213,9 +220,9 @@ const AppContent = () => {
           <Route path="projects" element={<div className="p-6"><p className="text-muted-foreground">Insert tab content here</p></div>} />
           <Route path="customers" element={<div className="p-6"><p className="text-muted-foreground">Insert tab content here</p></div>} />
         </Route>
-        {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path={ROUTES.NOT_FOUND} element={<NotFound />} />
-      </Routes>
+        </Routes>
+      </Suspense>
       <SettingsDialog open={settingsOpen} onOpenChange={handleSettingsOpenChange} />
     </>
   );

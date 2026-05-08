@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[3e3],{83e3:function(e,n,t){t.r(n),t.d(n,{default:function(){return s}});var c=t(57437);function s(){return(0,c.jsx)("div",{className:"p-6",children:(0,c.jsx)("p",{className:"text-muted-foreground",children:"Projects content coming soon..."})})}}}]);

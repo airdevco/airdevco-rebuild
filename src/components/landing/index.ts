@@ -17,6 +17,7 @@ export { ApproachContent } from "./approach-content";
 export { WhoWeAre } from "./who-we-are";
 export { ApproachValues } from "./approach-values";
 export { SaasCTA } from "./saas-cta";
+export { IndexLandingCTA } from "./index-landing-cta";
 export { CapabilitiesSection } from "./capabilities-section";
 export { DesignPrinciples } from "./design-principles";
 export { ProductExperts } from "./product-experts";

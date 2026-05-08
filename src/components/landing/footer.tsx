@@ -46,9 +46,9 @@ export const Footer = ({ variant = "default" }: FooterProps = {}) => {
   }
 
   return (
-    <footer className="pt-24 pb-12">
+    <footer className="pt-24 pb-6">
       <div className="max-w-[1200px] mx-auto px-6">
-        <div className="grid lg:grid-cols-12 gap-12 mb-20">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 mb-8">
           <div className="lg:col-span-4">
             <a href={ROUTES.HOME} className="mb-6 block">
               <img 
@@ -62,7 +62,7 @@ export const Footer = ({ variant = "default" }: FooterProps = {}) => {
             </p>
           </div>
           
-          <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-x-10 gap-y-10 md:gap-x-14 lg:grid-cols-[auto_auto_auto_minmax(0,1fr)] lg:gap-x-12 xl:gap-x-20 lg:justify-items-start">
             <div>
               <h4 className="font-bold text-gray-900 mb-6">Services</h4>
               <ul className="space-y-4">
@@ -163,7 +163,7 @@ export const Footer = ({ variant = "default" }: FooterProps = {}) => {
                 </li>
               </ul>
             </div>
-            <div>
+            <div className="text-left lg:justify-self-end">
               <h4 className="font-bold text-gray-900 mb-6">Company</h4>
               <ul className="space-y-4">
                 <li>

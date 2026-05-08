@@ -77,7 +77,7 @@ export default {
     		},
             fontFamily: {
                 sans: ['DM Sans', 'sans-serif'],
-                heading: ['Outfit', 'sans-serif'],
+                heading: ['DM Sans', 'sans-serif'],
             },
     		keyframes: {
     			'accordion-down': {

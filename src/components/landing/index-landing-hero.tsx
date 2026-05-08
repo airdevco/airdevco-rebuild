@@ -173,6 +173,7 @@ export function IndexLandingHero() {
                     : "w-full h-auto max-h-[min(560px,52vh)] object-contain object-top"
                 }
                 loading={i < 2 ? "eager" : "lazy"}
+                fetchPriority={i === 0 ? "high" : undefined}
               />
             </figure>
             );
