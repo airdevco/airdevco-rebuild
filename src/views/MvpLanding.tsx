@@ -5,10 +5,10 @@ import {
   CaseStudies,
   ClientLogoTicker,
   Testimonials,
+  IndexLandingCTA,
   Footer,
 } from "@/components/landing";
 import { MvpHeader } from "@/components/landing/mvp-header";
-import { MvpCTA } from "@/components/landing/mvp-page-cta";
 import { LandingPricingPopup } from "@/components/landing/landing-pricing-popup";
 import {
   MvpLandingHero,
@@ -94,17 +94,23 @@ export default function MvpLanding() {
             label="Testimonials"
             title="Clients trust Airdev to launch and scale"
             description=""
+            sectionClassName="pb-4"
+            gridAreaClassName="pb-10"
+            moreLinkWrapperClassName="mt-5"
           />
           <div id="contact" className="scroll-mt-[88px]">
-            <MvpCTA
+            <IndexLandingCTA
+              sectionClassName="pt-8 pb-10"
               title="Ready to scope your MVP?"
-              description="We're happy to talk through it, even if you're just exploring."
-              buttonText="Get started"
+              description={
+                "Chat with our team to see what we can do.\nWe've shipped 1,000+ products — yours could be next."
+              }
+              buttonText="Talk to us"
             />
           </div>
           <LandingPricingPopup plans={PRICING_PLANS} />
         </main>
-        <Footer variant="minimal" />
+        <Footer variant="minimal" topDivider />
       </div>
     </>
   );

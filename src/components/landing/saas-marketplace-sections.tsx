@@ -35,6 +35,7 @@ import {
 } from "@heroicons/react/24/solid";
 import { Button } from "@/components/ui/button";
 import { SampleProducts, type Product } from "@/components/landing/sample-products";
+import { CASE_STUDY_SLUG } from "@/config/case-study-static-slugs";
 
 /** Matches index `Navbar` CTA + SaaS `Hero` primary button sizing */
 const MARKETPLACE_PRIMARY_BTN =
@@ -591,12 +592,13 @@ export function MarketplacePricingSection() {
 const SAAS_MARKETPLACE_CASE_SLIDES_RAW = [
   {
     id: "ticketrev",
+    caseStudySlug: CASE_STUDY_SLUG.ticketrev,
     company: "TicketRev",
     logo: "https://cdn.prod.website-files.com/64e8a789efa42eaf8fe4d068/64e8b49e181622332d021cee_Logo.svg",
     logoText: "",
     heading: "How a buyer-first ticket marketplace startup quickly secured $1.1M in funding with Bubble.io",
     description: "",
-    image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/64cc2c786d693702395f21b1_TicketRev-built-with-no-code-Airdev.jpg",
+    image: "https://4b71d08d04d5d7c66482fc6e8486501c.cdn.bubble.io/f1778284368025x686075353487686900/ticketrev.jpg",
     imageTitle: "How a buyer-first ticket marketplace startup quickly secured $1.1M in funding with Bubble.io",
     customFields: [
       { label: "Business type", value: "Startup", color: "#635bff" },
@@ -607,6 +609,7 @@ const SAAS_MARKETPLACE_CASE_SLIDES_RAW = [
   },
   {
     id: "consenna",
+    caseStudySlug: CASE_STUDY_SLUG.consenna,
     company: "HP",
     logo: "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/669a98f0f9d898fd7a42ee37_hp.webp",
     logoText: "",
@@ -623,6 +626,7 @@ const SAAS_MARKETPLACE_CASE_SLIDES_RAW = [
   },
   {
     id: "kidsbook",
+    caseStudySlug: "kidsbook-marketplace-app",
     company: "Kidsbook",
     logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1768940559825x362227103494313200/kidsbook.png",
     logoText: "",

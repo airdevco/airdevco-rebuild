@@ -536,5 +536,11 @@ const INVENTORY_CASE_SLIDES_RAW = [
 
 export const INVENTORY_CASE_SLIDES = INVENTORY_CASE_SLIDES_RAW.map((slide) => ({
   ...slide,
+  caseStudySlug:
+    slide.id === "greener"
+      ? "greener-corporation-no-code-erp"
+      : slide.id === "resolis"
+        ? "resolis"
+        : slide.id,
   customFields: slide.customFields.filter((field) => field.label !== "Key results"),
 }));

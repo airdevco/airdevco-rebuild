@@ -198,7 +198,7 @@ const AiEnablement = () => {
             description="From intelligent chatbots to predictive analytics, we help businesses integrate AI capabilities that drive real results. Here are examples of AI-powered applications we've built."
             products={AI_PRODUCTS}
           />
-          <div className="pt-24">
+          <div className="pt-16">
             <IndexLandingCTA />
           </div>
         </main>

@@ -18,7 +18,7 @@ const SEED_DATA = [
     customerLogo:
       "https://cdn.prod.website-files.com/64e8a789efa42eaf8fe4d068/64e8b49e181622332d021cee_Logo.svg",
     thumbnailImage:
-      "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/64cc2c786d693702395f21b1_TicketRev-built-with-no-code-Airdev.jpg",
+      "https://4b71d08d04d5d7c66482fc6e8486501c.cdn.bubble.io/f1778284368025x686075353487686900/ticketrev.jpg",
     thumbnailSummary:
       "How a buyer-first ticket marketplace startup quickly secured $1.1M in funding with Airdev",
     businessType: "Startup",

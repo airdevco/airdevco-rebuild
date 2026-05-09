@@ -683,5 +683,11 @@ const SAAS_MARKETPLACE_CASE_SLIDES_RAW = [
 
 export const SAAS_MARKETPLACE_CASE_SLIDES = SAAS_MARKETPLACE_CASE_SLIDES_RAW.map((slide) => ({
   ...slide,
+  caseStudySlug:
+    slide.id === "bubble"
+      ? "tributi-latin-american-turbo-tax-no-code"
+      : slide.id === "cerebro"
+        ? "cerebro-sports-analytics-platform-no-code"
+        : "my-nft-alerts-web-platform-no-code",
   customFields: slide.customFields.filter((field) => field.label !== "Key results"),
 }));

@@ -515,7 +515,7 @@ const MVP_CASE_SLIDES_RAW = [
     logoText: "",
     heading: "How a buyer-first ticket marketplace startup quickly secured $1.1M in funding with Bubble.io",
     description: "",
-    image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/64cc2c786d693702395f21b1_TicketRev-built-with-no-code-Airdev.jpg",
+    image: "https://4b71d08d04d5d7c66482fc6e8486501c.cdn.bubble.io/f1778284368025x686075353487686900/ticketrev.jpg",
     imageTitle: "How a buyer-first ticket marketplace startup quickly secured $1.1M in funding with Bubble.io",
     customFields: [
       { label: "Business type", value: "Startup", color: "#635bff" },
@@ -545,5 +545,11 @@ const MVP_CASE_SLIDES_RAW = [
 
 export const MVP_CASE_SLIDES = MVP_CASE_SLIDES_RAW.map((slide) => ({
   ...slide,
+  caseStudySlug:
+    slide.id === "ticketrev"
+      ? CASE_STUDY_SLUG.ticketrev
+      : slide.id === "kidsbook"
+        ? "kidsbook-marketplace-app"
+        : slide.id,
   customFields: slide.customFields.filter((field) => field.label !== "Key results"),
 }));

@@ -5,13 +5,16 @@ import {
   Hero,
   CaseStudies,
   ClientLogoTicker,
-  SaasCTA,
   Footer,
   SampleProducts,
   FintechValueProps,
   type FintechValuePropItem,
+  IndexLandingCTA,
 } from "@/components/landing";
 import { CASE_STUDY_SLUG } from "@/config/case-study-static-slugs";
+
+const INDEX_INDUSTRY_CTA_DESCRIPTION =
+  "Chat with our team to see what we can do.\nWe've shipped 1,000+ products — yours could be next.";
 import {
   CodeBracketIcon,
   CpuChipIcon,
@@ -235,6 +238,7 @@ const TechnologyAndSoftware = () => {
             slides={[
               {
                 id: CASE_STUDY_SLUG.bubble,
+                caseStudySlug: CASE_STUDY_SLUG.bubble,
                 company: "Bubble.io",
                 logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766446287440x908698787583342700/bubble.io.png",
                 logoText: "",
@@ -251,6 +255,7 @@ const TechnologyAndSoftware = () => {
               },
               {
                 id: CASE_STUDY_SLUG.cerebro,
+                caseStudySlug: CASE_STUDY_SLUG.cerebro,
                 company: "Cerebro Sports",
                 logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447113960x777797950241704700/cerebro.png",
                 logoText: "Mark Cuban-funded",
@@ -267,12 +272,13 @@ const TechnologyAndSoftware = () => {
               },
               {
                 id: CASE_STUDY_SLUG.ticketrev,
+                caseStudySlug: CASE_STUDY_SLUG.ticketrev,
                 company: "TicketRev",
                 logo: "https://cdn.prod.website-files.com/64e8a789efa42eaf8fe4d068/64e8b49e181622332d021cee_Logo.svg",
                 logoText: "",
                 heading: "How a buyer-first ticket marketplace startup quickly secured $1.1M in funding with Bubble.io",
                 description: "",
-                image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/64cc2c786d693702395f21b1_TicketRev-built-with-no-code-Airdev.jpg",
+                image: "https://4b71d08d04d5d7c66482fc6e8486501c.cdn.bubble.io/f1778284368025x686075353487686900/ticketrev.jpg",
                 imageTitle: "How a buyer-first ticket marketplace startup quickly secured $1.1M in funding with Bubble.io",
                 customFields: [
                   { label: "Business type", value: "Startup", color: "#635bff" },
@@ -291,9 +297,10 @@ const TechnologyAndSoftware = () => {
             description="Powerful, scalable solutions across the technology landscape. Here are some of the most common types."
             descriptionMaxWidth="600px"
           />
-          <SaasCTA
-            title="Building a software?"
-            description="We're happy to talk through your project, even if you're still in the early stages."
+          <IndexLandingCTA
+            sectionClassName="pt-16"
+            title="Building something in tech & software?"
+            description={INDEX_INDUSTRY_CTA_DESCRIPTION}
           />
         </main>
         <Footer />

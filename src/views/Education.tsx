@@ -5,13 +5,16 @@ import {
   Hero,
   CaseStudies,
   ClientLogoTicker,
-  SaasCTA,
   Footer,
   SampleProducts,
   FintechValueProps,
   type FintechValuePropItem,
+  IndexLandingCTA,
 } from "@/components/landing";
 import { CASE_STUDY_SLUG } from "@/config/case-study-static-slugs";
+
+const INDEX_INDUSTRY_CTA_DESCRIPTION =
+  "Chat with our team to see what we can do.\nWe've shipped 1,000+ products — yours could be next.";
 import {
   AcademicCapIcon,
   ArrowPathIcon,
@@ -245,6 +248,7 @@ const Education = () => {
             slides={[
               {
                 id: CASE_STUDY_SLUG.playground,
+                caseStudySlug: CASE_STUDY_SLUG.playground,
                 company: "Playground IEP",
                 logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447131162x922542988700125000/playground.png",
                 logoText: "",
@@ -260,7 +264,8 @@ const Education = () => {
                 ],
               },
               {
-                id: "tfa",
+                id: CASE_STUDY_SLUG.tfa,
+                caseStudySlug: CASE_STUDY_SLUG.tfa,
                 company: "Teach for America",
                 logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447145612x608821623632928600/tfa.png",
                 logoText: "",
@@ -276,7 +281,8 @@ const Education = () => {
                 ],
               },
               {
-                id: "consenna",
+                id: CASE_STUDY_SLUG.consenna,
+                caseStudySlug: CASE_STUDY_SLUG.consenna,
                 company: "Consenna",
                 logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1768940931729x657157670211085600/consenna.png",
                 logoText: "",
@@ -301,9 +307,10 @@ const Education = () => {
             description="Purpose-built software for schools, districts, and education organizations. Here are common product shapes we deliver."
             descriptionMaxWidth="760px"
           />
-          <SaasCTA
-            title="Building an education product?"
-            description="We're happy to talk through your project, even if you're still in the early stages."
+          <IndexLandingCTA
+            sectionClassName="pt-16"
+            title="Building something in education?"
+            description={INDEX_INDUSTRY_CTA_DESCRIPTION}
           />
         </main>
         <Footer />

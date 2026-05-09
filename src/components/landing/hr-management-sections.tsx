@@ -24,6 +24,7 @@ import {
   CheckIcon,
   XMarkIcon,
 } from "@heroicons/react/24/solid";
+import { CASE_STUDY_SLUG } from "@/config/case-study-static-slugs";
 import { Button } from "@/components/ui/button";
 import { SampleProducts, type Product } from "@/components/landing/sample-products";
 
@@ -614,5 +615,11 @@ const HR_MANAGEMENT_CASE_SLIDES_RAW = [
 
 export const HR_MANAGEMENT_CASE_SLIDES = HR_MANAGEMENT_CASE_SLIDES_RAW.map((slide) => ({
   ...slide,
+  caseStudySlug:
+    slide.id === "camphire"
+      ? "camphire"
+      : slide.id === "tfa"
+        ? CASE_STUDY_SLUG.tfa
+        : "inspo-airdev-no-code-app",
   customFields: slide.customFields.filter((field) => field.label !== "Key results"),
 }));

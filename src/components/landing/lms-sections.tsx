@@ -524,5 +524,6 @@ const LMS_CASE_SLIDES_RAW = [
 
 export const LMS_CASE_SLIDES = LMS_CASE_SLIDES_RAW.map((slide) => ({
   ...slide,
+  caseStudySlug: slide.id,
   customFields: slide.customFields.filter((field) => field.label !== "Key results"),
 }));

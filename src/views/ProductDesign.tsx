@@ -103,7 +103,7 @@ const ProductDesign = () => {
             ]}
           />
           <Testimonials backgroundColor="#F6F9FC" label="WHAT CLIENTS SAY" />
-          <div className="pt-24">
+          <div className="pt-16">
             <IndexLandingCTA />
           </div>
         </main>

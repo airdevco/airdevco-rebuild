@@ -4,7 +4,7 @@ import {
   Navbar,
   Hero,
   Testimonials,
-  SaasCTA,
+  IndexLandingCTA,
   Footer,
   ClientLogoTicker,
   OurRoles,
@@ -407,7 +407,7 @@ const BubbleAgency = () => {
               </Accordion>
             </div>
           </section>
-          <SaasCTA />
+          <IndexLandingCTA sectionClassName="pt-16" />
         </main>
         <Footer />
       </div>

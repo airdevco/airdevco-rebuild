@@ -5,12 +5,15 @@ import {
   Hero,
   CaseStudies,
   ClientLogoTicker,
-  SaasCTA,
   Footer,
   SampleProducts,
   FintechValueProps,
   type FintechValuePropItem,
+  IndexLandingCTA,
 } from "@/components/landing";
+
+const INDEX_INDUSTRY_CTA_DESCRIPTION =
+  "Chat with our team to see what we can do.\nWe've shipped 1,000+ products — yours could be next.";
 import { Product } from "@/components/landing/sample-products";
 import {
   ArrowPathIcon,
@@ -34,6 +37,7 @@ import {
 // Single case study for this page only; does not affect other routes.
 const INDUSTRIAL_MANUFACTURING_CLIENT_STORY = {
   id: "greener",
+  caseStudySlug: "greener-corporation-no-code-erp",
   company: "Greener Corporation",
   logo: "https://greenercorp.com/wp-content/uploads/2022/07/Greener-Logo.svg",
   logoText: "",
@@ -277,9 +281,10 @@ const IndustrialAndManufacturing = () => {
             description="Operational products for plants, warehouses, and supply networks. Here are common shapes we deliver."
             descriptionMaxWidth="720px"
           />
-          <SaasCTA
+          <IndexLandingCTA
+            sectionClassName="pt-16"
             title="Building something in manufacturing?"
-            description="We're happy to talk through your project, even if you're still in the early stages."
+            description={INDEX_INDUSTRY_CTA_DESCRIPTION}
           />
         </main>
         <Footer />

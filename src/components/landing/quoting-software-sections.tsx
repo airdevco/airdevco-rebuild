@@ -22,6 +22,7 @@ import {
   CheckIcon,
   XMarkIcon,
 } from "@heroicons/react/24/solid";
+import { CASE_STUDY_SLUG } from "@/config/case-study-static-slugs";
 import { Button } from "@/components/ui/button";
 import { SampleProducts, type Product } from "@/components/landing/sample-products";
 
@@ -576,5 +577,9 @@ const QUOTING_SOFTWARE_CASE_SLIDES_RAW = [
 
 export const QUOTING_SOFTWARE_CASE_SLIDES = QUOTING_SOFTWARE_CASE_SLIDES_RAW.map((slide) => ({
   ...slide,
+  caseStudySlug:
+    slide.id === "greener"
+      ? "greener-corporation-no-code-erp"
+      : CASE_STUDY_SLUG.bolster,
   customFields: slide.customFields.filter((field) => field.label !== "Key results"),
 }));

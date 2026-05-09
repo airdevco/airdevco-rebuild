@@ -27,6 +27,7 @@ import {
   CheckIcon,
   XMarkIcon,
 } from "@heroicons/react/24/solid";
+import { CASE_STUDY_SLUG } from "@/config/case-study-static-slugs";
 import { Button } from "@/components/ui/button";
 import { SampleProducts, type Product } from "@/components/landing/sample-products";
 
@@ -577,5 +578,7 @@ const KNOWLEDGE_MANAGEMENT_CASE_SLIDES_RAW = [
 
 export const KNOWLEDGE_MANAGEMENT_CASE_SLIDES = KNOWLEDGE_MANAGEMENT_CASE_SLIDES_RAW.map((slide) => ({
   ...slide,
+  caseStudySlug:
+    slide.id === "tfa" ? CASE_STUDY_SLUG.tfa : CASE_STUDY_SLUG.navigreat,
   customFields: slide.customFields.filter((field) => field.label !== "Key results"),
 }));

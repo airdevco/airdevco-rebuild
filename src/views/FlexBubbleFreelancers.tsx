@@ -10,7 +10,7 @@ import {
   Navbar,
   Hero,
   Testimonials,
-  SaasCTA,
+  IndexLandingCTA,
   Footer,
   ClientLogoTicker,
   OurRoles,
@@ -574,13 +574,6 @@ const FlexBubbleFreelancers = () => {
 
           <Testimonials backgroundColor="#FFFFFF" />
 
-          <SaasCTA
-            title="Ready to hire a Bubble freelancer?"
-            description="Get matched with the right Bubble developer, designer, or product manager."
-            buttonText="Get started"
-            buttonLink="https://portal.airdev.co/flex_start"
-          />
-
           {/* FAQ — Flex-specific copy, do not touch BubbleAgency */}
           <section className="py-24 bg-white">
             <div className="max-w-[800px] mx-auto px-6">
@@ -708,6 +701,18 @@ const FlexBubbleFreelancers = () => {
               </Accordion>
             </div>
           </section>
+
+          <IndexLandingCTA
+            sectionClassName="pt-16"
+            title="Ready to hire a Bubble freelancer?"
+            description={
+              "Get matched with the right Bubble developer, designer, or \nproduct manager to build your app."
+            }
+            descriptionClassName="max-w-[28rem]"
+            buttonText="Get started"
+            buttonHref="https://portal.airdev.co/flex_start"
+            showClientStories={false}
+          />
         </main>
         <Footer />
       </div>

@@ -5,12 +5,16 @@ import {
   Hero,
   CaseStudies,
   ClientLogoTicker,
-  SaasCTA,
   Footer,
   SampleProducts,
   FintechValueProps,
   type FintechValuePropItem,
+  IndexLandingCTA,
 } from "@/components/landing";
+import { CASE_STUDY_SLUG } from "@/config/case-study-static-slugs";
+
+const INDEX_INDUSTRY_CTA_DESCRIPTION =
+  "Chat with our team to see what we can do.\nWe've shipped 1,000+ products — yours could be next.";
 import {
   UserGroupIcon,
   DocumentTextIcon,
@@ -227,7 +231,8 @@ const PublicSectorAndNonprofit = () => {
             description="We've helped public sector organizations and nonprofits build grant management systems, donor platforms, volunteer coordination tools, and citizen engagement portals."
             slides={[
               {
-                id: "tfa",
+                id: CASE_STUDY_SLUG.tfa,
+                caseStudySlug: CASE_STUDY_SLUG.tfa,
                 company: "Teach for America",
                 logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447145612x608821623632928600/tfa.png",
                 logoText: "",
@@ -243,7 +248,8 @@ const PublicSectorAndNonprofit = () => {
                 ]
               },
               {
-                id: "navigreat",
+                id: CASE_STUDY_SLUG.navigreat,
+                caseStudySlug: CASE_STUDY_SLUG.navigreat,
                 company: "NaviGreat",
                 logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1765319327038x377695290107660200/navigreat.png",
                 logoText: "",
@@ -269,9 +275,10 @@ const PublicSectorAndNonprofit = () => {
             description="Mission-driven solutions for government agencies and nonprofit organizations. Here are some of the most common types."
             descriptionMaxWidth="650px"
           />
-          <SaasCTA
-            title="Building a product in the public sector?"
-            description="We're happy to talk through your project, even if you're still in the early stages."
+          <IndexLandingCTA
+            sectionClassName="pt-16"
+            title="Building something in the public sector?"
+            description={INDEX_INDUSTRY_CTA_DESCRIPTION}
           />
         </main>
         <Footer />

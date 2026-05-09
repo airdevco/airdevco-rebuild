@@ -6,7 +6,7 @@ import {
   CaseStudies,
   ClientLogoTicker,
   Testimonials,
-  SaasCTA,
+  IndexLandingCTA,
   Footer,
   ValueProps,
   SampleProducts,
@@ -18,6 +18,7 @@ import { CASE_STUDY_SLUG } from "@/config/case-study-static-slugs";
 const PORTALS_CASE_STUDIES = [
   {
     id: CASE_STUDY_SLUG.tfa,
+    caseStudySlug: CASE_STUDY_SLUG.tfa,
     company: "Teach for America",
     logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447145612x608821623632928600/tfa.png",
     logoText: "",
@@ -36,6 +37,7 @@ const PORTALS_CASE_STUDIES = [
   },
   {
     id: CASE_STUDY_SLUG.cadence,
+    caseStudySlug: CASE_STUDY_SLUG.cadence,
     company: "Cadence Translate",
     logo: "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/669a9ff1b72d8c1ec14d79f4_cadence.webp",
     logoText: "500 startups funded",
@@ -54,6 +56,7 @@ const PORTALS_CASE_STUDIES = [
   },
   {
     id: "resolis",
+    caseStudySlug: "resolis",
     company: "Resolis",
     logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1767136295917x196197816364843680/resolis.png",
     logoText: "",
@@ -142,7 +145,7 @@ const Portals = () => {
             rightColumnClassName="lg:col-span-9"
           />
           <Testimonials />
-          <SaasCTA />
+          <IndexLandingCTA />
         </main>
         <Footer />
       </div>

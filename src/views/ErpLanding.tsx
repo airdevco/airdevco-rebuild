@@ -4,10 +4,10 @@ import {
   CaseStudies,
   ClientLogoTicker,
   Testimonials,
+  IndexLandingCTA,
   Footer,
 } from "@/components/landing";
 import { ErpHeader } from "@/components/landing/erp-header";
-import { ErpCTA } from "@/components/landing/erp-page-cta";
 import { LandingPricingPopup } from "@/components/landing/landing-pricing-popup";
 import {
   ErpLandingHero,
@@ -78,17 +78,23 @@ export default function ErpLanding() {
             label="Testimonials"
             title="Clients trust Airdev to launch and scale"
             description=""
+            sectionClassName="pb-4"
+            gridAreaClassName="pb-10"
+            moreLinkWrapperClassName="mt-5"
           />
           <div id="contact" className="scroll-mt-[88px]">
-            <ErpCTA
+            <IndexLandingCTA
+              sectionClassName="pt-8 pb-10"
               title="Have an ERP product in mind?"
-              description="We're happy to talk through it, even if you're just exploring."
-              buttonText="Get started"
+              description={
+                "Chat with our team to see what we can do.\nWe've shipped 1,000+ products — yours could be next."
+              }
+              buttonText="Talk to us"
             />
           </div>
           <LandingPricingPopup plans={PRICING_PLANS} />
         </main>
-        <Footer variant="minimal" />
+        <Footer variant="minimal" topDivider />
       </div>
     </>
   );

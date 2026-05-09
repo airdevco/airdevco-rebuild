@@ -6,11 +6,12 @@ import {
   CaseStudies,
   ClientLogoTicker,
   Testimonials,
-  SaasCTA,
+  IndexLandingCTA,
   Footer,
   ValueProps,
   SampleProducts,
 } from "@/components/landing";
+import { CASE_STUDY_SLUG } from "@/config/case-study-static-slugs";
 import type { Product } from "@/components/landing/sample-products";
 import {
   ShoppingBagIcon,
@@ -32,12 +33,13 @@ import {
 const MARKETPLACE_CASE_STUDIES = [
   {
     id: "ticketrev",
+    caseStudySlug: CASE_STUDY_SLUG.ticketrev,
     company: "TicketRev",
     logo: "https://cdn.prod.website-files.com/64e8a789efa42eaf8fe4d068/64e8b49e181622332d021cee_Logo.svg",
     logoText: "",
     heading: "How a buyer-first ticket marketplace startup quickly secured $1.1M in funding with Bubble.io",
     description: "",
-    image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/64cc2c786d693702395f21b1_TicketRev-built-with-no-code-Airdev.jpg",
+    image: "https://4b71d08d04d5d7c66482fc6e8486501c.cdn.bubble.io/f1778284368025x686075353487686900/ticketrev.jpg",
     imageTitle: "How a buyer-first ticket marketplace startup quickly secured $1.1M in funding with Bubble.io",
     customFields: [
       { label: "Business type", value: "Startup", color: "#635bff" },
@@ -48,6 +50,7 @@ const MARKETPLACE_CASE_STUDIES = [
   },
   {
     id: "kidsbook",
+    caseStudySlug: "kidsbook-marketplace-app",
     company: "Kidsbook",
     logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1768940559825x362227103494313200/kidsbook.png",
     logoText: "",
@@ -64,6 +67,7 @@ const MARKETPLACE_CASE_STUDIES = [
   },
   {
     id: "consenna",
+    caseStudySlug: CASE_STUDY_SLUG.consenna,
     company: "Consenna",
     logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1768940931729x657157670211085600/consenna.png",
     logoText: "",
@@ -80,6 +84,7 @@ const MARKETPLACE_CASE_STUDIES = [
   },
   {
     id: "camphire",
+    caseStudySlug: "camphire",
     company: "CampHire",
     logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1768941053053x498298402804590460/camphire.png",
     logoText: "",
@@ -238,7 +243,14 @@ const Marketplaces = () => {
             bgColor="#F6F9FC"
           />
           <Testimonials />
-          <SaasCTA />
+          <IndexLandingCTA
+            sectionClassName="pt-16"
+            title="Have a marketplace in mind?"
+            description={
+              "Chat with our team to see what we can do.\nWe've shipped 1,000+ products — yours could be next."
+            }
+            buttonText="Talk to us"
+          />
         </main>
         <Footer />
       </div>

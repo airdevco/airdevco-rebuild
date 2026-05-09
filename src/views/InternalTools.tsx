@@ -6,7 +6,7 @@ import {
   CaseStudies,
   ClientLogoTicker,
   Testimonials,
-  SaasCTA,
+  IndexLandingCTA,
   Footer,
   ValueProps,
   SampleProducts,
@@ -38,6 +38,7 @@ import {
 const INTERNAL_TOOLS_CASE_STUDIES = [
   {
     id: "tfa",
+    caseStudySlug: CASE_STUDY_SLUG.tfa,
     company: "Teach for America",
     logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447145612x608821623632928600/tfa.png",
     logoText: "",
@@ -56,7 +57,8 @@ const INTERNAL_TOOLS_CASE_STUDIES = [
     ],
   },
   {
-                id: CASE_STUDY_SLUG.bubble,
+    id: CASE_STUDY_SLUG.bubble,
+    caseStudySlug: CASE_STUDY_SLUG.bubble,
     company: "Bubble.io",
     logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766446287440x908698787583342700/bubble.io.png",
     logoText: "",
@@ -72,7 +74,8 @@ const INTERNAL_TOOLS_CASE_STUDIES = [
     ]
   },
   {
-                id: CASE_STUDY_SLUG.playground,
+    id: CASE_STUDY_SLUG.playground,
+    caseStudySlug: CASE_STUDY_SLUG.playground,
     company: "Playground IEP",
     logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447131162x922542988700125000/playground.png",
     logoText: "",
@@ -246,7 +249,7 @@ const InternalTools = () => {
             bgColor="#F6F9FC"
           />
           <Testimonials />
-          <SaasCTA />
+          <IndexLandingCTA />
         </main>
         <Footer />
       </div>

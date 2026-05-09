@@ -5,13 +5,16 @@ import {
   Hero,
   CaseStudies,
   ClientLogoTicker,
-  SaasCTA,
   Footer,
   SampleProducts,
   FintechValueProps,
   type FintechValuePropItem,
+  IndexLandingCTA,
 } from "@/components/landing";
 import { CASE_STUDY_SLUG } from "@/config/case-study-static-slugs";
+
+const INDEX_INDUSTRY_CTA_DESCRIPTION =
+  "Chat with our team to see what we can do.\nWe've shipped 1,000+ products — yours could be next.";
 import { Product } from "@/components/landing/sample-products";
 import {
   ArrowPathIcon,
@@ -252,6 +255,7 @@ const Healthcare = () => {
             slides={[
               {
                 id: CASE_STUDY_SLUG.dividend,
+                caseStudySlug: CASE_STUDY_SLUG.dividend,
                 company: "Dividend Finance",
                 logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766447523324x536489976697318800/dividend.png",
                 logoText: "$300m+ raised",
@@ -267,7 +271,8 @@ const Healthcare = () => {
                 ]
               },
               {
-                id: CASE_STUDY_SLUG.bubble,
+                id: "tributi",
+                caseStudySlug: "tributi-latin-american-turbo-tax-no-code",
                 company: "Tributi",
                 logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766777935802x342363134894177340/tributi.png",
                 logoText: "VC funded",
@@ -283,7 +288,8 @@ const Healthcare = () => {
                 ]
               },
               {
-                id: CASE_STUDY_SLUG.playground,
+                id: "my-nft-alerts",
+                caseStudySlug: "my-nft-alerts-web-platform-no-code",
                 company: "My NFT Alerts",
                 logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766777953165x204069526181363420/mynftalerts.png",
                 logoText: "",
@@ -308,9 +314,10 @@ const Healthcare = () => {
             description="Products for patients, clinicians, and operations teams in regulated environments. Here are common shapes we deliver."
             descriptionMaxWidth="720px"
           />
-          <SaasCTA
+          <IndexLandingCTA
+            sectionClassName="pt-16"
             title="Building something in healthcare?"
-            description="We're happy to talk through your project, even if you're still in the early stages."
+            description={INDEX_INDUSTRY_CTA_DESCRIPTION}
           />
         </main>
         <Footer />

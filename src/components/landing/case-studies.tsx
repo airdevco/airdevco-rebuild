@@ -65,7 +65,7 @@ const DEFAULT_SLIDES = [
     logoText: "",
     heading: "How a buyer-first ticket marketplace startup quickly secured $1.1M in funding with Bubble.io",
     description: "",
-    image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/64cc2c786d693702395f21b1_TicketRev-built-with-no-code-Airdev.jpg",
+    image: "https://4b71d08d04d5d7c66482fc6e8486501c.cdn.bubble.io/f1778284368025x686075353487686900/ticketrev.jpg",
     imageTitle: "How a buyer-first ticket marketplace startup quickly secured $1.1M in funding with Bubble.io",
     customFields: [
       { label: "Business type", value: "Startup", color: "#635bff" },
@@ -234,7 +234,8 @@ export const CaseStudies = ({
                           ${slide.id === CASE_STUDY_SLUG.dividend ? 'max-h-5' : ''} 
                           ${slide.company === 'Tributi' ? 'max-h-5 mt-1' : slide.id === CASE_STUDY_SLUG.bubble ? 'max-h-6' : ''} 
                           ${slide.company === 'Playground IEP' ? 'mix-blend-multiply' : ''}
-                          ${slide.id === CASE_STUDY_SLUG.ticketrev || slide.id === "resolis" ? "max-h-6" : ""}
+                          ${slide.id === "ticketrev" || slide.id === CASE_STUDY_SLUG.ticketrev ? "max-h-6" : ""}
+                          ${slide.id === "resolis" ? "max-h-6" : ""}
                           ${slide.id === 'kidsbook' ? 'max-h-9' : ''}
                           ${slide.id === 'consenna' ? 'max-h-[48px]' : ''}
                           ${slide.id === 'camphire' ? 'max-h-9' : ''}

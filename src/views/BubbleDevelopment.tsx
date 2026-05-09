@@ -4,7 +4,7 @@ import {
   Navbar,
   Hero,
   Testimonials,
-  SaasCTA,
+  IndexLandingCTA,
   Footer,
   ClientLogoTicker,
   WhoWeAre,
@@ -64,7 +64,7 @@ const BubbleDevelopment = () => {
             label="TRUSTED BY ORGANIZATIONS OF ALL SIZES"
           />
           <div className="pt-16">
-            <ClientLogoTicker />
+            <ClientLogoTicker variant="featured" />
           </div>
           <section className="py-24 bg-[#F6F9FC]">
             <div className="max-w-[1200px] mx-auto px-6">
@@ -315,7 +315,12 @@ const BubbleDevelopment = () => {
             </div>
           </section>
 
-          <WhoWeAre />
+          <WhoWeAre
+            hideGallery
+            compactMetricsBottom
+            statsGridClassName="gap-6 lg:gap-x-10 lg:gap-y-6"
+            statItemClassName="pt-9 pb-9 pr-0"
+          />
           <Testimonials backgroundColor="#F6F9FC" />
 
           {/* FAQ Section (copied from BubbleAppAudit, localized for this page) */}
@@ -395,7 +400,7 @@ const BubbleDevelopment = () => {
               </Accordion>
             </div>
           </section>
-          <SaasCTA />
+          <IndexLandingCTA sectionClassName="pt-16" />
         </main>
         <Footer />
       </div>

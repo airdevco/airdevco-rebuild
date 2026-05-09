@@ -19,6 +19,12 @@ interface TestimonialsProps {
   backgroundColor?: string;
   /** Use `"lazy"` on homepage so portraits defer (section is far below fold). Default `"eager"`. */
   avatarImgLoading?: "eager" | "lazy";
+  /** Merged onto the outer `<section>` (e.g. `pb-8` for tighter spacing on one page). */
+  sectionClassName?: string;
+  /** Merged onto the grid + link wrapper (`relative pb-12` by default). */
+  gridAreaClassName?: string;
+  /** Merged onto the “More client stories” row (`mt-8 flex justify-center` by default). */
+  moreLinkWrapperClassName?: string;
 }
 
 const DEFAULT_TESTIMONIALS = [
@@ -88,9 +94,15 @@ export const Testimonials = ({
   linkUrl = "/client-stories",
   backgroundColor = "white",
   avatarImgLoading = "eager",
+  sectionClassName,
+  gridAreaClassName,
+  moreLinkWrapperClassName,
 }: TestimonialsProps = {}) => {
   return (
-    <section className="pt-32 pb-16 overflow-visible relative" style={{ backgroundColor }}>
+    <section
+      className={cn("pt-32 pb-16 overflow-visible relative", sectionClassName)}
+      style={{ backgroundColor }}
+    >
       <div className="max-w-[1200px] mx-auto px-6">
         {/* Header */}
         <div className="mb-16 text-center max-w-3xl mx-auto">
@@ -108,7 +120,7 @@ export const Testimonials = ({
         </div>
 
         {/* Testimonials Masonry Grid */}
-        <div className="relative pb-12">
+        <div className={cn("relative pb-12", gridAreaClassName)}>
           <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
             {testimonials.map((testimonial, index) => (
               <div 
@@ -139,7 +151,7 @@ export const Testimonials = ({
           
           {/* More Client Stories Link - centered below entire masonry */}
           {linkText && linkUrl && (
-            <div className="mt-8 flex justify-center">
+            <div className={cn("mt-8 flex justify-center", moreLinkWrapperClassName)}>
               <a 
                 href={linkUrl} 
                 className="text-[16px] font-medium text-[#1265EF] hover:text-[#1a1a1a] transition-colors flex items-center gap-1.5 group/link"

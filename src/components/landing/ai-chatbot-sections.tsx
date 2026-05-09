@@ -560,5 +560,6 @@ const AI_CHATBOT_CASE_SLIDES_RAW = [
 
 export const AI_CHATBOT_CASE_SLIDES = AI_CHATBOT_CASE_SLIDES_RAW.map((slide) => ({
   ...slide,
+  caseStudySlug: "thehair-app",
   customFields: slide.customFields.filter((field) => field.label !== "Key results"),
 }));

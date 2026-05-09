@@ -1,11 +1,17 @@
 import { Facebook, Twitter, Linkedin } from "lucide-react";
 import { ROUTES } from "@/config/routes";
+import { cn } from "@/lib/utils";
 
 export type FooterVariant = "default" | "minimal";
 
 type FooterProps = {
   /** `minimal`: copyright + social only (marketplace landing). Default: full footer. */
   variant?: FooterVariant;
+  /**
+   * Top rule (#E2E8F0) aligned with main/header content: same column as `max-w-[1200px] mx-auto px-6`
+   * (line sits inside horizontal padding, not edge-to-edge under the max-width box).
+   */
+  topDivider?: boolean;
 };
 
 const FooterBottomBar = ({
@@ -34,20 +40,33 @@ const FooterBottomBar = ({
   </div>
 );
 
-export const Footer = ({ variant = "default" }: FooterProps = {}) => {
+export const Footer = ({ variant = "default", topDivider = false }: FooterProps = {}) => {
   if (variant === "minimal") {
     return (
-      <footer className="py-5 sm:py-6 bg-white">
+      <footer className="bg-white">
         <div className="max-w-[1200px] mx-auto px-6">
-          <FooterBottomBar withTopBorder={false} compact />
+          {topDivider ? (
+            <>
+              <div className="border-t border-[#E2E8F0]" aria-hidden />
+              <div className="py-5 sm:py-6">
+                <FooterBottomBar withTopBorder={false} compact />
+              </div>
+            </>
+          ) : (
+            <div className="py-5 sm:py-6">
+              <FooterBottomBar withTopBorder={false} compact />
+            </div>
+          )}
         </div>
       </footer>
     );
   }
 
   return (
-    <footer className="pt-24 pb-6">
+    <footer className="pb-6">
       <div className="max-w-[1200px] mx-auto px-6">
+        {topDivider ? <div className="border-t border-[#E2E8F0]" aria-hidden /> : null}
+        <div className={cn(topDivider ? "pt-16" : "pt-24")}>
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 mb-8">
           <div className="lg:col-span-4">
             <a href={ROUTES.HOME} className="mb-6 block">
@@ -197,6 +216,7 @@ export const Footer = ({ variant = "default" }: FooterProps = {}) => {
         </div>
 
         <FooterBottomBar withTopBorder={true} />
+        </div>
       </div>
     </footer>
   );

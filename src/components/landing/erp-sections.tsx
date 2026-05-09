@@ -516,5 +516,6 @@ const ERP_CASE_SLIDES_RAW = [
 
 export const ERP_CASE_SLIDES = ERP_CASE_SLIDES_RAW.map((slide) => ({
   ...slide,
+  caseStudySlug: "greener-corporation-no-code-erp",
   customFields: slide.customFields.filter((field) => field.label !== "Key results"),
 }));

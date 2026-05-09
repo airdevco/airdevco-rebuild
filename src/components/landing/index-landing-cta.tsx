@@ -4,14 +4,25 @@ import type { CSSProperties } from "react";
 import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ROUTES } from "@/config/routes";
+import { cn } from "@/lib/utils";
 
 export interface IndexLandingCTAProps {
   eyebrow?: string;
   title?: string;
   description?: string;
   buttonText?: string;
+  /** When set, the primary button is a link (e.g. Flex portal). Otherwise it opens the landing pricing popup. */
+  buttonHref?: string;
+  buttonTarget?: HTMLAnchorElement["target"];
+  buttonRel?: string;
   clientStoriesHref?: string;
   clientStoriesLabel?: string;
+  /** When false, hides the secondary “See client stories” link. */
+  showClientStories?: boolean;
+  /** Applied to the outer `<section>` (e.g. `pt-16` before the card, like Product Design). */
+  sectionClassName?: string;
+  /** Extra classes on the description paragraph (e.g. `max-w-*` for line breaks). */
+  descriptionClassName?: string;
 }
 
 // ─── Static wireframe — neutral slate (white + subtle chrome; gray mesh is behind card only) ─
@@ -115,18 +126,27 @@ export function IndexLandingCTA({
   description =
     "Chat with our team to see what we can do.\nWe've shipped 1,000+ products — yours could be next.",
   buttonText = "Talk to us",
+  buttonHref,
+  buttonTarget,
+  buttonRel,
   clientStoriesHref = ROUTES.CLIENT_STORIES,
   clientStoriesLabel = "See client stories",
+  showClientStories = true,
+  sectionClassName,
+  descriptionClassName,
 }: IndexLandingCTAProps = {}) {
   const openLandingPricingPopup = () => {
     window.dispatchEvent(new CustomEvent("open-landing-pricing-popup"));
   };
 
+  const primaryButtonClassName =
+    "bg-[#1265EF] text-white hover:bg-[#0d4fc7] active:bg-[#0a3fa3] rounded-[6px] px-5 pb-2 pt-2.5 text-[16px] font-medium transition-all leading-none";
+
   return (
-    <section className="relative bg-white py-0">
+    <section className={cn("relative bg-white py-0", sectionClassName)}>
       <div className="mx-auto max-w-[1200px] px-6">
         <div className="relative overflow-hidden rounded-[26px] border border-[#E5ECF6] bg-white shadow-[0_8px_30px_-12px_rgba(15,23,42,0.06),0_2px_12px_-6px_rgba(18,101,239,0.08)]">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:gap-10">
+          <div className="flex flex-col lg:flex-row lg:items-stretch lg:gap-10">
             <div className="flex min-w-0 flex-[4] flex-col justify-center px-8 py-8 md:px-12 md:py-10">
               <p className="hidden" aria-hidden>
                 {eyebrow}
@@ -134,28 +154,39 @@ export function IndexLandingCTA({
               <h2 className="text-[36px] font-semibold leading-tight tracking-[-0.02em] text-[#0D2350]">
                 {title}
               </h2>
-              <p className="mt-3 whitespace-pre-line text-base leading-relaxed text-[#5A6A7A] md:text-lg">
+              <p
+                className={cn(
+                  "mt-3 max-w-none whitespace-pre-line text-base leading-relaxed text-[#5A6A7A] md:text-lg",
+                  descriptionClassName,
+                )}
+              >
                 {description}
               </p>
               <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3">
-                <Button
-                  type="button"
-                  onClick={openLandingPricingPopup}
-                  className="bg-[#1265EF] text-white hover:bg-[#0d4fc7] active:bg-[#0a3fa3] rounded-[6px] px-5 pb-2 pt-2.5 text-[16px] font-medium transition-all leading-none"
-                >
-                  {buttonText}
-                </Button>
-                <a
-                  href={clientStoriesHref}
-                  className="text-[16px] font-medium text-[#1265EF] hover:text-[#1a1a1a] transition-colors inline-flex items-center gap-1.5 group/link"
-                >
-                  {clientStoriesLabel}
-                  <ChevronRight className="w-4 h-4 transition-transform group-hover/link:translate-x-0.5 shrink-0" />
-                </a>
+                {buttonHref ? (
+                  <a href={buttonHref} target={buttonTarget} rel={buttonRel}>
+                    <Button type="button" className={primaryButtonClassName}>
+                      {buttonText}
+                    </Button>
+                  </a>
+                ) : (
+                  <Button type="button" onClick={openLandingPricingPopup} className={primaryButtonClassName}>
+                    {buttonText}
+                  </Button>
+                )}
+                {showClientStories ? (
+                  <a
+                    href={clientStoriesHref}
+                    className="text-[16px] font-medium text-[#1265EF] hover:text-[#1a1a1a] transition-colors inline-flex items-center gap-1.5 group/link"
+                  >
+                    {clientStoriesLabel}
+                    <ChevronRight className="w-4 h-4 transition-transform group-hover/link:translate-x-0.5 shrink-0" />
+                  </a>
+                ) : null}
               </div>
             </div>
 
-            <div className="relative flex min-h-[240px] min-w-0 flex-[2] items-center justify-center overflow-hidden p-6 md:min-h-[280px] md:p-8 lg:min-h-[300px] lg:py-10">
+            <div className="relative flex min-h-[240px] min-w-0 flex-[2] items-center justify-center overflow-hidden p-6 md:min-h-[280px] md:p-8 lg:min-h-0 lg:py-10">
               <div
                 className="pointer-events-none absolute inset-0 z-0"
                 aria-hidden

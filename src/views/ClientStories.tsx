@@ -1,6 +1,6 @@
 "use client";
 
-import { Navbar, Footer, ClientLogoTicker, SaasCTA } from "@/components/landing";
+import { Navbar, Footer, ClientLogoTicker, IndexLandingCTA } from "@/components/landing";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
@@ -123,7 +123,7 @@ const ClientStories = () => {
                     {[
                       {
                         title: "TicketRev",
-                        image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/64cc2c786d693702395f21b1_TicketRev-built-with-no-code-Airdev.jpg",
+                        image: "https://4b71d08d04d5d7c66482fc6e8486501c.cdn.bubble.io/f1778284368025x686075353487686900/ticketrev.jpg",
                         imageClass: "",
                       },
                       {
@@ -474,8 +474,8 @@ const ClientStories = () => {
           </div>
         </section>
 
-        {/* Testimonials Section */}
-        <section className="pt-32 pb-32 overflow-visible bg-[#F6F9FC] relative">
+        {/* Testimonials Section (Airdev Reviews) */}
+        <section className="pt-32 pb-16 overflow-visible bg-[#F6F9FC] relative">
           <div className="max-w-[1200px] mx-auto px-6">
             {/* Header */}
             <div className="mb-16 text-center max-w-3xl mx-auto">
@@ -628,8 +628,12 @@ const ClientStories = () => {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <SaasCTA />
+        {/* CTA Section — same block as homepage */}
+        <IndexLandingCTA
+          sectionClassName="pt-16"
+          clientStoriesHref={ROUTES.MORE_CASE_STUDIES}
+          clientStoriesLabel="See all stories"
+        />
       </main>
       
       <Footer />

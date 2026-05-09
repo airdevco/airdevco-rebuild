@@ -14,7 +14,7 @@ export function ApproachCtaSection({
   ...rest
 }: ApproachCtaSectionProps = {}) {
   return (
-    <div className="pt-24 lg:pt-32">
+    <div className="pt-16 lg:pt-24">
       <IndexLandingCTA
         title={title}
         description={description}

@@ -594,5 +594,6 @@ const CRM_CASE_SLIDES_RAW = [
 
 export const CRM_CASE_SLIDES = CRM_CASE_SLIDES_RAW.map((slide) => ({
   ...slide,
+  caseStudySlug: slide.id,
   customFields: slide.customFields.filter((field) => field.label !== "Key results"),
 }));

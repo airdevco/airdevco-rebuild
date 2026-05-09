@@ -6,7 +6,7 @@ import {
   CaseStudies,
   ClientLogoTicker,
   Testimonials,
-  SaasCTA,
+  IndexLandingCTA,
   Footer,
   ValueProps,
   SampleProducts,
@@ -40,6 +40,7 @@ import {
 const ERPS_CASE_STUDIES = [
   {
     id: "greener",
+    caseStudySlug: "greener-corporation-no-code-erp",
     company: "Greener Corporation",
     logo: "https://greenercorp.com/wp-content/uploads/2022/07/Greener-Logo.svg",
     logoText: "",
@@ -229,7 +230,7 @@ const Erps = () => {
             bgColor="#F6F9FC"
           />
           <Testimonials />
-          <SaasCTA />
+          <IndexLandingCTA />
         </main>
         <Footer />
       </div>
