@@ -16,7 +16,7 @@ import { IndexLandingCTA } from "@/components/landing/index-landing-cta";
 const Index = () => {
   return (
     <>
-      <div className="bg-white min-h-screen font-sans selection:bg-blue-100 selection:text-blue-900" style={{ fontFamily: "'Colfax', sans-serif" }}>
+      <div className="bg-white min-h-screen font-sans selection:bg-blue-100 selection:text-blue-900">
         <Navbar />
         <main>
           <IndexLandingHero />

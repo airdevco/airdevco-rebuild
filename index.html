@@ -3,6 +3,62 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--
+      Colfax @font-face declared here so the browser registers it at HTML-parse time,
+      before any JS/CSS bundle loads. Preloads start the downloads in parallel.
+      Together this means Colfax is ready on first paint with zero swap delay.
+    -->
+    <link rel="preload" href="/fonts/Colfax-Regular.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high" />
+    <link rel="preload" href="/fonts/Colfax-Medium.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/Colfax-Bold.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/Colfax-Black.woff2" as="font" type="font/woff2" crossorigin />
+    <style>
+      @font-face {
+        font-family: 'Colfax';
+        src: url('/fonts/Colfax-Regular.woff2') format('woff2'),
+             url('/fonts/Colfax-Regular.woff') format('woff');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Colfax';
+        src: url('/fonts/Colfax-Medium.woff2') format('woff2'),
+             url('/fonts/Colfax-Medium.woff') format('woff');
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+      }
+      /* 600 maps to Medium so font-semibold never synthesises a heavier glyph */
+      @font-face {
+        font-family: 'Colfax';
+        src: url('/fonts/Colfax-Medium.woff2') format('woff2'),
+             url('/fonts/Colfax-Medium.woff') format('woff');
+        font-weight: 600;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Colfax';
+        src: url('/fonts/Colfax-Bold.woff2') format('woff2'),
+             url('/fonts/Colfax-Bold.woff') format('woff');
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Colfax';
+        src: url('/fonts/Colfax-Black.woff2') format('woff2'),
+             url('/fonts/Colfax-Black.woff') format('woff');
+        font-weight: 900;
+        font-style: normal;
+        font-display: swap;
+      }
+      /* Apply immediately so the very first paint uses this stack */
+      html, body {
+        font-family: 'Colfax', system-ui, -apple-system, sans-serif;
+      }
+    </style>
     <title>Airdev | The leading no-code and Bubble app development agency</title>
     <meta name="description" content="Airdev is the leader in no-code & Bubble app development. We help businesses launch software products in a fraction of the time & cost of traditional developers.">
     <meta name="author" content="Airdev" />

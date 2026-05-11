@@ -1,19 +1,14 @@
 import type { Config } from "tailwindcss";
 import tailwindcssAnimate from "tailwindcss-animate";
 
-/** Matches `body` in `src/index.css` — Colfax is loaded via `@font-face` there (no Google Fonts). */
+/**
+ * @font-face for Colfax is declared in index.html <style> (HTML-parse time).
+ * system-ui resolves to the best native font on each OS (SF Pro, Segoe UI, Roboto…).
+ */
 const fontSansStack = [
   "Colfax",
+  "system-ui",
   "-apple-system",
-  "BlinkMacSystemFont",
-  '"Segoe UI"',
-  "Roboto",
-  "Oxygen",
-  "Ubuntu",
-  "Cantarell",
-  '"Fira Sans"',
-  '"Droid Sans"',
-  '"Helvetica Neue"',
   "sans-serif",
 ] as const;
 

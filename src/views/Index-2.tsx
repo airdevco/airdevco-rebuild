@@ -327,7 +327,7 @@ const Index2 = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white text-[#0A0A0A] antialiased" style={{ fontFamily: "'Colfax', sans-serif" }}>
+    <div className="min-h-screen bg-white text-[#0A0A0A] antialiased font-sans">
       {/* Navigation */}
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${

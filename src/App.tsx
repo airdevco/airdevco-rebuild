@@ -10,8 +10,8 @@ import { SettingsDialog } from "@/components/settings-dialog";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { lazy, Suspense, useEffect, useState } from "react";
 import { ROUTES } from "@/config/routes";
+import Index from "./views/Index";
 
-const Index = lazy(() => import("./views/Index"));
 const BubbleAppAudit = lazy(() => import("./views/BubbleAppAudit"));
 const Partners = lazy(() => import("./views/Partners"));
 const Developers = lazy(() => import("./views/Developers"));

@@ -8,84 +8,6 @@ import { Navbar, Footer } from "@/components/landing";
 import { ROUTES } from "@/config/routes";
 import { api } from "../../convex/_generated/api";
 import type { Doc } from "../../convex/_generated/dataModel";
-
-const COLFAX_STYLES = `
-  @font-face {
-    font-family: 'Colfax';
-    src: url('/fonts/Colfax-Regular.woff2') format('woff2'), url('/fonts/Colfax-Regular.woff') format('woff');
-    font-weight: 400; font-style: normal; font-display: swap;
-  }
-  @font-face {
-    font-family: 'Colfax';
-    src: url('/fonts/Colfax-Medium.woff2') format('woff2'), url('/fonts/Colfax-Medium.woff') format('woff');
-    font-weight: 500; font-style: normal; font-display: swap;
-  }
-  @font-face {
-    font-family: 'Colfax';
-    src: url('/fonts/Colfax-Bold.woff2') format('woff2'), url('/fonts/Colfax-Bold.woff') format('woff');
-    font-weight: 700; font-style: normal; font-display: swap;
-  }
-  @font-face {
-    font-family: 'Colfax';
-    src: url('/fonts/Colfax-Black.woff2') format('woff2'), url('/fonts/Colfax-Black.woff') format('woff');
-    font-weight: 900; font-style: normal; font-display: swap;
-  }
-  .blog-prose h1, .blog-prose h2, .blog-prose h3, .blog-prose h4 {
-    font-family: 'Colfax', sans-serif;
-    font-weight: 700;
-    color: #0A0A0A;
-    margin-top: 2em;
-    margin-bottom: 0.5em;
-    line-height: 1.2;
-  }
-  .blog-prose h2 { font-size: 1.6rem; }
-  .blog-prose h3 { font-size: 1.3rem; }
-  .blog-prose p {
-    font-size: 1.125rem;
-    line-height: 1.8;
-    color: #425466;
-    margin-bottom: 1.5em;
-  }
-  .blog-prose ul, .blog-prose ol {
-    margin-left: 1.5rem;
-    margin-bottom: 1.5em;
-    color: #425466;
-    font-size: 1.125rem;
-    line-height: 1.8;
-  }
-  .blog-prose li { margin-bottom: 0.4em; }
-  .blog-prose ul { list-style-type: disc; }
-  .blog-prose ol { list-style-type: decimal; }
-  .blog-prose a { color: #1265EF; text-decoration: underline; }
-  .blog-prose a:hover { color: #0A0A0A; }
-  .blog-prose blockquote {
-    border-left: 3px solid #1265EF;
-    padding-left: 1.25rem;
-    color: #425466;
-    font-style: italic;
-    margin: 2em 0;
-  }
-  .blog-prose hr { border-color: #E5E7EB; margin: 2.5em 0; }
-  .blog-prose strong { color: #0A0A0A; font-weight: 700; }
-  .blog-prose img { max-width: 100%; border-radius: 12px; margin: 2em 0; }
-  .blog-prose code {
-    background: #F3F4F6;
-    padding: 0.15em 0.4em;
-    border-radius: 4px;
-    font-size: 0.9em;
-    color: #1265EF;
-  }
-  .blog-prose pre {
-    background: #0A0A0A;
-    color: #E5E7EB;
-    padding: 1.25rem;
-    border-radius: 12px;
-    overflow-x: auto;
-    margin-bottom: 1.5em;
-  }
-  .blog-prose pre code { background: none; color: inherit; padding: 0; }
-`;
-
 function formatDate(dateStr?: string): string | null {
   if (!dateStr?.trim()) return null;
   const d = new Date(dateStr);
@@ -251,10 +173,8 @@ export default function BlogPostDetail() {
 
   return (
     <>
-      <style dangerouslySetInnerHTML={{ __html: COLFAX_STYLES }} />
       <div
         className="bg-white min-h-screen selection:bg-blue-100 selection:text-blue-900"
-        style={{ fontFamily: "'Colfax', sans-serif" }}
       >
         <Navbar />
 

@@ -334,7 +334,7 @@ const Index3 = () => {
   }, [isMobile, testimonialX]);
 
   return (
-    <div className="min-h-screen bg-white font-sans text-[#0A0A0A] selection:bg-[#1165EF] selection:text-white" style={{ fontFamily: "'Colfax', sans-serif" }}>
+    <div className="min-h-screen bg-white font-sans text-[#0A0A0A] selection:bg-[#1165EF] selection:text-white">
       
       {/* Navigation */}
       <nav
@@ -652,7 +652,6 @@ const Index3 = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
                 className="text-5xl lg:text-7xl font-bold tracking-tight text-[#0A0A0A] mb-8 leading-[1.1]"
-                style={{ fontFamily: "'Colfax', sans-serif", fontWeight: 700 }}
               >
                 The reimagined <br />
                 <span className="text-[#1165EF]">software agency</span>
@@ -949,7 +948,7 @@ const Index3 = () => {
               <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#1165EF]/10 rounded-full mb-6">
                  <p className="text-[#1165EF] font-semibold text-sm">The Airdev Difference</p>
               </div>
-              <h2 className="text-[56px] font-semibold text-[#0A0A0A] mb-6" style={{ fontFamily: "'Colfax', sans-serif", lineHeight: '67px' }}>
+              <h2 className="text-[56px] font-semibold text-[#0A0A0A] mb-6" style={{ lineHeight: '67px' }}>
                 The new approach to building great products
               </h2>
               <p className="text-gray-600 text-xl">Combining cutting-edge technology with world-class expertise</p>
@@ -1019,7 +1018,7 @@ const Index3 = () => {
               <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#1165EF]/10 rounded-full mb-6">
                 <p className="text-[#1165EF] font-semibold text-sm">Client Stories</p>
               </div>
-              <h2 className="text-[56px] font-semibold text-[#0A0A0A] mb-6" style={{ fontFamily: "'Colfax', sans-serif", lineHeight: '67px' }}>
+              <h2 className="text-[56px] font-semibold text-[#0A0A0A] mb-6" style={{ lineHeight: '67px' }}>
                 Clients trust Airdev to launch and scale
               </h2>
               <p className="text-gray-600 text-xl">See why founders and enterprise leaders choose us as their development partner</p>
@@ -1143,7 +1142,7 @@ const Index3 = () => {
             <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#1165EF]/10 rounded-full mb-6">
               <p className="text-[#1165EF] font-semibold text-sm">Our Work</p>
             </div>
-            <h2 className="text-[56px] font-semibold text-[#0A0A0A] mb-6" style={{ fontFamily: "'Colfax', sans-serif", lineHeight: '67px' }}>
+            <h2 className="text-[56px] font-semibold text-[#0A0A0A] mb-6" style={{ lineHeight: '67px' }}>
               Real apps, real results
             </h2>
             <p className="text-gray-600 text-xl">Explore the powerful applications we've built for clients across industries—from AI-powered platforms to enterprise SaaS solutions</p>
@@ -1164,10 +1163,10 @@ const Index3 = () => {
       <section className="py-12 text-white text-center relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
           <div className="bg-[#1C2534] rounded-3xl py-12 px-12 border border-gray-200">
-            <h2 className="text-3xl md:text-4xl font-semibold mb-4 tracking-tight leading-[1.05]" style={{ fontFamily: "'Colfax', sans-serif" }}>
+            <h2 className="text-3xl md:text-4xl font-semibold mb-4 tracking-tight leading-[1.05]">
               Want to explore working with us?
             </h2>
-            <p className="text-xl text-blue-100 mb-8 font-normal leading-relaxed" style={{ fontFamily: "'Colfax', sans-serif" }}>Chat with our team to see how we can help.</p>
+            <p className="text-xl text-blue-100 mb-8 font-normal leading-relaxed">Chat with our team to see how we can help.</p>
             <Button size="lg" className="bg-white text-[#1165EF] hover:bg-gray-50 h-14 px-10 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition-all">
               Talk to us
             </Button>

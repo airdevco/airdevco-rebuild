@@ -22,38 +22,6 @@ import {
 const LMS_DOC_TITLE = "Airdev | The smarter way to launch your LMS product";
 const LMS_META_DESCRIPTION =
   "Launch a learning management system you own—courses, assessments, cohorts, and analytics tailored to your training or education product.";
-
-const COLFAX_STYLES = `
-  @font-face {
-    font-family: 'Colfax';
-    src: url('/fonts/Colfax-Regular.woff2') format('woff2'), url('/fonts/Colfax-Regular.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Colfax';
-    src: url('/fonts/Colfax-Medium.woff2') format('woff2'), url('/fonts/Colfax-Medium.woff') format('woff');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Colfax';
-    src: url('/fonts/Colfax-Bold.woff2') format('woff2'), url('/fonts/Colfax-Bold.woff') format('woff');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Colfax';
-    src: url('/fonts/Colfax-Black.woff2') format('woff2'), url('/fonts/Colfax-Black.woff') format('woff');
-    font-weight: 900;
-    font-style: normal;
-    font-display: swap;
-  }
-`;
-
 export default function LmsLanding() {
   useEffect(() => {
     const previousTitle = document.title;
@@ -69,10 +37,8 @@ export default function LmsLanding() {
 
   return (
     <>
-      <style dangerouslySetInnerHTML={{ __html: COLFAX_STYLES }} />
       <div
         className="bg-white min-h-screen font-sans selection:bg-blue-100 selection:text-blue-900"
-        style={{ fontFamily: "'Colfax', sans-serif" }}
       >
         <LmsHeader />
         <main>
