@@ -81,7 +81,7 @@ const INTERNAL_TOOLS_CASE_STUDIES = [
     logoText: "",
     heading: "How Airdev helped Playground IEP create a special education caseload management tool for schools",
     description: "",
-    image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/63b8851d340bdc19030b55b3_adam-winger-7fF0iei80AQ-unsplash%205-p-3200.jpg",
+    image: "https://4b71d08d04d5d7c66482fc6e8486501c.cdn.bubble.io/f1778525845935x779691398101864100/piep.jpg",
     imageTitle: "How Airdev helped Playground IEP create a special education caseload management tool for schools",
     customFields: [
       { label: "Business type", value: "Startup", color: "#635bff" },
