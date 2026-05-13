@@ -54,7 +54,7 @@ export function AiEnablementWhoWeWorkWithSection() {
             <button
               type="button"
               onClick={() => window.dispatchEvent(new CustomEvent("open-landing-pricing-popup"))}
-              className="inline text-[16px] font-medium text-[#1265EF] transition-colors hover:text-[#1a1a1a]"
+              className="inline text-[18px] font-medium text-[#1265EF] transition-colors hover:text-[#1a1a1a]"
             >
               Talk to us →
             </button>

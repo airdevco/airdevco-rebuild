@@ -1,5 +1,6 @@
 "use client";
 
+import { Check, Search } from "lucide-react";
 import type { ReactNode } from "react";
 
 const CARD_SHELL =
@@ -82,22 +83,38 @@ function GraphicDocumentPipeline() {
 }
 
 function GraphicSupport() {
+  const bars = [
+    { label: "Shipping", fill: 90 },
+    { label: "Returns", fill: 80 },
+    { label: "Account", fill: 70 },
+    { label: "Billing", fill: 45 },
+  ] as const;
+
   return (
-    <div className={`${MOCK_CANVAS} flex flex-row items-center justify-between gap-3`}>
-      <div>
-        <div className="text-3xl font-bold tracking-tight text-[#0D2350] sm:text-4xl">62%</div>
-        <div className="mt-1 max-w-[7rem] text-[10px] leading-snug text-[#64748B] sm:text-[11px]">
-          tickets resolved without escalation
+    <div className={`${MOCK_CANVAS} flex min-h-[132px] flex-row items-center gap-2 sm:gap-3`}>
+      <div className="w-[40%] max-w-[8.25rem] shrink-0 sm:max-w-[9rem]">
+        <div className="flex items-baseline gap-0.5">
+          <span className="text-3xl font-bold leading-none tracking-tight text-[#0D2350] sm:text-4xl">62</span>
+          <span className="text-lg font-bold leading-none text-[#0D2350] sm:text-xl">%</span>
         </div>
+        <p className="mt-1 max-w-full text-left text-[10px] leading-snug text-[#64748B] sm:text-[11px]">
+          tickets resolved without escalation
+        </p>
       </div>
-      <div className="flex shrink-0 flex-col gap-1.5">
-        {["Shipping", "Returns", "Account", "Billing"].map((label, i) => (
-          <div key={label} className="flex items-center gap-1.5">
-            <span className="w-10 text-[9px] text-[#94A3B8]">{label}</span>
+      <div className="flex min-w-0 flex-1 flex-col justify-center gap-1.5">
+        {bars.map(({ label, fill }) => (
+          <div
+            key={label}
+            className="relative h-5 w-full overflow-hidden rounded-[5px] border border-[#E5ECF6] bg-white"
+          >
             <div
-              className="h-1.5 rounded-full bg-[#1265EF]/85"
-              style={{ width: `${48 + i * 10}%` }}
-            />
+              className="absolute inset-y-0 left-0 flex h-full max-w-full items-center rounded-l-[5px] rounded-r-none bg-[#1265EF]/85 pl-2 pr-1.5"
+              style={{ width: `${fill}%` }}
+            >
+              <span className="flex min-h-0 flex-1 items-center self-stretch truncate pt-px text-[10px] font-normal leading-snug text-white sm:text-[11px]">
+                {label}
+              </span>
+            </div>
           </div>
         ))}
       </div>
@@ -107,9 +124,27 @@ function GraphicSupport() {
 
 function GraphicProductAI() {
   return (
-    <div className={`${MOCK_CANVAS} flex flex-col gap-2`}>
-      <div className="rounded-lg border border-[#E5ECF6] bg-white px-2 py-1.5 text-[10px] text-[#64748B] sm:text-[11px]">
-        show me Q3 marketing performance <span className="text-[#1265EF]">|</span>
+    <div className={`graphic-product-ai ${MOCK_CANVAS} flex flex-col gap-2`}>
+      <style>{`
+        @keyframes graphic-product-ai-caret {
+          0%, 45% { opacity: 1; }
+          50%, 100% { opacity: 0; }
+        }
+        .graphic-product-ai .product-ai-caret {
+          animation: graphic-product-ai-caret 1.05s step-end infinite;
+        }
+      `}</style>
+      <div className="flex items-start gap-2 rounded-lg border border-[#E5ECF6] bg-white px-2 py-1.5 text-[10px] text-[#64748B] sm:text-[11px]">
+        <Search className="mt-0.5 size-3 shrink-0 text-[#94A3B8] sm:size-3.5" strokeWidth={2} aria-hidden />
+        <div className="flex min-w-0 flex-1 flex-wrap items-baseline gap-0 leading-snug">
+          <span className="mt-0.5">Show me Q3 marketing performance</span>
+          <span
+            className="product-ai-caret mt-0.5 shrink-0 translate-y-px font-light leading-none text-[#1265EF]"
+            aria-hidden
+          >
+            |
+          </span>
+        </div>
       </div>
       <div className="space-y-1.5 pt-1">
         <div className="h-1.5 rounded-full bg-[#E2E8F0]" style={{ width: "92%" }} />
@@ -123,23 +158,45 @@ function GraphicProductAI() {
 
 function GraphicWorkflowAgents() {
   const rows = [
-    { done: true, text: "Research target company" },
-    { done: true, text: "Draft outreach email" },
+    { done: true, pending: false, text: "Research target company" },
+    { done: true, pending: false, text: "Draft outreach email" },
     { done: false, pending: true, text: "Awaiting your approval" },
-    { done: false, text: "Send + log to CRM" },
+    { done: false, pending: false, text: "Send + log to CRM" },
   ] as const;
+  const dot = "flex size-[13px] shrink-0 items-center justify-center rounded-full";
+  const ringOutline = "rounded-full border border-[#CBD5E1] bg-white";
+  const emptyRing = `size-[13px] shrink-0 ${ringOutline}`;
   return (
-    <div className={`${MOCK_CANVAS} flex flex-col gap-2 text-[10px] text-[#475569] sm:text-[11px]`}>
+    <div className={`graphic-workflow-agents ${MOCK_CANVAS} flex flex-col gap-2 text-[10px] text-[#475569] sm:text-[11px]`}>
+      <style>{`
+        @keyframes workflow-pulse-fill {
+          0% {
+            transform: scale(1);
+            opacity: 0.38;
+          }
+          100% {
+            transform: scale(1.52);
+            opacity: 0;
+          }
+        }
+        .graphic-workflow-agents .workflow-pulse-fill {
+          animation: workflow-pulse-fill 1.5s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+        }
+      `}</style>
       {rows.map((row) => (
         <div key={row.text} className="flex items-center gap-2">
           {row.done ? (
-            <span className="flex size-4 shrink-0 items-center justify-center rounded-full bg-[#1265EF] text-[9px] text-white">
-              ✓
+            <span className={`${dot} bg-[#1265EF] text-white`}>
+              <Check className="size-[9px]" strokeWidth={2.5} aria-hidden />
             </span>
           ) : row.pending ? (
-            <span className="size-4 shrink-0 rounded-full border-2 border-[#1265EF] bg-[#1265EF]/15" />
+            <span className="relative inline-flex size-[13px] shrink-0 items-center justify-center overflow-visible" aria-hidden>
+              <span className="workflow-pulse-fill pointer-events-none absolute inset-0 z-0 rounded-full bg-[#1265EF]" />
+              <span className={`pointer-events-none absolute inset-0 z-[1] ${ringOutline}`} />
+              <span className="pointer-events-none absolute left-1/2 top-1/2 z-[2] size-[7px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#1265EF]" />
+            </span>
           ) : (
-            <span className="size-4 shrink-0 rounded-full border border-[#CBD5E1]" />
+            <span className={emptyRing} />
           )}
           <span className={row.pending ? "font-medium text-[#0D2350]" : ""}>{row.text}</span>
         </div>
@@ -151,10 +208,12 @@ function GraphicWorkflowAgents() {
 function GraphicDataReporting() {
   return (
     <div className={`${MOCK_CANVAS} flex flex-col gap-2`}>
-      <div className="rounded-lg border border-[#E5ECF6] bg-white px-2 py-1.5 text-[10px] italic text-[#64748B] sm:text-[11px]">
-        &ldquo;revenue by region, last 6 months&rdquo;
+      <div className="rounded-lg border border-[#E5ECF6] bg-white px-2 py-1.5 text-[10px] text-[#64748B] sm:text-[11px]">
+        <span className="mt-0.5 inline-block leading-snug">
+          &ldquo;revenue by region, last 6 months&rdquo;
+        </span>
       </div>
-      <div className="flex h-16 items-end justify-center gap-1.5 px-2">
+      <div className="flex h-16 w-full items-end gap-1 sm:gap-1.5">
         {[
           { h: "h-7" },
           { h: "h-11" },
@@ -162,7 +221,7 @@ function GraphicDataReporting() {
           { h: "h-14" },
           { h: "h-9" },
         ].map(({ h }, i) => (
-          <div key={i} className={`w-2.5 rounded-t bg-[#1265EF]/90 sm:w-3 ${h}`} />
+          <div key={i} className={`min-w-0 flex-1 rounded-t bg-[#1265EF]/90 ${h}`} />
         ))}
       </div>
     </div>
@@ -246,6 +305,19 @@ export function AiEnablementSampleSolutionsSection() {
               <p className="grow text-[17px] leading-relaxed text-gray-600">{card.description}</p>
             </article>
           ))}
+        </div>
+
+        <div className="mx-auto mt-14 max-w-3xl text-center">
+          <p className="text-lg leading-relaxed text-gray-600">
+            Not seeing your use case? That&apos;s normal — most engagements end up custom.{" "}
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new CustomEvent("open-landing-pricing-popup"))}
+              className="inline text-[18px] font-medium text-[#1265EF] transition-colors hover:text-[#1a1a1a]"
+            >
+              Tell us what you&apos;re trying to solve →
+            </button>
+          </p>
         </div>
       </div>
     </section>

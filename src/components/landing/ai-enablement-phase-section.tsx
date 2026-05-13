@@ -12,8 +12,8 @@ export type AiEnablementPhaseSectionProps = {
   phaseLabel: string;
   headline: string;
   intro: string;
-  whatWeDo: AiEnablementPhaseStat[];
-  whatYouGet: AiEnablementPhaseCard[];
+  whatWeDo: readonly AiEnablementPhaseStat[];
+  whatYouGet: readonly AiEnablementPhaseCard[];
   callout: string;
   /** When false, omits top border (e.g. stacked directly under another phase). Default true. */
   showTopBorder?: boolean;

@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { AiEnablementWhoWeWorkWithSection } from "@/components/landing/ai-enablement-who-we-work-with-section";
 import { AiEnablementPhase01Section } from "@/components/landing/ai-enablement-phase-01-section";
 import { AiEnablementPhase02Section } from "@/components/landing/ai-enablement-phase-02-section";
+import { AiEnablementCaseStudySection } from "@/components/landing/ai-enablement-case-study-section";
 import { AiEnablementSampleSolutionsSection } from "@/components/landing/ai-enablement-sample-solutions-section";
 import { CASE_STUDY_SLUG } from "@/config/case-study-static-slugs";
 
@@ -207,6 +208,7 @@ We do both — figuring out where AI actually fits in your business, then buildi
           <AiEnablementPhase01Section />
           <AiEnablementPhase02Section />
           <AiEnablementSampleSolutionsSection />
+          <AiEnablementCaseStudySection />
           <CaseStudies 
             label="AI-POWERED APPLICATIONS"
             description="We've helped businesses integrate AI capabilities into their applications, from intelligent automation to personalized user experiences. Our visual development approach makes AI integration faster and more accessible."
