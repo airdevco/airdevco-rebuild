@@ -5,7 +5,6 @@ import {
   CaseStudies,
   IndexLandingCTA,
   Footer,
-  SampleProducts,
   ProcessSection,
   WhoWeAre,
 } from "@/components/landing";
@@ -13,18 +12,7 @@ import { Button } from "@/components/ui/button";
 import { AiEnablementWhoWeWorkWithSection } from "@/components/landing/ai-enablement-who-we-work-with-section";
 import { AiEnablementPhase01Section } from "@/components/landing/ai-enablement-phase-01-section";
 import { AiEnablementPhase02Section } from "@/components/landing/ai-enablement-phase-02-section";
-import {
-  SparklesIcon,
-  ChatBubbleLeftRightIcon,
-  DocumentTextIcon,
-  MagnifyingGlassIcon,
-  Cog6ToothIcon,
-  UserGroupIcon,
-  GlobeAltIcon,
-  ChartPieIcon,
-  PresentationChartLineIcon,
-} from "@heroicons/react/24/solid";
-import { Product } from "@/components/landing/sample-products";
+import { AiEnablementSampleSolutionsSection } from "@/components/landing/ai-enablement-sample-solutions-section";
 import { CASE_STUDY_SLUG } from "@/config/case-study-static-slugs";
 
 /** Same asset as `/approach` hero (`ApproachLandingHero`). */
@@ -111,65 +99,6 @@ const AI_ENABLEMENT_WHO_WE_ARE_STATS = [
     label: "Strategists, designers, engineers under one roof. No subcontractors.",
     value: "In-house",
     suffix: "",
-  },
-];
-
-const AI_PRODUCTS: Product[] = [
-  {
-    id: "ai-chat",
-    name: "AI Chat & Assistants",
-    subtitle: "Intelligent customer support platform",
-    description: "We built an AI-powered customer support platform that uses natural language processing to handle customer inquiries, route complex issues to human agents, and learn from interactions to improve responses over time.",
-    icon: ChatBubbleLeftRightIcon,
-    color: "#6366f1",
-    features: [
-      { name: "Natural language processing", icon: SparklesIcon },
-      { name: "Context-aware conversations", icon: ChatBubbleLeftRightIcon },
-      { name: "Multi-language support", icon: GlobeAltIcon },
-      { name: "Sentiment analysis", icon: UserGroupIcon },
-    ],
-  },
-  {
-    id: "ai-automation",
-    name: "AI Workflow Automation",
-    subtitle: "Intelligent process automation",
-    description: "A financial services company needed to automate document processing and data extraction. We built an AI system that reads, categorizes, and extracts key information from thousands of documents daily, reducing manual work by 80%.",
-    icon: Cog6ToothIcon,
-    color: "#10b981",
-    features: [
-      { name: "Document processing & OCR", icon: DocumentTextIcon },
-      { name: "Intelligent data extraction", icon: MagnifyingGlassIcon },
-      { name: "Automated decision-making", icon: Cog6ToothIcon },
-      { name: "Workflow orchestration", icon: SparklesIcon },
-    ],
-  },
-  {
-    id: "ai-personalization",
-    name: "AI Personalization",
-    subtitle: "Personalized user experiences",
-    description: "We developed an AI-powered recommendation engine for an e-commerce platform that analyzes user behavior, preferences, and purchase history to deliver personalized product suggestions and content, increasing conversion rates by 35%.",
-    icon: SparklesIcon,
-    color: "#f59e0b",
-    features: [
-      { name: "Behavioral analysis", icon: UserGroupIcon },
-      { name: "Recommendation algorithms", icon: SparklesIcon },
-      { name: "Real-time personalization", icon: Cog6ToothIcon },
-      { name: "A/B testing framework", icon: ChartPieIcon },
-    ],
-  },
-  {
-    id: "ai-analytics",
-    name: "AI Analytics & Insights",
-    subtitle: "Predictive analytics platform",
-    description: "A logistics company wanted to predict demand and optimize inventory. We built an AI analytics platform that processes historical data, market trends, and external factors to generate accurate forecasts and actionable insights.",
-    icon: ChartPieIcon,
-    color: "#ec4899",
-    features: [
-      { name: "Predictive modeling", icon: ChartPieIcon },
-      { name: "Anomaly detection", icon: MagnifyingGlassIcon },
-      { name: "Automated reporting", icon: DocumentTextIcon },
-      { name: "Data visualization dashboards", icon: PresentationChartLineIcon },
-    ],
   },
 ];
 
@@ -277,21 +206,13 @@ We do both — figuring out where AI actually fits in your business, then buildi
           />
           <AiEnablementPhase01Section />
           <AiEnablementPhase02Section />
+          <AiEnablementSampleSolutionsSection />
           <CaseStudies 
             label="AI-POWERED APPLICATIONS"
             description="We've helped businesses integrate AI capabilities into their applications, from intelligent automation to personalized user experiences. Our visual development approach makes AI integration faster and more accessible."
             slides={AI_ENABLEMENT_SLIDES}
           />
           <ProcessSection />
-          <div id="sample-solutions" className="scroll-mt-28">
-            <SampleProducts 
-              bgColor="bg-[#F6F9FC]"
-              label="SAMPLE PRODUCTS"
-              title="AI-powered applications we build"
-              description="From intelligent chatbots to predictive analytics, we help businesses integrate AI capabilities that drive real results. Here are examples of AI-powered applications we've built."
-              products={AI_PRODUCTS}
-            />
-          </div>
           <div className="pt-16">
             <IndexLandingCTA />
           </div>
