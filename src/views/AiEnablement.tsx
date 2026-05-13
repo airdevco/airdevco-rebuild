@@ -1,78 +1,18 @@
 "use client";
 
-import {
-  Navbar,
-  CaseStudies,
-  IndexLandingCTA,
-  Footer,
-  ProcessSection,
-  WhoWeAre,
-} from "@/components/landing";
+import { Navbar, Footer, WhoWeAre } from "@/components/landing";
 import { Button } from "@/components/ui/button";
 import { AiEnablementWhoWeWorkWithSection } from "@/components/landing/ai-enablement-who-we-work-with-section";
 import { AiEnablementPhase01Section } from "@/components/landing/ai-enablement-phase-01-section";
 import { AiEnablementPhase02Section } from "@/components/landing/ai-enablement-phase-02-section";
 import { AiEnablementCaseStudySection } from "@/components/landing/ai-enablement-case-study-section";
+import { AiEnablementFaqSection } from "@/components/landing/ai-enablement-faq-section";
 import { AiEnablementSampleSolutionsSection } from "@/components/landing/ai-enablement-sample-solutions-section";
-import { CASE_STUDY_SLUG } from "@/config/case-study-static-slugs";
+import { IndexLandingCTA } from "@/components/landing/index-landing-cta";
 
 /** Same asset as `/approach` hero (`ApproachLandingHero`). */
 const AI_ENABLEMENT_HERO_BLUR_BG =
   "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/67d482ff67a3aac218170979_blurbg3.svg";
-
-const AI_ENABLEMENT_SLIDES = [
-  {
-    id: "kidsbook",
-    caseStudySlug: "kidsbook-marketplace-app",
-    company: "Kidsbook",
-    logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1767135534066x924543251627778700/kidsbook.png",
-    logoText: "",
-    heading: "How Airdev helped Kidsbook build a custom no-code marketplace in just 6 weeks to connect parents with kids activity providers",
-    description: "",
-    image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/635075037ab429484ab21afb_kidsbook%20(2).png",
-    imageTitle: "How Airdev helped Kidsbook build a custom no-code marketplace in just 6 weeks to connect parents with kids activity providers",
-    customFields: [
-      { label: "Business type", value: "Startup", color: "#635bff" },
-      { label: "Product type", value: "Kids' activities marketplace", color: "#00d4ff" },
-      { label: "Timeline", value: "6 weeks", color: "#a960ee" },
-      { label: "Key results", value: "1000+ providers signed up", color: "#ff6b6b" },
-    ]
-  },
-  {
-    id: "bolster",
-    caseStudySlug: CASE_STUDY_SLUG.bolster,
-    company: "Bolster",
-    logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1767069657325x211103928710127970/bolster.png",
-    logoText: "",
-    heading: "How Bolster developed 3 custom no-code web apps on Bubble in just 6 weeks per app",
-    description: "",
-    image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/635076547ab429d14db22f83_bolster.jpeg",
-    imageTitle: "How Bolster developed 3 custom no-code web apps on Bubble in just 6 weeks per app",
-    customFields: [
-      { label: "Business type", value: "SMB", color: "#635bff" },
-      { label: "Product type", value: "Custom web portals", color: "#00d4ff" },
-      { label: "Timeline", value: "6 weeks per app", color: "#a960ee" },
-      { label: "Key results", value: "Raised $2.8M in funding", color: "#ff6b6b" },
-    ]
-  },
-  {
-    id: "playground",
-    caseStudySlug: "my-nft-alerts-web-platform-no-code",
-    company: "My NFT Alerts",
-    logo: "https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1766777953165x204069526181363420/mynftalerts.png",
-    logoText: "",
-    heading: "How Airdev helped My NFT Alerts build a custom no-code platform on Bubble for NFT holders to track, trade and set personalized floor price alerts",
-    description: "",
-    image: "https://cdn.prod.website-files.com/62aa5d914f45160a7f155660/635079364569b5471f0fc12d_nft.jpeg",
-    imageTitle: "How Airdev helped My NFT Alerts build a custom no-code platform on Bubble for NFT holders to track, trade and set personalized floor price alerts",
-    customFields: [
-      { label: "Business type", value: "Startup", color: "#635bff" },
-      { label: "Product type", value: "Portfolio tracking app", color: "#00d4ff" },
-      { label: "Timeline", value: "6 weeks", color: "#a960ee" },
-      { label: "Key results", value: "Rapid user adoption", color: "#ff6b6b" },
-    ]
-  }
-];
 
 const AI_ENABLEMENT_WHO_WE_ARE_STATS = [
   {
@@ -154,18 +94,18 @@ const AiEnablement = () => {
             />
 
             <div className="relative z-10 mx-auto max-w-[1200px] px-6">
-              <div className="mx-auto max-w-5xl">
-                <h1 className="mx-auto mb-8 text-left text-[56px] font-semibold leading-[1.05] tracking-[-0.03em] text-[#0D2350] lg:text-center lg:text-[80px]">
+              <div className="w-full max-w-5xl lg:mx-auto">
+                <h1 className="mb-8 text-left text-[56px] font-semibold leading-[1.05] tracking-[-0.03em] text-[#0D2350] lg:mx-auto lg:text-center lg:text-[80px]">
                   <span className="block">AI Enablement,</span>
                   <span className="block text-[#6C7280]">end-to-end.</span>
                 </h1>
 
-                <p className="mx-auto mb-8 max-w-lg whitespace-pre-line text-left text-xl leading-relaxed text-gray-600 lg:text-center">
+                <p className="mb-8 max-w-lg whitespace-pre-line text-left text-xl leading-relaxed text-gray-600 lg:mx-auto lg:text-center">
                   {`Most firms will sell you a strategy or sell you code.
 We do both — figuring out where AI actually fits in your business, then building and shipping it.`}
                 </p>
 
-                <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
+                <div className="mt-8 flex flex-wrap items-center justify-start gap-x-6 gap-y-3 lg:justify-center">
                   <Button
                     type="button"
                     onClick={openLandingPricingPopup}
@@ -209,15 +149,21 @@ We do both — figuring out where AI actually fits in your business, then buildi
           <AiEnablementPhase02Section />
           <AiEnablementSampleSolutionsSection />
           <AiEnablementCaseStudySection />
-          <CaseStudies 
-            label="AI-POWERED APPLICATIONS"
-            description="We've helped businesses integrate AI capabilities into their applications, from intelligent automation to personalized user experiences. Our visual development approach makes AI integration faster and more accessible."
-            slides={AI_ENABLEMENT_SLIDES}
+          <AiEnablementFaqSection />
+          <IndexLandingCTA
+            showSideVisual
+            meshVisual="heroBlue"
+            straightSectionEdges
+            showClientStories={false}
+            title="Ready to figure out where AI fits?"
+            description={`A 30-minute scoping call is the easiest way to start. We'll ask about what you're trying to solve, share what we'd recommend, and tell you whether we're the right fit. No pressure either way.`}
+            descriptionClassName="mx-auto max-w-xl"
+            buttonText="Book a discovery call"
+            secondaryTextLink={{
+              href: "mailto:hello@airdev.co?subject=AI%20Enablement%20inquiry",
+              label: "Send us a note instead →",
+            }}
           />
-          <ProcessSection />
-          <div className="pt-16">
-            <IndexLandingCTA />
-          </div>
         </main>
         <Footer />
       </div>

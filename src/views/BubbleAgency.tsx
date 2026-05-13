@@ -219,7 +219,7 @@ const BubbleAgency = () => {
                 </h2>
               </div>
 
-              <Accordion type="single" collapsible className="w-full space-y-4">
+              <Accordion type="single" collapsible className="w-full">
                 {[
                   {
                     question: "What criteria should I use to evaluate Bubble agencies?",
@@ -361,10 +361,10 @@ const BubbleAgency = () => {
                     className="bg-white border-b last:border-0"
                     style={{ borderColor: "#E2E8F0" }}
                   >
-                    <AccordionTrigger className="text-left font-medium text-[#1a1a1a] hover:no-underline py-6 text-[18px] items-center">
+                    <AccordionTrigger className="items-center py-4 text-left text-[18px] font-medium text-[#1a1a1a] hover:no-underline">
                       {item.question}
                     </AccordionTrigger>
-                    <AccordionContent className="text-gray-600 pb-6 text-[18px]" style={{ lineHeight: "29px" }}>
+                    <AccordionContent className="pb-3.5 text-[18px] leading-[29px] text-gray-600">
                       {item.answer}
                     </AccordionContent>
                   </AccordionItem>

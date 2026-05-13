@@ -31,7 +31,7 @@ const Index = () => {
             <ClientLogoTicker variant="featured" logoImgLoading="lazy" />
           </div>
           <Testimonials avatarImgLoading="lazy" />
-          <IndexLandingCTA showSideVisual showClientStories={false} />
+          <IndexLandingCTA showSideVisual meshInnerPadding="roomy" showClientStories={false} />
         </main>
         <Footer />
       </div>
