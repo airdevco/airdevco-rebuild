@@ -5,7 +5,7 @@ export { AudienceSection } from "./audience-section";
 export { ProcessSection } from "./process-section";
 export { CaseStudies, HOME_CASE_STUDY_SLIDES } from "./case-studies";
 export { ClientLogoTicker } from "./client-logo-ticker";
-export { Stats } from "./stats";
+export { Stats, HOME_WHO_WE_ARE_STATS } from "./stats";
 export { Testimonials } from "./testimonials";
 export { CTA } from "./cta";
 export { Footer } from "./footer";

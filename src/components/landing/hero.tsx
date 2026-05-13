@@ -33,6 +33,11 @@ interface HeroProps {
   centerText?: boolean;
   /** When set, primary CTA renders as a link (e.g. portal). */
   buttonHref?: string;
+  /** When set with no `buttonHref`, primary button calls this (e.g. pricing popup). */
+  onButtonClick?: () => void;
+  /** Optional text link beside the primary CTA (default hero layout). */
+  secondaryLinkText?: string;
+  secondaryLinkHref?: string;
   /** Right-side hero image: no border/shadow; capped width scales up at sm/lg (align-left + rightImage only). */
   rightImagePlain?: boolean;
 }
@@ -181,6 +186,9 @@ export const Hero = ({
   label,
   centerText = false,
   buttonHref,
+  onButtonClick,
+  secondaryLinkText,
+  secondaryLinkHref,
   rightImagePlain = false,
 }: HeroProps = {}) => {
   if (alignLeft && (rightImage || lottieAnimation)) {
@@ -203,18 +211,30 @@ export const Hero = ({
               </p>
 
               {showButton && (
-                <div className="mt-6 lg:mt-8">
+                <div className="mt-6 lg:mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
                   {buttonHref ? (
                     <a href={buttonHref} target="_blank" rel="noreferrer">
-                      <Button className="bg-[#1265EF] text-white hover:bg-[#0d4fc7] active:bg-[#0a3fa3] rounded-[6px] px-5 pb-2 pt-2.5 text-[16px] font-medium transition-all leading-none">
+                      <Button type="button" className="bg-[#1265EF] text-white hover:bg-[#0d4fc7] active:bg-[#0a3fa3] rounded-[6px] px-5 pb-2 pt-2.5 text-[16px] font-medium transition-all leading-none">
                         {buttonText}
                       </Button>
                     </a>
                   ) : (
-                    <Button className="bg-[#1265EF] text-white hover:bg-[#0d4fc7] active:bg-[#0a3fa3] rounded-[6px] px-5 pb-2 pt-2.5 text-[16px] font-medium transition-all leading-none">
+                    <Button
+                      type="button"
+                      onClick={onButtonClick}
+                      className="bg-[#1265EF] text-white hover:bg-[#0d4fc7] active:bg-[#0a3fa3] rounded-[6px] px-5 pb-2 pt-2.5 text-[16px] font-medium transition-all leading-none"
+                    >
                       {buttonText}
                     </Button>
                   )}
+                  {secondaryLinkText && secondaryLinkHref ? (
+                    <a
+                      href={secondaryLinkHref}
+                      className="text-[16px] font-medium text-[#1265EF] hover:text-[#1a1a1a] transition-colors"
+                    >
+                      {secondaryLinkText}
+                    </a>
+                  ) : null}
                 </div>
               )}
 
@@ -331,18 +351,32 @@ export const Hero = ({
             )}
 
             {showButton && (
-              <div className="mt-8">
+              <div
+                className={`mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 ${centerText ? "justify-center" : ""}`}
+              >
                 {buttonHref ? (
                   <a href={buttonHref} target="_blank" rel="noreferrer">
-                    <Button className="bg-[#1265EF] text-white hover:bg-[#0d4fc7] active:bg-[#0a3fa3] rounded-[6px] px-5 pb-2 pt-2.5 text-[16px] font-medium transition-all leading-none">
+                    <Button type="button" className="bg-[#1265EF] text-white hover:bg-[#0d4fc7] active:bg-[#0a3fa3] rounded-[6px] px-5 pb-2 pt-2.5 text-[16px] font-medium transition-all leading-none">
                       {buttonText}
                     </Button>
                   </a>
                 ) : (
-                  <Button className="bg-[#1265EF] text-white hover:bg-[#0d4fc7] active:bg-[#0a3fa3] rounded-[6px] px-5 pb-2 pt-2.5 text-[16px] font-medium transition-all leading-none">
+                  <Button
+                    type="button"
+                    onClick={onButtonClick}
+                    className="bg-[#1265EF] text-white hover:bg-[#0d4fc7] active:bg-[#0a3fa3] rounded-[6px] px-5 pb-2 pt-2.5 text-[16px] font-medium transition-all leading-none"
+                  >
                     {buttonText}
                   </Button>
                 )}
+                {secondaryLinkText && secondaryLinkHref ? (
+                  <a
+                    href={secondaryLinkHref}
+                    className="text-[16px] font-medium text-[#1265EF] hover:text-[#1a1a1a] transition-colors"
+                  >
+                    {secondaryLinkText}
+                  </a>
+                ) : null}
               </div>
             )}
           </div>

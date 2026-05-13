@@ -108,7 +108,7 @@ export function IndexLandingHero() {
 
       <div className="relative z-10 max-w-[1200px] mx-auto px-6">
         <div className="max-w-5xl mx-auto text-center">
-          <h1 className="text-[56px] lg:text-[80px] leading-[1.05] font-semibold tracking-[-0.03em] mb-8 mx-auto text-[#0D2350]">
+          <h1 className="text-[56px] lg:text-[80px] leading-[1.05] font-bold tracking-[-0.03em] mb-8 mx-auto text-[#0D2350]">
             <span className="block">The reimagined</span>
             <span className="block">software agency</span>
           </h1>

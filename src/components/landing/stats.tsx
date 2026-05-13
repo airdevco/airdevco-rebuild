@@ -1,6 +1,6 @@
 import { WhoWeAre } from "./who-we-are";
 
-const STATS_ITEMS = [
+export const HOME_WHO_WE_ARE_STATS = [
   { label: "Products shipped", value: "1,000", suffix: "+" },
   { label: "Team members", value: 100, suffix: "+" },
   { label: "Users on our products", value: "10M", suffix: "+" },
@@ -39,7 +39,7 @@ export const Stats = ({ hideGallery, compactMetricsBottom }: StatsProps = {}) =>
       label="WHO WE ARE"
       title="Setting the standard for the new way to build"
       description="Visual development and AI are changing how software gets made. We're leading that shift."
-      stats={STATS_ITEMS}
+      stats={HOME_WHO_WE_ARE_STATS}
       items={GALLERY_ITEMS}
       hideGallery={hideGallery}
       compactMetricsBottom={compactMetricsBottom}

@@ -2,13 +2,16 @@
 
 import {
   Navbar,
-  Hero,
   CaseStudies,
   IndexLandingCTA,
   Footer,
   SampleProducts,
   ProcessSection,
+  WhoWeAre,
+  HOME_WHO_WE_ARE_STATS,
 } from "@/components/landing";
+import { Button } from "@/components/ui/button";
+import { AiEnablementWhoWeWorkWithSection } from "@/components/landing/ai-enablement-who-we-work-with-section";
 import {
   SparklesIcon,
   ChatBubbleLeftRightIcon,
@@ -22,6 +25,10 @@ import {
 } from "@heroicons/react/24/solid";
 import { Product } from "@/components/landing/sample-products";
 import { CASE_STUDY_SLUG } from "@/config/case-study-static-slugs";
+
+/** Same asset as `/approach` hero (`ApproachLandingHero`). */
+const AI_ENABLEMENT_HERO_BLUR_BG =
+  "https://cdn.prod.website-files.com/62aa5d914f4516fb36155657/67d482ff67a3aac218170979_blurbg3.svg";
 
 const AI_ENABLEMENT_SLIDES = [
   {
@@ -137,21 +144,97 @@ const AI_PRODUCTS: Product[] = [
 ];
 
 const AiEnablement = () => {
+  const openLandingPricingPopup = () => {
+    window.dispatchEvent(new CustomEvent("open-landing-pricing-popup"));
+  };
+
   return (
     <>
       <div className="bg-white min-h-screen font-sans selection:bg-blue-100 selection:text-blue-900">
         <Navbar />
         <main>
-          <Hero 
-            title="Build AI-powered applications"
-            description="Integrate cutting-edge AI capabilities into your applications with our visual development approach. We help you leverage AI to automate workflows, enhance user experiences, and unlock new possibilities—all built faster and more cost-effectively than traditional development."
-            showImages={false}
-            showButton={true}
-            buttonText="Talk to us"
-            titleMaxWidth="800px"
-            alignLeft={true}
-            rightImage="https://e47b698e59208764aee00d1d8e14313c.cdn.bubble.io/f1767148500165x432666082974164860/designify.png"
-            label="TRUSTED BY ORGANIZATIONS OF ALL SIZES"
+          <section className="relative scroll-mt-[88px] overflow-x-hidden bg-white pb-16 pt-32 lg:pb-20 lg:pt-48">
+            <div
+              className="pointer-events-none absolute inset-0 z-0 bg-white"
+              aria-hidden
+              style={{
+                backgroundImage: `url(${AI_ENABLEMENT_HERO_BLUR_BG})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center center",
+                backgroundRepeat: "no-repeat",
+              }}
+            />
+            <div
+              className="pointer-events-none absolute inset-0 z-[1]"
+              aria-hidden
+              style={{
+                background: `
+            linear-gradient(
+              to top,
+              #ffffff 0%,
+              rgba(255, 255, 255, 0.97) 5%,
+              rgba(255, 255, 255, 0.88) 12%,
+              rgba(255, 255, 255, 0.58) 24%,
+              rgba(255, 255, 255, 0.28) 38%,
+              rgba(255, 255, 255, 0.08) 50%,
+              transparent 64%
+            ),
+            linear-gradient(
+              to bottom,
+              #ffffff 0%,
+              rgba(255, 255, 255, 0.98) 4%,
+              rgba(255, 255, 255, 0.9) 10%,
+              rgba(255, 255, 255, 0.72) 18%,
+              rgba(255, 255, 255, 0.42) 30%,
+              rgba(255, 255, 255, 0.15) 44%,
+              transparent 62%
+            )
+          `,
+              }}
+            />
+
+            <div className="relative z-10 mx-auto max-w-[1200px] px-6">
+              <div className="mx-auto max-w-5xl">
+                <h1 className="mx-auto mb-8 text-left text-[56px] font-semibold leading-[1.05] tracking-[-0.03em] text-[#0D2350] lg:text-center lg:text-[80px]">
+                  <span className="block">AI Enablement,</span>
+                  <span className="block text-[#6C7280]">end-to-end.</span>
+                </h1>
+
+                <p className="mx-auto mb-8 max-w-lg whitespace-pre-line text-left text-xl leading-relaxed text-gray-600 lg:text-center">
+                  {`Most firms will sell you a strategy or sell you code.
+We do both — figuring out where AI actually fits in your business, then building and shipping it.`}
+                </p>
+
+                <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
+                  <Button
+                    type="button"
+                    onClick={openLandingPricingPopup}
+                    className="bg-[#1265EF] text-white hover:bg-[#0d4fc7] active:bg-[#0a3fa3] rounded-[6px] px-5 pb-2 pt-2.5 text-[16px] font-medium transition-all leading-none"
+                  >
+                    Book a discovery call
+                  </Button>
+                  <a
+                    href="#sample-solutions"
+                    className="text-[16px] font-medium text-[#1265EF] transition-colors hover:text-[#1a1a1a]"
+                  >
+                    See sample solutions
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+          <AiEnablementWhoWeWorkWithSection />
+          <WhoWeAre
+            label="WHO WE ARE"
+            title="Setting the standard for the new way to build"
+            description="Visual development and AI are changing how software gets made. We're leading that shift."
+            stats={HOME_WHO_WE_ARE_STATS}
+            hideGallery
+            compactMetricsBottom
+            bgColor="#0A2540"
+            labelColor="#0AE4E3"
+            titleColor="#FFFFFF"
+            descriptionColor="#ADBDCC"
           />
           <CaseStudies 
             label="AI-POWERED APPLICATIONS"
@@ -159,13 +242,15 @@ const AiEnablement = () => {
             slides={AI_ENABLEMENT_SLIDES}
           />
           <ProcessSection />
-          <SampleProducts 
-            bgColor="bg-[#F6F9FC]"
-            label="SAMPLE PRODUCTS"
-            title="AI-powered applications we build"
-            description="From intelligent chatbots to predictive analytics, we help businesses integrate AI capabilities that drive real results. Here are examples of AI-powered applications we've built."
-            products={AI_PRODUCTS}
-          />
+          <div id="sample-solutions" className="scroll-mt-28">
+            <SampleProducts 
+              bgColor="bg-[#F6F9FC]"
+              label="SAMPLE PRODUCTS"
+              title="AI-powered applications we build"
+              description="From intelligent chatbots to predictive analytics, we help businesses integrate AI capabilities that drive real results. Here are examples of AI-powered applications we've built."
+              products={AI_PRODUCTS}
+            />
+          </div>
           <div className="pt-16">
             <IndexLandingCTA />
           </div>
@@ -177,4 +262,3 @@ const AiEnablement = () => {
 };
 
 export default AiEnablement;
-
