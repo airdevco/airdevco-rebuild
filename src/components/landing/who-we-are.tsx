@@ -1,8 +1,9 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, type ReactNode } from "react";
+import { cn } from "@/lib/utils";
 
 interface Stat {
-  label: string;
+  label: ReactNode;
   value: number | string;
   suffix?: string;
   decimals?: number;
@@ -16,7 +17,7 @@ interface GalleryItem {
 
 interface WhoWeAreProps {
   label?: string;
-  title?: string;
+  title?: ReactNode;
   description?: string;
   stats?: Stat[];
   items?: GalleryItem[];
@@ -34,6 +35,8 @@ interface WhoWeAreProps {
   statLabelClassName?: string;
   statsGridClassName?: string;
   statItemClassName?: string;
+  /** Max width for label + title + description block (default matches previous `max-w-3xl`). */
+  introClassName?: string;
 }
 
 const DEFAULT_STATS: Stat[] = [
@@ -80,6 +83,7 @@ export const WhoWeAre = ({
   statLabelClassName = "",
   statsGridClassName = "",
   statItemClassName = "",
+  introClassName = "max-w-3xl",
 }: WhoWeAreProps = {}) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [isDesktop, setIsDesktop] = useState(false);
@@ -136,7 +140,7 @@ export const WhoWeAre = ({
   return (
     <section className="py-24 relative overflow-hidden" style={{ backgroundColor: bgColor }}>
       <div className="relative z-10 max-w-[1200px] mx-auto px-6">
-        <div className={`max-w-3xl ${compactMetricsBottom ? "mb-8" : "mb-20"}`}>
+        <div className={cn(introClassName, compactMetricsBottom ? "mb-8" : "mb-20")}>
           <div className="text-[15px] font-semibold uppercase tracking-wider mb-3" style={{ color: labelColor }}>
             {label}
           </div>
@@ -160,7 +164,12 @@ export const WhoWeAre = ({
                 <div className={`text-5xl font-bold mb-2 tracking-tight pl-4 pt-1 relative ${statValueClassName}`} style={{ color: titleColor, borderLeft: `2px solid ${labelColor}` }}>
                   {typeof stat.value === 'number' && stat.decimals ? stat.value.toFixed(stat.decimals) : stat.value}{stat.suffix}
                 </div>
-                <div className={`font-medium pl-4 ${statLabelClassName}`} style={{ color: descriptionColor }}>{stat.label}</div>
+                <div
+                  className={cn("font-medium pl-4", statLabelClassName)}
+                  style={{ color: descriptionColor }}
+                >
+                  {stat.label}
+                </div>
               </div>
             ))}
           </div>

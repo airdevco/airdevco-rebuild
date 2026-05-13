@@ -8,10 +8,11 @@ import {
   SampleProducts,
   ProcessSection,
   WhoWeAre,
-  HOME_WHO_WE_ARE_STATS,
 } from "@/components/landing";
 import { Button } from "@/components/ui/button";
 import { AiEnablementWhoWeWorkWithSection } from "@/components/landing/ai-enablement-who-we-work-with-section";
+import { AiEnablementPhase01Section } from "@/components/landing/ai-enablement-phase-01-section";
+import { AiEnablementPhase02Section } from "@/components/landing/ai-enablement-phase-02-section";
 import {
   SparklesIcon,
   ChatBubbleLeftRightIcon,
@@ -82,6 +83,35 @@ const AI_ENABLEMENT_SLIDES = [
       { label: "Key results", value: "Rapid user adoption", color: "#ff6b6b" },
     ]
   }
+];
+
+const AI_ENABLEMENT_WHO_WE_ARE_STATS = [
+  {
+    label: (
+      <span className="inline-block max-w-[14rem]">
+        Software projects shipped
+        <br />
+        since 2015
+      </span>
+    ),
+    value: "1,000",
+    suffix: "+",
+  },
+  {
+    label: "Clients ranging from global enterprises to seed-stage startups",
+    value: "F100",
+    suffix: "",
+  },
+  {
+    label: "Building production software before AI made it cool",
+    value: 9,
+    suffix: " yrs",
+  },
+  {
+    label: "Strategists, designers, engineers under one roof. No subcontractors.",
+    value: "In-house",
+    suffix: "",
+  },
 ];
 
 const AI_PRODUCTS: Product[] = [
@@ -225,17 +255,28 @@ We do both — figuring out where AI actually fits in your business, then buildi
           </section>
           <AiEnablementWhoWeWorkWithSection />
           <WhoWeAre
-            label="WHO WE ARE"
-            title="Setting the standard for the new way to build"
-            description="Visual development and AI are changing how software gets made. We're leading that shift."
-            stats={HOME_WHO_WE_ARE_STATS}
+            label="HOW WE'RE DIFFERENT"
+            title={
+              <>
+                <span className="block">Most firms can advise or build.</span>
+                <span className="block lg:whitespace-nowrap">
+                  We&apos;ve been doing both for a decade.
+                </span>
+              </>
+            }
+            description="This track record is why our AI recommendations actually ship — we've spent a decade learning what production software needs to survive contact with real users."
+            stats={AI_ENABLEMENT_WHO_WE_ARE_STATS}
             hideGallery
             compactMetricsBottom
+            introClassName="max-w-6xl"
+            statLabelClassName="text-sm font-normal"
             bgColor="#0A2540"
             labelColor="#0AE4E3"
             titleColor="#FFFFFF"
             descriptionColor="#ADBDCC"
           />
+          <AiEnablementPhase01Section />
+          <AiEnablementPhase02Section />
           <CaseStudies 
             label="AI-POWERED APPLICATIONS"
             description="We've helped businesses integrate AI capabilities into their applications, from intelligent automation to personalized user experiences. Our visual development approach makes AI integration faster and more accessible."
